@@ -5,3 +5,6 @@ https://benefond.itch.io/hair
 
 Source code of Hair Basics Classic's latest public release.
 Feel free to use anything from it I guess. It doesn't have a lot of comments tho.
+
+
+__Making a mod of this means you have to open sorce your mod too!!!__
