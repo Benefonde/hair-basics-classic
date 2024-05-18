@@ -173,6 +173,16 @@ public class PlayerScript : MonoBehaviour
         }
 		if (Time.timeScale != 0)
 		{
+			if (Input.GetKeyDown(KeyCode.T) && blockPathCooldown > 0 && blockPathAbility)
+			{
+				gc.audioDevice.PlayOneShot(gc.no);
+				FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not yet.", 1, Color.white);
+			}
+			if (Input.GetKeyDown(KeyCode.R) && walkThroughCooldown > 0 && walkThroughAbility)
+			{
+				gc.audioDevice.PlayOneShot(gc.no);
+				FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not yet.", 1, Color.white);
+			}
 			if (Input.GetKeyDown(KeyCode.R) && walkThroughCooldown < 0 && walkThroughAbility)
 			{
 				PhaseThroughCheck();
@@ -188,16 +198,6 @@ public class PlayerScript : MonoBehaviour
 			else if (blockPathCooldown > 0)
 			{
 				blockPathCooldown -= Time.deltaTime;
-			}
-			if (Input.GetKeyDown(KeyCode.T) && blockPathCooldown > 0 && blockPathAbility)
-			{
-				gc.audioDevice.PlayOneShot(gc.no);
-				FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not yet.", 1, Color.white);
-			}
-			if (Input.GetKeyDown(KeyCode.R) && walkThroughCooldown > 0 && walkThroughAbility)
-			{
-				gc.audioDevice.PlayOneShot(gc.no);
-				FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not yet.", 1, Color.white);
 			}
 		}
 		StaminaCheck();
@@ -676,7 +676,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			sweeping = true;
 		}
-		else if (other.transform.name == "Marty" && !bootsActive && gc.firstPrizeScript.prevSpeed >= 5 && gc.firstPrizeScript.crazyTime < 0)
+		else if (other.transform.name == "Marty" && !bootsActive && firstPrize.velocity.magnitude > 5f && gc.firstPrizeScript.crazyTime < 0)
 		{
 			hugging = true;
 		}
