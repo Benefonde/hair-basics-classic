@@ -99,7 +99,7 @@ public class ExitTriggerScript : MonoBehaviour
 					PlayerPrefs.SetInt("pizzaLapsBest", gc.laps);
 				}
 				gc.FadeToWhite();
-				gc.StopTime();
+				gc.SetTime(0);
 				SceneManager.LoadSceneAsync("Ranking");
 			}
 			else if (gc.mode == "dark")

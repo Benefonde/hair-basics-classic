@@ -364,12 +364,20 @@ public class GameControllerScript : MonoBehaviour
         craftersTime = false;
     }
 
-    public void StopTime()
+    public void SetTime(float timeScale)
     {
-        PauseGame();
-        pauseMenu.SetActive(false);
-        AudioListener.pause = false;
-        FindObjectOfType<SubtitleManager>().localTimeScale = 1;
+        if (timeScale == 0)
+        {
+            PauseGame();
+            pauseMenu.SetActive(false);
+            AudioListener.pause = false;
+            FindObjectOfType<SubtitleManager>().localTimeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = timeScale;
+            originalTimeScale = timeScale;
+        }
     }
 
     public void TripleStart()
@@ -1050,7 +1058,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void FadeToWhite()
     {
-        StopTime();
+        SetTime(0);
         fadeToWhite.updateMode = AnimatorUpdateMode.UnscaledTime;
         fadeToWhite.SetTrigger("fade");
     }

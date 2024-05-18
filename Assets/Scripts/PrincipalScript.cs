@@ -300,6 +300,7 @@ public class PrincipalScript : MonoBehaviour
 		}
 		if ((other.tag == "Player") & angry & gc.mode != "stealthy")
 		{
+			gc.SetTime(1);
 			if (detentions >= 11)
 			{
 				detentions = 10;
