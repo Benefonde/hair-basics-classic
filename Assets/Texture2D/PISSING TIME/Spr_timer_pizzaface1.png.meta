@@ -1,0 +1,511 @@
+fileFormatVersion: 2
+guid: e4e0398bcd22e7b46be697d02347d331
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8163207212686347131
+    second: Spr_timer_pizzaface1_0
+  - first:
+      213: -1436922194228652341
+    second: Spr_timer_pizzaface1_1
+  - first:
+      213: 2258399745494680185
+    second: Spr_timer_pizzaface1_2
+  - first:
+      213: -5054057885384756638
+    second: Spr_timer_pizzaface1_3
+  - first:
+      213: -5032324799699518403
+    second: Spr_timer_pizzaface1_4
+  - first:
+      213: 5949752671659232610
+    second: Spr_timer_pizzaface1_5
+  - first:
+      213: 3108439209951494888
+    second: Spr_timer_pizzaface1_6
+  - first:
+      213: -7584174056803101596
+    second: Spr_timer_pizzaface1_7
+  - first:
+      213: -7803987578058168332
+    second: Spr_timer_pizzaface1_8
+  - first:
+      213: -3113333699274623084
+    second: Spr_timer_pizzaface1_9
+  - first:
+      213: -3708094796057296035
+    second: Spr_timer_pizzaface1_10
+  - first:
+      213: -8302726033869516959
+    second: Spr_timer_pizzaface1_11
+  - first:
+      213: 6924480760496938643
+    second: Spr_timer_pizzaface1_12
+  - first:
+      213: 5189646650423054765
+    second: Spr_timer_pizzaface1_13
+  - first:
+      213: -4653687923545351257
+    second: Spr_timer_pizzaface1_14
+  - first:
+      213: -7127899134925211110
+    second: Spr_timer_pizzaface1_15
+  - first:
+      213: 1038726005582573456
+    second: Spr_timer_pizzaface1_16
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 453
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f266ec8fed39a341ae91fa64111ca14
+      internalID: -8163207212686347131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 453
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36034d5d99ce164db25a41d25a680ad
+      internalID: -1436922194228652341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_2
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 453
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f49f638fcf4794ea17169124e772cd
+      internalID: 2258399745494680185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_3
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 453
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429496831b3f58949a5be645c73322fc
+      internalID: -5054057885384756638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_4
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 453
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce401db315cbfc48b407b99208ba00b
+      internalID: -5032324799699518403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc5dcfc56eee8046950428dc3a14424
+      internalID: 5949752671659232610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_6
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 302
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0610d615791a1f34f9934ab15672ac56
+      internalID: 3108439209951494888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_7
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 302
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66004d16716562b48b50048c9525e8ec
+      internalID: -7584174056803101596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_8
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 302
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6921b71258238b64c8cde94495afe5e9
+      internalID: -7803987578058168332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_9
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 302
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a4407d186585f4a8f0f07490fe9473
+      internalID: -3113333699274623084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 151
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c631535ae0820a4a8eb13329bb07043
+      internalID: -3708094796057296035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 151
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14a051e3fdc2494eb51e8a626a1b04a
+      internalID: -8302726033869516959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_12
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 151
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82b2a3f32c5c9648bd68dda33097717
+      internalID: 6924480760496938643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_13
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 151
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43914291f943a4d4085cda467d0258dc
+      internalID: 5189646650423054765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_14
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 151
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a9a4a3e82ccce4fb8285f62726e3f2
+      internalID: -4653687923545351257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c5c08bb3f013244a02396d746239d7
+      internalID: -7127899134925211110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_pizzaface1_16
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f496c15bc3c9b29489f914dd7655d4a7
+      internalID: 1038726005582573456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

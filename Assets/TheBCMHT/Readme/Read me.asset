@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024359be4b46b5343ab6c07c35c8f5c1, type: 3}
+  m_Name: Read me
+  m_EditorClassIdentifier: 
+  message: 'Thanks for downloading The Baldi Custom Map Helper Tool version 2.1!
+
+
+    What''s
+    new?
+
+    -Added entrance builder
+
+    -Corn maze generator now generate signs
+
+
+    Remember
+    to report bugs if you found one...'

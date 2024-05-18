@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# UNT0001: Empty Unity message
+dotnet_diagnostic.UNT0001.severity = suggestion
+
+# IDE0040: Add accessibility modifiers
+dotnet_diagnostic.IDE0040.severity = none

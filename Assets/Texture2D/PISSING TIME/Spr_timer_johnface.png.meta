@@ -1,0 +1,631 @@
+fileFormatVersion: 2
+guid: 599afb10238ab6c4db8af7cdcb3e2546
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2204745541294456926
+    second: Spr_timer_johnface_0
+  - first:
+      213: 7478257605394306763
+    second: Spr_timer_johnface_1
+  - first:
+      213: 7754839533176554116
+    second: Spr_timer_johnface_2
+  - first:
+      213: -6059670892617346003
+    second: Spr_timer_johnface_3
+  - first:
+      213: 1721611076903214929
+    second: Spr_timer_johnface_4
+  - first:
+      213: 1212558761212496230
+    second: Spr_timer_johnface_5
+  - first:
+      213: -8408102596965687899
+    second: Spr_timer_johnface_6
+  - first:
+      213: -5449488029833358076
+    second: Spr_timer_johnface_7
+  - first:
+      213: -6763841413850926010
+    second: Spr_timer_johnface_8
+  - first:
+      213: -6960849447936618796
+    second: Spr_timer_johnface_9
+  - first:
+      213: -367762447154415343
+    second: Spr_timer_johnface_10
+  - first:
+      213: -7617787835486918327
+    second: Spr_timer_johnface_11
+  - first:
+      213: -3600899871225205925
+    second: Spr_timer_johnface_12
+  - first:
+      213: -7872540860938948330
+    second: Spr_timer_johnface_13
+  - first:
+      213: -7308056325901550070
+    second: Spr_timer_johnface_14
+  - first:
+      213: 3724275312931971924
+    second: Spr_timer_johnface_15
+  - first:
+      213: 8414146946372976334
+    second: Spr_timer_johnface_16
+  - first:
+      213: 2570598743049195612
+    second: Spr_timer_johnface_17
+  - first:
+      213: 7968539030756245199
+    second: Spr_timer_johnface_18
+  - first:
+      213: 1115892452904262643
+    second: Spr_timer_johnface_19
+  - first:
+      213: 6853025278752733506
+    second: Spr_timer_johnface_20
+  - first:
+      213: -1205508497765431474
+    second: Spr_timer_johnface_21
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spr_timer_johnface_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21c21149bc93ea4483aad25a5b6d330
+      internalID: -2204745541294456926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 176
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c10090709c8668e45a516306d010ae65
+      internalID: 7478257605394306763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 176
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d0ebb5d0a8e594396a6ede5fbe5d05
+      internalID: 7754839533176554116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 176
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b31e66dbed063546945afbe48de76e4
+      internalID: -6059670892617346003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 176
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78d31d7916fb4ac4da91d3682804ba69
+      internalID: 1721611076903214929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d114943128a25e54fb5cd45adfb7d08e
+      internalID: 1212558761212496230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_6
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 132
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d887077bdeef74da5b0302d6965865
+      internalID: -8408102596965687899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_7
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 132
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a0b19b1f7ea47478910e9dd7ef53e5
+      internalID: -5449488029833358076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_8
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 132
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 245ad861d80ca064a8458b3263bff12a
+      internalID: -6763841413850926010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_9
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 132
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fbf15a311a69fe44b1186dfee8e9370
+      internalID: -6960849447936618796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a22bdbad309cf04c8983ed93b9af060
+      internalID: -367762447154415343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_11
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 88
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b682cd699adc7478715fc5cddd34ae
+      internalID: -7617787835486918327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_12
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 88
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5364413c110cf7141b63ea18f99ea777
+      internalID: -3600899871225205925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_13
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 88
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfbe3569541de94395f85e3aabea7ed
+      internalID: -7872540860938948330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_14
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 88
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c2c295bb1d3ec4d9523f3d4a986b5c
+      internalID: -7308056325901550070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ceeae5c263d09242af67a120bc8bac0
+      internalID: 3724275312931971924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_16
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 44
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e45ca2473811324aa8d4abc1bd07e88
+      internalID: 8414146946372976334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_17
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 44
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14df8f09cf973ee48bb8959fff195b6d
+      internalID: 2570598743049195612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_18
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 44
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 131aeedf90075e342a3b8cae215487e9
+      internalID: 7968539030756245199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_19
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 44
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8851c21c99a56941b3f25caf9266013
+      internalID: 1115892452904262643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98412893de2075343a92909cff46abf5
+      internalID: 6853025278752733506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_timer_johnface_21
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecff5dbd7aa15a43aec952e24e7abbd
+      internalID: -1205508497765431474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
