@@ -1106,6 +1106,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(firstPrize, 1, 3, 2, true);
             SpawnWithChance(guardianAngel, 1, 6, 4, true);
             SpawnWithChance(baba, 1, 3, 2, true);
+            SpawnWithChance(devin, 1, 4, 2, true);
 
             int rng = yellowFaceOn;
             print(rng);
@@ -1138,6 +1139,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(firstPrize, 1, 7, 2, true);
             SpawnWithChance(guardianAngel, 1, 10, 4, true);
             SpawnWithChance(baba, 1, 4, 2, true);
+            SpawnWithChance(devin, 1, 3, 2, true);
         }
         else if (mode == "free")
         {
@@ -1157,6 +1159,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(firstPrize, 1, 1, 1, true);
             SpawnWithChance(guardianAngel, 1, 1, 1, true);
             SpawnWithChance(baba, 1, 1, 1, true);
+            SpawnWithChance(devin, 1, 1, 1, true);
         }
         else
         {
@@ -1169,6 +1172,7 @@ public class GameControllerScript : MonoBehaviour
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true);
             baba.SetActive(true);
+            devin.SetActive(true);
         }
         audioDevice.PlayOneShot(aud_Hang);
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
@@ -2574,6 +2578,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject baba;
 
     public GameObject algerNull;
+
+    public GameObject devin;
 
     public FirstPrizeScript firstPrizeScript;
 

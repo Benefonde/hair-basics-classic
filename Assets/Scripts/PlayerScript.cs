@@ -109,6 +109,9 @@ public class PlayerScript : MonoBehaviour
 
 	private float gravity;
 
+	public bool pipeGame;
+	private float pipeGameGravity;
+
 	public bool isJumping;
 
 	public TMP_Text percent;
@@ -162,14 +165,24 @@ public class PlayerScript : MonoBehaviour
 			CheckGround();
 			Jump();
 		}
-		if (crazyAppleTimer < 0 & !FreezePlayer)
+		if (!pipeGame)
 		{
-			PlayerMove();
-			MouseMove();
+			if (crazyAppleTimer < 0 & !FreezePlayer)
+			{
+				PlayerMove();
+				MouseMove();
+			}
+			else if (!FreezePlayer)
+			{
+				NavMeshMove();
+			}
+			StaminaCheck();
+			HealthCheck();
+			GuiltCheck();
 		}
-        else if (!FreezePlayer)
+        else
         {
-			NavMeshMove();
+			PipegameMove();
         }
 		if (Time.timeScale != 0)
 		{
@@ -200,10 +213,7 @@ public class PlayerScript : MonoBehaviour
 				blockPathCooldown -= Time.deltaTime;
 			}
 		}
-		StaminaCheck();
 		jammerBar.value = gc.jammersTimer;
-		HealthCheck();
-		GuiltCheck();
 		if (cc.velocity.magnitude > 0f)
 		{
 			gc.LockMouse();
@@ -236,6 +246,24 @@ public class PlayerScript : MonoBehaviour
 		gc.debugMode = false;
 	}
 
+	void PipegameMove()
+    {
+		if (Input.GetKeyDown(KeyCode.Space) && pipeGameGravity == 0)
+        {
+			pipeGameGravity = -6;
+        }
+		if (pipeGameGravity != 0)
+		{
+			height -= pipeGameGravity * Time.deltaTime;
+			pipeGameGravity += 6 * Time.deltaTime;
+		}
+		if (height >= 4)
+        {
+			pipeGameGravity = 0;
+			height = 4;
+        }
+    }
+
 	void PhaseThroughCheck()
 	{
 		Vector3 destinationPosition = transform.position + transform.forward * 10;
@@ -262,8 +290,6 @@ public class PlayerScript : MonoBehaviour
 		gc.audioDevice.PlayOneShot(gc.no);
 		FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not here.", 1, Color.white);
 	}
-
-
 
 	IEnumerator BlockPathAbility()
     {
@@ -381,7 +407,7 @@ public class PlayerScript : MonoBehaviour
 	{
 		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.1f))
+		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.1f) && gravity <= 0)
 		{
 			if (hit.collider.transform.name == "Floor")
 			{
