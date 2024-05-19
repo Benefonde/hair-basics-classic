@@ -133,6 +133,10 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 8;
             }
+            if (mode == "dark" || mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
+            {
+                math = 0;
+            }
             if (walkThrough == 1)
             {
                 playerScript.walkThroughAbility = true;
@@ -413,7 +417,7 @@ public class GameControllerScript : MonoBehaviour
             camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
         }
         RenderSettings.ambientLight = new Color(0.8f, 0.5f, 0.5f, 1);
-        baldi.transform.position = new Vector3(5, 1.64f, 135);
+        baldiAgent.Warp(new Vector3(5, 1.64f, 135));
         RenderSettings.skybox = night;
         craftersTime = false;
     }
