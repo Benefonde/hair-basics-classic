@@ -49,6 +49,7 @@ public class DevinScript : MonoBehaviour
 		Wander();
 		pipeCoolDown = 25;
 		anim.SetBool("oh", false);
+		agent.speed = 20;
 	}
 
 	private void Update()
@@ -131,11 +132,12 @@ public class DevinScript : MonoBehaviour
 
 	void StartPipeMinigame()
     {
-		pipeTime = 1;
+		pipeTime = ready.length + 0.5f;
 		pipeDucks = 0;
 		gc.player.pipeGame = true;
 		agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
 		agent.Move(Vector3.back * 7.5f);
+		agent.speed = 0;
 		audioDevice.PlayOneShot(ready);
     }
 
@@ -162,6 +164,7 @@ public class DevinScript : MonoBehaviour
 		gc.player.pipeGame = false;
 		gc.player.height = 4;
 		pipeCoolDown = 45;
+		agent.speed = 20;
 		if (pipeDucks == 5)
         {
 			pipeDucks = 0;
@@ -182,7 +185,7 @@ public class DevinScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == "Player" && pipeCoolDown <= 0)
 		{
 			StartPipeMinigame();
 		}

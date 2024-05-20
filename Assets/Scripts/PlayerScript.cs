@@ -248,7 +248,7 @@ public class PlayerScript : MonoBehaviour
 
 	void PipegameMove()
     {
-		if (Input.GetKeyDown(KeyCode.Space) && pipeGameGravity == 0)
+		if (Input.GetKeyDown(KeyCode.LeftControl) && pipeGameGravity == 0)
         {
 			pipeGameGravity = -6;
         }
