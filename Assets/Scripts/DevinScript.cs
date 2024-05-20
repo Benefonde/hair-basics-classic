@@ -19,7 +19,7 @@ public class DevinScript : MonoBehaviour
 	public AudioClip ready;
 	public AudioClip[] numbers;
 	public AudioClip[] outcome;
-	public AudioClip pipe;
+	public AudioClip pipeHit;
 
 	public float coolDown;
 
@@ -32,11 +32,14 @@ public class DevinScript : MonoBehaviour
 	public GameControllerScript gc;
 
 	private int pipeDucks;
-	public TMP_Text pipeText; // wip LMAO
+	public TMP_Text pipeText;
 
 	public bool minigaming;
 
 	private Animator anim;
+
+	private Animator pipe;
+	private float pipeTime;
 
 	private void Start()
 	{
@@ -64,6 +67,15 @@ public class DevinScript : MonoBehaviour
 			anim.SetBool("oh", false);
 		}
 		minigaming = gc.player.pipeGame;
+		if (pipeTime > 0 && minigaming)
+        {
+			pipeTime -= Time.deltaTime;
+			if (pipeTime <= 0.1)
+            {
+				DuckedPipe();
+				pipeTime = 0.8f;
+            }
+        }
 	}
 
 	private void FixedUpdate()
@@ -119,6 +131,7 @@ public class DevinScript : MonoBehaviour
 
 	void StartPipeMinigame()
     {
+		pipeTime = 1;
 		pipeDucks = 0;
 		gc.player.pipeGame = true;
 		agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
@@ -162,6 +175,7 @@ public class DevinScript : MonoBehaviour
 				gc.camScript.character = gameObject;
             }
 			audioDevice.PlayOneShot(outcome[1]);
+			audioDevice.PlayOneShot(pipeHit);
 			anim.SetBool("oh", true);
         }
     }
