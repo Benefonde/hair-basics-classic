@@ -23,7 +23,7 @@ public class DevinScript : MonoBehaviour
 
 	public float coolDown;
 
-	private float pipeCoolDown;
+	public float pipeCoolDown;
 
 	private Vector3 previous;
 
@@ -34,11 +34,13 @@ public class DevinScript : MonoBehaviour
 	private int pipeDucks;
 	public TMP_Text pipeText;
 
+	public GameObject devinCanvas;
+
 	public bool minigaming;
 
 	private Animator anim;
 
-	private Animator pipe;
+	public RectTransform pipe;
 	private float pipeTime;
 
 	private void Start()
@@ -69,14 +71,17 @@ public class DevinScript : MonoBehaviour
 		}
 		minigaming = gc.player.pipeGame;
 		if (pipeTime > 0 && minigaming)
-        {
+		{
+			agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
+			agent.Move(Vector3.back * 7.5f);
 			pipeTime -= Time.deltaTime;
 			if (pipeTime <= 0.1)
             {
 				DuckedPipe();
 				pipeTime = 0.8f;
-            }
-        }
+			}
+			pipe.anchoredPosition = new Vector2(pipe.anchoredPosition.x, (pipeTime / 2) * 400);
+		}
 	}
 
 	private void FixedUpdate()
@@ -93,7 +98,10 @@ public class DevinScript : MonoBehaviour
 		else
 		{
 			db = false;
-			Wander();
+			if (coolDown <= 0)
+			{
+				Wander();
+			}
 		}
 	}
 
@@ -132,21 +140,23 @@ public class DevinScript : MonoBehaviour
 
 	void StartPipeMinigame()
     {
+		devinCanvas.SetActive(true);
 		pipeTime = ready.length + 0.5f;
 		pipeDucks = 0;
+		pipeText.text = pipeDucks.ToString();
 		gc.player.pipeGame = true;
-		agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
-		agent.Move(Vector3.back * 7.5f);
 		agent.speed = 0;
 		audioDevice.PlayOneShot(ready);
     }
 
 	void DuckedPipe()
     {
-		if (gc.player.height <= 3.3f)
+		if (gc.player.height <= 3.7f)
 		{
+			gc.player.height = 4;
 			audioDevice.PlayOneShot(numbers[pipeDucks]);
 			pipeDucks++;
+			pipeText.text = pipeDucks.ToString();
 			if (pipeDucks == 5)
             {
 				Invoke(nameof(EndGame), numbers[4].length - 0.5f);
@@ -161,6 +171,7 @@ public class DevinScript : MonoBehaviour
 
 	void EndGame()
     {
+		devinCanvas.SetActive(false);
 		gc.player.pipeGame = false;
 		gc.player.height = 4;
 		pipeCoolDown = 45;
@@ -169,13 +180,22 @@ public class DevinScript : MonoBehaviour
         {
 			pipeDucks = 0;
 			audioDevice.PlayOneShot(outcome[0]);
-        }
+			if (gc.HasItemInInventory(0))
+			{
+				gc.CollectItem(gc.CollectItemExcluding(3, 8, 13, 14, 15, 16, 21, 24));
+			}
+            else
+            {
+				gc.player.health += 20;
+            }
+		}
         else
         {
 			gc.player.health -= 30;
+			gc.camScript.ShakeNow(new Vector3(1, 1, 1), 5);
 			if (gc.player.health <= 0)
             {
-				gc.camScript.character = gameObject;
+				gc.camScript.follow = transform;
             }
 			audioDevice.PlayOneShot(outcome[1]);
 			audioDevice.PlayOneShot(pipeHit);
@@ -183,9 +203,9 @@ public class DevinScript : MonoBehaviour
         }
     }
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-		if (other.tag == "Player" && pipeCoolDown <= 0)
+		if (other.tag == "Player" && pipeCoolDown <= 0 && !minigaming)
 		{
 			StartPipeMinigame();
 		}

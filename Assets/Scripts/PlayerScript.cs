@@ -183,7 +183,8 @@ public class PlayerScript : MonoBehaviour
         else
         {
 			PipegameMove();
-        }
+			MouseMove();
+		}
 		if (Time.timeScale != 0)
 		{
 			if (Input.GetKeyDown(KeyCode.T) && blockPathCooldown > 0 && blockPathAbility)
@@ -248,14 +249,21 @@ public class PlayerScript : MonoBehaviour
 
 	void PipegameMove()
     {
-		if (Input.GetKeyDown(KeyCode.LeftControl) && pipeGameGravity == 0)
+		if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-			pipeGameGravity = -6;
+			if (height == 4)
+			{
+				pipeGameGravity = -6;
+			}
         }
 		if (pipeGameGravity != 0)
 		{
-			height -= pipeGameGravity * Time.deltaTime;
-			pipeGameGravity += 6 * Time.deltaTime;
+			height += pipeGameGravity * Time.deltaTime;
+			pipeGameGravity += 13 * Time.deltaTime;
+			if (Input.GetKey(KeyCode.LeftShift))
+            {
+				cc.Move(0.8f * runSpeed * Vector3.forward);
+            }
 		}
 		if (height >= 4)
         {
@@ -281,7 +289,7 @@ public class PlayerScript : MonoBehaviour
 				if (walkThroughUses == 3)
 				{
 					walkThroughUses = 0;
-					walkThroughCooldown = 7.5f;
+					walkThroughCooldown = 5f;
 				}
 				return;
 			}
