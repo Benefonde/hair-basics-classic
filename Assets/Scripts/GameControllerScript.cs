@@ -1067,22 +1067,39 @@ public class GameControllerScript : MonoBehaviour
         fadeToWhite.SetTrigger("fade");
     }
 
-    public void SpawnWithChance(GameObject character, float minRange, float maxRange, float TargetNum, bool integer = true)
+    public void SpawnWithChance(GameObject character, float minRange, float maxRange, float TargetNum, bool integer = true, bool targetIsKey = true)
     {
         float rng = Random.Range(minRange, maxRange); 
         
-
-        if (Mathf.FloorToInt(rng) == TargetNum)
+        if (targetIsKey)
         {
-            character.SetActive(true);
-            if (character == crafters)
+            if (Mathf.FloorToInt(rng) == TargetNum)
             {
-                craftersTime = true;
+                character.SetActive(true);
+                if (character == crafters)
+                {
+                    craftersTime = true;
+                }
+            }
+            if (character == crafters && Mathf.FloorToInt(rng) != TargetNum)
+            {
+                craftersTime = false;
             }
         }
-        if (character == crafters && Mathf.FloorToInt(rng) != TargetNum)
+        else
         {
-            craftersTime = false;
+            if (Mathf.FloorToInt(rng) != TargetNum)
+            {
+                character.SetActive(true);
+                if (character == crafters)
+                {
+                    craftersTime = true;
+                }
+            }
+            if (character == crafters && Mathf.FloorToInt(rng) == TargetNum)
+            {
+                craftersTime = false;
+            }
         }
 
         print($"{character} got a {minRange} in {maxRange} chance, and got {Mathf.FloorToInt(rng)}. Target is {TargetNum}");
@@ -1099,7 +1116,7 @@ public class GameControllerScript : MonoBehaviour
         {
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
-            principal.SetActive(value: true);
+            SpawnWithChance(principal, 1, 20, 4, true, false);
             SpawnWithChance(crafters, 1, 4, 2, true);
             SpawnWithChance(gottaSweep, 1, 2, 1, true);
             SpawnWithChance(bully, 1, 2, 1, true);
@@ -1132,7 +1149,7 @@ public class GameControllerScript : MonoBehaviour
             }
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
-            principal.SetActive(value: true);
+            SpawnWithChance(principal, 1, 15, 4, true, false);
             SpawnWithChance(crafters, 1, 3, 2, true);
             SpawnWithChance(gottaSweep, 1, 5, 2, true);
             SpawnWithChance(bully, 1, 4, 2, true);
@@ -1171,8 +1188,6 @@ public class GameControllerScript : MonoBehaviour
             bully.SetActive(true);
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true);
-            baba.SetActive(true);
-            devin.SetActive(true);
         }
         audioDevice.PlayOneShot(aud_Hang);
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
@@ -1336,7 +1351,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else
         {
-            pss.AddPoints(1205, 1);
+            pss.AddPoints(1750 - (laps * 5), 1);
 
         }
         player.stamina += player.maxStamina * 0.75f;
@@ -1344,7 +1359,8 @@ public class GameControllerScript : MonoBehaviour
         camScript.ShakeNow(new Vector3(0.3f, 0.15f, 0.3f), 15);
         playerCharacter.enabled = false;
         playerCollider.enabled = false;
-        if (laps > 50)
+        timer.timeLeft += 5;
+        if (laps > 30)
         {
             timer.timeLeft += 15;
         }
