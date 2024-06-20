@@ -85,7 +85,7 @@ public class ExitTriggerScript : MonoBehaviour
 				else if (gc.pss.rank == "P")
 				{
 					PlayerPrefs.SetString("pizzaRankBest", gc.pss.rank);
-					if (gc.laps == 7)
+					if (gc.laps >= 7)
                     {
 						gc.tc.GetTrophy(2);
                     }
