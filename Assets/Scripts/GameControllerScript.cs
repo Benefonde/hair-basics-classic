@@ -125,15 +125,15 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 12;
             }
-            if (mode == "miko" || mode == "chaos")
+            if (mode == "miko")
             {
                 objecUsesinit = 4;
             }
-            if (mode == "speedy" || mode == "dark")
+            if (mode == "speedy")
             {
                 objecUsesinit = 8;
             }
-            if (mode == "dark" || mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
             {
                 math = 0;
             }
@@ -162,7 +162,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 this.SpeedyStart();
             }
-            else if (mode == "story" || mode == "endless" || mode == "pizza" || mode == "free" || mode == "dark" || mode == "chaos")
+            else if (mode == "story" || mode == "endless" || mode == "pizza" || mode == "free")
             {
                 this.NormalStart();
 
@@ -181,15 +181,6 @@ public class GameControllerScript : MonoBehaviour
                         secretWalls[i].material = secretWall2;
                     }
                     asdaa.SetActive(false);
-                }
-                if (mode == "dark")
-                {
-                    notebookCount.color = Color.white;
-                    RenderSettings.ambientLight = Color.black;
-                    RenderSettings.skybox = night;
-                    hour = 1;
-                    player.GetComponent<Light>().enabled = true;
-                    principal.GetComponent<Light>().enabled = true;
                 }
             }
             else if (mode == "miko")
@@ -811,36 +802,6 @@ public class GameControllerScript : MonoBehaviour
         {
             lap2Music.time = 21.25f;
         }
-        if (mode == "chaos")
-        {
-            if (CHAOStimer < 0)
-            {
-                if (Random.Range(1, 15) == 4)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        item[i] = Random.Range(0, itemHudTextures.Length - 1);
-                    }
-                }
-                playerScript.walkSpeed = Random.Range(15f, 35f);
-                playerScript.runSpeed = playerScript.walkSpeed + Random.Range(3f, 9f);
-                CHAOStimer = Random.Range(0.5f, 3f);
-                if (Random.Range(0, 2) == 1)
-                {
-                    RenderSettings.ambientLight = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1);
-                }
-                UpdateAllItem();
-                baldiScrpt.baldiWait = Random.Range(0.5f, 2f);
-                if (Random.Range(1, 30) == 10)
-                {
-                    Teleport();
-                }
-            }
-            else
-            {
-                CHAOStimer -= Time.deltaTime;
-            }
-        }
         if (Input.GetKeyDown(KeyCode.F8))
         {
             notebooks = maxNoteboos;
@@ -960,7 +921,7 @@ public class GameControllerScript : MonoBehaviour
         {
             notebookCount.text = $"{notebooks}/{highScoreBotenook} H.S. Dwaynes";
         }
-        if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free" || mode == "dark" || mode == "chaos"))
+        if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free"))
         {
             ActivateFinaleMode();
             principal.SetActive(true);
@@ -1112,7 +1073,7 @@ public class GameControllerScript : MonoBehaviour
         entrance_1.Lower();
         entrance_2.Lower();
         entrance_3.Lower();
-        if (mode == "story" || mode == "pizza" || mode == "dark" || mode == "chaos")
+        if (mode == "story" || mode == "pizza")
         {
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
@@ -1231,10 +1192,6 @@ public class GameControllerScript : MonoBehaviour
             if (this.mode == "speedy")
             {
                 this.timer.timeLeft = 40f;
-            }
-            else if (this.mode == "chaos")
-            {
-                this.timer.timeLeft = 120f;
             }
             else if (mode != "pizza")
             {
@@ -1420,11 +1377,11 @@ public class GameControllerScript : MonoBehaviour
         {
             quarter.SetActive(false);
         }
-        if ((notebooks == 4 && (mode == "story" || mode == "pizza" || mode == "free" || mode == "dark")) || (notebooks == 9 && mode == "endless"))
+        if ((notebooks == 4 && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
         {
             bigball.SetActive(true);
         }
-        else if ((notebooks == maxNoteboos) & (mode == "story" || mode == "chaos"))
+        else if ((notebooks == maxNoteboos) & (mode == "story"))
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
@@ -1461,7 +1418,7 @@ public class GameControllerScript : MonoBehaviour
         {
             entrance_2.Lower();
         }
-        else if ((notebooks == maxNoteboos) & (mode == "triple" || mode == "dark" || mode == "free" || mode == "classic"))
+        else if ((notebooks == maxNoteboos) & (mode == "triple"|| mode == "free" || mode == "classic"))
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
@@ -2168,14 +2125,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 1)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.cyan;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0, 0.1f, 0.1f, 1);
-                }
+                RenderSettings.ambientLight = Color.cyan;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
                 notebookCount.color = Color.white;
                 notebookCount.text = "1/4 Exits";
@@ -2186,14 +2136,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 2)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.blue;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0, 0f, 0.1f, 1);
-                }
+                RenderSettings.ambientLight = Color.blue;
                 RenderSettings.fog = true;
                 RenderSettings.fogColor = Color.blue;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
@@ -2205,14 +2148,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 3)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.red;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0.1f, 0, 0, 1);
-                }
+                RenderSettings.ambientLight = Color.red;
                 RenderSettings.fogColor = Color.red;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
                 notebookCount.text = "3/4 Exits";
@@ -2232,16 +2168,9 @@ public class GameControllerScript : MonoBehaviour
                     player.runSpeed += 6f;
                 }
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.gray;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0.05f, 0.05f, 0.05f, 1);
-                }
+                RenderSettings.ambientLight = Color.gray;
                 RenderSettings.fogColor = Color.black;
-                if (mode == "story" || mode == "dark" || (mode == "pizza" && laps == 1))
+                if (mode == "story" || (mode == "pizza" && laps == 1))
                 {
                     baldiScript.baldiWait = 0.625f;
                 }
@@ -2662,8 +2591,6 @@ public class GameControllerScript : MonoBehaviour
     private bool learningActive;
 
     private float gameOverDelay;
-
-    private float CHAOStimer;
 
     public AudioSource audioDevice;
 
