@@ -17,8 +17,8 @@ If you don't know, just type in the version you discovered the bug in.
 
 Is it a minor bug or is it so bad the game is basically unplayable? *Type in an **x** into the brackets*
 
-[ ] Very minor
-[ ] Minor
-[ ] A little major
-[ ] Major
-[ ] UNPLAYABLE
+- [ ] Very minor
+- [ ] Minor
+- [ ] A little major
+- [ ] Major
+- [ ] UNPLAYABLE
