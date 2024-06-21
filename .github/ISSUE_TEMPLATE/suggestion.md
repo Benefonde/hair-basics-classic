@@ -7,7 +7,7 @@ assignees: Benefonde
 
 ---
 
-What do you want to add? *Type an **x** into the square brackets*
+What do you want to add? *Type an **x** into the square brackets like this: [x]*
 - [ ] Character
 - [ ] Item
 - [ ] Mode

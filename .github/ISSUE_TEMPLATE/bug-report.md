@@ -15,7 +15,7 @@ What versions does it apply to? [Example: v1.2-1.3, Beta 2.5-v1.4]
 If you don't know, just type in the version you discovered the bug in.
 
 
-Is it a minor bug or is it so bad the game is basically unplayable? *Type in an **x** into the brackets*
+Is it a minor bug or is it so bad the game is basically unplayable? *Type in an **x** into the brackets like this: [x]*
 
 - [ ] Very minor
 - [ ] Minor
