@@ -403,12 +403,13 @@ public class PlayerScript : MonoBehaviour
 			newPosition.y += verticalVelocity * Time.deltaTime;
 			transform.position = newPosition;
 
-			if (isGrounded)
-			{
-				newPosition.y = 4.0f;
-				transform.position = newPosition;
-				verticalVelocity = 0.0f;
-			}
+		transform.position = newPosition + (Vector3.up * 0.1f);
+		if (isGrounded)
+		{
+			newPosition.y = 4.0f;
+			transform.position = newPosition;
+			verticalVelocity = 0.0f;
+		}
 	}
 
 	private void CheckGround()
