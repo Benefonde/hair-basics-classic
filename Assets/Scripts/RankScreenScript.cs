@@ -11,36 +11,41 @@ public class RankScreenScript : MonoBehaviour
     {
         letter = PlayerPrefs.GetString("pizzaRankNeww", "D");
         score = PlayerPrefs.GetInt("pizzaScoreNeww", 0);
-        text.text = letter;
         if (letter == "D")
         {
             rank.clip = D;
             text.color = new Color32(48, 80, 120, 255);
+            text.text = "D";
         }
         if (letter == "C")
         {
             rank.clip = C;
             text.color = new Color32(96, 208, 72, 255);
+            text.text = "C";
         }
         if (letter == "B")
         {
             rank.clip = C;
             text.color = new Color32(48, 168, 248, 255);
+            text.text = "B";
         }
         if (letter == "A")
         {
             rank.clip = A;
             text.color = new Color32(248, 0, 0, 255);
+            text.text = "A";
         }
         if (letter == "S")
         {
             rank.clip = S;
             text.color = new Color32(244, 144, 0, 255);
+            text.text = "S";
         }
         if (letter == "P")
         {
             rank.clip = P;
             text.color = new Color32(152, 80, 248, 255);
+            text.text = "P";
         }
         scoreText.text = score.ToString();
         scoreText.color = text.color;
