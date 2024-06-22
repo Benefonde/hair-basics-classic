@@ -60,6 +60,7 @@ public class MikoNearExit : MonoBehaviour
 			yield break;
         }
 		PlayerPrefs.SetInt("mikoBeat", 1);
-		SceneManager.LoadScene("MainMenu");
-    }
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab. Press T to use!");
+		SceneManager.LoadScene("ChallengeBeat");
+	}
 }

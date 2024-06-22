@@ -409,7 +409,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("speedyUnlocked", 0);
 		PlayerPrefs.SetInt("mikoBeat", 0);
 		PlayerPrefs.SetInt("tripleBeat", 0);
-		PlayerPrefs.SetInt("darkBeat", 0);
+		PlayerPrefs.SetInt("pSecretFound", 0);
 		PlayerPrefs.SetInt("algerBeat", 0);
 		PlayerPrefs.SetInt("speedyBeat", 0);
 		PlayerPrefs.SetInt("HighBooks", 0);
@@ -424,7 +424,6 @@ public class OptionsManager : MonoBehaviour
 			PlayerPrefs.DeleteKey("pizzaLapsNew");
 		}
 		PlayerPrefs.SetInt("stealthyBeat", 0);
-		PlayerPrefs.SetInt("chaosBeat", 0);
 		PlayerPrefs.SetInt("classicBeat", 0);
 		PlayerPrefs.SetInt("speedBoost", 0);
 		PlayerPrefs.SetInt("extraStamina", 0);

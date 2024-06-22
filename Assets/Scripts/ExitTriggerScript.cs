@@ -53,7 +53,7 @@ public class ExitTriggerScript : MonoBehaviour
 			}
             else if (gc.mode == "speedy")
             {
-				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLIGHT SPEED BOOST\" powerup. Use in modifier tab.");
+				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SPEED BOOST\" powerup. Use in modifier tab.");
 				PlayerPrefs.SetInt("speedyBeat", 1);
 				SceneManager.LoadScene("ChallengeBeat");
             }
@@ -102,23 +102,11 @@ public class ExitTriggerScript : MonoBehaviour
 				gc.SetTime(0);
 				SceneManager.LoadSceneAsync("Ranking");
 			}
-			else if (gc.mode == "dark")
-            {
-				SceneManager.LoadScene("ChallengeBeat");
-				PlayerPrefs.SetInt("darkBeat", 1);
-				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLOWER KRILLERS\" powerup. Use in modifier tab.");
-			}
 			else if (gc.mode == "stealthy")
 			{
 				SceneManager.LoadScene("ChallengeBeat");
 				PlayerPrefs.SetInt("stealthyBeat", 1);
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"WALK THROUGH\" powerup. Use in modifier tab.");
-			}
-			else if (gc.mode == "chaos")
-			{
-				SceneManager.LoadScene("ChallengeBeat");
-				PlayerPrefs.SetInt("chaosBeat", 1);
-				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab.");
 			}
 			else if (gc.mode == "classic")
 			{

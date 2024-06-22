@@ -812,6 +812,7 @@ public class GameControllerScript : MonoBehaviour
             pCounter++;
             if (pCounter >= 50)
             {
+                PlayerPrefs.SetInt("pSecretFound", 1);
                 SceneManager.LoadScene("p");
             }
         }

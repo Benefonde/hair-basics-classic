@@ -33,7 +33,7 @@ public class ModesManager : MonoBehaviour
                 staminaBoost.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("darkBeat", 0) == 1)
+        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1)
         {
             krillerSlow.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("slowerKriller", 0) == 1)
@@ -57,7 +57,7 @@ public class ModesManager : MonoBehaviour
                 walkThrough.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("chaosBeat", 0) == 1)
+        if (PlayerPrefs.GetInt("mikoBeat", 0) == 1)
         {
             blockPath.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("blockPath", 0) == 1)
@@ -228,18 +228,6 @@ public class ModesManager : MonoBehaviour
             algerMode.interactable = false;
             algerText.text = "You need to beat EVERY MODE [except Free and Endless mode] to unlock this mode!";
         }
-        if (PlayerPrefs.GetInt("pizzaBeat", 0) == 1 || TestMode)
-        {
-            darkSprite.color = Color.white;
-            darkMode.interactable = true;
-            darkText.text = "Dark Mode                            Whoops, Panino forgot to pay the electricity bill! Adventure through the ball with a limited vision!";
-        }
-        else
-        {
-            darkSprite.color = Color.black;
-            darkMode.interactable = false;
-            darkText.text = "You need to beat Pizza Mode to unlock this mode!";
-        }
         if (PlayerPrefs.GetInt("algerBeat") == 1)
         {
             algerStar.sprite = beat;
@@ -247,14 +235,6 @@ public class ModesManager : MonoBehaviour
         else
         {
             algerStar.sprite = notbeat;
-        }
-        if (PlayerPrefs.GetInt("darkBeat") == 1)
-        {
-            darkStar.sprite = beat;
-        }
-        else
-        {
-            darkStar.sprite = notbeat;
         }
         if (PlayerPrefs.GetInt("speedyBeat") == 1 || TestMode)
         {
@@ -268,18 +248,6 @@ public class ModesManager : MonoBehaviour
             stealthyMode.interactable = false;
             stealthyText.text = "You need to beat Sp???? Mode to unlock this mode!";
         }
-        if (PlayerPrefs.GetInt("tripleBeat", 0) == 1 || TestMode)
-        {
-            chaosSprite.color = Color.white;
-            chaosMode.interactable = true;
-            chaosText.text = "Chaos Mode                                                                            Anarchy has appeared in Panino's Ball! You teleport around, get shuffled items and Panino's speed is changing constantly! Are you up to the challenge?";
-        }
-        else
-        {
-            chaosSprite.color = Color.black;
-            chaosMode.interactable = false;
-            chaosText.text = "You need to beat Tr???e Mode to unlock this mode!";
-        }
         if (PlayerPrefs.GetInt("stealthyBeat") == 1)
         {
             stealthyStar.sprite = beat;
@@ -287,14 +255,6 @@ public class ModesManager : MonoBehaviour
         else
         {
             stealthyStar.sprite = notbeat;
-        }
-        if (PlayerPrefs.GetInt("chaosBeat") == 1)
-        {
-            chaosStar.sprite = beat;
-        }
-        else
-        {
-            chaosStar.sprite = notbeat;
         }
         if (PlayerPrefs.GetInt("classicBeat") == 1)
         {
@@ -418,17 +378,9 @@ public class ModesManager : MonoBehaviour
     public TMP_Text algerText;
     public Image algerSprite;
 
-    public Button darkMode;
-    public TMP_Text darkText;
-    public Image darkSprite;
-
     public Button stealthyMode;
     public TMP_Text stealthyText;
     public Image stealthySprite;
-
-    public Button chaosMode;
-    public TMP_Text chaosText;
-    public Image chaosSprite;
 
     public Image storyStar;
     public Image speedyStar;
@@ -436,9 +388,7 @@ public class ModesManager : MonoBehaviour
     public Image tripleStar;
     public Image pizzaStar;
     public Image algerStar;
-    public Image darkStar;
     public Image stealthyStar;
-    public Image chaosStar;
     public Image classicStar;
 
     public Sprite beat;

@@ -402,8 +402,6 @@ public class PlayerScript : MonoBehaviour
 			Vector3 newPosition = transform.position;
 			newPosition.y += verticalVelocity * Time.deltaTime;
 			transform.position = newPosition;
-
-		transform.position = newPosition + (Vector3.up * 0.1f);
 		if (isGrounded)
 		{
 			newPosition.y = 4.0f;
