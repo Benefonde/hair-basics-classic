@@ -24,6 +24,7 @@ public class MikoNearExit : MonoBehaviour
 		Color[] c = { Color.blue, Color.blue, Color.blue, Color.blue };
 		if (other.tag == "Player" && PlayerPrefs.GetString("CurrentMode") == "miko" && !failsafe)
 		{
+			PlayerPrefs.SetInt("mikoBeat", 1);
 			for (int i = 0; i < 4; i++)
             {
 				ps.gc.item[i] = 0;
@@ -59,7 +60,7 @@ public class MikoNearExit : MonoBehaviour
 			ps.gameOver = true;
 			yield break;
         }
-		PlayerPrefs.SetInt("mikoBeat", 1);
+		PlayerPrefs.SetInt("timeSpent", PlayerPrefs.GetInt("timeSpent") + Mathf.RoundToInt((float)es.gc.time));
 		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab. Press T to use!");
 		SceneManager.LoadScene("ChallengeBeat");
 	}

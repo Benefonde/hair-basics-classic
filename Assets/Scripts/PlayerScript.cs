@@ -684,6 +684,7 @@ public class PlayerScript : MonoBehaviour
 
 	public void SendToSchool()
     {
+		PlayerPrefs.SetInt("timeSpent", PlayerPrefs.GetInt("timeSpent") + Mathf.RoundToInt((float)gc.time));
 		if (gc.mode == "classic")
 		{
 			SceneManager.LoadScene("thing");
@@ -775,9 +776,9 @@ public class PlayerScript : MonoBehaviour
 		{
 			gc.LoseNotebooks(30, 1);
 		}
-		yield return new WaitForSeconds(wait / 2);
-		walkSpeed += 15;
-		runSpeed += 16;
+		yield return new WaitForSeconds(wait);
+		walkSpeed += 6;
+		runSpeed += 7;
 		camscript.camYdefault += 4;
 		camscript.camYoffset += 4;
     }

@@ -54,6 +54,11 @@ public class BossControllerScript : MonoBehaviour
     {
         if (alger.health == 0 && !gc.ModifierOn())
         {
+            PlayerPrefs.SetInt("timeSpent", PlayerPrefs.GetInt("timeSpent") + Mathf.RoundToInt((float)gc.time));
+            if (PlayerPrefs.GetInt("timeSpent") <= 5400)
+            {
+                gc.tc.GetTrophy(16);
+            }
             PlayerPrefs.SetInt("algerBeat", 1);
             SceneManager.LoadScene("AlgerBeat");
         }
