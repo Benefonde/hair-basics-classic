@@ -9,7 +9,6 @@ public class ExitTriggerScript : MonoBehaviour
 	{
 		if ((gc.notebooks >= gc.maxNoteboos) & (other.tag == "Player"))
 		{
-			PlayerPrefs.SetInt("timeSpent", PlayerPrefs.GetInt("timeSpent") + Mathf.RoundToInt((float)gc.time));
 			if (gc.mode == "free" || gc.ModifierOn())
 			{
 				gc.playerScript.camscript.character = gc.playerScript.bob.gameObject;

@@ -1,13 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class CompletionScript : MonoBehaviour
 {
     void Start()
     {
-        TimeSpan timee = TimeSpan.FromSeconds(PlayerPrefs.GetInt("timeSpent"));
-        TimePlayed.text = string.Format("{0:00}h {1:00}m", timee.Hours, timee.Minutes);
         for (int i = 0; i < requirements.Length; i++)
         {
             if (requirements[i] == "pizzaRankBest")
@@ -136,6 +133,4 @@ public class CompletionScript : MonoBehaviour
     public TMP_Text percentText;
     public TMP_Text judgementText;
     public string[] judgements;
-
-    public TMP_Text TimePlayed;
 }

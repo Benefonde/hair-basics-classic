@@ -872,7 +872,6 @@ public class GameControllerScript : MonoBehaviour
 
     public void GameOverStart()
     {
-        PlayerPrefs.SetInt("timeSpent", PlayerPrefs.GetInt("timeSpent") + Mathf.RoundToInt((float)time));
         disablePausing = true;
         if (!gameOverPlayed)
         {

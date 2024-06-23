@@ -449,41 +449,6 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("debtTrophy", 0);
 		PlayerPrefs.SetInt("codeTrophy", 0);
 		PlayerPrefs.SetInt("bfdiTrophy", 0);
-		PlayerPrefs.SetInt("speedrunnerTrophy", 0);
-		PlayerPrefs.SetInt("timeSpent", 0);
-		PlayerPrefs.SetInt("cleared", 1);
-		PlayerPrefs.Save();
-		SceneManager.LoadScene("Warning");
-	}
-
-	public void ClearLessData()
-	{
-		PlayerPrefs.SetInt("mikoUnlocked", 0);
-		for (int i = 1; i < 5; i++)
-		{
-			PlayerPrefs.SetInt($"foundPiece{i}", 0);
-		}
-		PlayerPrefs.SetInt("piecesFound", 0);
-		PlayerPrefs.DeleteKey("yellow");
-		PlayerPrefs.SetInt("speedyUnlocked", 0);
-		PlayerPrefs.SetInt("mikoBeat", 0);
-		PlayerPrefs.SetInt("tripleBeat", 0);
-		PlayerPrefs.SetInt("pSecretFound", 0);
-		PlayerPrefs.SetInt("algerBeat", 0);
-		PlayerPrefs.SetInt("speedyBeat", 0);
-		PlayerPrefs.SetInt("HighBooks", 0);
-		PlayerPrefs.SetInt("pizzaBeat", 0);
-		PlayerPrefs.SetInt("stealthyBeat", 0);
-		PlayerPrefs.SetInt("classicBeat", 0);
-		PlayerPrefs.SetInt("speedBoost", 0);
-		PlayerPrefs.SetInt("extraStamina", 0);
-		PlayerPrefs.SetInt("slowerKriller", 0);
-		PlayerPrefs.SetInt("walkThrough", 0);
-		PlayerPrefs.SetInt("blockPath", 0);
-		PlayerPrefs.SetInt("infItem", 0);
-		PlayerPrefs.SetInt("jammerUnlocked", 0);
-		PlayerPrefs.SetInt("jammer", 0);
-		PlayerPrefs.SetInt("timeSpent", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}
