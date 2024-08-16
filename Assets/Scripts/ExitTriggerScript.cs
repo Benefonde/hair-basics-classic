@@ -5,6 +5,8 @@ public class ExitTriggerScript : MonoBehaviour
 {
 	public GameControllerScript gc;
 
+	public GameObject time;
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if ((gc.notebooks >= gc.maxNoteboos) & (other.tag == "Player"))
@@ -14,6 +16,13 @@ public class ExitTriggerScript : MonoBehaviour
 				gc.playerScript.camscript.character = gc.playerScript.bob.gameObject;
 				gc.playerScript.gameOver = true;
 				return;
+			}
+			if (PlayerPrefs.GetInt("timer") == 1)
+			{
+				GameObject a = Instantiate(time);
+				System.TimeSpan timee = System.TimeSpan.FromSeconds(gc.time);
+				a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+				a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
 			}
 			if (!gc.tc.babaGotPushed && gc.baba.activeSelf)
             {
@@ -60,8 +69,8 @@ public class ExitTriggerScript : MonoBehaviour
 			else if (gc.mode == "miko")
             {
 				PlayerPrefs.SetInt("mikoBeat", 1);
-				PlayerPrefs.SetString("bonusTextString", "CONGRAT!        You're beat MIKO!");
-				SceneManager.LoadScene("BeatBonusMode");
+				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab. Press T to use!");
+				SceneManager.LoadScene("ChallengeBeat");
 			}
 			else if (gc.mode == "triple")
 			{
@@ -112,6 +121,12 @@ public class ExitTriggerScript : MonoBehaviour
 			{
 				SceneManager.LoadScene("ClassicEnding");
 				PlayerPrefs.SetInt("classicBeat", 1);
+			}
+			else if (gc.mode == "zombie")
+            {
+				PlayerPrefs.SetInt("zombieBeat", 1);
+				SceneManager.LoadScene("ChallengeBeat");
+				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you... uh, he didn't exactly give you anything. Have some completion percentage.");
 			}
 		}
 	}

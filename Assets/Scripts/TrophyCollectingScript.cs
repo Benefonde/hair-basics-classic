@@ -70,7 +70,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public void GetTrophy(int i)
     {
-        if (!dontCheckAga[i])
+        if (!dontCheckAga[i] && !gc.ModifierOn())
         {
             Image a = Instantiate(gotTrophy).GetComponentInChildren<Image>();
             a.sprite = trophies[i];

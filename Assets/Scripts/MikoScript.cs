@@ -26,6 +26,10 @@ public class MikoScript : MonoBehaviour
 		{
 			baldiAudio = GetComponent<AudioSource>();
 		}
+        else
+        {
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Wonderful noise*", Mathf.Infinity, Color.yellow, transform);
+		}
 		agent = GetComponent<NavMeshAgent>();
 		this.TargetPlayer();
 		head.SetTrigger("notice");

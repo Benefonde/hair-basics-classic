@@ -11,9 +11,9 @@ public class DontDestroyOnLoadScript : MonoBehaviour
 
     private void Update()
     {
-        if (trophy)
+        if (die)
         {
-            Invoke(nameof(Die), 3.5f);
+            Invoke(nameof(Die), dieTime);
         }
     }
 
@@ -22,5 +22,7 @@ public class DontDestroyOnLoadScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public bool trophy;
+    public bool die;
+
+    public float dieTime = 3.5f;
 }

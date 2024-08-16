@@ -574,6 +574,7 @@ public class PlayerScript : MonoBehaviour
 						return;
 					}
 				}
+				gc.tc.usedItem = true;
 			}
 
 			camscript.SetCharacter(other.gameObject);
@@ -775,9 +776,9 @@ public class PlayerScript : MonoBehaviour
 		{
 			gc.LoseNotebooks(30, 1);
 		}
-		yield return new WaitForSeconds(wait / 2);
-		walkSpeed += 15;
-		runSpeed += 16;
+		yield return new WaitForSeconds(wait * 1.35f);
+		walkSpeed += 10;
+		runSpeed += 11;
 		camscript.camYdefault += 4;
 		camscript.camYoffset += 4;
     }

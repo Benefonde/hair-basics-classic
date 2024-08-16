@@ -216,7 +216,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("chaosBeat") == 1 && PlayerPrefs.GetInt("darkBeat", 0) == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1 || TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1 || TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -270,7 +270,7 @@ public class ModesManager : MonoBehaviour
     {
         int speede = PlayerPrefs.GetInt("speedyBeat", 0);
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
-        int krille = PlayerPrefs.GetInt("darkBeat", 0);
+        int krille = PlayerPrefs.GetInt("zombieBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
         int block = PlayerPrefs.GetInt("chaosBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);

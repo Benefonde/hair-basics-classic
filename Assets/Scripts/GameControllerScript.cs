@@ -1288,6 +1288,7 @@ public class GameControllerScript : MonoBehaviour
         ballAgent.Warp(new Vector3(65, 1.65f, 335));
         NavMeshAgent yellowey = yellowFace.GetComponent<NavMeshAgent>();
         yellowey.Warp(new Vector3(-230.5f, 2, 53.5f));
+        baba.GetComponent<NavMeshAgent>().Warp(new Vector3(-245, 2, 165));
     }
 
     public void Lap2EnterPortal()
@@ -1561,7 +1562,6 @@ public class GameControllerScript : MonoBehaviour
         {
             return;
         }
-        tc.usedItem = true;
         RaycastHit hitInfo7;
         if (item[itemSelected] == 1)
         {
@@ -1575,6 +1575,7 @@ public class GameControllerScript : MonoBehaviour
                 pss.AddPoints(25, 2);
             }
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 2)
         {
@@ -1582,24 +1583,28 @@ public class GameControllerScript : MonoBehaviour
             {
                 hitInfo.collider.gameObject.GetComponent<SwingingDoorScript>().LockDoor(15f);
                 ResetItem();
+                tc.usedItem = true;
+                player.ResetGuilt("bullying", 2);
             }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out hitInfo) && ((hitInfo.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo.transform.position) <= 10f)))
             {
                 hitInfo.collider.gameObject.GetComponent<DoorScript>().LockDoor(65f);
                 ResetItem();
+                tc.usedItem = true;
+                player.ResetGuilt("bullying", 2);
             }
-            player.ResetGuilt("bullying", 2);
         }
         else if (item[itemSelected] == 3)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo2) && ((hitInfo2.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo2.transform.position) <= 10f)))
             {
                 DoorScript component = hitInfo2.collider.gameObject.GetComponent<DoorScript>();
-                if (component.DoorLocked)
+                if (component.DoorLocked && !component.johnDoor)
                 {
                     component.UnlockDoor();
                     audioDevice.PlayOneShot(aud_Unlock);
                     ResetItem();
+                    tc.usedItem = true;
                 }
             }
         }
@@ -1609,6 +1614,7 @@ public class GameControllerScript : MonoBehaviour
             ResetItem();
             player.ResetGuilt("drink", 1f);
             audioDevice.PlayOneShot(aud_Soda);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 5)
         {
@@ -1619,12 +1625,14 @@ public class GameControllerScript : MonoBehaviour
                     ResetItem();
                     CollectItem(4);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "ZestyMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
                     CollectItem(1);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "SitsMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
@@ -1633,18 +1641,21 @@ public class GameControllerScript : MonoBehaviour
                     hitInfo3.collider.gameObject.GetComponent<Animator>().SetTrigger("byeeeee");
                     audioDevice.PlayOneShot(slideWhistle);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "RandomMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
                     CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24));
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "PayPhone") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     hitInfo3.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                     ResetItem();
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
             }
         }
@@ -1655,6 +1666,7 @@ public class GameControllerScript : MonoBehaviour
                 hitInfo4.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                 player.ResetGuilt("bullying", 5);
                 ResetItem();
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 7)
@@ -1665,6 +1677,7 @@ public class GameControllerScript : MonoBehaviour
             alarm.GetComponent<AlarmClockScript>().alger = algerScript;
             alarm.GetComponent<AlarmClockScript>().yellowFace = yellowFace;
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 8)
         {
@@ -1673,6 +1686,7 @@ public class GameControllerScript : MonoBehaviour
                 hitInfo5.collider.gameObject.GetComponent<DoorScript>().SilenceDoor();
                 ResetItem();
                 audioDevice.PlayOneShot(aud_Spray);
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 9)
@@ -1685,6 +1699,7 @@ public class GameControllerScript : MonoBehaviour
                 ResetItem();
                 player.stamina += player.maxStamina * 0.8f;
                 player.ResetGuilt("bullying", 3);
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 10)
@@ -1692,6 +1707,7 @@ public class GameControllerScript : MonoBehaviour
             player.ActivateBoots();
             StartCoroutine(BootAnimation());
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 11)
         {
@@ -1715,11 +1731,13 @@ public class GameControllerScript : MonoBehaviour
             player.ResetGuilt("bullying", 3);
             ResetItem();
             audioDevice.PlayOneShot(aud_Switch);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 12)
         {
             StartCoroutine(Teleporter());
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 13 && Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out hitInfo7))
         {
@@ -1742,6 +1760,7 @@ public class GameControllerScript : MonoBehaviour
                     camScript.ShakeNow(new Vector3(1f, 0.5f, 1f), 5);
                 }
                 algerKrilledByPlayer = true;
+                tc.usedItem = true;
             }
             else if (hitInfo7.collider.name == "Alger (Alger's Basics)")
             {
@@ -1764,6 +1783,7 @@ public class GameControllerScript : MonoBehaviour
                     mikoScript.speed += 8f;
                     mikoScript.Hear(player.transform.position, 6f);
                 }
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 14) // 3/3 uses
@@ -1795,6 +1815,7 @@ public class GameControllerScript : MonoBehaviour
             }
             this.ResetItem();
             this.CollectItem(15);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 15) // 2/3 uses
         {
@@ -1823,6 +1844,7 @@ public class GameControllerScript : MonoBehaviour
             }
             this.ResetItem();
             this.CollectItem(16);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 16) // 1/3 uses :/
         {
@@ -1852,6 +1874,7 @@ public class GameControllerScript : MonoBehaviour
                 }
             }
             this.ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 17) // apple product
         {
@@ -1869,16 +1892,19 @@ public class GameControllerScript : MonoBehaviour
             {
                 ResetItem();
             }
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 18)
         {
-            StartCoroutine(BeginTroll(8));
+            StartCoroutine(BeginTroll(5));
             audioDevice.PlayOneShot(aud_Switch);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 19)
         {
             objectItem[itemSelected].Objection(cameraTransform, audioDevice, objectionSound, camScript, objection, playerTransform, GetComponent<GameControllerScript>());
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 20)
         {
@@ -1886,12 +1912,14 @@ public class GameControllerScript : MonoBehaviour
             BoxCollider chalk = chalkey.GetComponent<BoxCollider>();
             Physics.IgnoreCollision(playerCharacter, chalk);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 21)
         {
             Instantiate(donut, donutShooter.transform.position, playerTransform.rotation);
             audioDevice.PlayOneShot(aud_Switch);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 22)
         {
@@ -1899,17 +1927,18 @@ public class GameControllerScript : MonoBehaviour
             audioDevice.PlayOneShot(crounch);
             tc.esteEaten++;
             FindObjectOfType<SubtitleManager>().Add2DSubtitle("*CR(O)UNCH*", crunch.length, Color.green);
-            player.stamina -= 20;
+            player.stamina -= 5;
             player.health -= 5;
             if (mode == "pizza")
             {
                 pss.AddPoints(-5, 2);
             }
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 23)
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
-            Physics.Raycast(ray, out RaycastHit hitInfo8);
+            Physics.Raycast(ray, out RaycastHit hitInfo8, 5);
             FuzzyWindowScript windo = hitInfo8.collider.GetComponent<FuzzyWindowScript>();
             if (windo != null)
             {
@@ -1921,6 +1950,7 @@ public class GameControllerScript : MonoBehaviour
                         ResetItem();
                     }
                     audioDevice.PlayOneShot(windowWipe);
+                    tc.usedItem = true;
                 }
             }
         }
@@ -1929,6 +1959,7 @@ public class GameControllerScript : MonoBehaviour
             player.infStamina = true;
             ResetItem();
             player.Invoke(nameof(player.DisableInfStamina), 5);
+            tc.usedItem = true;
         }
     }
 

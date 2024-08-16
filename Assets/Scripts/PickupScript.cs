@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class PickupScript : MonoBehaviour
 {
+    void Start()
+    {
+        aud = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
@@ -15,8 +20,17 @@ public class PickupScript : MonoBehaviour
                 {
                     if (this.gc.item[0] == 0 | this.gc.item[1] == 0 | this.gc.item[2] == 0 || this.gc.item[3] == 0)
                     {
-                        raycastHit.transform.gameObject.SetActive(false);
-                        this.gc.CollectItem(ID);
+                        if (gc.mode != "endless")
+                        {
+                            raycastHit.transform.gameObject.SetActive(false);
+                            this.gc.CollectItem(ID);
+                        }
+                        else
+                        {
+                            raycastHit.transform.Translate(0, -10, 0);
+                            this.gc.CollectItem(ID);
+                            Invoke(nameof(EndlessRespawn), 300);
+                        }
                     }
                     else
                     {
@@ -33,7 +47,16 @@ public class PickupScript : MonoBehaviour
         }
     }
 
+    void EndlessRespawn()
+    {
+        transform.Translate(0, 10, 0);
+        aud.Play();
+        FindObjectOfType<SubtitleManager>().Add3DSubtitle("An item respawned!", aud.clip.length, Color.white, transform);
+    }
+
     public GameControllerScript gc;
+
+    AudioSource aud;
 
     public Transform player;
     public int ID;

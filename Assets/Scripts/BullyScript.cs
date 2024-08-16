@@ -61,7 +61,12 @@ public class BullyScript : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 direction = player.position - base.transform.position;
-		if (Physics.Raycast(base.transform.position + new Vector3(0f, 2f, 0f), direction, out var hitInfo, float.PositiveInfinity, 769, QueryTriggerInteraction.Ignore) & (hitInfo.transform.tag == "Player") & ((base.transform.position - player.position).magnitude <= 30f) & active)
+		Physics.Raycast(base.transform.position + new Vector3(0f, 2f, 0f), direction, out var hitInfo, float.PositiveInfinity, 769, QueryTriggerInteraction.Ignore);
+		if (hitInfo.transform == null)
+        {
+			return;
+        }
+		if ((hitInfo.transform.tag == "Player") & ((base.transform.position - player.position).magnitude <= 30f) & active)
 		{
 			if (!spoken)
 			{
