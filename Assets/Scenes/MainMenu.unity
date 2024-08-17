@@ -1278,6 +1278,7 @@ MonoBehaviour:
   algerStar: {fileID: 1217372172}
   stealthyStar: {fileID: 705429360}
   classicStar: {fileID: 1005697985}
+  zombieStar: {fileID: 1434205031}
   beat: {fileID: 21300000, guid: 718d515452a5a0f46935674fd4c15389, type: 3}
   notbeat: {fileID: 21300000, guid: 51864e68c72878c498a6d822ddce6ee8, type: 3}
   speedBoost: {fileID: 1977848114}

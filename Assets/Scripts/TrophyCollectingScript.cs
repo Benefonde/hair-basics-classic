@@ -118,7 +118,7 @@ public class TrophyCollectingScript : MonoBehaviour
     public bool babaGotPushed;
     public bool usedItem;
     public bool playerHurt;
-
+    public bool onlyWooden;
 
     public int collectedToppings;
     public int collectToppingsNeeded;

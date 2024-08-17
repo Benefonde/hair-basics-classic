@@ -53,6 +53,11 @@ public class ZombieScript : MonoBehaviour
 		{
 			speed = zombieSpeed * 1f;
 		}
+
+		if ((transform.position == previous) & (coolDown < 0f))
+		{
+			Wander();
+		}
 	}
 
 	private void FixedUpdate()
@@ -70,11 +75,13 @@ public class ZombieScript : MonoBehaviour
 		{
 			db = true;
 			TargetPlayer();
+			coolDown = 1;
 		}
 		else
 		{
 			db = false;
 			Wander();
+			coolDown = 1;
 		}
 	}
 

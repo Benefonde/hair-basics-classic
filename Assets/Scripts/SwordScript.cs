@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SwordScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SwordScript : MonoBehaviour
         durability = swordType.durability;
         attack = swordType.attack;
         fill.color = swordType.color;
+        attackText.text = swordType.attack.ToString();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class SwordScript : MonoBehaviour
         {
             ChangeSword(none);
         }
+        attackText.text = attack.ToString();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -42,6 +45,10 @@ public class SwordScript : MonoBehaviour
     public void ChangeSword(Sword s)
     {
         swordType = s;
+        if (s.name != "None" || s.name != "Wooden")
+        {
+            FindObjectOfType<TrophyCollectingScript>().onlyWooden = false;
+        }
         durability = swordType.durability;
         fill.color = swordType.color;
     }
@@ -53,6 +60,8 @@ public class SwordScript : MonoBehaviour
 
     public Image fill;
     public Slider durSlider;
+
+    public TMP_Text attackText;
 
     public Transform player;
 }

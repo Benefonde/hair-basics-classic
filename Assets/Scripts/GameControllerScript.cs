@@ -199,6 +199,10 @@ public class GameControllerScript : MonoBehaviour
             {
                 StealthyStart();
             }
+            else if (mode == "zombie")
+            {
+                ZombieStart();
+            }
 
             if (extraStamina == 1)
             {
@@ -508,6 +512,11 @@ public class GameControllerScript : MonoBehaviour
         entrance_1.Lower();
         entrance_2.Lower();
         entrance_3.Lower();
+        RenderSettings.skybox = night;
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.black;
+        RenderSettings.fogDensity = 0.01f;
+        RenderSettings.ambientLight = new Color(0.75f, 0.75f, 0.75f, 1);
         player.transform.position = new Vector3(5, 4, 5);
         cameraTransform.position = new Vector3(5, 5, 5);
         zombieItemLayout.SetActive(true);
@@ -991,8 +1000,8 @@ public class GameControllerScript : MonoBehaviour
             for (int i = 0; i < notebooks + 1; i++)
             {
                 GameObject zombo = Instantiate(zombie);
-                zombie.transform.name = "Zombie";
-                zombie.SetActive(true);
+                zombo.SetActive(true);
+                zombo.transform.name = "Zombie";
             }
         }
         UpdateNotebookCount();
