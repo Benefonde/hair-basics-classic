@@ -71,20 +71,27 @@ public class ZombieScript : MonoBehaviour
 			agent.speed = 0;
         }
 		Vector3 direction = player.position - base.transform.position;
-		if (Physics.Raycast(base.transform.position + Vector3.up * 2f, direction, out var hitInfo, float.PositiveInfinity, 769, QueryTriggerInteraction.Ignore) & (hitInfo.transform.tag == "Player"))
+		if (!gc.finaleMode)
 		{
-			db = true;
-			TargetPlayer();
-			coolDown = 1;
-		}
-		else
-		{
-			if (coolDown <= 0)
+			if (Physics.Raycast(base.transform.position + Vector3.up * 2f, direction, out var hitInfo, float.PositiveInfinity, 769, QueryTriggerInteraction.Ignore) & (hitInfo.transform.tag == "Player"))
 			{
-				db = false;
-				Wander();
+				db = true;
+				TargetPlayer();
 				coolDown = 1;
 			}
+			else
+			{
+				if (coolDown <= 0)
+				{
+					db = false;
+					Wander();
+					coolDown = 1;
+				}
+			}
+		}
+        else
+        {
+			TargetPlayer();
 		}
 	}
 
@@ -121,7 +128,7 @@ public class ZombieScript : MonoBehaviour
 		health -= attack;
 		invTime = 0.5f;
 		disableTime = 0.5f;
-		ss.durability -= Mathf.RoundToInt(defense) + 1;
+		ss.durability -= Mathf.RoundToInt(defense / 2) + 1;
     }
 
     public bool db;

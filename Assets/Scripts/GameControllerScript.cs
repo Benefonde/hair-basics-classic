@@ -965,7 +965,7 @@ public class GameControllerScript : MonoBehaviour
             principal.SetActive(true);
             principalScript.angry = false;
         }
-        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic"))
+        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic" || mode == "zombie"))
         {
             ActivateFinaleMode();
         }
@@ -1237,7 +1237,7 @@ public class GameControllerScript : MonoBehaviour
             player.walkSpeed += 4f;
             player.runSpeed += 6f;
         }
-        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic")
+        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic" & mode != "zombie")
         {
             timer.isActivated = true;
             if (this.mode == "speedy")
@@ -1254,7 +1254,7 @@ public class GameControllerScript : MonoBehaviour
                 this.timer.timeLeft = 155f;
                 pizzaTimeTimer.gameObject.SetActive(true);
                 pizzaTimeTimer.SetBool("up", true);
-                pss.AddPoints(700, 0);
+                pss.AddPoints(500, 0);
             }
         }
         notebookCount.text = "Get to the starting area!"; 
@@ -2204,7 +2204,7 @@ public class GameControllerScript : MonoBehaviour
                 entrance_2.Raise();
             }
         }
-        else if (mode != "alger" && mode != "classic")
+        else if (mode != "alger" && mode != "classic" && mode != "zombie")
         {
             if (exitsReached == 0)
             {
@@ -2287,30 +2287,6 @@ public class GameControllerScript : MonoBehaviour
                 }
             }
         }
-        else if (mode == "alger")
-        {
-            if (exitsReached == 1)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "1/4 Exits";
-            }
-            if (exitsReached == 2)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "2/4 Exits";
-            }
-            if (exitsReached == 3)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "3/4 Exits";
-            }
-            if (exitsReached == 4)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "4/5 Exits";
-                entrance_4.Raise();
-            }
-        }
         else if (mode == "classic")
         {
             if (exitsReached == 0)
@@ -2344,6 +2320,30 @@ public class GameControllerScript : MonoBehaviour
                 audioDevice.loop = false;
                 audioDevice.Play();
                 audioDevice.time = 0.02f;
+            }
+        }
+        else if (mode == "alger" || mode == "zombie")
+        {
+            if (exitsReached == 1)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "1/4 Exits";
+            }
+            if (exitsReached == 2)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "2/4 Exits";
+            }
+            if (exitsReached == 3)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "3/4 Exits";
+            }
+            if (exitsReached == 4)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "4/5 Exits";
+                entrance_4.Raise();
             }
         }
     }
