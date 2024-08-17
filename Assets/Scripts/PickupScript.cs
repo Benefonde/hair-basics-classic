@@ -6,6 +6,10 @@ public class PickupScript : MonoBehaviour
     void Start()
     {
         aud = GetComponent<AudioSource>();
+        if (zombie)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = swordType.color;
+        }
     }
 
     private void Update()
@@ -18,29 +22,48 @@ public class PickupScript : MonoBehaviour
             {
                 if (raycastHit.transform.gameObject == transform.gameObject & Vector3.Distance(this.player.position, base.transform.position) < 10f & Cursor.lockState == CursorLockMode.Locked)
                 {
-                    if (this.gc.item[0] == 0 | this.gc.item[1] == 0 | this.gc.item[2] == 0 || this.gc.item[3] == 0)
+                    if (!zombie)
                     {
-                        if (gc.mode != "endless")
+                        if (this.gc.item[0] == 0 | this.gc.item[1] == 0 | this.gc.item[2] == 0 || this.gc.item[3] == 0)
                         {
-                            raycastHit.transform.gameObject.SetActive(false);
-                            this.gc.CollectItem(ID);
+                            if (gc.mode != "endless")
+                            {
+                                raycastHit.transform.gameObject.SetActive(false);
+                                this.gc.CollectItem(ID);
+                            }
+                            else
+                            {
+                                raycastHit.transform.Translate(0, -10, 0);
+                                this.gc.CollectItem(ID);
+                                Invoke(nameof(EndlessRespawn), 300);
+                            }
                         }
                         else
                         {
-                            raycastHit.transform.Translate(0, -10, 0);
-                            this.gc.CollectItem(ID);
-                            Invoke(nameof(EndlessRespawn), 300);
+                            int orgID = ID;
+                            ID = gc.item[gc.itemSelected];
+                            Texture itemTexture = gc.itemTextures[ID];
+                            Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
+                            GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
+                            gc.CollectItem(orgID);
+
                         }
                     }
                     else
                     {
-                        int orgID = ID;
-                        ID = gc.item[gc.itemSelected];
-                        Texture itemTexture = gc.itemTextures[ID];
-                        Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
-                        GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
-                        gc.CollectItem(orgID);
-
+                        if (ss.swordType != ss.none)
+                        {
+                            Sword orgSword = swordType;
+                            swordType = ss.swordType;
+                            GetComponentInChildren<SpriteRenderer>().color = swordType.color;
+                            swordType.currentDurability = ss.durability;
+                            ss.ChangeSword(orgSword);
+                        }
+                        else
+                        {
+                            raycastHit.transform.gameObject.SetActive(false);
+                            ss.ChangeSword(swordType);
+                        }
                     }
                 }
             }
@@ -55,9 +78,13 @@ public class PickupScript : MonoBehaviour
     }
 
     public GameControllerScript gc;
+    public SwordScript ss;
 
     AudioSource aud;
 
     public Transform player;
     public int ID;
+
+    public bool zombie;
+    public Sword swordType;
 }

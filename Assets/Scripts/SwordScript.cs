@@ -27,6 +27,7 @@ public class SwordScript : MonoBehaviour
             ChangeSword(none);
         }
         attackText.text = attack.ToString();
+        swordTypeText.text = swordType.name;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -55,13 +56,14 @@ public class SwordScript : MonoBehaviour
 
     public Sword swordType;
     public Sword none;
-    int durability;
+    public int durability;
     int attack;
 
     public Image fill;
     public Slider durSlider;
 
     public TMP_Text attackText;
+    public TMP_Text swordTypeText;
 
     public Transform player;
 }
