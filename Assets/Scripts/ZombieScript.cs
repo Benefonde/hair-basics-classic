@@ -58,6 +58,11 @@ public class ZombieScript : MonoBehaviour
 		{
 			Wander();
 		}
+
+		if (health <= 0)
+        {
+			Destroy(gameObject);
+        }
 	}
 
 	private void FixedUpdate()

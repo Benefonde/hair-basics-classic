@@ -29,7 +29,7 @@ public class SwordScript : MonoBehaviour
         attackText.text = attack.ToString();
         swordTypeText.text = swordType.name;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
             Physics.Raycast(player.position, player.forward, out RaycastHit h, 10);
             if (h.transform == null)
@@ -39,6 +39,7 @@ public class SwordScript : MonoBehaviour
             if (h.transform.name == "Zombie")
             {
                 h.transform.gameObject.GetComponent<ZombieScript>().TakeDamage(attack);
+                durability--;
             }
         }
     }
