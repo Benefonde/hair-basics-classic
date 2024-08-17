@@ -58,11 +58,13 @@ public class PickupScript : MonoBehaviour
                             durability = ss.swordType.durability;
                             swordType = ss.swordType;
                             GetComponentInChildren<SpriteRenderer>().color = swordType.color;
+                            ss.durability = orgSword.durability;
                             ss.ChangeSword(orgSword);
                         }
                         else
                         {
                             raycastHit.transform.gameObject.SetActive(false);
+                            ss.durability = durability;
                             ss.ChangeSword(swordType);
                         }
                     }
