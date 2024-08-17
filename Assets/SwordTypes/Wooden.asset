@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc3124a5143154dbb0f5c7cc6b6bd7, type: 3}
   m_Name: Wooden
   m_EditorClassIdentifier: 
-  attack: 0
-  durability: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
+  attack: 3
+  durability: 54
+  color: {r: 1, g: 0.5019608, b: 0, a: 1}

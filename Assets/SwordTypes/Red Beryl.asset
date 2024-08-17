@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc3124a5143154dbb0f5c7cc6b6bd7, type: 3}
   m_Name: Red Beryl
   m_EditorClassIdentifier: 
-  attack: 0
-  durability: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  attack: 18
+  durability: 412
+  color: {r: 0.78039217, g: 0.29803923, b: 0.29803923, a: 1}

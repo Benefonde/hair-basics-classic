@@ -489,6 +489,30 @@ public class GameControllerScript : MonoBehaviour
         schoolMusic.Play();
     }
 
+    void ZombieStart()
+    {
+        locationText.text = "Panino's Ball, alternative universe";
+        locationText.color = Color.green;
+        for (int i = 0; i < stuffNoZombieMode.Length; i++)
+        {
+            stuffNoZombieMode[i].SetActive(false);
+        }
+        for (int i = 0; i < stuffYesZombieMode.Length; i++)
+        {
+            stuffYesZombieMode[i].SetActive(true);
+        }
+        craftersTime = false;
+        spoopMode = true;
+        baldiTutor.SetActive(false);
+        entrance_0.Lower();
+        entrance_1.Lower();
+        entrance_2.Lower();
+        entrance_3.Lower();
+        player.transform.position = new Vector3(5, 4, 5);
+        cameraTransform.position = new Vector3(5, 5, 5);
+        zombieItemLayout.SetActive(true);
+    }
+
     public bool ModifierOn()
     {
         if (speedBoost == 1)
@@ -730,15 +754,15 @@ public class GameControllerScript : MonoBehaviour
             {
                 UseItem();
             }
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f && Time.timeScale != 0f)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && Time.timeScale != 0f && mode != "zombie")
             {
                 DecreaseItemSelection();
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && Time.timeScale != 0f)
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && Time.timeScale != 0f && mode != "zombie")
             {
                 IncreaseItemSelection();
             }
-            if (Time.timeScale != 0f)
+            if (Time.timeScale != 0f && mode != "zombie")
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -863,6 +887,10 @@ public class GameControllerScript : MonoBehaviour
 
     public void UpdateAllItem()
     {
+        if (mode == "zombie")
+        {
+            return;
+        }
         for (int i = 0; i < 4; i++)
         {
             itemSlot[i].texture = itemHudTextures[item[i]];
@@ -958,8 +986,17 @@ public class GameControllerScript : MonoBehaviour
     public void CollectNotebook()
     {
         notebooks++;
+        if (mode == "zombie")
+        {
+            for (int i = 0; i < notebooks + 1; i++)
+            {
+                GameObject zombo = Instantiate(zombie);
+                zombie.transform.name = "Zombie";
+                zombie.SetActive(true);
+            }
+        }
         UpdateNotebookCount();
-        if (mode == "endless" && notebooks >= 100 && time < 1200)
+        if (mode == "endless" && notebooks >= 100 && time < 960)
         {
             tc.GetTrophy(18);
         }
@@ -1482,6 +1519,10 @@ public class GameControllerScript : MonoBehaviour
 
     public void CollectItem(int item_ID)
     {
+        if (mode == "zombie")
+        {
+            return;
+        }
         if (item[itemSelected] == 0)
         {
             item[itemSelected] = item_ID;
@@ -1562,7 +1603,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void UseItem()
     {
-        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled)
+        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled || mode == "zombie")
         {
             return;
         }
@@ -1942,7 +1983,7 @@ public class GameControllerScript : MonoBehaviour
         else if (item[itemSelected] == 23)
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
-            Physics.Raycast(ray, out RaycastHit hitInfo8, 5);
+            Physics.Raycast(ray, out RaycastHit hitInfo8, 10);
             FuzzyWindowScript windo = hitInfo8.collider.GetComponent<FuzzyWindowScript>();
             if (windo != null)
             {
@@ -2073,7 +2114,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void ResetItem()
     {
-        if (!TestingItemsMode)
+        if (!TestingItemsMode || mode != "zombie")
         {
             item[itemSelected] = 0;
             itemSlot[itemSelected].texture = itemTextures[0];
@@ -2083,7 +2124,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void LoseItem(int id)
     {
-        if (!TestingItemsMode)
+        if (!TestingItemsMode || mode != "zombie")
         {
             item[id] = 0;
             itemSlot[id].texture = itemTextures[0];
@@ -2547,6 +2588,8 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject playtime;
 
+    public GameObject zombie;
+
     public PlaytimeScript playtimeScript;
 
     public GameObject gottaSweep;
@@ -2596,6 +2639,9 @@ public class GameControllerScript : MonoBehaviour
     public RawImage[] itemSlot;
 
     public string[] itemNames;
+
+    public GameObject[] stuffNoZombieMode;
+    public GameObject[] stuffYesZombieMode;
 
     public TMP_Text itemText;
 
@@ -2725,6 +2771,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject mikoItemLayout;
     public GameObject algerItemLayout;
     public GameObject stealthyItemLayout;
+    public GameObject zombieItemLayout;
 
     public VideoPlayer[] tutorals;
 

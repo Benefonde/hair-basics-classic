@@ -221,7 +221,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat", 0) == 1|| TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1|| TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -268,6 +268,14 @@ public class ModesManager : MonoBehaviour
         else
         {
             classicStar.sprite = notbeat;
+        }
+        if (PlayerPrefs.GetInt("zombieBeat") == 1)
+        {
+            zombieStar.sprite = beat;
+        }
+        else
+        {
+            zombieStar.sprite = notbeat;
         }
     }
 
@@ -395,6 +403,7 @@ public class ModesManager : MonoBehaviour
     public Image algerStar;
     public Image stealthyStar;
     public Image classicStar;
+    public Image zombieStar;
 
     public Sprite beat;
     public Sprite notbeat;

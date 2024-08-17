@@ -1,18 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwordScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        durability = swordType.durability;
+        attack = swordType.attack;
+        fill.color = swordType.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        fill.color = swordType.color;
+        durSlider.value = durability;
+        durSlider.maxValue = swordType.durability;
+        attack = Mathf.RoundToInt(swordType.attack * Mathf.Clamp(durability / swordType.durability, 0.15f, 1));
+        if (durability <= 0)
+        {
+            ChangeSword(none);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Physics.Raycast(player.position, player.forward, out RaycastHit h, 10);
+            if (h.transform == null)
+            {
+                return;
+            }
+            if (h.transform.name == "Zombie")
+            {
+                h.transform.gameObject.GetComponent<ZombieScript>().TakeDamage(attack);
+            }
+        }
     }
+
+    public void ChangeSword(Sword s)
+    {
+        swordType = s;
+        durability = swordType.durability;
+        fill.color = swordType.color;
+    }
+
+    public Sword swordType;
+    public Sword none;
+    int durability;
+    int attack;
+
+    public Image fill;
+    public Slider durSlider;
+
+    public Transform player;
 }

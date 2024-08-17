@@ -718,6 +718,11 @@ public class PlayerScript : MonoBehaviour
 		{
 			hugging = true;
 		}
+		if (other.transform.name == "Zombie")
+		{
+			health -= 10 * (Time.deltaTime);
+			gonnaBeKriller = other.transform;
+		}
 	}
 
 	private void OnTriggerExit(Collider other)

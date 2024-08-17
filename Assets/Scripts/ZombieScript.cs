@@ -6,6 +6,9 @@ public class ZombieScript : MonoBehaviour
     private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
+		wanderer.GetNewTargetHallway();
+		agent.Warp(wanderTarget.position);
+		zombieSpeed = Random.Range(5, 12);
 		for (int i = 0; i < 4; i++)
 		{
 			if (Random.Range(0, 12 / gc.notebooks) <= 0.3f)
@@ -101,7 +104,8 @@ public class ZombieScript : MonoBehaviour
 
 	public void TakeDamage(int attack)
     {
-		health -= attack / defense;
+		health -= attack / Mathf.RoundToInt(defense);
+		defense -= 0.05f;
 		invTime = 2;
 		disableTime = 0.5f;
     }
@@ -114,11 +118,11 @@ public class ZombieScript : MonoBehaviour
 
 	public GameObject[] armor = new GameObject[4];
 
-	public float zombieSpeed;
+	float zombieSpeed;
 
 	private float currentPriority;
 
-	int defense = 1;
+	float defense = 1;
 
 	int health = 35;
 
