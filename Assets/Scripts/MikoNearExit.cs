@@ -58,14 +58,6 @@ public class MikoNearExit : MonoBehaviour
 		ps.gc.Objection();
 		es.Raise();
 		yield return new WaitForSeconds(5);
-		if (ps.gc.ModifierOn())
-        {
-			ps.camscript.cutsceneCam = false;
-			ps.camscript.character = mikoTransform.gameObject;
-			ps.gameOver = true;
-			yield break;
-        }
-		PlayerPrefs.SetInt("mikoBeat", 1); 
 		if (PlayerPrefs.GetInt("timer") == 1)
 		{
 			GameObject a = Instantiate(time);
@@ -73,6 +65,13 @@ public class MikoNearExit : MonoBehaviour
 			a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
 			a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
 		}
+		if (ps.gc.ModifierOn())
+        {
+			SceneManager.LoadScene("Anticheat");
+			ps.gc.tc.GetTrophy(22);
+			yield break;
+        }
+		PlayerPrefs.SetInt("mikoBeat", 1); 
 		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab. Press T to use!");
 		SceneManager.LoadScene("ChallengeBeat");
 	}
