@@ -8,17 +8,17 @@ public class ZombieScript : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		wanderer.GetNewTargetHallway();
 		agent.Warp(wanderTarget.position);
-		zombieSpeed = Random.Range(5, 12);
+		zombieSpeed = Random.Range(5, 20);
 		for (int i = 0; i < 4; i++)
 		{
-			if (Random.Range(0, 12 / gc.notebooks) <= 0.3f)
+			if (Random.Range(0, 20 / gc.notebooks) <= 0.3f)
 			{
 				armor[i].SetActive(true);
 				switch (i)
                 {
-					case 0: defense += 2; break;
-					case 1: defense += 5; break;
-					case 2: defense += 3; break;
+					case 0: defense += 2; health += 5; break;
+					case 1: defense += 5; health += 10; break;
+					case 2: defense += 3; health += 5; break;
 					case 3: defense += 1; break;
 				}
 			}
@@ -54,11 +54,6 @@ public class ZombieScript : MonoBehaviour
 			speed = zombieSpeed * 1f;
 		}
 
-		if ((transform.position == previous) & (coolDown < 0f))
-		{
-			Wander();
-		}
-
 		if (health <= 0)
         {
 			Destroy(gameObject);
@@ -84,9 +79,12 @@ public class ZombieScript : MonoBehaviour
 		}
 		else
 		{
-			db = false;
-			Wander();
-			coolDown = 1;
+			if (coolDown <= 0)
+			{
+				db = false;
+				Wander();
+				coolDown = 1;
+			}
 		}
 	}
 
@@ -107,11 +105,11 @@ public class ZombieScript : MonoBehaviour
 
 	private void Move()
 	{
-		if ((base.transform.position == previous) & (coolDown < 0f))
+		if ((transform.position == previous) & (coolDown < 0f))
 		{
 			Wander();
 		}
-		previous = base.transform.position;
+		previous = transform.position;
 	}
 
 	public void TakeDamage(int attack)
@@ -120,15 +118,17 @@ public class ZombieScript : MonoBehaviour
         {
 			return;
         }
-		health -= attack / Mathf.RoundToInt(defense);
-		defense -= 0.05f;
-		invTime = 2;
+		health -= attack;
+		invTime = 0.5f;
 		disableTime = 0.5f;
+		ss.durability -= Mathf.RoundToInt(defense) + 1;
     }
 
     public bool db;
 
 	public GameControllerScript gc;
+
+	public SwordScript ss;
 
 	public float speed;
 
@@ -138,7 +138,7 @@ public class ZombieScript : MonoBehaviour
 
 	private float currentPriority;
 
-	float defense = 1;
+	public float defense = 1;
 
 	int health = 35;
 

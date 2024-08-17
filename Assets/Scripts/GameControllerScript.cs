@@ -997,7 +997,7 @@ public class GameControllerScript : MonoBehaviour
         notebooks++;
         if (mode == "zombie")
         {
-            for (int i = 0; i < notebooks + 1; i++)
+            for (int i = 0; i < (notebooks + 1) / 3; i++)
             {
                 GameObject zombo = Instantiate(zombie);
                 zombo.SetActive(true);

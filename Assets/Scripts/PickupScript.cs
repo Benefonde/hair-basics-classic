@@ -9,6 +9,7 @@ public class PickupScript : MonoBehaviour
         if (zombie)
         {
             GetComponentInChildren<SpriteRenderer>().color = swordType.color;
+            durability = swordType.durability;
         }
     }
 
@@ -54,9 +55,9 @@ public class PickupScript : MonoBehaviour
                         if (ss.swordType != ss.none)
                         {
                             Sword orgSword = swordType;
+                            durability = ss.swordType.durability;
                             swordType = ss.swordType;
                             GetComponentInChildren<SpriteRenderer>().color = swordType.color;
-                            swordType.currentDurability = ss.durability;
                             ss.ChangeSword(orgSword);
                         }
                         else
@@ -87,4 +88,5 @@ public class PickupScript : MonoBehaviour
 
     public bool zombie;
     public Sword swordType;
+    public int durability;
 }

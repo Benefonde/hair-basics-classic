@@ -26,7 +26,7 @@ public class SwordScript : MonoBehaviour
         {
             ChangeSword(none);
         }
-        attackText.text = attack.ToString();
+        attackText.text = Mathf.RoundToInt(swordType.attack * Mathf.Clamp(durSlider.value, 0.15f, 1)).ToString();
         swordTypeText.text = swordType.name;
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && Time.timeScale != 0)
@@ -38,10 +38,11 @@ public class SwordScript : MonoBehaviour
             }
             if (h.transform.name == "Zombie")
             {
-                h.transform.gameObject.GetComponent<ZombieScript>().TakeDamage(attack);
-                if (h.transform.gameObject.GetComponent<ZombieScript>().disableTime <= 0)
+                ZombieScript zombo = h.transform.gameObject.GetComponent<ZombieScript>();
+                zombo.TakeDamage(attack);
+                if (zombo.disableTime <= 0)
                 {
-                    durability--;
+                    durability -= Mathf.RoundToInt(zombo.defense) + 1;
                 }
             }
         }
