@@ -34,6 +34,10 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(15);
         }
+        if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
+        {
+            GetTrophy(21);
+        }
     }
 
     // Update is called once per frame
@@ -62,9 +66,17 @@ public class TrophyCollectingScript : MonoBehaviour
                 GetTrophy(13);
             }
         }
-        if (esteEaten >= 1 && zestyEaten >= 3 && !dontCheckAga[11])
+        if (esteEaten >= 1 && zestyEaten >= 4 && !dontCheckAga[11])
         {
             GetTrophy(11);
+        }
+        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1 && dontCheckAga[5])
+        {
+            GetTrophy(17);
+        }
+        if (PlayerPrefs.GetInt("completion") == 100)
+        {
+            GetTrophy(24);
         }
     }
 
@@ -94,6 +106,8 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public bool babaGotPushed;
     public bool usedItem;
+    public bool playerHurt;
+
 
     public int collectedToppings;
     public int collectToppingsNeeded;

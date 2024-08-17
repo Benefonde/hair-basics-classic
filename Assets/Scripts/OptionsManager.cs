@@ -425,6 +425,7 @@ public class OptionsManager : MonoBehaviour
 		}
 		PlayerPrefs.SetInt("stealthyBeat", 0);
 		PlayerPrefs.SetInt("classicBeat", 0);
+		PlayerPrefs.SetInt("zombieBeat", 0);
 		PlayerPrefs.SetInt("speedBoost", 0);
 		PlayerPrefs.SetInt("extraStamina", 0);
 		PlayerPrefs.SetInt("slowerKriller", 0);
@@ -449,6 +450,14 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("debtTrophy", 0);
 		PlayerPrefs.SetInt("codeTrophy", 0);
 		PlayerPrefs.SetInt("bfdiTrophy", 0);
+		PlayerPrefs.SetInt("stealthyBlueTrophy", 0);
+		PlayerPrefs.SetInt("secretsTrophy", 0);
+		PlayerPrefs.SetInt("desperateTrophy", 0);
+		PlayerPrefs.SetInt("prankedTrophy", 0);
+		PlayerPrefs.SetInt("woodTrophy", 0);
+		PlayerPrefs.SetInt("modeTrophy", 0);
+		PlayerPrefs.SetInt("looreTrophy", 0);
+		PlayerPrefs.SetInt("doneTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

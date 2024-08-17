@@ -959,6 +959,10 @@ public class GameControllerScript : MonoBehaviour
     {
         notebooks++;
         UpdateNotebookCount();
+        if (mode == "endless" && notebooks >= 100 && time < 1200)
+        {
+            tc.GetTrophy(18);
+        }
     }
 
     public void LockMouse()
@@ -2021,6 +2025,7 @@ public class GameControllerScript : MonoBehaviour
         {
             pss.AddPoints(-2760, 5);
         }
+        tc.GetTrophy(19);
     }
 
     private IEnumerator BootAnimation()

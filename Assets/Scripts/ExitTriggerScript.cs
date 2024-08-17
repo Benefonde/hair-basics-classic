@@ -74,6 +74,26 @@ public class ExitTriggerScript : MonoBehaviour
 			}
 			else if (gc.mode == "triple")
 			{
+				PlayerPrefs.SetInt("pActive", 0);
+				PlayerPrefs.SetInt("mActive", 0);
+				PlayerPrefs.SetInt("aActive", 0);
+				PlayerPrefs.SetInt("yActive", 0);
+				if (gc.baldi.activeSelf)
+                {
+					PlayerPrefs.SetInt("pActive", 1);
+                }
+				if (gc.miko.activeSelf)
+                {
+					PlayerPrefs.SetInt("mActive", 1);
+				}
+				if (gc.alger.activeSelf)
+                {
+					PlayerPrefs.SetInt("aActive", 1);
+				}
+				if (gc.yellowFace.activeSelf)
+                {
+					PlayerPrefs.SetInt("yActive", 1);
+				}
 				PlayerPrefs.SetInt("tripleBeat", 1);
 				SceneManager.LoadScene("TripleBeat");
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"EXTRA STAMINA\" powerup. Use in modifier tab.");
@@ -113,6 +133,10 @@ public class ExitTriggerScript : MonoBehaviour
 			}
 			else if (gc.mode == "stealthy")
 			{
+				if (PlayerPrefs.GetInt("yellow", 0) == 1 && !gc.tc.playerHurt)
+                {
+					gc.tc.GetTrophy(16);
+                }
 				SceneManager.LoadScene("ChallengeBeat");
 				PlayerPrefs.SetInt("stealthyBeat", 1);
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"WALK THROUGH\" powerup. Use in modifier tab.");

@@ -1663,6 +1663,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ba33753501a18a4289069c9c1497e25, type: 3}
   - {fileID: 21300000, guid: 302cb5b4757adca48aa61f14f8b5222f, type: 3}
   - {fileID: 21300000, guid: 658455b419e06e845bf864e118593bdd, type: 3}
+  - {fileID: 21300000, guid: 109cb6255b9ff20469b2cba61ca992eb, type: 3}
+  - {fileID: 21300000, guid: 76f71d74648c21a42ab401dd7dd7ebca, type: 3}
+  - {fileID: 21300000, guid: 37848f53d187bf447a4364d4c9e92e88, type: 3}
+  - {fileID: 21300000, guid: 9ea03af4efe22644cb99e3ad5d80d333, type: 3}
+  - {fileID: 21300000, guid: 88e61f94190e2bc47814e2a7b01c3a31, type: 3}
+  - {fileID: 21300000, guid: 73c53b5084fd6c0408cbec544c5245d1, type: 3}
+  - {fileID: 21300000, guid: dcae14a6a264c3d49ae1b13194f0a85e, type: 3}
+  - {fileID: 21300000, guid: 0b632640e46a26349afd40507a13e5b4, type: 3}
   trophyName:
   - congrattationTrophy
   - cleanTrophy
@@ -1680,10 +1688,19 @@ MonoBehaviour:
   - debtTrophy
   - codeTrophy
   - bfdiTrophy
+  - stealthyBlueTrophy
+  - secretsTrophy
+  - desperateTrophy
+  - prankedTrophy
+  - woodTrophy
+  - modeTrophy
+  - looreTrophy
+  - doneTrophy
   zestyEaten: 0
   esteEaten: 0
   babaGotPushed: 0
   usedItem: 0
+  playerHurt: 0
   collectedToppings: 0
   collectToppingsNeeded: 5
   windowsCleaned: 0
@@ -2439,6 +2456,7 @@ GameObject:
   - component: {fileID: 1287286335}
   - component: {fileID: 1287286337}
   - component: {fileID: 1287286336}
+  - component: {fileID: 1287286338}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2584,6 +2602,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287286334}
   m_CullTransparentMesh: 0
+--- !u!114 &1287286338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287286334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13729c109c07ab47bd44c981aecaee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  intensity: {x: 5, y: 5, z: 0}
+  uiElement: 1
 --- !u!1 &1382445914
 GameObject:
   m_ObjectHideFlags: 0

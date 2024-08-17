@@ -128,6 +128,11 @@ public class ModesManager : MonoBehaviour
         }
     }
 
+    public void BeatZombieMode()
+    {
+        PlayerPrefs.SetInt("zombieBeat", 1);
+    }
+
     void ModeCheck()
     {
         if (PlayerPrefs.GetInt("mikoUnlocked") == 1 || TestMode)
@@ -136,7 +141,7 @@ public class ModesManager : MonoBehaviour
             mikoMode.interactable = true;
             if (randomnessHorray != 5)
             {
-                mikoText.text = "Miko Mode                                                     Survive one of the creator's friends, miko0087 in this NULL style-like gamemode!";
+                mikoText.text = "Miko Mode                                                                Survive one of the creator's friends, miko0087 in this NULL style-like gamemode!";
             }
             else
             {
@@ -216,11 +221,11 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1 || TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat", 0) == 1|| TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
-            algerText.text = "Alger Mode                                           Yes, it is literally just NULL Style. Sorry, but it's fun coding something like this!";
+            algerText.text = "Alger Mode                                                   Yes, it is literally just NULL Style. Sorry, but it's fun coding something like this!";
         }
         else
         {
