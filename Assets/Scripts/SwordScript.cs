@@ -55,7 +55,6 @@ public class SwordScript : MonoBehaviour
         {
             FindObjectOfType<TrophyCollectingScript>().onlyWooden = false;
         }
-        durability = swordType.durability;
         fill.color = swordType.color;
     }
 
