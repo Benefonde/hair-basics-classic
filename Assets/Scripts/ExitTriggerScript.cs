@@ -154,7 +154,7 @@ public class ExitTriggerScript : MonoBehaviour
 					gc.tc.GetTrophy(20);
                 }
 				SceneManager.LoadScene("ChallengeBeat");
-				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you... uh, he didn't exactly give you anything. Have some completion percentage.");
+				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He... uh, didn't exactly give you anything. Have some completion percent.");
 			}
 		}
 	}
