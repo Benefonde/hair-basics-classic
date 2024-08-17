@@ -30,7 +30,7 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(14);
         }
-        if (SceneManager.GetActiveScene().name == "2763")
+        if (windowCleanAmount == 2763)
         {
             GetTrophy(15);
         }
@@ -82,6 +82,17 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public void GetTrophy(int i)
     {
+        if (gc == null)
+        {
+            if (!dontCheckAga[i])
+            {
+                Image a = Instantiate(gotTrophy).GetComponentInChildren<Image>();
+                a.sprite = trophies[i];
+                PlayerPrefs.SetInt(trophyName[i], 1);
+                dontCheckAga[i] = true;
+            }
+            return;
+        }
         if ((!dontCheckAga[i] && !gc.ModifierOn()) || !dontCheckAga[i] && gc.ModifierOn() && i == 22)
         {
             Image a = Instantiate(gotTrophy).GetComponentInChildren<Image>();

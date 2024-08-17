@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 1
-  scene: School
+  scene: MainMenu
   inputNeeded: 1
   asyncLoad: 0
   noWait: 0
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   collectedToppings: 0
   collectToppingsNeeded: 5
   windowsCleaned: 0
-  windowCleanAmount: 7
+  windowCleanAmount: 2763
 --- !u!1 &999740298
 GameObject:
   m_ObjectHideFlags: 0
