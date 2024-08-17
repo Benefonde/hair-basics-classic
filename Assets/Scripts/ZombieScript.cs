@@ -116,6 +116,10 @@ public class ZombieScript : MonoBehaviour
 
 	public void TakeDamage(int attack)
     {
+		if (invTime > 0)
+        {
+			return;
+        }
 		health -= attack / Mathf.RoundToInt(defense);
 		defense -= 0.05f;
 		invTime = 2;

@@ -21,7 +21,7 @@ public class SwordScript : MonoBehaviour
         fill.color = swordType.color;
         durSlider.value = durability;
         durSlider.maxValue = swordType.durability;
-        attack = Mathf.RoundToInt(swordType.attack * Mathf.Clamp(durability / swordType.durability, 0.15f, 1));
+        attack = Mathf.RoundToInt(swordType.attack * Mathf.Clamp(durSlider.value, 0.15f, 1));
         if (durability <= 0)
         {
             ChangeSword(none);
@@ -29,7 +29,7 @@ public class SwordScript : MonoBehaviour
         attackText.text = attack.ToString();
         swordTypeText.text = swordType.name;
 
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && Time.timeScale != 0)
         {
             Physics.Raycast(player.position, player.forward, out RaycastHit h, 10);
             if (h.transform == null)
@@ -39,7 +39,10 @@ public class SwordScript : MonoBehaviour
             if (h.transform.name == "Zombie")
             {
                 h.transform.gameObject.GetComponent<ZombieScript>().TakeDamage(attack);
-                durability--;
+                if (h.transform.gameObject.GetComponent<ZombieScript>().disableTime <= 0)
+                {
+                    durability--;
+                }
             }
         }
     }
