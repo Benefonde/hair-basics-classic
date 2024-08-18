@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wooden
   m_EditorClassIdentifier: 
   attack: 4
-  durability: 54
-  currentDurability: 4
+  durability: 64
+  currentDurability: 64
   color: {r: 1, g: 0.5019608, b: 0, a: 1}

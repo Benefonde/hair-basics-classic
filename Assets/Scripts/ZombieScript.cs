@@ -11,11 +11,11 @@ public class ZombieScript : MonoBehaviour
 		wanderer.GetNewTargetHallway();
 		agent.Warp(wanderTarget.position);
 		aud.PlayOneShot(idle[Random.Range(0, idle.Length)]);
-		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 2, Color.green, transform);
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 1.5f, Color.green, transform);
 		zombieSpeed = Random.Range(5, 20);
 		for (int i = 0; i < 4; i++)
 		{
-			if (Random.Range(0, 20 / gc.notebooks) <= 0.2f)
+			if (Random.Range(0, 24 / gc.notebooks + 1) <= 0.2f)
 			{
 				armor[i].SetActive(true);
 				switch (i)
@@ -107,10 +107,10 @@ public class ZombieScript : MonoBehaviour
 		agent.SetDestination(wanderTarget.position);
 		coolDown = 1f;
 		currentPriority = 0f;
-		if (Random.Range(0, 8) == 4 && !aud.isPlaying)
+		if (Random.Range(0, 24) == 4 && !aud.isPlaying)
         {
 			aud.PlayOneShot(idle[Random.Range(0, idle.Length)]);
-			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 2, Color.green, transform);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 1.5f, Color.green, transform);
 		}
 	}
 

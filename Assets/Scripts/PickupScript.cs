@@ -55,8 +55,9 @@ public class PickupScript : MonoBehaviour
                         if (ss.swordType != ss.none)
                         {
                             Sword orgSword = swordType;
-                            ss.durability = durability;
-                            durability = ss.swordType.durability;
+                            int orgDurability = durability;
+                            durability = ss.durability;
+                            ss.durability = orgDurability;
                             swordType = ss.swordType;
                             GetComponentInChildren<SpriteRenderer>().color = swordType.color;
                             ss.ChangeSword(orgSword);

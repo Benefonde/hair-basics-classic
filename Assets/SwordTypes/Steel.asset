@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Steel
   m_EditorClassIdentifier: 
   attack: 10
-  durability: 127
-  currentDurability: 0
+  durability: 157
+  currentDurability: 157
   color: {r: 1, g: 1, b: 1, a: 1}

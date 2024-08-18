@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   attack: 7
-  durability: 102
-  currentDurability: 0
+  durability: 112
+  currentDurability: 112
   color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
