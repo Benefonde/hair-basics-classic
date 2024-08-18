@@ -123,7 +123,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (mode == "endless" || mode == "triple" || mode == "alger")
             {
-                objecUsesinit = 12;
+                objecUsesinit = 8;
             }
             if (mode == "miko")
             {
@@ -495,7 +495,7 @@ public class GameControllerScript : MonoBehaviour
 
     void ZombieStart()
     {
-        locationText.text = "Panino's Ball, alternative universe";
+        locationText.text = "Panino's Ball, alternative universe\nUse the interact button to attack!";
         locationText.color = Color.green;
         for (int i = 0; i < stuffNoZombieMode.Length; i++)
         {
@@ -1665,7 +1665,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (item[itemSelected] == 4)
         {
-            Instantiate(bsodaSpray, player.transform.position, cameraTransform.rotation);
+            Instantiate(bsodaSpray, player.transform.position, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y - 90f), 0f));
             ResetItem();
             player.ResetGuilt("drink", 1f);
             audioDevice.PlayOneShot(aud_Soda);
@@ -2365,6 +2365,13 @@ public class GameControllerScript : MonoBehaviour
         gamePaused = false;
     }
 
+    public IEnumerator KillZombies()
+    {
+        killZombiesToWin.SetActive(true);
+        yield return new WaitForSeconds(3);
+        killZombiesToWin.SetActive(false);
+    }
+
     public void DespawnCrafters()
     {
         if (mode == "pizza")
@@ -2480,6 +2487,8 @@ public class GameControllerScript : MonoBehaviour
     public int secretsFound;
 
     public AudioClip slideWhistle;
+
+    public GameObject killZombiesToWin;
 
     private bool algerKrilledByPlayer;
 

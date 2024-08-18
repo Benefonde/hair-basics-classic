@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc3124a5143154dbb0f5c7cc6b6bd7, type: 3}
   m_Name: Aquamarine
   m_EditorClassIdentifier: 
-  attack: 14
-  durability: 164
+  attack: 15
+  durability: 212
   currentDurability: 0
   color: {r: 0.81960785, g: 0.93333334, b: 0.99607843, a: 1}

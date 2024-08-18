@@ -5,10 +5,13 @@ public class ZombieScript : MonoBehaviour
 {
     private void Start()
 	{
+		aud = GetComponent<AudioSource>();
 		zombieSprite = transform.Find("ZombieSprite").GetComponent<SpriteRenderer>();
 		agent = GetComponent<NavMeshAgent>();
 		wanderer.GetNewTargetHallway();
 		agent.Warp(wanderTarget.position);
+		aud.PlayOneShot(idle[Random.Range(0, idle.Length)]);
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 2, Color.green, transform);
 		zombieSpeed = Random.Range(5, 20);
 		for (int i = 0; i < 4; i++)
 		{
@@ -104,6 +107,11 @@ public class ZombieScript : MonoBehaviour
 		agent.SetDestination(wanderTarget.position);
 		coolDown = 1f;
 		currentPriority = 0f;
+		if (Random.Range(0, 8) == 4 && !aud.isPlaying)
+        {
+			aud.PlayOneShot(idle[Random.Range(0, idle.Length)]);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie groans*", 2, Color.green, transform);
+		}
 	}
 
 	public void TargetPlayer()
@@ -132,14 +140,21 @@ public class ZombieScript : MonoBehaviour
 		health -= attack;
 		if (ss.swordType.name == "Wooden")
 		{
-			ss.durability -= 1;
+			if (Random.Range(1, 3) == 2)
+			{
+				ss.durability -= 1;
+			}
 			invTime = 0.25f;
 			disableTime = 0.35f;
 			return;
 		}
 		invTime = 0.5f;
 		disableTime = 0.5f;
-		ss.durability -= Mathf.RoundToInt(defense / 1.5f) + 1;
+		if (PlayerPrefs.GetInt("infItem", 0) == 1)
+        {
+			return;
+        }
+		ss.durability -= Mathf.RoundToInt(defense / 1.5f) + Random.Range(0, 2); // its actually range 0 to 1
 	}
 
     public bool db;
@@ -181,4 +196,7 @@ public class ZombieScript : MonoBehaviour
 	private NavMeshAgent agent;
 
 	public float disableTime;
+
+	AudioSource aud;
+	public AudioClip[] idle;
 }

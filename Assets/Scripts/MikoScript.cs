@@ -19,6 +19,10 @@ public class MikoScript : MonoBehaviour
         {
 			Destroy(gameObject);
         }
+		if (YellowFace && other.transform.name == "Promply Jumply")
+        {
+			gc.craftersTime = false;
+        }
 	}
     private void Start()
 	{

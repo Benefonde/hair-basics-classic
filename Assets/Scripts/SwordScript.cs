@@ -51,6 +51,10 @@ public class SwordScript : MonoBehaviour
         {
             FindObjectOfType<TrophyCollectingScript>().onlyWooden = false;
         }
+        if (s.name != "None")
+        {
+            FindObjectOfType<TrophyCollectingScript>().usedItem = true;
+        }
         fill.color = swordType.color;
     }
 

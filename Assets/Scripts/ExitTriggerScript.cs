@@ -18,12 +18,17 @@ public class ExitTriggerScript : MonoBehaviour
 				a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
 				a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
 			}
-			if (gc.mode == "free" || gc.ModifierOn())
+			if (gc.ModifierOn())
 			{
 				SceneManager.LoadScene("Anticheat");
 				gc.tc.GetTrophy(22);
 				return;
 			}
+			if (gc.mode == "free")
+            {
+				SceneManager.LoadScene("MainMenu");
+				return;
+            }
 			if (!gc.tc.babaGotPushed && gc.baba.activeSelf)
             {
 				gc.tc.GetTrophy(4);
@@ -148,6 +153,12 @@ public class ExitTriggerScript : MonoBehaviour
 			}
 			else if (gc.mode == "zombie")
             {
+				if (FindObjectsOfType<ZombieScript>().Length > 1)
+                {
+					StopCoroutine(gc.KillZombies());
+					StartCoroutine(gc.KillZombies());
+					return;
+                }
 				PlayerPrefs.SetInt("zombieBeat", 1);
 				if (gc.tc.onlyWooden)
                 {
