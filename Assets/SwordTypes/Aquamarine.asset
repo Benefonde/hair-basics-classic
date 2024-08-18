@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 15
   durability: 212
-  currentDurability: 0
+  currentDurability: 212
   color: {r: 0.81960785, g: 0.93333334, b: 0.99607843, a: 1}
