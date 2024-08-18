@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc3124a5143154dbb0f5c7cc6b6bd7, type: 3}
   m_Name: Sapphire
   m_EditorClassIdentifier: 
-  attack: 15
+  attack: 18
   durability: 312
+  currentDurability: 0
   color: {r: 0.21568628, g: 0.31764707, b: 0.5176471, a: 1}

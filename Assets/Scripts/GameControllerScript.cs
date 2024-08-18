@@ -520,6 +520,7 @@ public class GameControllerScript : MonoBehaviour
         player.transform.position = new Vector3(5, 4, 5);
         cameraTransform.position = new Vector3(5, 5, 5);
         zombieItemLayout.SetActive(true);
+        ambient.Play();
     }
 
     public bool ModifierOn()
@@ -2716,6 +2717,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioSource pizzaTimeMusic;
     public AudioSource lap2Music;
     public AudioSource wwnMusic;
+
+    public AudioSource ambient;
 
     public AudioSource crazyAppleMusic;
 

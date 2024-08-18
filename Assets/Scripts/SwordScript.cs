@@ -40,10 +40,6 @@ public class SwordScript : MonoBehaviour
             {
                 ZombieScript zombo = h.transform.gameObject.GetComponent<ZombieScript>();
                 zombo.TakeDamage(attack);
-                if (zombo.disableTime <= 0)
-                {
-                    durability -= Mathf.RoundToInt(zombo.defense) + 1;
-                }
             }
         }
     }

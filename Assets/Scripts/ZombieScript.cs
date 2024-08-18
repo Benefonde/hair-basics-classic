@@ -5,13 +5,14 @@ public class ZombieScript : MonoBehaviour
 {
     private void Start()
 	{
+		zombieSprite = transform.Find("ZombieSprite").GetComponent<SpriteRenderer>();
 		agent = GetComponent<NavMeshAgent>();
 		wanderer.GetNewTargetHallway();
 		agent.Warp(wanderTarget.position);
 		zombieSpeed = Random.Range(5, 20);
 		for (int i = 0; i < 4; i++)
 		{
-			if (Random.Range(0, 20 / gc.notebooks) <= 0.3f)
+			if (Random.Range(0, 20 / gc.notebooks) <= 0.2f)
 			{
 				armor[i].SetActive(true);
 				switch (i)
@@ -36,8 +37,10 @@ public class ZombieScript : MonoBehaviour
 			disableTime -= Time.deltaTime;
         }
 
+		zombieSprite.sprite = zombieNormal;
 		if (invTime > 0)
         {
+			zombieSprite.sprite = zombieHurt;
 			invTime -= Time.deltaTime;
         }
 
@@ -125,11 +128,19 @@ public class ZombieScript : MonoBehaviour
         {
 			return;
         }
+		gc.audioDevice.PlayOneShot(stabby);
 		health -= attack;
+		if (ss.swordType.name == "Wooden")
+		{
+			ss.durability -= 1;
+			invTime = 0.25f;
+			disableTime = 0.35f;
+			return;
+		}
 		invTime = 0.5f;
 		disableTime = 0.5f;
-		ss.durability -= Mathf.RoundToInt(defense / 2) + 1;
-    }
+		ss.durability -= Mathf.RoundToInt(defense / 1.5f) + 1;
+	}
 
     public bool db;
 
@@ -143,6 +154,10 @@ public class ZombieScript : MonoBehaviour
 
 	float zombieSpeed;
 
+	SpriteRenderer zombieSprite;
+	public Sprite zombieHurt;
+	public Sprite zombieNormal;
+
 	private float currentPriority;
 
 	public float defense = 1;
@@ -152,6 +167,8 @@ public class ZombieScript : MonoBehaviour
 	float invTime;
 
 	public Transform player;
+
+	public AudioClip stabby;
 
 	public Transform wanderTarget;
 
