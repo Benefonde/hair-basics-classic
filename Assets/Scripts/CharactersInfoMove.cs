@@ -12,7 +12,7 @@ public class CharactersInfoMove : MonoBehaviour
         {
             left.SetActive(false);
         }
-        if (charInfo.localPosition.x == -7020)
+        if (charInfo.localPosition.x == -8580)
         {
             right.SetActive(false);
         }
@@ -53,11 +53,11 @@ public class CharactersInfoMove : MonoBehaviour
         {
             left.SetActive(true);
         }
-        if ((charInfo.localPosition.x != -7020 && onRegular) || (charInfo.localPosition.x != -5460 && !onRegular))
+        if ((charInfo.localPosition.x != -8580 && onRegular) || (charInfo.localPosition.x != -4680 && !onRegular))
         {
             right.SetActive(true);
         }
-        if (charInfo.localPosition.x >= -5460)
+        if (charInfo.localPosition.x >= -4680)
         {
             upDown.gameObject.SetActive(true);
         }

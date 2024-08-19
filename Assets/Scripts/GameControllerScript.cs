@@ -1665,7 +1665,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (item[itemSelected] == 4)
         {
-            Instantiate(bsodaSpray, player.transform.position, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y - 90f), 0f));
+            Instantiate(bsodaSpray, player.transform.position, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y), 0f));
             ResetItem();
             player.ResetGuilt("drink", 1f);
             audioDevice.PlayOneShot(aud_Soda);
