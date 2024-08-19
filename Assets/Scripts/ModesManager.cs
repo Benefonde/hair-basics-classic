@@ -33,7 +33,7 @@ public class ModesManager : MonoBehaviour
                 staminaBoost.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1)
+        if (PlayerPrefs.GetInt("zombieBeat", 0) == 1)
         {
             krillerSlow.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("slowerKriller", 0) == 1)
@@ -128,11 +128,6 @@ public class ModesManager : MonoBehaviour
         }
     }
 
-    public void BeatZombieMode()
-    {
-        PlayerPrefs.SetInt("zombieBeat", 1);
-    }
-
     void ModeCheck()
     {
         if (PlayerPrefs.GetInt("mikoUnlocked") == 1 || TestMode)
@@ -221,7 +216,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1|| TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 || TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -285,7 +280,7 @@ public class ModesManager : MonoBehaviour
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
         int krille = PlayerPrefs.GetInt("zombieBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
-        int block = PlayerPrefs.GetInt("chaosBeat", 0);
+        int block = PlayerPrefs.GetInt("mikoBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);
         int item = PlayerPrefs.GetInt("algerBeat", 0);
 

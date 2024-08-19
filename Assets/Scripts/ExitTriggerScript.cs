@@ -54,10 +54,12 @@ public class ExitTriggerScript : MonoBehaviour
 				if (PlayerPrefs.GetInt("speedyUnlocked", 0) == 0)
                 {
 					PlayerPrefs.SetInt("speedyUnlocked", 1);
+					PlayerPrefs.SetInt("secretEnd", 1);
 					SceneManager.LoadScene("Secret");
 				}
                 else
                 {
+					PlayerPrefs.SetInt("secretEnd", 1);
 					SceneManager.LoadScene("Secret");
 				}
 			}
@@ -165,7 +167,7 @@ public class ExitTriggerScript : MonoBehaviour
 					gc.tc.GetTrophy(20);
                 }
 				SceneManager.LoadScene("ChallengeBeat");
-				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He... uh, didn't exactly give you anything. Have some completion percent.");
+				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLOWER KRILLERS\" powerup. Use in modifier tab.");
 			}
 		}
 	}
