@@ -15375,7 +15375,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: This little nuisance doesn't exactly do much except for wander around veeeery
     slowly. They always go after you and once you collide with Baba, you win! But
-    not in the good way. [Not a sheep!]
+    not in the good way. [Not a sheep or a cat!]
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,

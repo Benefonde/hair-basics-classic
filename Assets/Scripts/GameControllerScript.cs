@@ -980,6 +980,10 @@ public class GameControllerScript : MonoBehaviour
             dwayneDebt.SetActive(false);
             dwayneDebtTimer = 2763;
         }
+        if (mode == "endless" && notebooks >= 100 && time < 960)
+        {
+            tc.GetTrophy(18);
+        }
     }
 
     IEnumerator EventRing()
@@ -1006,10 +1010,6 @@ public class GameControllerScript : MonoBehaviour
             }
         }
         UpdateNotebookCount();
-        if (mode == "endless" && notebooks >= 100 && time < 960)
-        {
-            tc.GetTrophy(18);
-        }
     }
 
     public void LockMouse()
