@@ -38,6 +38,8 @@ public class DevinScript : MonoBehaviour
 
 	public bool minigaming;
 
+	bool noticed;
+
 	private Animator anim;
 
 	public RectTransform pipe;
@@ -72,15 +74,13 @@ public class DevinScript : MonoBehaviour
 		minigaming = gc.player.pipeGame;
 		if (pipeTime > 0 && minigaming)
 		{
-			agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
-			agent.Move(Vector3.back * 7.5f);
 			pipeTime -= Time.deltaTime;
 			if (pipeTime <= 0.1)
             {
 				DuckedPipe();
 				pipeTime = 0.8f;
 			}
-			pipe.anchoredPosition = new Vector2(pipe.anchoredPosition.x, (pipeTime / 2) * 400);
+			pipe.anchoredPosition = new Vector2(pipe.anchoredPosition.x, (pipeTime / 4) * 800);
 		}
 	}
 
@@ -98,6 +98,7 @@ public class DevinScript : MonoBehaviour
 		else
 		{
 			db = false;
+			noticed = false;
 			if (coolDown <= 0)
 			{
 				Wander();
@@ -120,10 +121,11 @@ public class DevinScript : MonoBehaviour
 	{
 		agent.SetDestination(player.position);
 		coolDown = 1f;
-		if (!audioDevice.isPlaying)
-        {
+		if (!audioDevice.isPlaying && !noticed)
+		{
 			audioDevice.PlayOneShot(notice);
-        }
+		}
+		noticed = true;
 	}
 
 	private void Move()
@@ -147,7 +149,9 @@ public class DevinScript : MonoBehaviour
 		gc.player.pipeGame = true;
 		agent.speed = 0;
 		audioDevice.PlayOneShot(ready);
-    }
+		agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
+		agent.Move(Vector3.back * 7.5f);
+	}
 
 	void DuckedPipe()
     {
