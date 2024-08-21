@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class AlgerScript : MonoBehaviour
 {
@@ -130,6 +131,16 @@ public class AlgerScript : MonoBehaviour
 	// Token: 0x060009AB RID: 2475 RVA: 0x000249A2 File Offset: 0x00022DA2
 	public void Hear(Vector3 soundLocation, float priority)
 	{
+		if (squee.Count != 0)
+		{
+			for (int i = 0; i < squee.Count; i++)
+			{
+				if (squee[i].bounds.Contains(soundLocation))
+				{
+					return;
+				}
+			}
+		}
 		if (!this.antiHearing && priority >= this.currentPriority)//If anti-hearing is not active and the priority is greater then the priority of the current sound
 		{
 			this.agent.SetDestination(soundLocation);//Go to that sound
@@ -170,6 +181,8 @@ public class AlgerScript : MonoBehaviour
 	public float baldiAnger;
 
 	public GameControllerScript gc;
+
+	public List<Collider> squee = new List<Collider>();
 
 	// Token: 0x04000684 RID: 1668
 	public float baldiTempAnger;

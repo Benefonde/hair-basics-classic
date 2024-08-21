@@ -1736,13 +1736,14 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (item[itemSelected] == 8)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo5) && ((hitInfo5.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo5.transform.position) <= 10f)))
+            ResetItem();
+            Instantiate(squee, playerTransform.position, Quaternion.identity);
+            audioDevice.PlayOneShot(aud_Spray);
+            if (baldiScript.isActiveAndEnabled)
             {
-                hitInfo5.collider.gameObject.GetComponent<DoorScript>().SilenceDoor();
-                ResetItem();
-                audioDevice.PlayOneShot(aud_Spray);
-                tc.usedItem = true;
+                baldiScript.FindSquees();
             }
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 9)
         {
@@ -2579,6 +2580,8 @@ public class GameControllerScript : MonoBehaviour
     public EntranceScript entrance_4;
 
     public GameObject chalkCloud;
+
+    public GameObject squee;
 
     public GameObject heldItem;
 

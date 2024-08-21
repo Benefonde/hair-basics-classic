@@ -74,10 +74,6 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(17);
         }
-        if (PlayerPrefs.GetInt("completion") == 100)
-        {
-            GetTrophy(24);
-        }
     }
 
     public void GetTrophy(int i)
@@ -117,7 +113,6 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public bool babaGotPushed;
     public bool usedItem;
-    public bool playerHurt;
     public bool onlyWooden;
 
     public int collectedToppings;

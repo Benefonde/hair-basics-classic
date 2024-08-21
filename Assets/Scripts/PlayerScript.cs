@@ -502,10 +502,6 @@ public class PlayerScript : MonoBehaviour
 		healthBar.value = health / 100 * 100f;
 		if (health < 100)
         {
-			if (health < 99.5f)
-            {
-				gc.tc.playerHurt = true;
-			}
 			health += staminaRate * Time.deltaTime / 40;
 		}
 		if (health < 0.1f)

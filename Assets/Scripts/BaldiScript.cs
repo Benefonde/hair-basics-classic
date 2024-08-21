@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class BaldiScript : MonoBehaviour
 {
@@ -69,6 +70,8 @@ public class BaldiScript : MonoBehaviour
 
 	public bool classicEnding;
 
+	List<Collider> squee = new List<Collider>();
+
 	private void Start()
 	{
 		baldiAudio = GetComponent<AudioSource>();
@@ -76,6 +79,17 @@ public class BaldiScript : MonoBehaviour
 		timeToMove = baseTime;
 		this.TargetPlayer();
 		head.SetTrigger("notice");
+	}
+
+	public void FindSquees()
+    {
+		squee.Clear();
+		for (int i = 0; i < FindObjectsOfType<SqueeScript>().Length; i++)
+		{
+			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
+		}
+		GameObject.Find("Miko").GetComponent<MikoScript>().squee = squee;
+		FindObjectOfType<AlgerScript>().squee = squee;
 	}
 
 	private void Update()
@@ -218,6 +232,16 @@ public class BaldiScript : MonoBehaviour
 
 	public void Hear(Vector3 soundLocation, float priority)
 	{
+		if (squee.Count != 0)
+		{
+			for (int i = 0; i < squee.Count; i++)
+			{
+				if (squee[i].bounds.Contains(soundLocation))
+				{
+					return;
+				}
+			}
+		}
 		if (!antiHearing && priority >= currentPriority)
 		{
 			agent.SetDestination(soundLocation);
