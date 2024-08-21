@@ -171,7 +171,7 @@ public class CameraScript : MonoBehaviour
 
 	void PipegameMove()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftControl))
+		if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
 		{
 			if (pipeGameHeight == 0)
 			{
@@ -181,7 +181,7 @@ public class CameraScript : MonoBehaviour
 		if (ps.pipeGameGravity != 0)
 		{
 			pipeGameHeight += ps.pipeGameGravity * Time.deltaTime;
-			ps.pipeGameGravity += 13 * Time.deltaTime;
+			ps.pipeGameGravity += 16 * Time.deltaTime;
 		}
 		if (pipeGameHeight >= 0)
 		{

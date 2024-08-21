@@ -177,7 +177,7 @@ public class DevinScript : MonoBehaviour
     {
 		devinCanvas.SetActive(false);
 		gc.player.pipeGame = false;
-		gc.player.camscript.pipeGameHeight = 0;
+		gc.player.pipeGameGravity += 8 * Time.deltaTime;
 		pipeCoolDown = 45;
 		agent.speed = 20;
 		if (pipeDucks == 5)
