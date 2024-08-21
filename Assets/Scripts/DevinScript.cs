@@ -67,7 +67,7 @@ public class DevinScript : MonoBehaviour
 		{
 			pipeCoolDown -= 1f * Time.deltaTime;
 		}
-        else
+        else if (pipeCoolDown <= 0)
         {
 			anim.SetBool("oh", false);
 		}
@@ -75,7 +75,7 @@ public class DevinScript : MonoBehaviour
 		if (pipeTime > 0 && minigaming)
 		{
 			pipeTime -= Time.deltaTime;
-			if (pipeTime <= 0.1)
+			if (pipeTime <= 0.05)
             {
 				DuckedPipe();
 				pipeTime = 0.8f;
@@ -108,12 +108,19 @@ public class DevinScript : MonoBehaviour
 
 	private void Wander()
 	{
+		int rng = Random.Range(0, wander.Length);
 		wanderer.GetNewTarget();
 		agent.SetDestination(wanderTarget.position);
 		coolDown = 1f;
-		if (Random.Range(1, 10) == 5 && !audioDevice.isPlaying)
+		if (Random.Range(1, 12) == 5 && !audioDevice.isPlaying && pipeCoolDown <= 0)
         {
-			audioDevice.PlayOneShot(wander[Random.Range(0, wander.Length)]);
+			anim.SetBool("oh", false);
+			audioDevice.PlayOneShot(wander[rng]);
+			switch (rng)
+            {
+				case 1: FindObjectOfType<SubtitleManager>().Add3DSubtitle("Where'd you go, Bob?", wander[rng].length, new Color(255, 165, 0), transform); break;
+				case 2: FindObjectOfType<SubtitleManager>().Add3DSubtitle("Do do do do...", wander[rng].length, new Color(255, 165, 0), transform); break;
+			}
         }
 	}
 
@@ -124,6 +131,7 @@ public class DevinScript : MonoBehaviour
 		if (!audioDevice.isPlaying && !noticed)
 		{
 			audioDevice.PlayOneShot(notice);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Oh hey, uh, do this for me please.", notice.length, new Color(255, 165, 0), transform);
 		}
 		noticed = true;
 	}
@@ -149,6 +157,7 @@ public class DevinScript : MonoBehaviour
 		gc.player.pipeGame = true;
 		agent.speed = 0;
 		audioDevice.PlayOneShot(ready);
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("Duck under this pole 5 times. Ready? Go!", ready.length, new Color(255, 165, 0), transform);
 		agent.Warp(new Vector3(player.position.x, transform.position.y, player.position.z));
 		agent.Move(Vector3.back * 7.5f);
 	}
@@ -159,6 +168,7 @@ public class DevinScript : MonoBehaviour
 		{
 			gc.player.camscript.pipeGameHeight = 0;
 			audioDevice.PlayOneShot(numbers[pipeDucks]);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle($"{pipeDucks + 1}!", numbers[pipeDucks].length, new Color(255, 165, 0), transform);
 			pipeDucks++;
 			pipeText.text = pipeDucks.ToString();
 			if (pipeDucks == 5)
@@ -184,6 +194,7 @@ public class DevinScript : MonoBehaviour
         {
 			pipeDucks = 0;
 			audioDevice.PlayOneShot(outcome[0]);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Good job, here's a thing I guess.", outcome[0].length, new Color(255, 165, 0), transform);
 			if (gc.HasItemInInventory(0))
 			{
 				gc.CollectItem(gc.CollectItemExcluding(3, 8, 13, 14, 15, 16, 21, 24));
@@ -202,6 +213,7 @@ public class DevinScript : MonoBehaviour
 				gc.camScript.follow = transform;
             }
 			audioDevice.PlayOneShot(outcome[1]);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Oops, you got hit, see you later.", outcome[1].length, new Color(255, 165, 0), transform);
 			audioDevice.PlayOneShot(pipeHit);
 			anim.SetBool("oh", true);
         }
