@@ -123,15 +123,19 @@ public class GameControllerScript : MonoBehaviour
             }
             if (mode == "endless" || mode == "triple" || mode == "alger")
             {
-                objecUsesinit = 12;
+                objecUsesinit = 8;
             }
-            if (mode == "miko" || mode == "chaos")
+            if (mode == "miko")
             {
                 objecUsesinit = 4;
             }
-            if (mode == "speedy" || mode == "dark")
+            if (mode == "speedy")
             {
                 objecUsesinit = 8;
+            }
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
+            {
+                math = 0;
             }
             if (walkThrough == 1)
             {
@@ -158,7 +162,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 this.SpeedyStart();
             }
-            else if (mode == "story" || mode == "endless" || mode == "pizza" || mode == "free" || mode == "dark" || mode == "chaos")
+            else if (mode == "story" || mode == "endless" || mode == "pizza" || mode == "free")
             {
                 this.NormalStart();
 
@@ -178,15 +182,6 @@ public class GameControllerScript : MonoBehaviour
                     }
                     asdaa.SetActive(false);
                 }
-                if (mode == "dark")
-                {
-                    notebookCount.color = Color.white;
-                    RenderSettings.ambientLight = Color.black;
-                    RenderSettings.skybox = night;
-                    hour = 1;
-                    player.GetComponent<Light>().enabled = true;
-                    principal.GetComponent<Light>().enabled = true;
-                }
             }
             else if (mode == "miko")
             {
@@ -203,6 +198,10 @@ public class GameControllerScript : MonoBehaviour
             else if (mode == "stealthy")
             {
                 StealthyStart();
+            }
+            else if (mode == "zombie")
+            {
+                ZombieStart();
             }
 
             if (extraStamina == 1)
@@ -413,7 +412,7 @@ public class GameControllerScript : MonoBehaviour
             camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
         }
         RenderSettings.ambientLight = new Color(0.8f, 0.5f, 0.5f, 1);
-        baldi.transform.position = new Vector3(5, 1.64f, 135);
+        baldiAgent.Warp(new Vector3(5, 1.64f, 135));
         RenderSettings.skybox = night;
         craftersTime = false;
     }
@@ -492,6 +491,36 @@ public class GameControllerScript : MonoBehaviour
             baldiScript.baldiSpeedScale = 0.5875f;
         }
         schoolMusic.Play();
+    }
+
+    void ZombieStart()
+    {
+        locationText.text = "Panino's Ball, alternative universe\nUse the interact button to attack!";
+        locationText.color = Color.green;
+        for (int i = 0; i < stuffNoZombieMode.Length; i++)
+        {
+            stuffNoZombieMode[i].SetActive(false);
+        }
+        for (int i = 0; i < stuffYesZombieMode.Length; i++)
+        {
+            stuffYesZombieMode[i].SetActive(true);
+        }
+        craftersTime = false;
+        spoopMode = true;
+        baldiTutor.SetActive(false);
+        entrance_0.Lower();
+        entrance_1.Lower();
+        entrance_2.Lower();
+        entrance_3.Lower();
+        RenderSettings.skybox = night;
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.black;
+        RenderSettings.fogDensity = 0.01f;
+        RenderSettings.ambientLight = new Color(0.75f, 0.75f, 0.75f, 1);
+        player.transform.position = new Vector3(5, 4, 5);
+        cameraTransform.position = new Vector3(5, 5, 5);
+        zombieItemLayout.SetActive(true);
+        ambient.Play();
     }
 
     public bool ModifierOn()
@@ -735,15 +764,15 @@ public class GameControllerScript : MonoBehaviour
             {
                 UseItem();
             }
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f && Time.timeScale != 0f)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && Time.timeScale != 0f && mode != "zombie")
             {
                 DecreaseItemSelection();
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && Time.timeScale != 0f)
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && Time.timeScale != 0f && mode != "zombie")
             {
                 IncreaseItemSelection();
             }
-            if (Time.timeScale != 0f)
+            if (Time.timeScale != 0f && mode != "zombie")
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -807,36 +836,6 @@ public class GameControllerScript : MonoBehaviour
         {
             lap2Music.time = 21.25f;
         }
-        if (mode == "chaos")
-        {
-            if (CHAOStimer < 0)
-            {
-                if (Random.Range(1, 15) == 4)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        item[i] = Random.Range(0, itemHudTextures.Length - 1);
-                    }
-                }
-                playerScript.walkSpeed = Random.Range(15f, 35f);
-                playerScript.runSpeed = playerScript.walkSpeed + Random.Range(3f, 9f);
-                CHAOStimer = Random.Range(0.5f, 3f);
-                if (Random.Range(0, 2) == 1)
-                {
-                    RenderSettings.ambientLight = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1);
-                }
-                UpdateAllItem();
-                baldiScrpt.baldiWait = Random.Range(0.5f, 2f);
-                if (Random.Range(1, 30) == 10)
-                {
-                    Teleport();
-                }
-            }
-            else
-            {
-                CHAOStimer -= Time.deltaTime;
-            }
-        }
         if (Input.GetKeyDown(KeyCode.F8))
         {
             notebooks = maxNoteboos;
@@ -847,6 +846,7 @@ public class GameControllerScript : MonoBehaviour
             pCounter++;
             if (pCounter >= 50)
             {
+                PlayerPrefs.SetInt("pSecretFound", 1);
                 SceneManager.LoadScene("p");
             }
         }
@@ -897,6 +897,10 @@ public class GameControllerScript : MonoBehaviour
 
     public void UpdateAllItem()
     {
+        if (mode == "zombie")
+        {
+            return;
+        }
         for (int i = 0; i < 4; i++)
         {
             itemSlot[i].texture = itemHudTextures[item[i]];
@@ -956,13 +960,13 @@ public class GameControllerScript : MonoBehaviour
         {
             notebookCount.text = $"{notebooks}/{highScoreBotenook} H.S. Dwaynes";
         }
-        if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free" || mode == "dark" || mode == "chaos"))
+        if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free"))
         {
             ActivateFinaleMode();
             principal.SetActive(true);
             principalScript.angry = false;
         }
-        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic"))
+        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic" || mode == "zombie"))
         {
             ActivateFinaleMode();
         }
@@ -975,6 +979,10 @@ public class GameControllerScript : MonoBehaviour
             ESCAPEmusic.Stop();
             dwayneDebt.SetActive(false);
             dwayneDebtTimer = 2763;
+        }
+        if (mode == "endless" && notebooks >= 100 && time < 960)
+        {
+            tc.GetTrophy(18);
         }
     }
 
@@ -992,6 +1000,15 @@ public class GameControllerScript : MonoBehaviour
     public void CollectNotebook()
     {
         notebooks++;
+        if (mode == "zombie")
+        {
+            for (int i = 0; i < (notebooks + 1) / 3; i++)
+            {
+                GameObject zombo = Instantiate(zombie);
+                zombo.SetActive(true);
+                zombo.transform.name = "Zombie";
+            }
+        }
         UpdateNotebookCount();
     }
 
@@ -1063,22 +1080,39 @@ public class GameControllerScript : MonoBehaviour
         fadeToWhite.SetTrigger("fade");
     }
 
-    public void SpawnWithChance(GameObject character, float minRange, float maxRange, float TargetNum, bool integer = true)
+    public void SpawnWithChance(GameObject character, float minRange, float maxRange, float TargetNum, bool integer = true, bool targetIsKey = true)
     {
         float rng = Random.Range(minRange, maxRange); 
         
-
-        if (Mathf.FloorToInt(rng) == TargetNum)
+        if (targetIsKey)
         {
-            character.SetActive(true);
-            if (character == crafters)
+            if (Mathf.FloorToInt(rng) == TargetNum)
             {
-                craftersTime = true;
+                character.SetActive(true);
+                if (character == crafters)
+                {
+                    craftersTime = true;
+                }
+            }
+            if (character == crafters && Mathf.FloorToInt(rng) != TargetNum)
+            {
+                craftersTime = false;
             }
         }
-        if (character == crafters && Mathf.FloorToInt(rng) != TargetNum)
+        else
         {
-            craftersTime = false;
+            if (Mathf.FloorToInt(rng) != TargetNum)
+            {
+                character.SetActive(true);
+                if (character == crafters)
+                {
+                    craftersTime = true;
+                }
+            }
+            if (character == crafters && Mathf.FloorToInt(rng) == TargetNum)
+            {
+                craftersTime = false;
+            }
         }
 
         print($"{character} got a {minRange} in {maxRange} chance, and got {Mathf.FloorToInt(rng)}. Target is {TargetNum}");
@@ -1091,17 +1125,18 @@ public class GameControllerScript : MonoBehaviour
         entrance_1.Lower();
         entrance_2.Lower();
         entrance_3.Lower();
-        if (mode == "story" || mode == "pizza" || mode == "dark" || mode == "chaos")
+        if (mode == "story" || mode == "pizza")
         {
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
-            principal.SetActive(value: true);
+            SpawnWithChance(principal, 1, 20, 4, true, false);
             SpawnWithChance(crafters, 1, 4, 2, true);
             SpawnWithChance(gottaSweep, 1, 2, 1, true);
             SpawnWithChance(bully, 1, 2, 1, true);
             SpawnWithChance(firstPrize, 1, 3, 2, true);
             SpawnWithChance(guardianAngel, 1, 6, 4, true);
             SpawnWithChance(baba, 1, 3, 2, true);
+            SpawnWithChance(devin, 1, 4, 2, true);
 
             int rng = yellowFaceOn;
             print(rng);
@@ -1127,13 +1162,14 @@ public class GameControllerScript : MonoBehaviour
             }
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
-            principal.SetActive(value: true);
+            SpawnWithChance(principal, 1, 15, 4, true, false);
             SpawnWithChance(crafters, 1, 3, 2, true);
             SpawnWithChance(gottaSweep, 1, 5, 2, true);
             SpawnWithChance(bully, 1, 4, 2, true);
             SpawnWithChance(firstPrize, 1, 7, 2, true);
             SpawnWithChance(guardianAngel, 1, 10, 4, true);
             SpawnWithChance(baba, 1, 4, 2, true);
+            SpawnWithChance(devin, 1, 3, 2, true);
         }
         else if (mode == "free")
         {
@@ -1153,6 +1189,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(firstPrize, 1, 1, 1, true);
             SpawnWithChance(guardianAngel, 1, 1, 1, true);
             SpawnWithChance(baba, 1, 1, 1, true);
+            SpawnWithChance(devin, 1, 1, 1, true);
         }
         else
         {
@@ -1164,7 +1201,6 @@ public class GameControllerScript : MonoBehaviour
             bully.SetActive(true);
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true);
-            baba.SetActive(true);
         }
         audioDevice.PlayOneShot(aud_Hang);
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
@@ -1202,16 +1238,12 @@ public class GameControllerScript : MonoBehaviour
             player.walkSpeed += 4f;
             player.runSpeed += 6f;
         }
-        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic")
+        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic" & mode != "zombie")
         {
             timer.isActivated = true;
             if (this.mode == "speedy")
             {
                 this.timer.timeLeft = 40f;
-            }
-            else if (this.mode == "chaos")
-            {
-                this.timer.timeLeft = 120f;
             }
             else if (mode != "pizza")
             {
@@ -1223,7 +1255,7 @@ public class GameControllerScript : MonoBehaviour
                 this.timer.timeLeft = 155f;
                 pizzaTimeTimer.gameObject.SetActive(true);
                 pizzaTimeTimer.SetBool("up", true);
-                pss.AddPoints(700, 0);
+                pss.AddPoints(500, 0);
             }
         }
         notebookCount.text = "Get to the starting area!"; 
@@ -1307,6 +1339,7 @@ public class GameControllerScript : MonoBehaviour
         ballAgent.Warp(new Vector3(65, 1.65f, 335));
         NavMeshAgent yellowey = yellowFace.GetComponent<NavMeshAgent>();
         yellowey.Warp(new Vector3(-230.5f, 2, 53.5f));
+        baba.GetComponent<NavMeshAgent>().Warp(new Vector3(-245, 2, 165));
     }
 
     public void Lap2EnterPortal()
@@ -1328,7 +1361,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else
         {
-            pss.AddPoints(1205, 1);
+            pss.AddPoints(1750 - (laps * 5), 1);
 
         }
         player.stamina += player.maxStamina * 0.75f;
@@ -1336,7 +1369,8 @@ public class GameControllerScript : MonoBehaviour
         camScript.ShakeNow(new Vector3(0.3f, 0.15f, 0.3f), 15);
         playerCharacter.enabled = false;
         playerCollider.enabled = false;
-        if (laps > 50)
+        timer.timeLeft += 5;
+        if (laps > 30)
         {
             timer.timeLeft += 15;
         }
@@ -1396,11 +1430,11 @@ public class GameControllerScript : MonoBehaviour
         {
             quarter.SetActive(false);
         }
-        if ((notebooks == 4 && (mode == "story" || mode == "pizza" || mode == "free" || mode == "dark")) || (notebooks == 9 && mode == "endless"))
+        if ((notebooks == 4 && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
         {
             bigball.SetActive(true);
         }
-        else if ((notebooks == maxNoteboos) & (mode == "story" || mode == "chaos"))
+        else if ((notebooks == maxNoteboos) & (mode == "story"))
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
@@ -1437,7 +1471,7 @@ public class GameControllerScript : MonoBehaviour
         {
             entrance_2.Lower();
         }
-        else if ((notebooks == maxNoteboos) & (mode == "triple" || mode == "dark" || mode == "free" || mode == "classic"))
+        else if ((notebooks == maxNoteboos) & (mode == "triple"|| mode == "free" || mode == "classic"))
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
@@ -1495,6 +1529,10 @@ public class GameControllerScript : MonoBehaviour
 
     public void CollectItem(int item_ID)
     {
+        if (mode == "zombie")
+        {
+            return;
+        }
         if (item[itemSelected] == 0)
         {
             item[itemSelected] = item_ID;
@@ -1575,11 +1613,10 @@ public class GameControllerScript : MonoBehaviour
 
     private void UseItem()
     {
-        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled)
+        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled || mode == "zombie" || camScript.FuckingDead)
         {
             return;
         }
-        tc.usedItem = true;
         RaycastHit hitInfo7;
         if (item[itemSelected] == 1)
         {
@@ -1593,6 +1630,7 @@ public class GameControllerScript : MonoBehaviour
                 pss.AddPoints(25, 2);
             }
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 2)
         {
@@ -1600,33 +1638,38 @@ public class GameControllerScript : MonoBehaviour
             {
                 hitInfo.collider.gameObject.GetComponent<SwingingDoorScript>().LockDoor(15f);
                 ResetItem();
+                tc.usedItem = true;
+                player.ResetGuilt("bullying", 2);
             }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out hitInfo) && ((hitInfo.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo.transform.position) <= 10f)))
             {
                 hitInfo.collider.gameObject.GetComponent<DoorScript>().LockDoor(65f);
                 ResetItem();
+                tc.usedItem = true;
+                player.ResetGuilt("bullying", 2);
             }
-            player.ResetGuilt("bullying", 2);
         }
         else if (item[itemSelected] == 3)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo2) && ((hitInfo2.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo2.transform.position) <= 10f)))
             {
                 DoorScript component = hitInfo2.collider.gameObject.GetComponent<DoorScript>();
-                if (component.DoorLocked)
+                if (component.DoorLocked && !component.johnDoor)
                 {
                     component.UnlockDoor();
                     audioDevice.PlayOneShot(aud_Unlock);
                     ResetItem();
+                    tc.usedItem = true;
                 }
             }
         }
         else if (item[itemSelected] == 4)
         {
-            Instantiate(bsodaSpray, player.transform.position, cameraTransform.rotation);
+            Instantiate(bsodaSpray, player.transform.position, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y), 0f));
             ResetItem();
             player.ResetGuilt("drink", 1f);
             audioDevice.PlayOneShot(aud_Soda);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 5)
         {
@@ -1637,12 +1680,14 @@ public class GameControllerScript : MonoBehaviour
                     ResetItem();
                     CollectItem(4);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "ZestyMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
                     CollectItem(1);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "SitsMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
@@ -1651,18 +1696,21 @@ public class GameControllerScript : MonoBehaviour
                     hitInfo3.collider.gameObject.GetComponent<Animator>().SetTrigger("byeeeee");
                     audioDevice.PlayOneShot(slideWhistle);
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "RandomMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
                     CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24));
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
                 else if ((hitInfo3.collider.name == "PayPhone") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     hitInfo3.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                     ResetItem();
                     audioDevice.PlayOneShot(aud_Paid);
+                    tc.usedItem = true;
                 }
             }
         }
@@ -1673,6 +1721,7 @@ public class GameControllerScript : MonoBehaviour
                 hitInfo4.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                 player.ResetGuilt("bullying", 5);
                 ResetItem();
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 7)
@@ -1683,6 +1732,7 @@ public class GameControllerScript : MonoBehaviour
             alarm.GetComponent<AlarmClockScript>().alger = algerScript;
             alarm.GetComponent<AlarmClockScript>().yellowFace = yellowFace;
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 8)
         {
@@ -1691,6 +1741,7 @@ public class GameControllerScript : MonoBehaviour
                 hitInfo5.collider.gameObject.GetComponent<DoorScript>().SilenceDoor();
                 ResetItem();
                 audioDevice.PlayOneShot(aud_Spray);
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 9)
@@ -1703,6 +1754,7 @@ public class GameControllerScript : MonoBehaviour
                 ResetItem();
                 player.stamina += player.maxStamina * 0.8f;
                 player.ResetGuilt("bullying", 3);
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 10)
@@ -1710,6 +1762,7 @@ public class GameControllerScript : MonoBehaviour
             player.ActivateBoots();
             StartCoroutine(BootAnimation());
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 11)
         {
@@ -1733,11 +1786,13 @@ public class GameControllerScript : MonoBehaviour
             player.ResetGuilt("bullying", 3);
             ResetItem();
             audioDevice.PlayOneShot(aud_Switch);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 12)
         {
             StartCoroutine(Teleporter());
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 13 && Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out hitInfo7))
         {
@@ -1760,6 +1815,7 @@ public class GameControllerScript : MonoBehaviour
                     camScript.ShakeNow(new Vector3(1f, 0.5f, 1f), 5);
                 }
                 algerKrilledByPlayer = true;
+                tc.usedItem = true;
             }
             else if (hitInfo7.collider.name == "Alger (Alger's Basics)")
             {
@@ -1782,6 +1838,7 @@ public class GameControllerScript : MonoBehaviour
                     mikoScript.speed += 8f;
                     mikoScript.Hear(player.transform.position, 6f);
                 }
+                tc.usedItem = true;
             }
         }
         else if (item[itemSelected] == 14) // 3/3 uses
@@ -1813,6 +1870,7 @@ public class GameControllerScript : MonoBehaviour
             }
             this.ResetItem();
             this.CollectItem(15);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 15) // 2/3 uses
         {
@@ -1841,6 +1899,7 @@ public class GameControllerScript : MonoBehaviour
             }
             this.ResetItem();
             this.CollectItem(16);
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 16) // 1/3 uses :/
         {
@@ -1870,6 +1929,7 @@ public class GameControllerScript : MonoBehaviour
                 }
             }
             this.ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 17) // apple product
         {
@@ -1887,16 +1947,19 @@ public class GameControllerScript : MonoBehaviour
             {
                 ResetItem();
             }
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 18)
         {
-            StartCoroutine(BeginTroll(8));
+            StartCoroutine(BeginTroll(5));
             audioDevice.PlayOneShot(aud_Switch);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 19)
         {
             objectItem[itemSelected].Objection(cameraTransform, audioDevice, objectionSound, camScript, objection, playerTransform, GetComponent<GameControllerScript>());
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 20)
         {
@@ -1904,12 +1967,14 @@ public class GameControllerScript : MonoBehaviour
             BoxCollider chalk = chalkey.GetComponent<BoxCollider>();
             Physics.IgnoreCollision(playerCharacter, chalk);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 21)
         {
             Instantiate(donut, donutShooter.transform.position, playerTransform.rotation);
             audioDevice.PlayOneShot(aud_Switch);
             ResetItem();
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 22)
         {
@@ -1917,17 +1982,22 @@ public class GameControllerScript : MonoBehaviour
             audioDevice.PlayOneShot(crounch);
             tc.esteEaten++;
             FindObjectOfType<SubtitleManager>().Add2DSubtitle("*CR(O)UNCH*", crunch.length, Color.green);
-            player.stamina -= 20;
+            player.stamina -= 5;
             player.health -= 5;
             if (mode == "pizza")
             {
                 pss.AddPoints(-5, 2);
             }
+            tc.usedItem = true;
         }
         else if (item[itemSelected] == 23)
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
-            Physics.Raycast(ray, out RaycastHit hitInfo8);
+            Physics.Raycast(ray, out RaycastHit hitInfo8, 10);
+            if (hitInfo8.transform == null)
+            {
+                return;
+            }
             FuzzyWindowScript windo = hitInfo8.collider.GetComponent<FuzzyWindowScript>();
             if (windo != null)
             {
@@ -1939,6 +2009,7 @@ public class GameControllerScript : MonoBehaviour
                         ResetItem();
                     }
                     audioDevice.PlayOneShot(windowWipe);
+                    tc.usedItem = true;
                 }
             }
         }
@@ -1947,6 +2018,7 @@ public class GameControllerScript : MonoBehaviour
             player.infStamina = true;
             ResetItem();
             player.Invoke(nameof(player.DisableInfStamina), 5);
+            tc.usedItem = true;
         }
     }
 
@@ -2008,6 +2080,7 @@ public class GameControllerScript : MonoBehaviour
         {
             pss.AddPoints(-2760, 5);
         }
+        tc.GetTrophy(19);
     }
 
     private IEnumerator BootAnimation()
@@ -2055,7 +2128,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void ResetItem()
     {
-        if (!TestingItemsMode)
+        if (!TestingItemsMode || mode != "zombie")
         {
             item[itemSelected] = 0;
             itemSlot[itemSelected].texture = itemTextures[0];
@@ -2065,7 +2138,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void LoseItem(int id)
     {
-        if (!TestingItemsMode)
+        if (!TestingItemsMode || mode != "zombie")
         {
             item[id] = 0;
             itemSlot[id].texture = itemTextures[0];
@@ -2136,7 +2209,7 @@ public class GameControllerScript : MonoBehaviour
                 entrance_2.Raise();
             }
         }
-        else if (mode != "alger" && mode != "classic")
+        else if (mode != "alger" && mode != "classic" && mode != "zombie")
         {
             if (exitsReached == 0)
             {
@@ -2144,14 +2217,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 1)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.cyan;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0, 0.1f, 0.1f, 1);
-                }
+                RenderSettings.ambientLight = Color.cyan;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
                 notebookCount.color = Color.white;
                 notebookCount.text = "1/4 Exits";
@@ -2162,14 +2228,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 2)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.blue;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0, 0f, 0.1f, 1);
-                }
+                RenderSettings.ambientLight = Color.blue;
                 RenderSettings.fog = true;
                 RenderSettings.fogColor = Color.blue;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
@@ -2181,14 +2240,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (exitsReached == 3)
             {
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.red;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0.1f, 0, 0, 1);
-                }
+                RenderSettings.ambientLight = Color.red;
                 RenderSettings.fogColor = Color.red;
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
                 notebookCount.text = "3/4 Exits";
@@ -2208,16 +2260,9 @@ public class GameControllerScript : MonoBehaviour
                     player.runSpeed += 6f;
                 }
                 audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                if (mode != "dark")
-                {
-                    RenderSettings.ambientLight = Color.gray;
-                }
-                else
-                {
-                    RenderSettings.ambientLight = new Color(0.05f, 0.05f, 0.05f, 1);
-                }
+                RenderSettings.ambientLight = Color.gray;
                 RenderSettings.fogColor = Color.black;
-                if (mode == "story" || mode == "dark" || (mode == "pizza" && laps == 1))
+                if (mode == "story" || (mode == "pizza" && laps == 1))
                 {
                     baldiScript.baldiWait = 0.625f;
                 }
@@ -2245,30 +2290,6 @@ public class GameControllerScript : MonoBehaviour
                 {
                     pss.AddPoints(25, 0);
                 }
-            }
-        }
-        else if (mode == "alger")
-        {
-            if (exitsReached == 1)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "1/4 Exits";
-            }
-            if (exitsReached == 2)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "2/4 Exits";
-            }
-            if (exitsReached == 3)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "3/4 Exits";
-            }
-            if (exitsReached == 4)
-            {
-                audioDevice.PlayOneShot(aud_Switch, 0.8f);
-                notebookCount.text = "4/5 Exits";
-                entrance_4.Raise();
             }
         }
         else if (mode == "classic")
@@ -2306,6 +2327,30 @@ public class GameControllerScript : MonoBehaviour
                 audioDevice.time = 0.02f;
             }
         }
+        else if (mode == "alger" || mode == "zombie")
+        {
+            if (exitsReached == 1)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "1/4 Exits";
+            }
+            if (exitsReached == 2)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "2/4 Exits";
+            }
+            if (exitsReached == 3)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "3/4 Exits";
+            }
+            if (exitsReached == 4)
+            {
+                audioDevice.PlayOneShot(aud_Switch, 0.8f);
+                notebookCount.text = "4/5 Exits";
+                entrance_4.Raise();
+            }
+        }
     }
 
     public void FoundTreasure()
@@ -2322,6 +2367,13 @@ public class GameControllerScript : MonoBehaviour
         disablePausing = false;
         Time.timeScale = originalTimeScale;
         gamePaused = false;
+    }
+
+    public IEnumerator KillZombies()
+    {
+        killZombiesToWin.SetActive(true);
+        yield return new WaitForSeconds(3);
+        killZombiesToWin.SetActive(false);
     }
 
     public void DespawnCrafters()
@@ -2440,6 +2492,8 @@ public class GameControllerScript : MonoBehaviour
 
     public AudioClip slideWhistle;
 
+    public GameObject killZombiesToWin;
+
     private bool algerKrilledByPlayer;
 
     public TMP_Text lapCount;
@@ -2557,6 +2611,8 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject playtime;
 
+    public GameObject zombie;
+
     public PlaytimeScript playtimeScript;
 
     public GameObject gottaSweep;
@@ -2570,6 +2626,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject baba;
 
     public GameObject algerNull;
+
+    public GameObject devin;
 
     public FirstPrizeScript firstPrizeScript;
 
@@ -2605,6 +2663,9 @@ public class GameControllerScript : MonoBehaviour
 
     public string[] itemNames;
 
+    public GameObject[] stuffNoZombieMode;
+    public GameObject[] stuffYesZombieMode;
+
     public TMP_Text itemText;
 
     public Texture[] itemTextures;
@@ -2636,8 +2697,6 @@ public class GameControllerScript : MonoBehaviour
     private bool learningActive;
 
     private float gameOverDelay;
-
-    private float CHAOStimer;
 
     public AudioSource audioDevice;
 
@@ -2671,6 +2730,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioSource pizzaTimeMusic;
     public AudioSource lap2Music;
     public AudioSource wwnMusic;
+
+    public AudioSource ambient;
 
     public AudioSource crazyAppleMusic;
 
@@ -2735,6 +2796,7 @@ public class GameControllerScript : MonoBehaviour
     public GameObject mikoItemLayout;
     public GameObject algerItemLayout;
     public GameObject stealthyItemLayout;
+    public GameObject zombieItemLayout;
 
     public VideoPlayer[] tutorals;
 

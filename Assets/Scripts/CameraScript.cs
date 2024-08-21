@@ -9,11 +9,8 @@ public class CameraScript : MonoBehaviour
 
 	public PlayerScript ps;
 
-	public float initVelocity;
-
 	public float velocity;
-
-	public float gravity;
+	public float pipeGameHeight;
 
 	public int lookBehind;
 
@@ -85,6 +82,10 @@ public class CameraScript : MonoBehaviour
 				camYoffset = ran2;
 			}
 		}
+		if (ps.pipeGame && !ps.teleporting && !FuckingDead & !cutsceneCam && !ps.gameOver)
+        {
+			PipegameMove();
+        }
 	}
 
 	private void LateUpdate()
@@ -111,9 +112,14 @@ public class CameraScript : MonoBehaviour
 		}
 		if (!ps.teleporting && !FuckingDead & !cutsceneCam)
 		{
-			if (!ps.gameOver & !ps.jumpRope)
+			if (!ps.gameOver & !ps.pipeGame)
 			{
 				base.transform.position = player.transform.position + offset;
+				base.transform.rotation = player.transform.rotation * Quaternion.Euler(verticalLook, lookBehind, 0f);
+			}
+			else if (ps.pipeGame)
+            {
+				base.transform.position = player.transform.position + offset + new Vector3(0, pipeGameHeight, 0);
 				base.transform.rotation = player.transform.rotation * Quaternion.Euler(verticalLook, lookBehind, 0f);
 			}
 			else if (ps.gameOver)
@@ -161,6 +167,27 @@ public class CameraScript : MonoBehaviour
 	public void ShakeNow(Vector3 intensity, int frames)
 	{
 		StartCoroutine(ShakeCoroutine(intensity, frames));
+	}
+
+	void PipegameMove()
+	{
+		if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+		{
+			if (pipeGameHeight == 0)
+			{
+				ps.pipeGameGravity = -6;
+			}
+		}
+		if (ps.pipeGameGravity != 0)
+		{
+			pipeGameHeight += ps.pipeGameGravity * Time.deltaTime;
+			ps.pipeGameGravity += 16 * Time.deltaTime;
+		}
+		if (pipeGameHeight >= 0)
+		{
+			ps.pipeGameGravity = 0;
+			pipeGameHeight = 0;
+		}
 	}
 
 	private IEnumerator ShakeCoroutine(Vector3 intensity, int frames)

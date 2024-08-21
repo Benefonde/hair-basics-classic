@@ -409,10 +409,12 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("speedyUnlocked", 0);
 		PlayerPrefs.SetInt("mikoBeat", 0);
 		PlayerPrefs.SetInt("tripleBeat", 0);
-		PlayerPrefs.SetInt("darkBeat", 0);
+		PlayerPrefs.SetInt("pSecretFound", 0);
 		PlayerPrefs.SetInt("algerBeat", 0);
 		PlayerPrefs.SetInt("speedyBeat", 0);
 		PlayerPrefs.SetInt("HighBooks", 0);
+		PlayerPrefs.SetInt("secretEnd", 0);
+		PlayerPrefs.SetInt("did3872643", 0);
 		PlayerPrefs.SetInt("pizzaBeat", 0);
 		PlayerPrefs.SetInt("pizzaScoreBest", 0);
 		PlayerPrefs.SetString("pizzaRankBest", "D");
@@ -424,8 +426,8 @@ public class OptionsManager : MonoBehaviour
 			PlayerPrefs.DeleteKey("pizzaLapsNew");
 		}
 		PlayerPrefs.SetInt("stealthyBeat", 0);
-		PlayerPrefs.SetInt("chaosBeat", 0);
 		PlayerPrefs.SetInt("classicBeat", 0);
+		PlayerPrefs.SetInt("zombieBeat", 0);
 		PlayerPrefs.SetInt("speedBoost", 0);
 		PlayerPrefs.SetInt("extraStamina", 0);
 		PlayerPrefs.SetInt("slowerKriller", 0);
@@ -450,6 +452,14 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("debtTrophy", 0);
 		PlayerPrefs.SetInt("codeTrophy", 0);
 		PlayerPrefs.SetInt("bfdiTrophy", 0);
+		PlayerPrefs.SetInt("stealthyBlueTrophy", 0);
+		PlayerPrefs.SetInt("secretsTrophy", 0);
+		PlayerPrefs.SetInt("desperateTrophy", 0);
+		PlayerPrefs.SetInt("prankedTrophy", 0);
+		PlayerPrefs.SetInt("woodTrophy", 0);
+		PlayerPrefs.SetInt("modeTrophy", 0);
+		PlayerPrefs.SetInt("looreTrophy", 0);
+		PlayerPrefs.SetInt("doneTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

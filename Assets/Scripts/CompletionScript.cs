@@ -36,6 +36,7 @@ public class CompletionScript : MonoBehaviour
         percent = Mathf.CeilToInt(percent - 0.1f);
         print(percent);
         percentText.text = $"{percent}%";
+        PlayerPrefs.SetInt("completion", Mathf.CeilToInt(percent));
         TheWorstCodeEverSoThisCanActuallyWorkLmao();
     }
 

@@ -6,7 +6,7 @@ public class ShakyCamScript : MonoBehaviour
 {
     private void Start()
     {
-        enableShaky = PlayerPrefs.GetInt("shaky", 1);
+        enableShaky = PlayerPrefs.GetInt("shake", 1);
     }
 
     void Update()

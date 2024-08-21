@@ -19,12 +19,20 @@ public class MikoScript : MonoBehaviour
         {
 			Destroy(gameObject);
         }
+		if (YellowFace && other.transform.name == "Promply Jumply")
+        {
+			gc.craftersTime = false;
+        }
 	}
     private void Start()
 	{
 		if (!YellowFace)
 		{
 			baldiAudio = GetComponent<AudioSource>();
+		}
+        else
+        {
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Wonderful noise*", Mathf.Infinity, Color.yellow, transform);
 		}
 		agent = GetComponent<NavMeshAgent>();
 		this.TargetPlayer();

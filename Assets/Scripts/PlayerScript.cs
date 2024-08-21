@@ -109,6 +109,9 @@ public class PlayerScript : MonoBehaviour
 
 	private float gravity;
 
+	public bool pipeGame;
+	public float pipeGameGravity;
+
 	public bool isJumping;
 
 	public TMP_Text percent;
@@ -162,15 +165,26 @@ public class PlayerScript : MonoBehaviour
 			CheckGround();
 			Jump();
 		}
-		if (crazyAppleTimer < 0 & !FreezePlayer)
+		if (!pipeGame)
 		{
-			PlayerMove();
+			if (crazyAppleTimer < 0 & !FreezePlayer)
+			{
+				PlayerMove();
+				MouseMove();
+			}
+			else if (!FreezePlayer)
+			{
+				NavMeshMove();
+			}
+			StaminaCheck();
+			HealthCheck();
+			GuiltCheck();
+		}
+        else
+        {
+			PipegameMove();
 			MouseMove();
 		}
-        else if (!FreezePlayer)
-        {
-			NavMeshMove();
-        }
 		if (Time.timeScale != 0)
 		{
 			if (Input.GetKeyDown(KeyCode.T) && blockPathCooldown > 0 && blockPathAbility)
@@ -200,10 +214,7 @@ public class PlayerScript : MonoBehaviour
 				blockPathCooldown -= Time.deltaTime;
 			}
 		}
-		StaminaCheck();
 		jammerBar.value = gc.jammersTimer;
-		HealthCheck();
-		GuiltCheck();
 		if (cc.velocity.magnitude > 0f)
 		{
 			gc.LockMouse();
@@ -236,6 +247,17 @@ public class PlayerScript : MonoBehaviour
 		gc.debugMode = false;
 	}
 
+	void PipegameMove()
+    {
+		if (pipeGameGravity != 0)
+		{
+			if (Input.GetKey(KeyCode.LeftShift))
+            {
+				cc.Move(1.8f * runSpeed * transform.forward * Time.deltaTime);
+            }
+		}
+    }
+
 	void PhaseThroughCheck()
 	{
 		Vector3 destinationPosition = transform.position + transform.forward * 10;
@@ -253,7 +275,7 @@ public class PlayerScript : MonoBehaviour
 				if (walkThroughUses == 3)
 				{
 					walkThroughUses = 0;
-					walkThroughCooldown = 7.5f;
+					walkThroughCooldown = 5f;
 				}
 				return;
 			}
@@ -262,8 +284,6 @@ public class PlayerScript : MonoBehaviour
 		gc.audioDevice.PlayOneShot(gc.no);
 		FindObjectOfType<SubtitleManager>().Add2DSubtitle("Not here.", 1, Color.white);
 	}
-
-
 
 	IEnumerator BlockPathAbility()
     {
@@ -323,36 +343,10 @@ public class PlayerScript : MonoBehaviour
 		}
 		if (gc.notebooks == gc.maxNoteboos)
         {
-			return GetNearestExit();
+			crazyAppleTimer = 0;
+			return transform.position;
         }
 		return nearestDwayne.transform.position;
-	}
-
-	Vector3 GetNearestExit()
-	{
-		Transform nearestExit = null;
-		float minDistance = float.MaxValue;
-		Vector3 playerPosition = transform.position;
-
-		foreach (Transform exit in exits)
-		{
-			if (exit.position.y == 5f)
-			{
-				float distance = Vector3.Distance(transform.position, exit.position);
-				if (distance < minDistance)
-				{
-					minDistance = distance;
-					nearestExit = exit;
-				}
-			}
-		}
-
-		if (nearestExit == null)
-        {
-			crazyAppleTimer = 0;
-			return new Vector3(0, 4, 0);
-        }
-		return nearestExit.position;
 	}
 
 	private void Jump()
@@ -368,20 +362,19 @@ public class PlayerScript : MonoBehaviour
 			Vector3 newPosition = transform.position;
 			newPosition.y += verticalVelocity * Time.deltaTime;
 			transform.position = newPosition;
-
-			if (isGrounded)
-			{
-				newPosition.y = 4.0f;
-				transform.position = newPosition;
-				verticalVelocity = 0.0f;
-			}
+		if (isGrounded)
+		{
+			newPosition.y = 4.0f;
+			transform.position = newPosition;
+			verticalVelocity = 0.0f;
+		}
 	}
 
 	private void CheckGround()
 	{
 		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.1f))
+		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.1f) && gravity <= 0)
 		{
 			if (hit.collider.transform.name == "Floor")
 			{
@@ -509,6 +502,10 @@ public class PlayerScript : MonoBehaviour
 		healthBar.value = health / 100 * 100f;
 		if (health < 100)
         {
+			if (health < 99.5f)
+            {
+				gc.tc.playerHurt = true;
+			}
 			health += staminaRate * Time.deltaTime / 40;
 		}
 		if (health < 0.1f)
@@ -541,6 +538,7 @@ public class PlayerScript : MonoBehaviour
 						return;
 					}
 				}
+				gc.tc.usedItem = true;
 			}
 
 			camscript.SetCharacter(other.gameObject);
@@ -676,9 +674,14 @@ public class PlayerScript : MonoBehaviour
 		{
 			sweeping = true;
 		}
-		else if (other.transform.name == "Marty" && !bootsActive && firstPrize.velocity.magnitude > 5f && gc.firstPrizeScript.crazyTime < 0)
+		else if (other.transform.name == "Marty" && !bootsActive && firstPrize.velocity.magnitude > 5f && gc.firstPrizeScript.crazyTime <= 0)
 		{
 			hugging = true;
+		}
+		if (other.transform.name == "Zombie")
+		{
+			health -= 10 * (Time.deltaTime);
+			gonnaBeKriller = other.transform;
 		}
 	}
 
@@ -742,9 +745,9 @@ public class PlayerScript : MonoBehaviour
 		{
 			gc.LoseNotebooks(30, 1);
 		}
-		yield return new WaitForSeconds(wait / 2);
-		walkSpeed += 15;
-		runSpeed += 16;
+		yield return new WaitForSeconds(wait * 1.35f);
+		walkSpeed += 10;
+		runSpeed += 11;
 		camscript.camYdefault += 4;
 		camscript.camYoffset += 4;
     }

@@ -40,7 +40,7 @@ public class BsodaEffectScript : MonoBehaviour
 			otherVelocity = other.GetComponent<Rigidbody>().velocity;
 			failSave = 1f;
 		}
-		else if (other.transform.name == "Gotta Sweep")
+		else if (other.transform.name == "Sonic")
 		{
 			inBsoda = true;
 			otherVelocity = base.transform.forward * agent.speed * 0.1f + other.GetComponent<NavMeshAgent>().velocity;

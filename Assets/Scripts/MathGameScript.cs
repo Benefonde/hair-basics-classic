@@ -338,6 +338,7 @@ public class MathGameScript : MonoBehaviour
 		if (playerAnswer.text == "3872643")
 		{
 			StartCoroutine(CheatText("What have you done!?"));
+			PlayerPrefs.SetInt("did3872643", 1);
 			SceneManager.LoadSceneAsync("EsteSecret");
 		}
 		else if (playerAnswer.text == "84775")

@@ -18,7 +18,8 @@ public class StartButton : MonoBehaviour
 		Dark = 9,
 		Stealthy = 10,
 		Chaos = 11,
-		Classic = 12
+		Classic = 12,
+		Zombie = 13
 	}
 
 	public Mode currentMode;
@@ -72,6 +73,10 @@ public class StartButton : MonoBehaviour
 		else if (currentMode == Mode.Classic)
 		{
 			PlayerPrefs.SetString("CurrentMode", "classic");
+		}
+		else if (currentMode == Mode.Zombie)
+		{
+			PlayerPrefs.SetString("CurrentMode", "zombie");
 		}
 		if (currentMode != Mode.Classic)
 		{

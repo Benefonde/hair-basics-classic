@@ -17,8 +17,14 @@ public class MikoNearExit : MonoBehaviour
 
 	public bool failsafe;
 
+	public GameObject time;
+
 	private void OnTriggerEnter(Collider other)
 	{
+		if (!mikoTransform.gameObject.activeSelf)
+        {
+			return;
+        }
 		string[] a = { "Muahaha!", "I am not letting you beat this mode, because", "uhh...", "I don't like you!" };
 		float[] b = { 1.9f, 3.1959f, 1.997f, 1.51252f };
 		Color[] c = { Color.blue, Color.blue, Color.blue, Color.blue };
@@ -52,14 +58,21 @@ public class MikoNearExit : MonoBehaviour
 		ps.gc.Objection();
 		es.Raise();
 		yield return new WaitForSeconds(5);
+		if (PlayerPrefs.GetInt("timer") == 1)
+		{
+			GameObject a = Instantiate(time);
+			System.TimeSpan timee = System.TimeSpan.FromSeconds(ps.gc.time);
+			a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+			a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+		}
 		if (ps.gc.ModifierOn())
         {
-			ps.camscript.cutsceneCam = false;
-			ps.camscript.character = mikoTransform.gameObject;
-			ps.gameOver = true;
+			SceneManager.LoadScene("Anticheat");
+			ps.gc.tc.GetTrophy(22);
 			yield break;
         }
-		PlayerPrefs.SetInt("mikoBeat", 1);
-		SceneManager.LoadScene("MainMenu");
-    }
+		PlayerPrefs.SetInt("mikoBeat", 1); 
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab. Press T to use!");
+		SceneManager.LoadScene("ChallengeBeat");
+	}
 }

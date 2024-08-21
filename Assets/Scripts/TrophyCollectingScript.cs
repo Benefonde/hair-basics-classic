@@ -30,9 +30,13 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(14);
         }
-        if (SceneManager.GetActiveScene().name == "2763")
+        if (windowCleanAmount == 2763)
         {
             GetTrophy(15);
+        }
+        if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
+        {
+            GetTrophy(21);
         }
     }
 
@@ -62,15 +66,34 @@ public class TrophyCollectingScript : MonoBehaviour
                 GetTrophy(13);
             }
         }
-        if (esteEaten >= 1 && zestyEaten >= 3 && !dontCheckAga[11])
+        if (esteEaten >= 1 && zestyEaten >= 4 && !dontCheckAga[11])
         {
             GetTrophy(11);
+        }
+        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1 && dontCheckAga[5])
+        {
+            GetTrophy(17);
+        }
+        if (PlayerPrefs.GetInt("completion") == 100)
+        {
+            GetTrophy(24);
         }
     }
 
     public void GetTrophy(int i)
     {
-        if (!dontCheckAga[i])
+        if (gc == null)
+        {
+            if (!dontCheckAga[i])
+            {
+                Image a = Instantiate(gotTrophy).GetComponentInChildren<Image>();
+                a.sprite = trophies[i];
+                PlayerPrefs.SetInt(trophyName[i], 1);
+                dontCheckAga[i] = true;
+            }
+            return;
+        }
+        if ((!dontCheckAga[i] && !gc.ModifierOn()) || !dontCheckAga[i] && gc.ModifierOn() && i == 22)
         {
             Image a = Instantiate(gotTrophy).GetComponentInChildren<Image>();
             a.sprite = trophies[i];
@@ -87,13 +110,15 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[16];
+    private bool[] dontCheckAga = new bool[24];
 
     public int zestyEaten;
     public int esteEaten;
 
     public bool babaGotPushed;
     public bool usedItem;
+    public bool playerHurt;
+    public bool onlyWooden;
 
     public int collectedToppings;
     public int collectToppingsNeeded;

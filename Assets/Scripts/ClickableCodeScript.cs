@@ -44,6 +44,7 @@ public class ClickableCodeScript : MonoBehaviour
     public IEnumerator SendToEsteSecret()
     {
         yield return new WaitForSeconds(piecesFound[3].length);
+        PlayerPrefs.SetInt("did3872643", 1);
         SceneManager.LoadScene("EsteSecret");
     }
 
