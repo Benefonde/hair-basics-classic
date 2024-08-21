@@ -16,3 +16,4 @@ MonoBehaviour:
   durability: 512
   currentDurability: 512
   color: {r: 0.9843137, g: 0.54901963, b: 0.63529414, a: 1}
+  trophyKriller: 1

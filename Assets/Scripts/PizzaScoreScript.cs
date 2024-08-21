@@ -100,7 +100,6 @@ public class PizzaScoreScript : MonoBehaviour
         int drank = dRankScore;
         int crank = cRankScore;
         int brank = bRankScore;
-        int arank = aRankScore;
         int srank = sRankScore;
 
         if (score < drank)

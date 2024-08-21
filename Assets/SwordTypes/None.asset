@@ -15,4 +15,5 @@ MonoBehaviour:
   attack: 1
   durability: 1
   currentDurability: 1
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  trophyKriller: 0

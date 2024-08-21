@@ -37,7 +37,7 @@ public class ExitTriggerScript : MonoBehaviour
             {
 				gc.tc.GetTrophy(6);
             }
-			if (!gc.tc.usedItem)
+			if (!gc.tc.usedItem && gc.mode != "zombie")
             {
 				gc.tc.GetTrophy(7);
             }
@@ -159,6 +159,7 @@ public class ExitTriggerScript : MonoBehaviour
                 {
 					StopCoroutine(gc.KillZombies());
 					StartCoroutine(gc.KillZombies());
+					Destroy(FindObjectOfType<TimeScript>());
 					return;
                 }
 				PlayerPrefs.SetInt("zombieBeat", 1);
@@ -166,6 +167,10 @@ public class ExitTriggerScript : MonoBehaviour
                 {
 					gc.tc.GetTrophy(20);
                 }
+				if (!gc.tc.usedItem)
+                {
+					gc.tc.GetTrophy(7);
+				}
 				SceneManager.LoadScene("ChallengeBeat");
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLOWER KRILLERS\" powerup. Use in modifier tab.");
 			}

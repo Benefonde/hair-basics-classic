@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
 	private float gravity;
 
 	public bool pipeGame;
-	private float pipeGameGravity;
+	public float pipeGameGravity;
 
 	public bool isJumping;
 
@@ -357,36 +357,10 @@ public class PlayerScript : MonoBehaviour
 		}
 		if (gc.notebooks == gc.maxNoteboos)
         {
-			return GetNearestExit();
+			crazyAppleTimer = 0;
+			return transform.position;
         }
 		return nearestDwayne.transform.position;
-	}
-
-	Vector3 GetNearestExit()
-	{
-		Transform nearestExit = null;
-		float minDistance = float.MaxValue;
-		Vector3 playerPosition = transform.position;
-
-		foreach (Transform exit in exits)
-		{
-			if (exit.position.y == 5f)
-			{
-				float distance = Vector3.Distance(transform.position, exit.position);
-				if (distance < minDistance)
-				{
-					minDistance = distance;
-					nearestExit = exit;
-				}
-			}
-		}
-
-		if (nearestExit == null)
-        {
-			crazyAppleTimer = 0;
-			return new Vector3(0, 4, 0);
-        }
-		return nearestExit.position;
 	}
 
 	private void Jump()
