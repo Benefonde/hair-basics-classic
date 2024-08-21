@@ -249,27 +249,13 @@ public class PlayerScript : MonoBehaviour
 
 	void PipegameMove()
     {
-		if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-			if (height == 4)
-			{
-				pipeGameGravity = -6;
-			}
-        }
 		if (pipeGameGravity != 0)
 		{
-			height += pipeGameGravity * Time.deltaTime;
-			pipeGameGravity += 13 * Time.deltaTime;
 			if (Input.GetKey(KeyCode.LeftShift))
             {
 				cc.Move(0.8f * runSpeed * Vector3.forward);
             }
 		}
-		if (height >= 4)
-        {
-			pipeGameGravity = 0;
-			height = 4;
-        }
     }
 
 	void PhaseThroughCheck()

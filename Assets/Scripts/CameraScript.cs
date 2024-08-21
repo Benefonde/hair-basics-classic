@@ -82,6 +82,10 @@ public class CameraScript : MonoBehaviour
 				camYoffset = ran2;
 			}
 		}
+		if (ps.pipeGame && !ps.teleporting && !FuckingDead & !cutsceneCam && !ps.gameOver)
+        {
+			PipegameMove();
+        }
 	}
 
 	private void LateUpdate()

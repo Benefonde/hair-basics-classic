@@ -1613,7 +1613,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void UseItem()
     {
-        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled || mode == "zombie")
+        if (item[itemSelected] == 0 || bsc.isActiveAndEnabled || mode == "zombie" || camScript.FuckingDead)
         {
             return;
         }
