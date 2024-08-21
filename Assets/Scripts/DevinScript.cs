@@ -155,9 +155,9 @@ public class DevinScript : MonoBehaviour
 
 	void DuckedPipe()
     {
-		if (gc.player.height <= 3.7f)
+		if (gc.player.camscript.pipeGameHeight <= -0.3f)
 		{
-			gc.player.height = 4;
+			gc.player.camscript.pipeGameHeight = 0;
 			audioDevice.PlayOneShot(numbers[pipeDucks]);
 			pipeDucks++;
 			pipeText.text = pipeDucks.ToString();
@@ -177,7 +177,7 @@ public class DevinScript : MonoBehaviour
     {
 		devinCanvas.SetActive(false);
 		gc.player.pipeGame = false;
-		gc.player.height = 4;
+		gc.player.camscript.pipeGameHeight = 0;
 		pipeCoolDown = 45;
 		agent.speed = 20;
 		if (pipeDucks == 5)

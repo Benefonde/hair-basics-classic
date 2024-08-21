@@ -10,7 +10,7 @@ public class CameraScript : MonoBehaviour
 	public PlayerScript ps;
 
 	public float velocity;
-	float pipeGameHeight;
+	public float pipeGameHeight;
 
 	public int lookBehind;
 
@@ -175,7 +175,7 @@ public class CameraScript : MonoBehaviour
 		{
 			if (pipeGameHeight == 0)
 			{
-				ps.pipeGameGravity = -10;
+				ps.pipeGameGravity = -6;
 			}
 		}
 		if (ps.pipeGameGravity != 0)
@@ -183,10 +183,10 @@ public class CameraScript : MonoBehaviour
 			pipeGameHeight += ps.pipeGameGravity * Time.deltaTime;
 			ps.pipeGameGravity += 13 * Time.deltaTime;
 		}
-		if (pipeGameHeight >= 4)
+		if (pipeGameHeight >= 0)
 		{
 			ps.pipeGameGravity = 0;
-			pipeGameHeight = 4;
+			pipeGameHeight = 0;
 		}
 	}
 

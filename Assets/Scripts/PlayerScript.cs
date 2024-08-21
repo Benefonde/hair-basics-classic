@@ -253,7 +253,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.LeftShift))
             {
-				cc.Move(0.8f * runSpeed * Vector3.forward);
+				cc.Move(1.8f * runSpeed * transform.forward * Time.deltaTime);
             }
 		}
     }

@@ -1994,6 +1994,10 @@ public class GameControllerScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
             Physics.Raycast(ray, out RaycastHit hitInfo8, 10);
+            if (hitInfo8.transform == null)
+            {
+                return;
+            }
             FuzzyWindowScript windo = hitInfo8.collider.GetComponent<FuzzyWindowScript>();
             if (windo != null)
             {
