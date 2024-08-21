@@ -26,7 +26,7 @@ public class PizzaScoreScript : MonoBehaviour
             toppings[2].SetActive(true);
             toppings[3].SetActive(true);
         }
-        else if (score >= bRankScore)
+        else if (score >= aRankScore && score < sRankScore)
         {
             rank = "A";
             toppings[0].SetActive(false);
