@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5999265765179459313}
   - component: {fileID: 5999265765179459315}
   - component: {fileID: 5999265765179459312}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4764,7 +4764,7 @@ GameObject:
   - component: {fileID: 5999265765890995465}
   - component: {fileID: 5999265765890995470}
   - component: {fileID: 4469760021990543243}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Squee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
