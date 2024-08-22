@@ -11,6 +11,14 @@ public class AlgerScript : MonoBehaviour
 		this.timeToMove = this.baseTime; //Sets timeToMove to baseTime
 		this.Wander(); //Start wandering
 	}
+	public void FindSquees()
+	{
+		squee.Clear();
+		for (int i = 0; i < FindObjectsOfType<SqueeScript>().Length; i++)
+		{
+			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
+		}
+	}
 
 	// Token: 0x060009A4 RID: 2468 RVA: 0x000245C4 File Offset: 0x000229C4
 	private void Update()

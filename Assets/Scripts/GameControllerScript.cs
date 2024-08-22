@@ -1743,6 +1743,14 @@ public class GameControllerScript : MonoBehaviour
             {
                 baldiScript.FindSquees();
             }
+            if (mikoScript.isActiveAndEnabled)
+            {
+                mikoScript.FindSquees();
+            }
+            if (algerScript.isActiveAndEnabled)
+            {
+                algerScript.FindSquees();
+            }
             tc.usedItem = true;
         }
         else if (item[itemSelected] == 9)

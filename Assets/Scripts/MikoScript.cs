@@ -25,6 +25,7 @@ public class MikoScript : MonoBehaviour
 			gc.craftersTime = false;
         }
 	}
+
     private void Start()
 	{
 		if (!YellowFace)
@@ -38,6 +39,15 @@ public class MikoScript : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		this.TargetPlayer();
 		head.SetTrigger("notice");
+	}
+
+	public void FindSquees()
+	{
+		squee.Clear();
+		for (int i = 0; i < FindObjectsOfType<SqueeScript>().Length; i++)
+		{
+			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
+		}
 	}
 
 	private void Update()

@@ -88,8 +88,6 @@ public class BaldiScript : MonoBehaviour
 		{
 			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
 		}
-		GameObject.Find("Miko").GetComponent<MikoScript>().squee = squee;
-		FindObjectOfType<AlgerScript>().squee = squee;
 	}
 
 	private void Update()
