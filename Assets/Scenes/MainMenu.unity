@@ -27126,7 +27126,6 @@ MonoBehaviour:
   esteEaten: 0
   babaGotPushed: 0
   usedItem: 0
-  playerHurt: 0
   onlyWooden: 0
   collectedToppings: 0
   collectToppingsNeeded: 5
@@ -52489,7 +52488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Beat St???th? mode with the yellow option without losing any health
+  m_text: Beat Stealthy mode with the yellow option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
