@@ -39,7 +39,7 @@ public class CompletionScript : MonoBehaviour
         PlayerPrefs.SetInt("completion", Mathf.CeilToInt(percent));
         if (percent >= 100)
         {
-            FindObjectOfType<TrophyCollectingScript>().GetTrophy(24);
+            FindObjectOfType<TrophyCollectingScript>().GetTrophy(23);
         }
         TheWorstCodeEverSoThisCanActuallyWorkLmao();
     }
