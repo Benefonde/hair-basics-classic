@@ -29,7 +29,7 @@ public class CompletionAnimationText : MonoBehaviour
         {
             GetComponent<TrophyCollectingScript>().GetTrophy(23);
         }
-        yield return new WaitForSeconds(1 + (percent / 200));
+        yield return new WaitForSeconds(1 + (percent / 35));
         StartRankScreen();
         yield return new WaitForSeconds(5);
         inputToGoBarack = true;
@@ -39,10 +39,18 @@ public class CompletionAnimationText : MonoBehaviour
     {
         while (percent < PlayerPrefs.GetInt("completion", 0))
         {
-            percent++;
-            yield return new WaitForSeconds(0.049f + (percent / 175));
             aud.PlayOneShot(blip);
+            percent++;
             aud.pitch += 0.02f;
+            yield return new WaitForSeconds(0.049f - (percent / 1000));
+            if (percent >= 80 && percent < 95)
+            {
+                yield return new WaitForSeconds(percent / 2000f);
+            }
+            else if (percent >= 95)
+            {
+                yield return new WaitForSeconds(percent / 1000f);
+            }
         }
     }
 
