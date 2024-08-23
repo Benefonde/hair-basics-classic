@@ -1587,7 +1587,6 @@ public class GameControllerScript : MonoBehaviour
                 baseTime *= increaseFactor;
                 currentTime = baseTime;
             }
-            player.height = 4f;
             yield return null;
         }
         playerCharacter.enabled = true;

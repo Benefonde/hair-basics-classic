@@ -40,7 +40,7 @@ public class CompletionAnimationText : MonoBehaviour
         while (percent < PlayerPrefs.GetInt("completion", 0))
         {
             percent++;
-            yield return new WaitForSeconds(0.049f + (percent / 200));
+            yield return new WaitForSeconds(0.049f + (percent / 175));
             aud.PlayOneShot(blip);
             aud.pitch += 0.02f;
         }
