@@ -14290,6 +14290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299602583}
   - component: {fileID: 299602586}
+  - component: {fileID: 299602587}
   - component: {fileID: 299602585}
   - component: {fileID: 299602584}
   m_Layer: 5
@@ -14317,7 +14318,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -125}
-  m_SizeDelta: {x: 350, y: 50}
+  m_SizeDelta: {x: 140, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299602584
 MonoBehaviour:
@@ -14421,6 +14422,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299602582}
   m_CullTransparentMesh: 0
+--- !u!114 &299602587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299602582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.35686275}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 7937572711602008275, guid: 0016b0505a5a8c444a7795ed55d34f86,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &300502667
 GameObject:
   m_ObjectHideFlags: 0
@@ -18121,6 +18151,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0db240649dfda9949ba6a0b1b2999317, type: 3}
   - {fileID: 8300000, guid: 8831d812768e5b341b755f94d84725c8, type: 3}
   - {fileID: 8300000, guid: 30348963f3a8dc949b4db5df26ac3b11, type: 3}
+  - {fileID: 8300000, guid: 8b9173d1531db8242a6539ff4aa1d951, type: 3}
   - {fileID: 8300000, guid: 05f5912d7c2f7684d87905c14ee1681e, type: 3}
   loopText: {fileID: 1070555668}
 --- !u!82 &431317728
@@ -31752,6 +31783,8 @@ MonoBehaviour:
     - m_Text: Crazy Apple Eater
       m_Image: {fileID: 0}
     - m_Text: Meatophobia
+      m_Image: {fileID: 0}
+    - m_Text: Your Performance Was...
       m_Image: {fileID: 0}
     - m_Text: (BONUS) Noteboo Gathering
       m_Image: {fileID: 0}

@@ -15,6 +15,7 @@ public class CompletionAnimationText : MonoBehaviour
         StartCoroutine(PercentGoUp());
         aud.pitch = 1;
         aud2.clip = meatophobia;
+        aud2.loop = true;
         aud2.Play();
         
     }
@@ -28,7 +29,7 @@ public class CompletionAnimationText : MonoBehaviour
         {
             GetComponent<TrophyCollectingScript>().GetTrophy(23);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1 + (percent / 200));
         StartRankScreen();
         yield return new WaitForSeconds(5);
         inputToGoBarack = true;
@@ -60,14 +61,22 @@ public class CompletionAnimationText : MonoBehaviour
         aud2.clip = music;
         aud2.Play();
         rankBg.gameObject.SetActive(true);
-        for (int i = 1; i < percentages.Length; i++)
+        print(percentages.Length);
+        for (int i = 0; i < percentages.Length - 1; i++)
         {
-            if (percent < percentages[i])
+            if (percent < percentages[i + 1])
             {
-                ranks[i - 1].SetActive(true);
-                rankBg.color = bgColors[i - 1];
+                ranks[i].SetActive(true);
+                rankBg.color = bgColors[i];
+                print($"{percentages[i]} percent");
                 break;
             }
+        }
+        if (percent == 100)
+        {
+            ranks[6].SetActive(true);
+            rankBg.color = bgColors[6];
+            print($"{percentages[6]} percent");
         }
     }
 
@@ -84,7 +93,7 @@ public class CompletionAnimationText : MonoBehaviour
     public Image rankBg;
     public Color[] bgColors;
 
-    int[] percentages = { 0, 51, 62, 73, 84, 95, 100 };
+    int[] percentages = { 0, 51, 62, 73, 84, 95, 100, 100 };
 
     bool inputToGoBarack;
 }
