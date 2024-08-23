@@ -137,7 +137,7 @@ public class ZombieScript : MonoBehaviour
 			return;
         }
 		gc.audioDevice.PlayOneShot(stabby);
-		health -= attack;
+		health -= attack - Mathf.RoundToInt(defense / 2.5f);
 		if (ss.swordType.name == "Wooden")
 		{
 			if (Random.Range(1, 3) == 2)
@@ -149,12 +149,12 @@ public class ZombieScript : MonoBehaviour
 			return;
 		}
 		invTime = 0.5f;
-		disableTime = 0.5f;
+		disableTime = 0.55f;
 		if (PlayerPrefs.GetInt("infItem", 0) == 1)
         {
 			return;
         }
-		ss.durability -= Mathf.RoundToInt(defense / 1.5f) + Random.Range(0, 2); // its actually range 0 to 1
+		ss.durability -= 1;
 	}
 
     public bool db;

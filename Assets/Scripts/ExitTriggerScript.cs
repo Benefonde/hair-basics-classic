@@ -140,7 +140,7 @@ public class ExitTriggerScript : MonoBehaviour
 			}
 			else if (gc.mode == "stealthy")
 			{
-				if (PlayerPrefs.GetInt("yellow", 0) == 1 && !gc.tc.playerHurt)
+				if (PlayerPrefs.GetInt("yellow", 0) == 1)
                 {
 					gc.tc.GetTrophy(16);
                 }

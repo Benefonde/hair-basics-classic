@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class MikoScript : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class MikoScript : MonoBehaviour
 			gc.craftersTime = false;
         }
 	}
+
     private void Start()
 	{
 		if (!YellowFace)
@@ -37,6 +39,15 @@ public class MikoScript : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		this.TargetPlayer();
 		head.SetTrigger("notice");
+	}
+
+	public void FindSquees()
+	{
+		squee.Clear();
+		for (int i = 0; i < FindObjectsOfType<SqueeScript>().Length; i++)
+		{
+			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
+		}
 	}
 
 	private void Update()
@@ -185,6 +196,16 @@ public class MikoScript : MonoBehaviour
 
 	public void Hear(Vector3 soundLocation, float priority)
 	{
+		if (squee.Count != 0)
+		{
+			for (int i = 0; i < squee.Count; i++)
+			{
+				if (squee[i].bounds.Contains(soundLocation))
+				{
+					return;
+				}
+			}
+		}
 		if (!antiHearing && priority >= currentPriority)
 		{
 			agent.SetDestination(soundLocation);
@@ -208,6 +229,8 @@ public class MikoScript : MonoBehaviour
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("NOOOOoo...", 2, Color.white, transform);
 		}
 	}
+
+	public List<Collider> squee = new List<Collider>();
 
     public bool db;
 

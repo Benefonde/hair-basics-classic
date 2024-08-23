@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class AlgerScript : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class AlgerScript : MonoBehaviour
 		this.agent = base.GetComponent<NavMeshAgent>(); //Get the Nav Mesh Agent
 		this.timeToMove = this.baseTime; //Sets timeToMove to baseTime
 		this.Wander(); //Start wandering
+	}
+	public void FindSquees()
+	{
+		squee.Clear();
+		for (int i = 0; i < FindObjectsOfType<SqueeScript>().Length; i++)
+		{
+			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
+		}
 	}
 
 	// Token: 0x060009A4 RID: 2468 RVA: 0x000245C4 File Offset: 0x000229C4
@@ -130,6 +139,16 @@ public class AlgerScript : MonoBehaviour
 	// Token: 0x060009AB RID: 2475 RVA: 0x000249A2 File Offset: 0x00022DA2
 	public void Hear(Vector3 soundLocation, float priority)
 	{
+		if (squee.Count != 0)
+		{
+			for (int i = 0; i < squee.Count; i++)
+			{
+				if (squee[i].bounds.Contains(soundLocation))
+				{
+					return;
+				}
+			}
+		}
 		if (!this.antiHearing && priority >= this.currentPriority)//If anti-hearing is not active and the priority is greater then the priority of the current sound
 		{
 			this.agent.SetDestination(soundLocation);//Go to that sound
@@ -170,6 +189,8 @@ public class AlgerScript : MonoBehaviour
 	public float baldiAnger;
 
 	public GameControllerScript gc;
+
+	public List<Collider> squee = new List<Collider>();
 
 	// Token: 0x04000684 RID: 1668
 	public float baldiTempAnger;

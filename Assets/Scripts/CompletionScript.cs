@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 using TMPro;
 
 public class CompletionScript : MonoBehaviour
@@ -37,7 +38,6 @@ public class CompletionScript : MonoBehaviour
         print(percent);
         percentText.text = $"{percent}%";
         PlayerPrefs.SetInt("completion", Mathf.CeilToInt(percent));
-        TheWorstCodeEverSoThisCanActuallyWorkLmao();
     }
 
     public bool DoesBroHaveIt(int a)
@@ -66,60 +66,10 @@ public class CompletionScript : MonoBehaviour
         return false;
     }
 
-    void TheWorstCodeEverSoThisCanActuallyWorkLmao()
+    public void SendToRank()
     {
-        if (percent == 0)
-        {
-            judgementText.text = judgements[0];
-        }
-        else if (percent <= 9)
-        {
-            judgementText.text = judgements[1];
-        }
-        else if (percent <= 18)
-        {
-            judgementText.text = judgements[2];
-        }
-        else if (percent <= 27)
-        {
-            judgementText.text = judgements[3];
-        }
-        else if (percent <= 36)
-        {
-            judgementText.text = judgements[4];
-        }
-        else if (percent <= 46)
-        {
-            judgementText.text = judgements[5];
-        }
-        else if (percent <= 55)
-        {
-            judgementText.text = judgements[6];
-        }
-        else if (percent <= 64)
-        {
-            judgementText.text = judgements[7];
-        }
-        else if (percent <= 73)
-        {
-            judgementText.text = judgements[8];
-        }
-        else if (percent <= 82)
-        {
-            judgementText.text = judgements[9];
-        }
-        else if (percent <= 91)
-        {
-            judgementText.text = judgements[10];
-        }
-        else if (percent <= 99)
-        {
-            judgementText.text = judgements[11];
-        }
-        if (percent == 100)
-        {
-            judgementText.text = judgements[12];
-        }
+        PlayerPrefs.SetInt("completion", Mathf.CeilToInt(percent));
+        SceneManager.LoadScene("Completion");
     }
 
     public float amountToGive;
@@ -129,9 +79,6 @@ public class CompletionScript : MonoBehaviour
     public int[] valueInt;
     public string[] valueString;
 
-    private int[] completionPercentages = { 9, 18, 27, 36, 46, 55, 64, 73, 82, 91, 99 };
-
     public TMP_Text percentText;
-    public TMP_Text judgementText;
     public string[] judgements;
 }

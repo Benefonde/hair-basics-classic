@@ -9,11 +9,9 @@ public class ChecklistScript : MonoBehaviour
     void Start()
     {
         percent.text = $"{cs.percent}%";
-        judgement.text = cs.judgementText.text;
     }
 
     public CompletionScript cs;
 
     public TMP_Text percent;
-    public TMP_Text judgement;
 }

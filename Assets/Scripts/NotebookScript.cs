@@ -26,7 +26,7 @@ public class NotebookScript : MonoBehaviour
 				this.up = true;
 				base.transform.Find("DwayneMap").gameObject.SetActive(true);
 				this.audioDevice.Play();
-				FindObjectOfType<SubtitleManager>().Add3DSubtitle("A notebook respawned!", audioDevice.clip.length, Color.green, transform);
+				FindObjectOfType<SubtitleManager>().Add3DSubtitle("A Dwayne respawned!", audioDevice.clip.length, Color.green, transform);
 			}
 		}
 		RaycastHit raycastHit;

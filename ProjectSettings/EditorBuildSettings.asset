@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Anticheat.unity
     guid: ab949367689ba474f9f460b4a10c2fcc
+  - enabled: 1
+    path: Assets/Scenes/Completion.unity
+    guid: c12ff654540ea344da92901bb65fcaa1
   m_configObjects: {}
