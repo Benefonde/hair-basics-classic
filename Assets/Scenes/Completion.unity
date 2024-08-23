@@ -2487,12 +2487,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have become one of the best hairs of all time on this modification of
-    this modification of a game jam game. I congrattate you for your amazing achievement.
-    You deserve the trophy called "I'm Done" because you are, in fact, done completing
-    this game. You may either move on to the next thing in your life, or play around
-    in this game with modifiers or challenges in mind. Do you know about the timer
-    setting in the options menu? Try to get some good fast runs. Go wild. Have fun.
+  m_text: You have become one of the best hairs of all time of this modification of
+    a game jam game. I congrattate you for your amazing achievement. You deserve the
+    trophy called "I'm Done" because you are, in fact, done completing this game.
+    You may either move on to the next thing in your life, or play around in this
+    game with modifiers or challenges in mind. Do you know about the timer setting
+    in the options menu? Try to get some good fast runs. Go wild. Have fun.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f310d8572488cb2459d0b6719db3b78c, type: 2}
   m_sharedMaterial: {fileID: -2027177978835863373, guid: f310d8572488cb2459d0b6719db3b78c,
@@ -2754,6 +2754,7 @@ GameObject:
   - component: {fileID: 1258594835}
   - component: {fileID: 1258594837}
   - component: {fileID: 1258594836}
+  - component: {fileID: 1258594838}
   m_Layer: 5
   m_Name: BobFinalJudgement
   m_TagString: Untagged
@@ -2899,6 +2900,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258594834}
   m_CullTransparentMesh: 0
+--- !u!114 &1258594838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258594834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13729c109c07ab47bd44c981aecaee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 215, z: 0}
+  intensity: {x: 2, y: 0, z: 0}
+  uiElement: 1
 --- !u!1 &1259208564
 GameObject:
   m_ObjectHideFlags: 0
