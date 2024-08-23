@@ -40,7 +40,7 @@ public class CompletionAnimationText : MonoBehaviour
         while (percent < PlayerPrefs.GetInt("completion", 0))
         {
             percent++;
-            yield return new WaitForSeconds(0.049f);
+            yield return new WaitForSeconds(0.049f + (percent / 200));
             aud.PlayOneShot(blip);
             aud.pitch += 0.02f;
         }
@@ -93,7 +93,7 @@ public class CompletionAnimationText : MonoBehaviour
     public Image rankBg;
     public Color[] bgColors;
 
-    int[] percentages = { 0, 51, 62, 73, 84, 95, 100, 100 };
+    int[] percentages = { 0, 50, 61, 72, 83, 94, 100, 100 };
 
     bool inputToGoBarack;
 }
