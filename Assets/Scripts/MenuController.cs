@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour
 	{
 		uc.firstButton = firstButton;
 		uc.SwitchMenu();
-		if (transform.name == "MainMenu" || (System.DateTime.Now.Month == 10 && System.DateTime.Now.Day >= 20) || (System.DateTime.Now.Month == 11 && System.DateTime.Now.Day <= 7))
+		if (transform.name == "MainMenu" && (System.DateTime.Now.Month == 10 && System.DateTime.Now.Day >= 20) || (System.DateTime.Now.Month == 11 && System.DateTime.Now.Day <= 7))
 		{
 			EVILtitle.SetActive(true);
 			gameObject.SetActive(false);
