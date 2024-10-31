@@ -25,11 +25,12 @@ public class CompletionAnimationText : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(PercentActuallyGoUp());
         yield return new WaitForSeconds(5);
+        yield return new WaitUntil(() => percent >= PlayerPrefs.GetInt("completion", 0));
         if (percent == 100)
         {
             GetComponent<TrophyCollectingScript>().GetTrophy(23);
         }
-        yield return new WaitForSeconds(1 + (percent / 35));
+        yield return new WaitForSeconds(1.5f);
         StartRankScreen();
         yield return new WaitForSeconds(5);
         inputToGoBarack = true;
