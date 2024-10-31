@@ -9,10 +9,17 @@ public class MenuController : MonoBehaviour
 
 	public GameObject back;
 
-	public void OnEnable()
+	public GameObject EVILtitle;
+
+    public void OnEnable()
 	{
 		uc.firstButton = firstButton;
 		uc.SwitchMenu();
+		if (transform.name == "MainMenu" || (System.DateTime.Now.Month == 10 && System.DateTime.Now.Day >= 20) || (System.DateTime.Now.Month == 11 && System.DateTime.Now.Day <= 7))
+		{
+			EVILtitle.SetActive(true);
+			gameObject.SetActive(false);
+		}
 	}
 
 	private void Update()
