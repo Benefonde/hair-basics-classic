@@ -21,6 +21,7 @@ public class OptionsManager : MonoBehaviour
 	public Toggle minimap;
 	public Toggle itemHeld;
 	public Toggle timer;
+	public Toggle vsync;
 	public TMP_InputField fps;
 	public TMP_InputField scaleFactor;
 
@@ -119,6 +120,7 @@ public class OptionsManager : MonoBehaviour
 			}
 			this.fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
 			this.scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
+			
 			this.SetFps();
 		}
 		PlayerPrefs.SetInt("OptionsSet", 1);
@@ -237,6 +239,16 @@ public class OptionsManager : MonoBehaviour
 		else
 		{
 			PlayerPrefs.SetInt("timer", 0);
+		}
+		if (this.vsync.isOn)
+		{
+			QualitySettings.vSyncCount = 1;
+			PlayerPrefs.SetInt("vsync", 1);
+		}
+		else
+		{
+			QualitySettings.vSyncCount = 0;
+			PlayerPrefs.SetInt("vsync", 0);
 		}
 		this.CheckInput();
 		
@@ -372,6 +384,11 @@ public class OptionsManager : MonoBehaviour
 
 	public void SetFps()
 	{
+		if (vsync.isOn)
+        {
+			QualitySettings.vSyncCount = 1;
+			return;
+        }
 		QualitySettings.vSyncCount = 0;
 		if (!int.TryParse(this.fps.text, out int num) || num < 5)
 		{
@@ -479,6 +496,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("MouseSensetivity", 2);
 		PlayerPrefs.DeleteKey("math");
 		PlayerPrefs.DeleteKey("OptionsSet");
+		PlayerPrefs.DeleteKey("vsync");
 		PlayerPrefs.SetInt("fps", 60);
 		PlayerPrefs.SetFloat("volume", 0.5f);
 		PlayerPrefs.DeleteKey("scaleMode");
