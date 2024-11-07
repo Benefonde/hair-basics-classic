@@ -3017,6 +3017,7 @@ MonoBehaviour:
   firstButton: {fileID: 635}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3870,6 +3871,7 @@ MonoBehaviour:
   firstButton: {fileID: 643}
   back: {fileID: 186}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3958,6 +3960,7 @@ MonoBehaviour:
   firstButton: {fileID: 0}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4229,6 +4232,7 @@ MonoBehaviour:
   firstButton: {fileID: 824}
   back: {fileID: 186}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4540,6 +4544,7 @@ MonoBehaviour:
   firstButton: {fileID: 639}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4678,6 +4683,7 @@ MonoBehaviour:
   firstButton: {fileID: 0}
   back: {fileID: 0}
   EVILtitle: {fileID: 1077391337}
+  EVILapplicable: 1
 --- !u!114 &823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17971,6 +17977,7 @@ MonoBehaviour:
   firstButton: {fileID: 720351896}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &428281975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22358,6 +22365,7 @@ MonoBehaviour:
   firstButton: {fileID: 726966898}
   back: {fileID: 186}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &603851647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23958,6 +23966,7 @@ MonoBehaviour:
   firstButton: {fileID: 0}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &674737202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37164,6 +37173,7 @@ MonoBehaviour:
   firstButton: {fileID: 0}
   back: {fileID: 0}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &1077391341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48025,6 +48035,7 @@ MonoBehaviour:
   firstButton: {fileID: 726966898}
   back: {fileID: 186}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &1496124508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56967,6 +56978,7 @@ MonoBehaviour:
   firstButton: {fileID: 960844769}
   back: {fileID: 114}
   EVILtitle: {fileID: 0}
+  EVILapplicable: 0
 --- !u!114 &1836882260
 MonoBehaviour:
   m_ObjectHideFlags: 0

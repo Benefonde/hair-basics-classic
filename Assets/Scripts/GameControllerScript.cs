@@ -2876,7 +2876,7 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject pharohsWall;
 
-    public RawImage sandUI;
+    public Image sandUI;
 
     public VideoClip panic;
 

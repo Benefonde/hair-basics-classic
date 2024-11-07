@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0.27450982}
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0.1882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2611,8 +2611,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You have become one of the best hairs of all time of this modification of
-    a game jam game. I congrattate you for your amazing achievement. You deserve the
-    trophy called "I'm Done" because you are, in fact, done completing this game.
+    a game jam game. I congrattate you for your amazing achievement. You know, there
+    was a trophy in this game before called "I'm Done", rewarded for getting 100%
+    but that trophy felt like the trophy inventor for this game was losing ideas.
     You may either move on to the next thing in your life, or play around in this
     game with modifiers or challenges in mind. Do you know about the timer setting
     in the options menu? Try to get some good fast runs. Go wild. Have fun.
@@ -2661,7 +2662,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 164
+  m_firstOverflowCharacterIndex: 171
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2685,12 +2686,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1075776456}
-    characterCount: 482
+    characterCount: 539
     spriteCount: 0
-    spaceCount: 90
-    wordCount: 91
+    spaceCount: 102
+    wordCount: 103
     linkCount: 0
-    lineCount: 6
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
