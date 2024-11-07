@@ -29,8 +29,13 @@ public class PickupScript : MonoBehaviour
                         {
                             if (gc.mode != "endless")
                             {
-                                raycastHit.transform.gameObject.SetActive(false);
                                 this.gc.CollectItem(ID);
+                                if (transform.name == "Pickup_Slab" && ((ID == 25 && gc.item[gc.itemSelected] == 25) || (ID != 25)))
+                                {
+                                    gc.CurseOfRa();
+                                    return;
+                                }
+                                raycastHit.transform.gameObject.SetActive(false);
                             }
                             else
                             {
@@ -47,7 +52,14 @@ public class PickupScript : MonoBehaviour
                             Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
                             GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
                             gc.CollectItem(orgID);
-
+                            if (transform.name == "Pickup_Slab" && ID == 25)
+                            {
+                                gc.UndoCurse();
+                            }
+                            else if (transform.name == "Pickup_Slab" && ID != 25)
+                            {
+                                gc.CurseOfRa();
+                            }
                         }
                     }
                     else

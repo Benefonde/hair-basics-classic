@@ -329,6 +329,12 @@ public class GameControllerScript : MonoBehaviour
         {
             baldiScript.baldiSpeedScale = 0.5875f;
         }
+        if (mode == "story" && Random.Range(0, 2) == 1)
+        {
+            pharohsWall.transform.rotation = Quaternion.Euler(new Vector3(91, 0, 180.5f));
+            pharohsWall.GetComponent<MeshCollider>().enabled = false;
+            print("CURSE OF RA ISRAEL");
+        }
         schoolMusic.Play();
     }
 
@@ -727,6 +733,10 @@ public class GameControllerScript : MonoBehaviour
             finaleMode = true;
             entrance_4.Raise();
         }
+        if (curseOfRaActive)
+        {
+            CurseOfRaLogic();
+        }
         if (!learningActive)
         {
             if (Input.GetButtonDown("Pause") && !disablePausing)
@@ -840,6 +850,10 @@ public class GameControllerScript : MonoBehaviour
         {
             notebooks = maxNoteboos;
             UpdateNotebookCount();
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            player.walkSpeed *= 2;
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -1700,7 +1714,7 @@ public class GameControllerScript : MonoBehaviour
                 else if ((hitInfo3.collider.name == "RandomMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
-                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24));
+                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24, 25));
                     audioDevice.PlayOneShot(aud_Paid);
                     tc.usedItem = true;
                 }
@@ -2194,6 +2208,45 @@ public class GameControllerScript : MonoBehaviour
         heldItem.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
     }
 
+    public void CurseOfRa()
+    {
+        if (curseOfRaActive)
+        {
+            return;
+        }
+        curseOfRaMusic.Play();
+        curseOfRaActive = true;
+    }
+
+    void CurseOfRaLogic()
+    {
+        curseOfRaTime += Time.deltaTime / 25;
+        if (Random.Range(1, Mathf.RoundToInt(900 / curseOfRaTime)) <= 4)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
+            Physics.Raycast(ray, out RaycastHit hitInfo, 20);
+            if (hitInfo.transform != null)
+            {
+                if (hitInfo.transform.name == "Wall" || hitInfo.transform.name == "Ceiling" || hitInfo.transform.name == "Floor")
+                {
+                    hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = sand;
+                }
+            }
+            sandUI.color = new Color(1, 1, 1, sandUI.color.a + Random.Range(0.0f, 0.02f));
+            if (sandUI.color.a >= 0.75f)
+            {
+                player.health = 0;
+            }
+        }
+    }
+
+    public void UndoCurse()
+    {
+        curseOfRaMusic.Stop();
+        curseOfRaActive = false;
+        sandUI.color = new Color(1, 1, 1, 0);
+    }
+
     public void ExitReached()
     {
         player.stamina += player.maxStamina * 0.5f;
@@ -2400,17 +2453,17 @@ public class GameControllerScript : MonoBehaviour
         {
             if (mode == "classic")
             {
-                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24));
+                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25));
             }
             else
             {
                 if (principal.activeSelf)
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25));
                 }
                 else
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25));
                 }
             }
         }
@@ -2689,6 +2742,7 @@ public class GameControllerScript : MonoBehaviour
     public TMP_Text notebookCount;
 
     public Material wall;
+    public Material sand;
 
     public GameObject pauseMenu;
 
@@ -2705,6 +2759,9 @@ public class GameControllerScript : MonoBehaviour
     public bool gamePaused;
 
     private bool learningActive;
+
+    bool curseOfRaActive;
+    float curseOfRaTime;
 
     private float gameOverDelay;
 
@@ -2740,6 +2797,7 @@ public class GameControllerScript : MonoBehaviour
     public AudioSource pizzaTimeMusic;
     public AudioSource lap2Music;
     public AudioSource wwnMusic;
+    public AudioSource curseOfRaMusic;
 
     public AudioSource ambient;
 
@@ -2809,6 +2867,10 @@ public class GameControllerScript : MonoBehaviour
     public GameObject zombieItemLayout;
 
     public VideoPlayer[] tutorals;
+
+    public GameObject pharohsWall;
+
+    public RawImage sandUI;
 
     public VideoClip panic;
 
