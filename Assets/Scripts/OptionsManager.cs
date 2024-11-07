@@ -476,7 +476,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("woodTrophy", 0);
 		PlayerPrefs.SetInt("modeTrophy", 0);
 		PlayerPrefs.SetInt("looreTrophy", 0);
-		PlayerPrefs.SetInt("doneTrophy", 0);
+		PlayerPrefs.SetInt("raTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

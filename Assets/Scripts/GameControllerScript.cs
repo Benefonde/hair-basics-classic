@@ -575,21 +575,21 @@ public class GameControllerScript : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 60; i++)
             {
                 GameObject bro = Instantiate(principal);
                 bro.transform.name = "Alger (Hair Basics)";
             }
             windowedWall.material = broken;
             yellowFace.SetActive(true);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 4; i++)
             {
                 GameObject bro = Instantiate(yellowFace);
                 bro.transform.name = "Yellow Face";
             }
             MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
             yellowey.baldiAudio.PlayOneShot(brokenWindow);
-            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
+            camScript.ShakeNow(new Vector3(1f, 1f, 1f), 10);
         }
     }
 
@@ -733,9 +733,9 @@ public class GameControllerScript : MonoBehaviour
             finaleMode = true;
             entrance_4.Raise();
         }
-        if (curseOfRaActive)
+        if (curseOfRaActive && !gamePaused)
         {
-            CurseOfRaLogic();
+            StartCoroutine(CurseOfRaLogic());
         }
         if (!learningActive)
         {
@@ -853,7 +853,7 @@ public class GameControllerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            player.walkSpeed *= 2;
+            player.walkSpeed *= 1.25f;
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -2218,10 +2218,11 @@ public class GameControllerScript : MonoBehaviour
         curseOfRaActive = true;
     }
 
-    void CurseOfRaLogic()
+    IEnumerator CurseOfRaLogic()
     {
-        curseOfRaTime += Time.deltaTime / 25;
-        if (Random.Range(1, Mathf.RoundToInt(900 / curseOfRaTime)) <= 4)
+        yield return new WaitForSeconds(Time.deltaTime);
+        curseOfRaTime += Time.deltaTime / 2;
+        if (Random.Range(1, Mathf.RoundToInt(900 / curseOfRaTime)) <= 2)
         {
             Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
             Physics.Raycast(ray, out RaycastHit hitInfo, 20);
@@ -2232,8 +2233,9 @@ public class GameControllerScript : MonoBehaviour
                     hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = sand;
                 }
             }
-            sandUI.color = new Color(1, 1, 1, sandUI.color.a + Random.Range(0.0f, 0.02f));
-            if (sandUI.color.a >= 0.75f)
+            sandUI.color = new Color(1, 1, 1, sandUI.color.a + Random.Range(0.0f, 0.01f));
+            camScript.ShakeNow(new Vector3(0.1f, 0.1f, 0.1f), 2);
+            if (sandUI.color.a >= 0.85f)
             {
                 player.health = 0;
             }
@@ -2244,6 +2246,10 @@ public class GameControllerScript : MonoBehaviour
     {
         curseOfRaMusic.Stop();
         curseOfRaActive = false;
+        if (sandUI.color.a >= 0.625)
+        {
+            tc.GetTrophy(23);
+        }
         sandUI.color = new Color(1, 1, 1, 0);
     }
 

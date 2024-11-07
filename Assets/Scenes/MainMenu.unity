@@ -10661,7 +10661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37589ff95908aa4aa4f375ae22f9829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountToGive: 2.7027028
+  amountToGive: 2.631579
   percent: 0
   requirements:
   - mikoUnlocked
@@ -10701,7 +10701,8 @@ MonoBehaviour:
   - modeTrophy
   - woodTrophy
   - looreTrophy
-  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a00001100000007000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  - raTrophy
+  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a0000110000000700000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   valueString: []
   percentText: {fileID: 24955880}
   judgements:
@@ -14562,7 +14563,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 299602587}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -23158,7 +23159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429ab73ab2247ef49932323823df4946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trophy: doneTrophy
+  trophy: raTrophy
 --- !u!114 &637255331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23177,7 +23178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b632640e46a26349afd40507a13e5b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de9d0b3ae8f36b3459ca59d8827af7f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29063,7 +29064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Get 100% completion
+  m_text: Return the slab right before dying from The Pharoh's Curse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -29109,7 +29110,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 22
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -29133,12 +29134,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 808225257}
-    characterCount: 19
+    characterCount: 58
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 9
+    wordCount: 10
     linkCount: 0
-    lineCount: 1
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -29731,9 +29732,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 817316097}
-    characterCount: 16
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 4
+    spaceCount: 3
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -53045,7 +53046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 119.5, y: 30}
+  m_AnchoredPosition: {x: 115, y: 30}
   m_SizeDelta: {x: 250, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715155317
@@ -53066,7 +53067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Am I Done?
+  m_text: That Was A Chore...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -53103,7 +53104,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 257
-  m_characterSpacing: -1
+  m_characterSpacing: -0.25
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -53136,10 +53137,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1715155317}
-    characterCount: 10
+    characterCount: 19
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -54365,12 +54366,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1746836735}
-    characterCount: 67
+    characterCount: 41
     spriteCount: 0
-    spaceCount: 10
-    wordCount: 12
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -55312,7 +55313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I'm Done
+  m_text: Not Even Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -55382,10 +55383,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1779247675}
-    characterCount: 8
+    characterCount: 14
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1

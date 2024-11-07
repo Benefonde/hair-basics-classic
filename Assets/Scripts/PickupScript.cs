@@ -15,6 +15,10 @@ public class PickupScript : MonoBehaviour
 
     private void Update()
     {
+        if (gc.mode != "story" && transform.name == "Pickup_Slab")
+        {
+            gameObject.SetActive(false);
+        }
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -32,7 +36,27 @@ public class PickupScript : MonoBehaviour
                                 this.gc.CollectItem(ID);
                                 if (transform.name == "Pickup_Slab" && ((ID == 25 && gc.item[gc.itemSelected] == 25) || (ID != 25)))
                                 {
-                                    gc.CurseOfRa();
+                                    gc.CurseOfRa(); 
+                                    Texture itemTexture = gc.itemTextures[0];
+                                    Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
+                                    GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
+                                    return;
+                                }
+                                if (transform.name == "Pickup_Slab" && GetComponentInChildren<SpriteRenderer>().sprite.texture == gc.itemTextures[0] && gc.item[gc.itemSelected] != 0)
+                                {
+                                    ID = gc.item[gc.itemSelected];
+                                    Texture itemTexture = gc.itemTextures[ID];
+                                    Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
+                                    GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
+                                    gc.ResetItem();
+                                    if (ID == 25)
+                                    {
+                                        gc.UndoCurse();
+                                    }
+                                    else
+                                    {
+                                        gc.CurseOfRa();
+                                    }
                                     return;
                                 }
                                 raycastHit.transform.gameObject.SetActive(false);
