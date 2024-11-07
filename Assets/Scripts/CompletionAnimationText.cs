@@ -33,6 +33,10 @@ public class CompletionAnimationText : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         StartRankScreen();
         yield return new WaitForSeconds(5);
+        if (ranks[7].activeSelf)
+        {
+            aud2.PlayOneShot(JUDGEMENT);
+        }
         inputToGoBarack = true;
     }
 
@@ -66,11 +70,23 @@ public class CompletionAnimationText : MonoBehaviour
 
     void StartRankScreen()
     {
+        int arrEnGee = Random.Range(1, 21);
         aud2.Stop();
         aud2.clip = music;
+        if (arrEnGee == 2) // inflates ""Ego"" to see if it twerks
+        {
+            aud2.clip = musicIfItWasGood;
+        }
         aud2.Play();
         rankBg.gameObject.SetActive(true);
         print(percentages.Length);
+        if (arrEnGee == 2)
+        {
+            ranks[7].SetActive(true);
+            rankBg.color = bgColors[7];
+            print($"{percentages[7]} percent");
+            return;
+        }
         for (int i = 0; i < percentages.Length - 1; i++)
         {
             if (percent < percentages[i + 1])
@@ -98,6 +114,8 @@ public class CompletionAnimationText : MonoBehaviour
     public AudioClip blip;
     public AudioClip meatophobia;
     public AudioClip music;
+    public AudioClip musicIfItWasGood;
+    public AudioClip JUDGEMENT;
     public GameObject[] ranks;
     public Image rankBg;
     public Color[] bgColors;
