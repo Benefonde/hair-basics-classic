@@ -27,13 +27,11 @@ public class SlabPickup : MonoBehaviour
                     }
                     if (this.gc.item[0] == 0 | this.gc.item[1] == 0 | this.gc.item[2] == 0 || this.gc.item[3] == 0)
                     {
-                        if (((gc.item[gc.itemSelected] == 25) || (ID != 25)) || GetComponentInChildren<SpriteRenderer>().sprite.texture == gc.itemTextures[25])
+                        if (ID != 0)
                         {
-                            if (ID == 25)
-                            {
-                                gc.CurseOfRa();
-                            }
-                            gc.CollectItem(25);
+                            gc.CollectItem(ID);
+                            ID = 0;
+                            gc.CurseOfRa();
                             Texture itemTexture = gc.itemTextures[0];
                             Sprite itemSprite = Sprite.Create((Texture2D)itemTexture, new Rect(0, 0, itemTexture.width, itemTexture.height), new Vector2(0.5f, 0.5f), itemTexture.width * 1.55f);
                             GetComponentInChildren<SpriteRenderer>().sprite = itemSprite;
