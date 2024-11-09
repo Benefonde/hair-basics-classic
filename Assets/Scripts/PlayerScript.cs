@@ -253,7 +253,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.LeftShift))
             {
-				cc.Move(1.8f * runSpeed * transform.forward * Time.deltaTime);
+				cc.Move(1.8f * runSpeed * Time.deltaTime * transform.forward);
             }
 		}
     }
@@ -493,7 +493,7 @@ public class PlayerScript : MonoBehaviour
 	public void DisableInfStamina()
     {
 		infStamina = false;
-		stamina = maxStamina * 0.25f;
+		stamina = maxStamina * 0f;
     }
 
 	private void HealthCheck()
@@ -703,6 +703,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			guilt = amount;
 			guiltType = type;
+			gc.tc.ruleBreak = false;
 		}
 	}
 

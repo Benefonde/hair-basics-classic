@@ -114,6 +114,7 @@ public class TrophyCollectingScript : MonoBehaviour
     public bool babaGotPushed;
     public bool usedItem;
     public bool onlyWooden;
+    public bool ruleBreak;
 
     public int collectedToppings;
     public int collectToppingsNeeded;

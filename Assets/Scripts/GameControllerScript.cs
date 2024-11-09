@@ -829,7 +829,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (gameOverDelay < 0)
             {
-                if (camScript.character.name == "Alger")
+                if (camScript.character.name == "Alger" || PlayerPrefs.GetInt("duplicatedBalls", 0) == 1)
                 {
                     Application.Quit();
                     return;
@@ -2042,6 +2042,40 @@ public class GameControllerScript : MonoBehaviour
             player.Invoke(nameof(player.DisableInfStamina), 5);
             tc.usedItem = true;
         }
+        else if (item[itemSelected] == 26)
+        {
+            PlayerPrefs.SetInt("duplicatedBalls", 1);
+            PlayerPrefs.Save();
+            item[0] = 26;
+            item[1] = 26;
+            item[2] = 26;
+            item[3] = 26;
+            UpdateAllItem();
+            for (int i = 0; i < 30; i++)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
+                Physics.Raycast(ray, out RaycastHit hitInfo, 20);
+                if (hitInfo.transform != null && hitInfo.transform.GetComponent<MeshRenderer>() != null)
+                {
+                    hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = ballWall;
+                }
+            }
+            for (int i = 0; i < notebookPickups.Length; i++)
+            {
+                notebookPickups[i].SetActive(false);
+            }
+            pizzaTimeMusic.Play();
+            pizzaTimeMusic.time = Random.Range(20, 180);
+            baldi.SetActive(true);
+            baldiScript.timeToMove = 0;
+            baldiScript.baldiWait = 0;
+            baldiScript.TargetPlayer();
+            principal.SetActive(true);
+            principalScript.angry = true;
+            principalScript.summon = true;
+            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 276300);
+            tc.usedItem = true;
+        }
     }
 
     public void Objection()
@@ -2095,8 +2129,8 @@ public class GameControllerScript : MonoBehaviour
         player.runSpeed += 12;
         yield return new WaitForSeconds(time);
         audioDevice.PlayOneShot(boowomp);
-        player.runSpeed -= 20;
-        player.walkSpeed -= 20;
+        player.runSpeed = 6;
+        player.walkSpeed = 4;
         StartCoroutine(playerScript.ActivateTrolling(5));
         if (mode == "pizza")
         {
@@ -2226,12 +2260,9 @@ public class GameControllerScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
             Physics.Raycast(ray, out RaycastHit hitInfo, 20);
-            if (hitInfo.transform != null)
+            if (hitInfo.transform != null && hitInfo.transform.GetComponent<MeshRenderer>() != null)
             {
-                if (hitInfo.transform.name == "Wall" || hitInfo.transform.name == "Ceiling" || hitInfo.transform.name == "Floor")
-                {
-                    hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = sand;
-                }
+                hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = sand;
             }
             sandUI.color = new Color(1, 1, 1, sandUI.color.a + Random.Range(0.0f, 0.01f));
             camScript.ShakeNow(new Vector3(0.1f, 0.1f, 0.1f), 2);
@@ -2459,17 +2490,17 @@ public class GameControllerScript : MonoBehaviour
         {
             if (mode == "classic")
             {
-                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25));
+                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26));
             }
             else
             {
                 if (principal.activeSelf)
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25, 26));
                 }
                 else
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25, 26));
                 }
             }
         }
@@ -2749,6 +2780,7 @@ public class GameControllerScript : MonoBehaviour
 
     public Material wall;
     public Material sand;
+    public Material ballWall;
 
     public GameObject pauseMenu;
 
