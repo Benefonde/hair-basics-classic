@@ -5077,7 +5077,7 @@ GameObject:
   - component: {fileID: 1762729}
   - component: {fileID: 1762728}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Scissors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11668,7 +11668,7 @@ GameObject:
   - component: {fileID: 169058317}
   - component: {fileID: 169058316}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Tape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14521,7 +14521,7 @@ GameObject:
   - component: {fileID: 291127743}
   - component: {fileID: 291127742}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: CSODA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24533,7 +24533,7 @@ GameObject:
   - component: {fileID: 619133086}
   - component: {fileID: 619133085}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Lock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30512,7 +30512,7 @@ GameObject:
   - component: {fileID: 795144014}
   - component: {fileID: 795144013}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33999,7 +33999,7 @@ GameObject:
   - component: {fileID: 890628122}
   - component: {fileID: 890628121}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37089,7 +37089,7 @@ GameObject:
   - component: {fileID: 976706934}
   - component: {fileID: 976706933}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Donut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38901,7 +38901,7 @@ GameObject:
   - component: {fileID: 1033396546}
   - component: {fileID: 1033396545}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Lays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41013,7 +41013,7 @@ GameObject:
   - component: {fileID: 1101217024}
   - component: {fileID: 1101217023}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41163,7 +41163,7 @@ GameObject:
   - component: {fileID: 1106900730}
   - component: {fileID: 1106900729}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Keys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41723,7 +41723,7 @@ GameObject:
   - component: {fileID: 1121500488}
   - component: {fileID: 1121500487}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Quarter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46759,7 +46759,7 @@ GameObject:
   - component: {fileID: 1263010534}
   - component: {fileID: 1263010533}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Soap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47971,7 +47971,7 @@ GameObject:
   - component: {fileID: 1314360116}
   - component: {fileID: 1314360115}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: WD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49314,7 +49314,7 @@ GameObject:
   - component: {fileID: 1360824255}
   - component: {fileID: 1360824254}
   m_Layer: 5
-  m_Name: Green
+  m_Name: Whistle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49571,7 +49571,7 @@ GameObject:
   - component: {fileID: 1379746330}
   - component: {fileID: 1379746329}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Freezatron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50024,7 +50024,7 @@ GameObject:
   - component: {fileID: 1403864285}
   - component: {fileID: 1403864284}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Objection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51831,7 +51831,7 @@ GameObject:
   - component: {fileID: 1457476495}
   - component: {fileID: 1457476494}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55916,7 +55916,7 @@ GameObject:
   - component: {fileID: 1602899011}
   - component: {fileID: 1602899010}
   m_Layer: 5
-  m_Name: Yellow
+  m_Name: Sits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64869,7 +64869,7 @@ GameObject:
   - component: {fileID: 1913317932}
   - component: {fileID: 1913317931}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72206,7 +72206,7 @@ GameObject:
   - component: {fileID: 2145120417}
   - component: {fileID: 2145120416}
   m_Layer: 5
-  m_Name: Blue
+  m_Name: Chalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
