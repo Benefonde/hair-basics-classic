@@ -13,6 +13,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
         {
             benefondCreates.SetActive(false);
             aud = GetComponent<AudioSource>();
+            aud.Play();
             t = GetComponent<TMP_Text>();
         }
     }
@@ -56,6 +57,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     {
         PlayerPrefs.SetInt("duplicatedBalls", 0);
         StartCoroutine(Sorry("Glad to hear it.", false));
+        FindObjectOfType<TrophyCollectingScript>().GetTrophy(26);
     }
 
     public void No()

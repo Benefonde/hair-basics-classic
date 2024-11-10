@@ -119,7 +119,7 @@ public class CompletionAnimationText : MonoBehaviour
     public Image rankBg;
     public Color[] bgColors;
 
-    int[] percentages = { 0, 50, 61, 72, 83, 94, 100, 2763 };
+    int[] percentages = { 0, 20, 41, 52, 73, 90, 100, 2763 };
 
     bool inputToGoBarack;
 }

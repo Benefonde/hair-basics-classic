@@ -477,6 +477,10 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("modeTrophy", 0);
 		PlayerPrefs.SetInt("looreTrophy", 0);
 		PlayerPrefs.SetInt("raTrophy", 0);
+		PlayerPrefs.SetInt("ruleTrophy", 0);
+		PlayerPrefs.SetInt("problemTrophy", 0);
+		PlayerPrefs.SetInt("sorryTrophy", 0);
+		PlayerPrefs.SetInt("congratulationsTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

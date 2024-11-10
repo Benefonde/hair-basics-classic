@@ -855,6 +855,20 @@ public class GameControllerScript : MonoBehaviour
         {
             player.walkSpeed *= 1.25f;
         }
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            playerTransform.gameObject.SetActive(false);
+            time = 0;
+            camScript.follow = baldi.transform;
+            camScript.FuckingDead = true;
+            if (!spoopMode)
+            {
+                ActivateSpoopMode();
+            }
+            baldiScript.baldiWait = 1;
+            baldiScript.timeToMove = 2;
+            bigball.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             pCounter++;
@@ -892,7 +906,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    public void SomeoneTied(GameObject gObject)
+    public void SomeoneTied(GameObject gObject, bool yellow = true)
     {
         print(gObject.transform.name);
         audioDevice.PlayOneShot(aud_chrisAAAAA);
@@ -906,7 +920,7 @@ public class GameControllerScript : MonoBehaviour
         {
             return;
         }
-        ded.PickRandomText(gObject.transform.name);
+        ded.PickRandomText(gObject.transform.name, yellow);
     }
 
     public void UpdateAllItem()

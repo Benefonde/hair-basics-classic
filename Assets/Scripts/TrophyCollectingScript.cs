@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class TrophyCollectingScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         gc = GetComponent<GameControllerScript>();
@@ -106,7 +105,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[24];
+    private bool[] dontCheckAga = new bool[28];
 
     public int zestyEaten;
     public int esteEaten;

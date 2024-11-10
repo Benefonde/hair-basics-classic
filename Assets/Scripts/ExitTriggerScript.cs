@@ -11,7 +11,7 @@ public class ExitTriggerScript : MonoBehaviour
 	{
 		if ((gc.notebooks >= gc.maxNoteboos) & (other.tag == "Player"))
 		{
-			if (PlayerPrefs.GetInt("timer") == 1)
+			if (PlayerPrefs.GetInt("timer") == 1 && gc.mode != "alger" && FindObjectsOfType<ZombieScript>().Length == 0)
 			{
 				GameObject a = Instantiate(time);
 				System.TimeSpan timee = System.TimeSpan.FromSeconds(gc.time);
@@ -48,6 +48,10 @@ public class ExitTriggerScript : MonoBehaviour
 			if (gc.pss.rank == "D" && gc.mode == "pizza")
             {
 				gc.tc.GetTrophy(10);
+            }
+			if (!gc.tc.ruleBreak)
+            {
+				gc.tc.GetTrophy(24);
             }
 			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "story")
 			{
@@ -159,7 +163,6 @@ public class ExitTriggerScript : MonoBehaviour
                 {
 					StopCoroutine(gc.KillZombies());
 					StartCoroutine(gc.KillZombies());
-					Destroy(FindObjectOfType<TimeScript>());
 					return;
                 }
 				PlayerPrefs.SetInt("zombieBeat", 1);

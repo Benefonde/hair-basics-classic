@@ -603,11 +603,19 @@ public class PlayerScript : MonoBehaviour
 		if (other.transform.name == "Panino" || other.transform.name == "Miko" || other.transform.name == "Alger (Alger's Basics")
 		{
 			health = 0.1f;
+			if (babaWinThing.activeSelf)
+            {
+				gc.tc.GetTrophy(27);
+            }
 		}
 	}
 
 	public void Die()
-    {
+	{
+		if (babaWinThing.activeSelf)
+		{
+			gc.tc.GetTrophy(27);
+		}
 		gc.SomeoneTied(gameObject);
 		gc.playerCollider.enabled = false;
 		playerRotation.eulerAngles = new Vector3(-35, playerRotation.y, playerRotation.z);
@@ -703,7 +711,10 @@ public class PlayerScript : MonoBehaviour
 		{
 			guilt = amount;
 			guiltType = type;
-			gc.tc.ruleBreak = false;
+			if (guilt != 0)
+			{
+				gc.tc.ruleBreak = true;
+			}
 		}
 	}
 

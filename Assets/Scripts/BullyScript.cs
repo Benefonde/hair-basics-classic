@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BullyScript : MonoBehaviour
 {
@@ -109,6 +110,11 @@ public class BullyScript : MonoBehaviour
 			gc.player.health -= 10;
 			return;
 		}
+		if (gc.item[gc.itemSelected] == 26)
+		{
+			gc.UndoCurse();
+			gc.tc.GetTrophy(25);
+		}
 		gc.LoseItem(gc.itemSelected);
 		Reset();
 	}
@@ -128,5 +134,12 @@ public class BullyScript : MonoBehaviour
 		active = false;
 		activeTime = 0f;
 		spoken = false;
+	}
+
+	IEnumerator CantWaitToDye()
+    {
+		yield return new WaitForSeconds(50);
+		gc.SomeoneTied(gameObject, false);
+		gameObject.SetActive(false);
 	}
 }
