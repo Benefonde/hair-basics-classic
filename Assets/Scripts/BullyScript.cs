@@ -103,17 +103,18 @@ public class BullyScript : MonoBehaviour
 			}
 			return;
 		}
+		if (gc.item[gc.itemSelected] == 25)
+		{
+			gc.UndoCurse();
+			gc.tc.GetTrophy(25);
+			StartCoroutine(CantWaitToDye());
+		}
 		if (gc.item[gc.itemSelected] == 0)
 		{
 			audioDevice.PlayOneShot(aud_Denied);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("grrRRRR", aud_Denied.length, new Color(0.62f, 0.32f, 0.17f, 1f), transform);
 			gc.player.health -= 10;
 			return;
-		}
-		if (gc.item[gc.itemSelected] == 26)
-		{
-			gc.UndoCurse();
-			gc.tc.GetTrophy(25);
 		}
 		gc.LoseItem(gc.itemSelected);
 		Reset();
