@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class DicordManager : MonoBehaviour
 {
+    public string state;
+    public string details;
+    public string largeImage;
+    public string largeText;
+    public string partyId;
+    public int size;
+    public int maxSize;
+
     Discord.Discord discord;
+
     void Start()
     {
-        //if (SceneManager.GetActiveScene().name == "School" || SceneManager.GetActiveScene().name == "thing")
-        //{
-         //   gc = FindObjectOfType<GameControllerScript>();
-        //}
         discord = new Discord.Discord(1305985185585827892, (ulong)Discord.CreateFlags.NoRequireDiscord);
         ChangeActivity();
     }
@@ -26,27 +31,27 @@ public class DicordManager : MonoBehaviour
         var activityManager = discord.GetActivityManager();
         var activity = new Discord.Activity
         {
-            State = "Collecting Dwaynes",
-            Details = "Playing a mode",
+            State = state,
+            Details = details,
             Assets =
             {
-                LargeImage = "panino",
-                LargeText = "Story Mode"
+                LargeImage = largeImage,
+                LargeText = largeText
             },
             Party =
             {
-                Id = "shutupnerd",
+                Id = partyId,
                 Size =
                 {
-                    CurrentSize = 7,
-                    MaxSize = 17
+                    CurrentSize = size,
+                    MaxSize = maxSize
                 }
             }
         };
 
         activityManager.UpdateActivity(activity, (res) =>
         {
-
+            
         });
     }
 
@@ -54,6 +59,4 @@ public class DicordManager : MonoBehaviour
     {
         discord.RunCallbacks();
     }
-
-    GameControllerScript gc;
 }

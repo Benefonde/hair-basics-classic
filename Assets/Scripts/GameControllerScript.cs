@@ -80,6 +80,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void Start()
     {
+        dm = FindObjectOfType<DicordManager>();
         tc = GetComponent<TrophyCollectingScript>();
         if (PlayerPrefs.GetInt("heldItemShow", 0) == 0)
         {
@@ -264,6 +265,10 @@ public class GameControllerScript : MonoBehaviour
         }
         LockMouse();
         UpdateNotebookCount();
+        if (dm != null)
+        {
+            dm.largeText = $"{mode.ToUpper()} Mode";
+        }
         itemSelected = 0;
         gameOverDelay = 0.5f;
     }
@@ -979,6 +984,11 @@ public class GameControllerScript : MonoBehaviour
 
     public void UpdateNotebookCount()
     {
+        if (dm != null)
+        {
+            dm.size = notebooks;
+            dm.maxSize = maxNoteboos;
+        }
         int highScoreBotenook = PlayerPrefs.GetInt("HighBooks");
         if (mode != "endless")
         {
@@ -2971,4 +2981,6 @@ public class GameControllerScript : MonoBehaviour
     public GameObject lap2Portal;
 
     public AudioClip congratulatation;
+
+    DicordManager dm;
 }
