@@ -51,7 +51,7 @@ public class DicordManager : MonoBehaviour
 
         activityManager.UpdateActivity(activity, (res) =>
         {
-            
+            // 
         });
     }
 
