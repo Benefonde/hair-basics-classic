@@ -45,6 +45,7 @@ public class NotebookScript : MonoBehaviour
 				gameObject.GetComponent<MathGameScript>().playerPosition = this.player.position;
 				gameObject.GetComponent<MathGameScript>().playerScript = this.psc;
 				gameObject.GetComponent<MathGameScript>().mikoScript = this.msc;
+				gameObject.GetComponent<MathGameScript>().algerScript = this.asc;
 				return;
 			}
 			base.transform.position = new Vector3(base.transform.position.x, -20f, base.transform.position.z);
@@ -66,6 +67,8 @@ public class NotebookScript : MonoBehaviour
 	public BaldiScript bsc;
 
 	public MikoScript msc;
+
+	public AlgerScript asc;
 
 	public float respawnTime;
 
