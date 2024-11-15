@@ -272,13 +272,25 @@ public class ModesManager : MonoBehaviour
         {
             zombieStar.sprite = notbeat;
         }
+        if (PlayerPrefs.GetInt("zombieBeat") == 1 || TestMode)
+        {
+            paninoSprite.color = Color.white;
+            paninoMode.interactable = true;
+            paninoText.text = "Panino Mode                                                             You play as Panino in this mode! Try to catch Bob before he escapes the ball!";
+        }
+        else
+        {
+            paninoSprite.color = Color.black;
+            paninoMode.interactable = false;
+            paninoText.text = "You need to beat Zombie Mode to unlock this mode!";
+        }
     }
 
     void ModifierCheck()
     {
         int speede = PlayerPrefs.GetInt("speedyBeat", 0);
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
-        int krille = PlayerPrefs.GetInt("zombieBeat", 0);
+        int krille = PlayerPrefs.GetInt("paninoBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
         int block = PlayerPrefs.GetInt("mikoBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);
@@ -390,6 +402,10 @@ public class ModesManager : MonoBehaviour
     public TMP_Text stealthyText;
     public Image stealthySprite;
 
+    public Button paninoMode;
+    public TMP_Text paninoText;
+    public Image paninoSprite;
+
     public Image storyStar;
     public Image speedyStar;
     public Image mikoStar;
@@ -399,6 +415,7 @@ public class ModesManager : MonoBehaviour
     public Image stealthyStar;
     public Image classicStar;
     public Image zombieStar;
+    public Image paninoStar;
 
     public Sprite beat;
     public Sprite notbeat;

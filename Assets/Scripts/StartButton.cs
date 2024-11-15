@@ -19,65 +19,16 @@ public class StartButton : MonoBehaviour
 		Stealthy = 10,
 		Chaos = 11,
 		Classic = 12,
-		Zombie = 13
+		Zombie = 13,
+		Panino = 14
 	}
 
 	public Mode currentMode;
 
 	public void StartGame()
 	{
-		if (currentMode == Mode.Story)
-		{
-			PlayerPrefs.SetString("CurrentMode", "story");
-		}
-		else if (currentMode == Mode.Endless)
-		{
-			PlayerPrefs.SetString("CurrentMode", "endless");
-		}
-        else if (currentMode == Mode.Speedy)
-        {
-			PlayerPrefs.SetString("CurrentMode", "speedy");
-		}
-		else if (currentMode == Mode.Miko)
-		{
-			PlayerPrefs.SetString("CurrentMode", "miko");
-		}
-		else if (currentMode == Mode.Triple)
-		{
-			PlayerPrefs.SetString("CurrentMode", "triple");
-		}
-		else if (currentMode == Mode.Pizza)
-		{
-			PlayerPrefs.SetString("CurrentMode", "pizza");
-		}
-		else if (currentMode == Mode.FreeRun)
-		{
-			PlayerPrefs.SetString("CurrentMode", "free");
-		}
-		else if (currentMode == Mode.Alger)
-		{
-			PlayerPrefs.SetString("CurrentMode", "alger");
-		}
-		else if (currentMode == Mode.Dark)
-		{
-			PlayerPrefs.SetString("CurrentMode", "dark");
-		}
-		else if (currentMode == Mode.Stealthy)
-		{
-			PlayerPrefs.SetString("CurrentMode", "stealthy");
-		}
-		else if (currentMode == Mode.Chaos)
-		{
-			PlayerPrefs.SetString("CurrentMode", "chaos");
-		}
-		else if (currentMode == Mode.Classic)
-		{
-			PlayerPrefs.SetString("CurrentMode", "classic");
-		}
-		else if (currentMode == Mode.Zombie)
-		{
-			PlayerPrefs.SetString("CurrentMode", "zombie");
-		}
+		PlayerPrefs.SetString("CurrentMode", currentMode.ToString().ToLower());
+		print(currentMode.ToString().ToLower());
 		if (currentMode != Mode.Classic)
 		{
 			SceneManager.LoadSceneAsync("School");
