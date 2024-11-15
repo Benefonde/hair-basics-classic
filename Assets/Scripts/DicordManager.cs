@@ -15,7 +15,9 @@ public class DicordManager : MonoBehaviour
 
     Discord.Discord discord;
 
-    void Start()
+    // considering if i should actually do this or not
+
+    /*void Start()
     {
         discord = new Discord.Discord(1305985185585827892, (ulong)Discord.CreateFlags.NoRequireDiscord);
         ChangeActivity();
@@ -58,5 +60,5 @@ public class DicordManager : MonoBehaviour
     void Update()
     {
         discord.RunCallbacks();
-    }
+    }*/
 }

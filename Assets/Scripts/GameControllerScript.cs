@@ -204,6 +204,10 @@ public class GameControllerScript : MonoBehaviour
             {
                 ZombieStart();
             }
+            else if (mode == "panino")
+            {
+                PaninoStart();
+            }
 
             if (extraStamina == 1)
             {
@@ -534,6 +538,30 @@ public class GameControllerScript : MonoBehaviour
         ambient.Play();
     }
 
+    void PaninoStart()
+    {
+        locationText.text = "Panino's Ball, " + hour + ":" + minute;
+        locationText.color = Color.yellow;
+        normalItemLayout.SetActive(true);
+        craftersTime = true;
+        if (hour < 7 || hour > 18)
+        {
+            RenderSettings.skybox = night;
+            RenderSettings.ambientLight = new Color(0.8f, 0.8f, 0.8f);
+            schoolMusic.clip = darkSchool;
+        }
+        else
+        {
+            RenderSettings.skybox = day;
+        }
+        if (slowerKriller == 1)
+        {
+            baldiScript.baldiSpeedScale = 0.5875f;
+            locationText.text = "Lol!!!!!!!";
+        }
+        schoolMusic.Play();
+    }
+
     public bool ModifierOn()
     {
         if (speedBoost == 1)
@@ -544,7 +572,7 @@ public class GameControllerScript : MonoBehaviour
         {
             return true;
         }
-        if (slowerKriller == 1)
+        if (slowerKriller == 1 && mode != "panino")
         {
             return true;
         }

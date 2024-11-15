@@ -1242,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1270,9 @@ MonoBehaviour:
   stealthyMode: {fileID: 1322110685}
   stealthyText: {fileID: 991261273}
   stealthySprite: {fileID: 1322110686}
+  paninoMode: {fileID: 1856819482}
+  paninoText: {fileID: 1179601052}
+  paninoSprite: {fileID: 1856819483}
   storyStar: {fileID: 1651963424}
   speedyStar: {fileID: 500162772}
   mikoStar: {fileID: 105779193}
@@ -1279,6 +1282,7 @@ MonoBehaviour:
   stealthyStar: {fileID: 705429360}
   classicStar: {fileID: 1005697985}
   zombieStar: {fileID: 1434205031}
+  paninoStar: {fileID: 635076219}
   beat: {fileID: 21300000, guid: 718d515452a5a0f46935674fd4c15389, type: 3}
   notbeat: {fileID: 21300000, guid: 51864e68c72878c498a6d822ddce6ee8, type: 3}
   speedBoost: {fileID: 1977848114}
@@ -1523,7 +1527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &187
 GameObject:
   m_ObjectHideFlags: 0
@@ -9148,7 +9152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108438396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11234,7 +11238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37589ff95908aa4aa4f375ae22f9829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountToGive: 2.631579
+  amountToGive: 2.4390244
   percent: 0
   requirements:
   - mikoUnlocked
@@ -11251,7 +11255,7 @@ MonoBehaviour:
   - HighBooks
   - pizzaLapsBest
   - zombieBeat
-  - blueTrophy
+  - paninoBeat
   - cleanTrophy
   - congrattationTrophy
   - giveAllTrophy
@@ -11277,7 +11281,8 @@ MonoBehaviour:
   - raTrophy
   - ruleTrophy
   - sorryTrophy
-  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a00001100000007000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  - blueTrophy
+  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a0000110000000700000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   valueString: []
   percentText: {fileID: 24955880}
   judgements:
@@ -41053,7 +41058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1029492800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45862,7 +45867,7 @@ GameObject:
   - component: {fileID: 1179601053}
   - component: {fileID: 1179601052}
   m_Layer: 5
-  m_Name: SpeedyText
+  m_Name: PaninoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56159,7 +56164,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Unlock most of these by beating Challenges!
 
-    The last one is unlocked by beating the hardest mode!'
+    One needs to be unlocked by finding a secret!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -56229,10 +56234,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1521081425}
-    characterCount: 97
+    characterCount: 89
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 17
+    spaceCount: 15
+    wordCount: 16
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -58225,7 +58230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1565741716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77770,7 +77775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &5955138881078821514
 MonoBehaviour:
   m_ObjectHideFlags: 0

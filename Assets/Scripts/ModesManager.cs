@@ -193,10 +193,18 @@ public class ModesManager : MonoBehaviour
             if (randomnessHorray == 5)
             {
                 tripleText.text = "You need to beat mi?e????n Mode to unlock this mode!";
+                if (PlayerPrefs.GetInt("mikoUnlocked") == 1)
+                {
+                    stealthyText.text = "You need to beat mikeroqjn Mode to unlock this mode!";
+                }
             }
             else
             {
                 tripleText.text = "You need to beat M??? Mode to unlock this mode!";
+                if (PlayerPrefs.GetInt("mikoUnlocked") == 1)
+                {
+                    stealthyText.text = "You need to beat Miko Mode to unlock this mode!";
+                }
             }
         }
 
@@ -247,6 +255,10 @@ public class ModesManager : MonoBehaviour
             stealthySprite.color = Color.black;
             stealthyMode.interactable = false;
             stealthyText.text = "You need to beat Sp???? Mode to unlock this mode!";
+            if (PlayerPrefs.GetInt("storyBeat") == 1)
+            {
+                stealthyText.text = "You need to beat Speedy Mode to unlock this mode!";
+            }
         }
         if (PlayerPrefs.GetInt("stealthyBeat") == 1)
         {
@@ -276,7 +288,7 @@ public class ModesManager : MonoBehaviour
         {
             paninoSprite.color = Color.white;
             paninoMode.interactable = true;
-            paninoText.text = "Panino Mode                                                             You play as Panino in this mode! Try to catch Bob before he escapes the ball!";
+            paninoText.text = "Panino Mode                                                             Uh oh, Panino and Bob are alone in the ball, but luckily you're playing as Panino now! Try to catch Bob before he escapes the ball!";
         }
         else
         {
