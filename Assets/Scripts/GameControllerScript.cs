@@ -1878,11 +1878,11 @@ public class GameControllerScript : MonoBehaviour
                 if (baldiScript.isActiveAndEnabled)
                 {
                     baldiScript.GetAngry(4.525f);
-                    baldiScript.baldiWait -= 1.115f;
+                    baldiScript.baldiWait -= 0.215f;
                     baldiScript.Hear(player.transform.position, 6f);
                 }
-                player.walkSpeed += 2f;
-                player.runSpeed += 4f;
+                player.walkSpeed += 6f;
+                player.runSpeed += 6f;
                 ResetItem();
                 if (PlayerPrefs.GetInt("shake", 1) == 1)
                 {

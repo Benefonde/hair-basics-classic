@@ -147,7 +147,7 @@ public class ModesManager : MonoBehaviour
         {
             mikoSprite.color = Color.black;
             mikoMode.interactable = false;
-            mikoText.text = "You need to find a secret to unlock this mode!";
+            mikoText.text = "You need to find a secret code to unlock this mode!";
         }
         if (PlayerPrefs.GetInt("speedyUnlocked") == 1 || TestMode)
         {
@@ -255,7 +255,7 @@ public class ModesManager : MonoBehaviour
             stealthySprite.color = Color.black;
             stealthyMode.interactable = false;
             stealthyText.text = "You need to beat Sp???? Mode to unlock this mode!";
-            if (PlayerPrefs.GetInt("storyBeat") == 1)
+            if (PlayerPrefs.GetInt("speedyUnlocked") == 1)
             {
                 stealthyText.text = "You need to beat Speedy Mode to unlock this mode!";
             }
