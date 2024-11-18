@@ -20,27 +20,13 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	private float moveFrames;
 
-	private float currentPriority;
-
 	public bool antiHearing;
 
 	public float antiHearingTime;
 
-	public float vibrationDistance;
-
-	public float angerRate;
-
-	public float angerRateRate;
-
-	public float angerFrequency;
-
 	public float timeToAnger;
 
 	public Transform player;
-
-	public Transform wanderTarget;
-
-	public AILocationSelectorScript wanderer;
 
 	private AudioSource baldiAudio;
 
@@ -50,24 +36,17 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public Animator baldiAnimator;
 
-	public float coolDown;
-
-	private Vector3 previous;
-
-	private NavMeshAgent agent;
-
 	float speedRn;
 
 	public GameControllerScript gc;
 
-	public bool resetAnger;
-
 	List<Collider> squee = new List<Collider>();
+
+	public GameObject soundThing;
 
 	private void Start()
 	{
 		baldiAudio = GetComponent<AudioSource>();
-		agent = GetComponent<NavMeshAgent>();
 		timeToMove = baseTime;
 	}
 
@@ -86,13 +65,9 @@ public class BaldiPlayerScript : MonoBehaviour
 		{
 			timeToMove -= 1f * Time.deltaTime;
 		}
-		else
+		else if (Input.GetKeyDown(KeyCode.W))
 		{
 			Move();
-		}
-		if (coolDown > 0f)
-		{
-			coolDown -= 1f * Time.deltaTime;
 		}
 		if (baldiTempAnger > 0f)
 		{
@@ -164,6 +139,15 @@ public class BaldiPlayerScript : MonoBehaviour
 				}
 			}
 		}
+		if (FindObjectsOfType<SoundScript>().Length > 0)
+        {
+			for (int i = 0; i > FindObjectsOfType<SoundScript>().Length; i++)
+            {
+				Destroy(FindObjectsOfType<SoundScript>()[i].gameObject);
+            }
+        }
+		GameObject a = Instantiate(soundThing, soundLocation, Quaternion.identity);
+		a.GetComponent<SoundScript>().panino = transform;
 	}
 
 	public void ActivateAntiHearing(float t)

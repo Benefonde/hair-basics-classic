@@ -11,7 +11,7 @@
 
         Pass
         {
-            ZTest LEqual
+            ZTest Always
             ZWrite Off
             Cull Off
             Blend SrcAlpha OneMinusSrcAlpha
