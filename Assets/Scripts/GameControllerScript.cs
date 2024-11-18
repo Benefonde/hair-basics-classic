@@ -540,15 +540,32 @@ public class GameControllerScript : MonoBehaviour
 
     void PaninoStart()
     {
-        locationText.text = "Panino's Ball, " + hour + ":" + minute;
+        notebooks = 2;
+        spoopMode = true;
+        entrance_0.Lower();
+        entrance_1.Lower();
+        entrance_2.Lower();
+        entrance_3.Lower();
+        baldiTutor.SetActive(false);
+        playerTransform.gameObject.SetActive(false);
+        baldiPlayer.SetActive(true);
+        evilPlayerTransform.gameObject.SetActive(true);
+        audioDevice.PlayOneShot(aud_Hang);
+        FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
+        camScript.player = baldiPlayer;
+        cameraTransform.position = new Vector3(5, 7, 10);
+        for (int i = 0; i > playerHudStuff.Length; i++)
+        {
+            playerHudStuff[i].SetActive(false);
+        }
+        paninisSlider.SetActive(true);
+        locationText.text = $"Panino's Ball, {hour}:{minute}\nPress W to move!";
         locationText.color = Color.yellow;
-        normalItemLayout.SetActive(true);
         craftersTime = true;
         if (hour < 7 || hour > 18)
         {
             RenderSettings.skybox = night;
             RenderSettings.ambientLight = new Color(0.8f, 0.8f, 0.8f);
-            schoolMusic.clip = darkSchool;
         }
         else
         {
@@ -559,7 +576,6 @@ public class GameControllerScript : MonoBehaviour
             baldiScript.baldiSpeedScale = 0.5875f;
             locationText.text = "Lol!!!!!!!";
         }
-        schoolMusic.Play();
     }
 
     public bool ModifierOn()
@@ -1257,7 +1273,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(baba, 1, 1, 1, true);
             SpawnWithChance(devin, 1, 1, 1, true);
         }
-        else
+        else if (mode != "panino")
         {
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
@@ -1267,6 +1283,13 @@ public class GameControllerScript : MonoBehaviour
             bully.SetActive(true);
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true);
+        }
+        else
+        {
+            baldiTutor.SetActive(false);
+            playerTransform.gameObject.SetActive(false);
+            baldiPlayer.SetActive(true);
+            evilPlayerTransform.gameObject.SetActive(true);
         }
         audioDevice.PlayOneShot(aud_Hang);
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
@@ -2673,6 +2696,10 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject jammerMeter;
 
+    public GameObject[] playerHudStuff;
+
+    public GameObject paninisSlider;
+
     public GameObject hud;
 
     public AgentTest at;
@@ -2706,6 +2733,8 @@ public class GameControllerScript : MonoBehaviour
     public PlayerScript player;
 
     public Transform playerTransform;
+
+    public Transform evilPlayerTransform;
 
     public Transform cameraTransform;
 
@@ -2742,6 +2771,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject baldiTutor;
 
     public GameObject baldi;
+
+    public GameObject baldiPlayer;
 
     public BaldiScript baldiScrpt;
     public MikoScript mikoScript;
@@ -2896,6 +2927,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip aud_Paid;
 
     public BaldiScript baldiScript;
+
+    public BaldiPlayerScript baldiPlayerScript;
 
     public AudioSource ESCAPEmusic;
 

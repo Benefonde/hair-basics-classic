@@ -8,6 +8,7 @@ public class CameraScript : MonoBehaviour
 	public GameObject player;
 
 	public PlayerScript ps;
+	public BaldiPlayerScript bps;
 
 	public float velocity;
 	public float pipeGameHeight;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class BaldiPlayerScript : MonoBehaviour
@@ -40,13 +41,18 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public GameControllerScript gc;
 
+	CharacterController cc;
+
 	List<Collider> squee = new List<Collider>();
+
+	public Slider paninisSlider;
 
 	public GameObject soundThing;
 
 	private void Start()
 	{
 		baldiAudio = GetComponent<AudioSource>();
+		cc = GetComponent<CharacterController>();
 		timeToMove = baseTime;
 	}
 
@@ -69,6 +75,8 @@ public class BaldiPlayerScript : MonoBehaviour
 		{
 			Move();
 		}
+		paninisSlider.value = timeToMove;
+		paninisSlider.maxValue = baldiWait;
 		if (baldiTempAnger > 0f)
 		{
 			baldiTempAnger -= 0.02f * Time.deltaTime;
@@ -92,11 +100,7 @@ public class BaldiPlayerScript : MonoBehaviour
 		if (moveFrames > 0f)
 		{
 			moveFrames -= 1f;
-			speedRn = speed;
-		}
-		else
-		{
-			speedRn = 0f;
+			cc.Move(speed * Time.deltaTime * transform.forward);
 		}
 	}
 
