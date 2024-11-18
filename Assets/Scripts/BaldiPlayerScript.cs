@@ -58,8 +58,6 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	float speedRn;
 
-	public Animator head;
-
 	public GameControllerScript gc;
 
 	public bool resetAnger;
@@ -71,8 +69,6 @@ public class BaldiPlayerScript : MonoBehaviour
 		baldiAudio = GetComponent<AudioSource>();
 		agent = GetComponent<NavMeshAgent>();
 		timeToMove = baseTime;
-		this.TargetPlayer();
-		head.SetTrigger("notice");
 	}
 
 	public void FindSquees()
@@ -129,37 +125,14 @@ public class BaldiPlayerScript : MonoBehaviour
 		}
 	}
 
-	private void Wander()
-	{
-		wanderer.GetNewTarget();
-		agent.SetDestination(wanderTarget.position);
-		coolDown = 1f;
-		currentPriority = 0f;
-	}
-
-	public void TargetPlayer()
-	{
-		agent.SetDestination(player.position);
-		coolDown = 1f;
-		currentPriority = 10f;
-	}
-
 	private void Move()
 	{
-		if (gc.isActiveAndEnabled)
-		{
-			if ((base.transform.position == previous) & (coolDown < 0f))
-			{
-				Wander();
-			}
-		}
-		moveFrames = 6f;
+		moveFrames = 8f;
 		timeToMove = baldiWait - baldiTempAnger;
-		previous = base.transform.position;
 		baldiAudio.PlayOneShot(slap);
 		if (gc.isActiveAndEnabled)
 		{
-			FindObjectOfType<SubtitleManager>().Add3DSubtitle("balls", slap.length, Color.cyan, transform);
+			FindObjectOfType<SubtitleManager>().Add2DSubtitle("balls", slap.length, Color.cyan);
 		}
 		baldiAnimator.SetTrigger("slap");
 	}
@@ -191,21 +164,10 @@ public class BaldiPlayerScript : MonoBehaviour
 				}
 			}
 		}
-		if (!antiHearing && priority >= currentPriority)
-		{
-
-			head.SetTrigger("notice");
-		}
-		else if (!antiHearing)
-		{
-			head.SetTrigger("confused");
-		}
-
 	}
 
 	public void ActivateAntiHearing(float t)
 	{
-		Wander();
 		antiHearing = true;
 		antiHearingTime = t;
 	}
