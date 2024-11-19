@@ -26,12 +26,9 @@ public class ExitTriggerScript : MonoBehaviour
         {
 			gc.tc.GetTrophy(28);
         }
-		else if (gc.mode == "panino")
-		{
-			PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SPEED BOOST\" powerup. Use in modifier tab.");
-			PlayerPrefs.SetInt("paninoBeat", 1);
-			SceneManager.LoadScene("ChallengeBeat");
-		}
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SPEED BOOST\" powerup. Use in modifier tab.");
+		PlayerPrefs.SetInt("paninoBeat", 1);
+		SceneManager.LoadScene("ChallengeBeat");
 	}
 
 	private void OnTriggerEnter(Collider other)

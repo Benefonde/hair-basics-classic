@@ -105,7 +105,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[28];
+    private bool[] dontCheckAga = new bool[32];
 
     public int zestyEaten;
     public int esteEaten;

@@ -156,11 +156,9 @@ public class EvilPlayerScript : MonoBehaviour
 	public void Die()
 	{
 		gc.SomeoneTied(gameObject, false);
-		gc.playerCollider.enabled = false;
 		playerRotation.eulerAngles = new Vector3(-35, playerRotation.y, playerRotation.z);
 		height = 0.5f;
-		gc.playerCollider.enabled = false;
-		gc.player.enabled = false;
+		GetComponent<CapsuleCollider>().enabled = false;
 		bob.SetPositionAndRotation(new Vector3(transform.position.x, 0.125f, transform.position.z), Quaternion.Euler(90, transform.rotation.y, transform.rotation.z));
 		bob.localScale = new Vector3(4, 4, 1);
 		bob.gameObject.layer = 9;

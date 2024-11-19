@@ -66,6 +66,7 @@ public class BaldiPlayerScript : MonoBehaviour
 		timeToMove = baseTime;
 		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
 		Hear(player.position);
+		baldiWait = -3f * baldiAnger / (baldiAnger + 2f / baldiSpeedScale) + 3f;
 	}
 
 	public void FindSquees()
