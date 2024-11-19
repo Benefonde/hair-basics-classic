@@ -541,8 +541,8 @@ public class GameControllerScript : MonoBehaviour
     void PaninoStart()
     {
         notebooks = 2;
-        dwaynes[10].transform.position = Vector3.down;
-        dwaynes[14].transform.position = Vector3.down;
+        dwaynes[10].gameObject.SetActive(false);
+        dwaynes[14].gameObject.SetActive(false);
         spoopMode = true;
         entrance_0.Lower();
         entrance_1.Lower();
@@ -565,7 +565,7 @@ public class GameControllerScript : MonoBehaviour
             FindObjectsOfType<Minimap>()[i].player = baldiPlayer.transform;
         }
         paninisSlider.SetActive(true);
-        locationText.text = $"Panino's Ball, {hour}:{minute}\nPress W to move!";
+        locationText.text = $"Panino's Ball, {hour}:{minute}\nPress/Hold W to move!";
         locationText.color = Color.yellow;
         craftersTime = true;
         if (hour < 7 || hour > 18)

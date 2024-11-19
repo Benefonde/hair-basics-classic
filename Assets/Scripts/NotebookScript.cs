@@ -74,7 +74,7 @@ public class NotebookScript : MonoBehaviour
 				base.transform.Find("DwayneMap").gameObject.SetActive(false);
 				this.respawnTime = 99f;
 				this.gc.CollectNotebook();
-				gc.baldiPlayerScript.GetAngry(1.5f);
+				gc.baldiPlayerScript.GetAngry(1.25f);
 				GameObject gameObject = Instantiate<GameObject>(this.learningGame);
 				gameObject.GetComponent<MathGameScript>().gc = this.gc;
 				gameObject.GetComponent<MathGameScript>().baldiScript = this.bsc;
