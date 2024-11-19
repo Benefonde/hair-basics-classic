@@ -87,6 +87,13 @@ public class NotebookScript : MonoBehaviour
 		}
 	}
 
+	public void GoesDown()
+    {
+		base.transform.position = new Vector3(base.transform.position.x, -20f, base.transform.position.z);
+		this.up = false;
+		base.transform.Find("DwayneMap").gameObject.SetActive(false);
+	}
+
 	public float openingDistance;
 
 	public GameControllerScript gc;
