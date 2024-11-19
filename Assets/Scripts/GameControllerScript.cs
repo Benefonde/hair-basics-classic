@@ -541,8 +541,8 @@ public class GameControllerScript : MonoBehaviour
     void PaninoStart()
     {
         notebooks = 2;
-        dwaynes[10].gameObject.SetActive(false);
-        dwaynes[14].gameObject.SetActive(false);
+        dwaynes[10].up = false;
+        dwaynes[14].up = false;
         spoopMode = true;
         entrance_0.Lower();
         entrance_1.Lower();
