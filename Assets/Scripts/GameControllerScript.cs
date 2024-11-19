@@ -576,6 +576,9 @@ public class GameControllerScript : MonoBehaviour
             baldiScript.baldiSpeedScale = 0.5875f;
             locationText.text = "Lol!!!!!!!";
         }
+        camScript.camYoffset = 5;
+        camScript.camYdefault = 5;
+        camScript.originalPosition = new Vector3(camScript.originalPosition.x, 5, camScript.originalPosition.z);
     }
 
     public bool ModifierOn()

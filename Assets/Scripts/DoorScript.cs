@@ -10,6 +10,7 @@ public class DoorScript : MonoBehaviour
 	public BaldiScript baldi;
 	public MikoScript miko;
 	public AlgerScript alger;
+	public BaldiPlayerScript baldiPlayer;
 
 	public MeshCollider barrier;
 	public NavMeshObstacle locked;
@@ -109,6 +110,10 @@ public class DoorScript : MonoBehaviour
 				if (alger.isActiveAndEnabled & (silentOpens <= 0))
 				{
 					alger.Hear(base.transform.position, 1f);
+				}
+				if (baldiPlayer.isActiveAndEnabled & (silentOpens <= 0))
+				{
+					baldiPlayer.Hear(base.transform.position);
 				}
 				OpenDoor();
 				if (silentOpens > 0)

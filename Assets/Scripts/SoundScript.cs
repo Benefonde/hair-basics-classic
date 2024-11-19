@@ -6,13 +6,17 @@ public class SoundScript : MonoBehaviour
 {
     private void Start()
     {
-        transform.localScale = (panino.transform.position - transform.position) * 10;
+        disstance = Vector3.Distance(panino.position, transform.position) / 2;
+        transform.localScale = new Vector3(disstance, disstance, disstance);
     }
 
     void Update()
     {
-        transform.localScale = (panino.transform.position - transform.position) * 10;
+        disstance = Vector3.Distance(panino.position, transform.position) / 2;
+        transform.localScale = new Vector3(disstance, disstance, disstance);
     }
 
     public Transform panino;
+
+    float disstance;
 }

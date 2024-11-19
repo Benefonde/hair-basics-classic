@@ -7,8 +7,41 @@ public class ExitTriggerScript : MonoBehaviour
 
 	public GameObject time;
 
+	public void BeatPaninoMode()
+    {
+		if (PlayerPrefs.GetInt("timer") == 1 && gc.mode != "alger" && FindObjectsOfType<ZombieScript>().Length == 0)
+		{
+			GameObject a = Instantiate(time);
+			System.TimeSpan timee = System.TimeSpan.FromSeconds(gc.time);
+			a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+			a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+		}
+		if (gc.ModifierOn())
+		{
+			SceneManager.LoadScene("Anticheat");
+			gc.tc.GetTrophy(22);
+			return;
+		}
+		if (gc.notebooks <= 5)
+        {
+			gc.tc.GetTrophy(28);
+        }
+		else if (gc.mode == "panino")
+		{
+			PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SPEED BOOST\" powerup. Use in modifier tab.");
+			PlayerPrefs.SetInt("paninoBeat", 1);
+			SceneManager.LoadScene("ChallengeBeat");
+		}
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
+		if (gc.mode == "panino")
+        {
+			gc.baldiPlayerScript.Die();
+			gc.evilPlayerTransform.gameObject.SetActive(false);
+			return;
+        }
 		if ((gc.notebooks >= gc.maxNoteboos) & (other.tag == "Player"))
 		{
 			if (PlayerPrefs.GetInt("timer") == 1 && gc.mode != "alger" && FindObjectsOfType<ZombieScript>().Length == 0)

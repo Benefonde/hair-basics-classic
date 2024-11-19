@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class BaldiPlayerScript : MonoBehaviour
@@ -27,6 +28,12 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public float timeToAnger;
 
+	public bool sensitivityActive;
+
+	private float sensitivity;
+
+	public float mouseSensitivity;
+
 	public Transform player;
 
 	private AudioSource baldiAudio;
@@ -41,6 +48,8 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public GameControllerScript gc;
 
+	Quaternion playerRotation;
+
 	CharacterController cc;
 
 	List<Collider> squee = new List<Collider>();
@@ -51,9 +60,12 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	private void Start()
 	{
+		playerRotation = transform.rotation;
 		baldiAudio = GetComponent<AudioSource>();
 		cc = GetComponent<CharacterController>();
 		timeToMove = baseTime;
+		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		Hear(player.position);
 	}
 
 	public void FindSquees()
@@ -64,6 +76,16 @@ public class BaldiPlayerScript : MonoBehaviour
 			squee.Add(FindObjectsOfType<SqueeScript>()[i].GetComponent<Collider>());
 		}
 	}
+	private void MouseMove()
+	{
+		playerRotation.eulerAngles = new Vector3(playerRotation.eulerAngles.x, playerRotation.eulerAngles.y);
+		playerRotation.eulerAngles += Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;
+		if (PlayerPrefs.GetInt("3dCam", 0) == 1)
+		{
+			gc.camScript.verticalLook -= 0.8f * Input.GetAxis("Mouse Y") * mouseSensitivity * Time.timeScale;
+		}
+		base.transform.rotation = playerRotation;
+	}
 
 	private void Update()
 	{
@@ -71,10 +93,11 @@ public class BaldiPlayerScript : MonoBehaviour
 		{
 			timeToMove -= 1f * Time.deltaTime;
 		}
-		else if (Input.GetKeyDown(KeyCode.W))
+		else if (Input.GetKey(KeyCode.W))
 		{
 			Move();
 		}
+		MouseMove();
 		paninisSlider.value = timeToMove;
 		paninisSlider.maxValue = baldiWait;
 		if (baldiTempAnger > 0f)
@@ -131,7 +154,7 @@ public class BaldiPlayerScript : MonoBehaviour
 		baldiTempAnger += value;
 	}
 
-	public void Hear(Vector3 soundLocation, float priority)
+	public void Hear(Vector3 soundLocation)
 	{
 		if (squee.Count != 0)
 		{
@@ -159,13 +182,26 @@ public class BaldiPlayerScript : MonoBehaviour
 		antiHearing = true;
 		antiHearingTime = t;
 	}
+	public void Die()
+	{
+		gc.SomeoneTied(gameObject);
+		cc.enabled = false;
+		mouseSensitivity = 0;
+		transform.position = new Vector3(transform.position.x, -5, transform.position.z);
+		gc.hud.SetActive(false);
+		Invoke("Tie", 2);
+	}
+
+	void Tie()
+    {
+		SceneManager.LoadScene("MainMenu");
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.transform.name == "Yellow Face")
 		{
-			gc.SomeoneTied(gameObject);
-			gameObject.SetActive(false);
+			Die();
 		}
 	}
 }

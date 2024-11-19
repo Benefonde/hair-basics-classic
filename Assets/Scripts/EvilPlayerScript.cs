@@ -41,6 +41,8 @@ public class EvilPlayerScript : MonoBehaviour
 
 	private void Start()
 	{
+		playerAgent.enabled = true;
+		cc.enabled = false;
 		height = base.transform.position.y;
 		stamina = maxStamina;
 		playerRotation = base.transform.rotation;
@@ -52,10 +54,9 @@ public class EvilPlayerScript : MonoBehaviour
 	{
 		NavMeshMove();
 	}
+
 	public void NavMeshMove()
     {
-		playerAgent.enabled = true;
-		cc.enabled = false;
 		if (gc.notebooks != gc.maxNoteboos)
 		{
 			playerAgent.SetDestination(FindNearestDwayne());
@@ -68,6 +69,11 @@ public class EvilPlayerScript : MonoBehaviour
         {
 			transform.LookAt(FindNearestDwayne());
 		}
+		timeToNun = false;
+		if (Vector3.Distance(baldi.transform.position, transform.position) <= 15)
+        {
+			timeToNun = true;
+        }
 		if (!timeToNun)
 		{
 			playerAgent.speed = walkSpeed;
@@ -137,10 +143,6 @@ public class EvilPlayerScript : MonoBehaviour
 		{
 			stamina += staminaRate * Time.deltaTime;
 		}
-		if (stamina > maxStamina * 6.50f)
-        {
-			stamina = maxStamina * 6.50f;
-        }
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -153,7 +155,7 @@ public class EvilPlayerScript : MonoBehaviour
 
 	public void Die()
 	{
-		gc.SomeoneTied(gameObject);
+		gc.SomeoneTied(gameObject, false);
 		gc.playerCollider.enabled = false;
 		playerRotation.eulerAngles = new Vector3(-35, playerRotation.y, playerRotation.z);
 		height = 0.5f;
@@ -162,6 +164,9 @@ public class EvilPlayerScript : MonoBehaviour
 		bob.SetPositionAndRotation(new Vector3(transform.position.x, 0.125f, transform.position.z), Quaternion.Euler(90, transform.rotation.y, transform.rotation.z));
 		bob.localScale = new Vector3(4, 4, 1);
 		bob.gameObject.layer = 9;
+		walkSpeed = 0;
+		runSpeed = 0;
+		StartCoroutine(YourWiener());
 	}
 
 	public bool TouchingNavMesh(Vector3 center, float range)
@@ -177,8 +182,16 @@ public class EvilPlayerScript : MonoBehaviour
 		return false;
 	}
 
+	IEnumerator YourWiener()
+    {
+		yield return new WaitForSeconds(2);
+		ets.BeatPaninoMode();
+	}
+
 	public Transform bob;
 
 	public Transform[] exits;
 	public NavMeshAgent playerAgent;
+
+	public ExitTriggerScript ets;
 }
