@@ -70,15 +70,12 @@ public class EvilPlayerScript : MonoBehaviour
 			transform.LookAt(FindNearestDwayne());
 		}
 		timeToNun = false;
-		if (Vector3.Distance(baldi.transform.position, transform.position) <= 15)
+		if (Vector3.Distance(baldi.transform.position, transform.position) <= 25)
         {
 			timeToNun = true;
         }
-		if (!timeToNun)
-		{
-			playerAgent.speed = walkSpeed;
-		}
-        else
+		playerAgent.speed = walkSpeed; 
+		if (timeToNun && stamina > 0)
         {
 			stamina -= staminaRate * Time.deltaTime;
 			playerAgent.speed = runSpeed;

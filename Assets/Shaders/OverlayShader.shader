@@ -3,18 +3,18 @@
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
+        _Color("See-through color", Color) = (0,0,0,0)
     }
         SubShader
     {
-        Tags { "Queue" = "Transparent+1" "RenderType" = "Transparent" }
+        Tags { "Queue" = "Transparent+50" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
         LOD 100
 
         Pass
         {
+            LOD 200
             ZTest Always
             ZWrite Off
-            Cull Off
-            Blend SrcAlpha OneMinusSrcAlpha
 
             CGPROGRAM
             #pragma vertex vert

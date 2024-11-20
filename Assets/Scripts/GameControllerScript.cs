@@ -134,7 +134,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 8;
             }
-            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino")
             {
                 math = 0;
             }
@@ -567,7 +567,6 @@ public class GameControllerScript : MonoBehaviour
         paninisSlider.SetActive(true);
         locationText.text = $"Panino's Ball, {hour}:{minute}\nPress/Hold W to move!";
         locationText.color = Color.yellow;
-        craftersTime = true;
         if (hour < 7 || hour > 18)
         {
             RenderSettings.skybox = night;
@@ -1057,13 +1056,13 @@ public class GameControllerScript : MonoBehaviour
             principal.SetActive(true);
             principalScript.angry = false;
         }
-        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic" || mode == "zombie"))
-        {
-            ActivateFinaleMode();
-        }
-        if (notebooks == maxNoteboos && mode == "pizza")
+        else if (notebooks == maxNoteboos && mode == "pizza")
         {
             StartCoroutine(EventRing());
+        }
+        else if ((notebooks == maxNoteboos))
+        {
+            ActivateFinaleMode();
         }
         if (notebooks > -1 && dwayneDebt.activeSelf)
         {

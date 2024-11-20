@@ -26,7 +26,7 @@ public class ExitTriggerScript : MonoBehaviour
         {
 			gc.tc.GetTrophy(28);
         }
-		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SPEED BOOST\" powerup. Use in modifier tab.");
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab.");
 		PlayerPrefs.SetInt("paninoBeat", 1);
 		SceneManager.LoadScene("ChallengeBeat");
 	}

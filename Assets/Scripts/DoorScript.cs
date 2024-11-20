@@ -128,6 +128,12 @@ public class DoorScript : MonoBehaviour
 
 			}
 		}
+
+		if (!bDoorOpen && baldi.gc.mode == "panino" && Vector3.Distance(baldi.gc.evilPlayerTransform.position, transform.position) <= 2)
+        {
+			OpenDoor();
+			baldiPlayer.Hear(transform.position);
+        }
 	}
 
 	public void OpenDoor()
@@ -147,13 +153,13 @@ public class DoorScript : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (!bDoorLocked & other.CompareTag("NPC"))
+		if (!bDoorLocked && other.CompareTag("NPC"))
 		{
 			OpenDoor();
 		}
 	}
 
-	public void LockDoor(float time)
+    public void LockDoor(float time)
 	{
 		if (!bDoorLocked)
 		{

@@ -57,7 +57,7 @@ public class ModesManager : MonoBehaviour
                 walkThrough.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("mikoBeat", 0) == 1)
+        if (PlayerPrefs.GetInt("paninoBeat", 0) == 1)
         {
             blockPath.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("blockPath", 0) == 1)
@@ -304,7 +304,7 @@ public class ModesManager : MonoBehaviour
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
         int krille = PlayerPrefs.GetInt("paninoBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
-        int block = PlayerPrefs.GetInt("mikoBeat", 0);
+        int block = PlayerPrefs.GetInt("algerBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);
         int item = PlayerPrefs.GetInt("algerBeat", 0);
 

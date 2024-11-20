@@ -13,7 +13,11 @@ public class NearExitTriggerScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if ((gc.exitsReached < gc.amountOfExit) & gc.finaleMode & (other.tag == "Player"))
+		if (gc.mode == "panino" && gc.exitsReached == 4)
+        {
+			gc.baldiPlayerScript.Die();
+        }
+		if ((gc.exitsReached < gc.amountOfExit) & gc.finaleMode & (other.tag == "Player" || other.name == "Player (EVIL)"))
 		{
 			gc.ExitReached();
 			es.Lower();
@@ -24,6 +28,14 @@ public class NearExitTriggerScript : MonoBehaviour
 			if (gc.mikoScript.isActiveAndEnabled)
             {
 				gc.mikoScript.Hear(base.transform.position, 8f);
+			}
+			if (gc.algerScript.isActiveAndEnabled)
+			{
+				gc.algerScript.Hear(base.transform.position, 8f);
+			}
+			if (gc.baldiPlayerScript.isActiveAndEnabled)
+			{
+				gc.baldiPlayerScript.Hear(base.transform.position);
 			}
 		}
 		if (algerExit & (other.tag == "Player"))

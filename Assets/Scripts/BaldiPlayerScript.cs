@@ -56,7 +56,7 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public Slider paninisSlider;
 
-	public GameObject soundThing;
+	public SoundScript soundThing;
 
 	private void Start()
 	{
@@ -65,6 +65,7 @@ public class BaldiPlayerScript : MonoBehaviour
 		cc = GetComponent<CharacterController>();
 		timeToMove = baseTime;
 		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		soundThing.gameObject.SetActive(true);
 		Hear(player.position);
 		baldiWait = -3f * baldiAnger / (baldiAnger + 2f / baldiSpeedScale) + 3f;
 	}
@@ -157,25 +158,7 @@ public class BaldiPlayerScript : MonoBehaviour
 
 	public void Hear(Vector3 soundLocation)
 	{
-		if (squee.Count != 0)
-		{
-			for (int i = 0; i < squee.Count; i++)
-			{
-				if (squee[i].bounds.Contains(soundLocation))
-				{
-					return;
-				}
-			}
-		}
-		if (FindObjectsOfType<SoundScript>().Length > 0)
-        {
-			for (int i = 0; i > FindObjectsOfType<SoundScript>().Length; i++)
-            {
-				Destroy(FindObjectsOfType<SoundScript>()[i].gameObject);
-            }
-        }
-		GameObject a = Instantiate(soundThing, soundLocation, Quaternion.identity);
-		a.GetComponent<SoundScript>().panino = transform;
+		soundThing.GoHere(new Vector3(soundLocation.x, 5, soundLocation.z));
 	}
 
 	public void ActivateAntiHearing(float t)
