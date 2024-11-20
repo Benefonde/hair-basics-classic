@@ -129,6 +129,10 @@ public class DoorScript : MonoBehaviour
 			}
 		}
 
+		if (baldi.gc == null)
+        {
+			return;
+        }
 		if (!bDoorOpen && baldi.gc.mode == "panino" && Vector3.Distance(baldi.gc.evilPlayerTransform.position, transform.position) <= 2)
         {
 			OpenDoor();
