@@ -73,6 +73,10 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(17);
         }
+        if (devinPipeHit > 10 && gc.camScript.FuckingDead)
+        {
+            GetTrophy(30);
+        }
     }
 
     public void GetTrophy(int i)
@@ -109,6 +113,9 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public int zestyEaten;
     public int esteEaten;
+
+    public int devinPipeHit;
+    public float pizzafaceTime;
 
     public bool babaGotPushed;
     public bool usedItem;

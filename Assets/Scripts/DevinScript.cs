@@ -207,10 +207,14 @@ public class DevinScript : MonoBehaviour
         else
         {
 			gc.player.health -= 30;
-			gc.camScript.ShakeNow(new Vector3(1, 1, 1), 5);
+			gc.camScript.ShakeNow(new Vector3(1, 0.5f, 1), 5);
 			if (gc.player.health <= 0)
             {
 				gc.camScript.follow = transform;
+            }
+            else
+            {
+				gc.tc.devinPipeHit++;
             }
 			audioDevice.PlayOneShot(outcome[1]);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Oops, you got hit, see you later.", outcome[1].length, new Color(255, 165, 0), transform);
