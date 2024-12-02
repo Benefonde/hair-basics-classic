@@ -160,7 +160,7 @@ public class AlgerNullScript : MonoBehaviour
 		}
 		baldiAudio.Stop();
 		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 10);
-		gc.playerScript.runSpeed += 0.4f;
+		gc.playerScript.runSpeed += 0.75f;
 		gc.playerScript.walkSpeed = gc.playerScript.runSpeed;
 		speed = 0;
 		baldiAudio.PlayOneShot(ow);
@@ -173,19 +173,22 @@ public class AlgerNullScript : MonoBehaviour
         }
 		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
 		{
-			speed = (45 - (health * 2.15f)) / 1.8f;
+			speed = (45 - (health * 2.25f)) / 1.8f;
 		}
         else
         {
-			speed = (55 - (health * 2.35f)) / 1.34f;
+			speed = (55 - (health * 2.65f)) / 1.34f;
 		}
 
 		switch (health)
 		{
 			case 19: StartCoroutine(bcs.ChangeMusic(1)); break;
-			case 15: StartCoroutine(bcs.ChangeMusic(3)); break;
-			case 9: StartCoroutine(bcs.ChangeMusic(4)); break;
-			case 3: StartCoroutine(bcs.ChangeMusic(5)); break;
+			case 16: StartCoroutine(bcs.ChangeMusic(3)); break;
+			case 13: StartCoroutine(bcs.ChangeMusic(4)); break;
+			case 10: StartCoroutine(bcs.ChangeMusic(5)); break;
+			case 7: StartCoroutine(bcs.ChangeMusic(6)); break;
+			case 4: StartCoroutine(bcs.ChangeMusic(7)); break;
+			case 2: StartCoroutine(bcs.ChangeMusic(8)); break;
 		}
 
 		if (health == 19)

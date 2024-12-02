@@ -108,8 +108,11 @@ public class BossControllerScript : MonoBehaviour
     // 0 - intro loop
     // 1 - intro
     // 2 - part/phase 1
-    // 3 - part/phase 2
-    // 4 - part/phase 3
-    // 5 - part/phase 3 fast
-    // 6 - outro, unused
+    // 3 - part/phase 1.5
+    // 4 - part/phase 2
+    // 5 - part/phase 2.5
+    // 6 - part/phase 3
+    // 7 - part/phase 3.5
+    // 8 - part/phase 3.75
+    // 9 - outro, unused
 }
