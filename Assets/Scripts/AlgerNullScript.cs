@@ -179,6 +179,15 @@ public class AlgerNullScript : MonoBehaviour
         {
 			speed = (55 - (health * 2.35f)) / 1.34f;
 		}
+
+		switch (health)
+		{
+			case 19: StartCoroutine(bcs.ChangeMusic(1)); break;
+			case 15: StartCoroutine(bcs.ChangeMusic(3)); break;
+			case 9: StartCoroutine(bcs.ChangeMusic(4)); break;
+			case 3: StartCoroutine(bcs.ChangeMusic(5)); break;
+		}
+
 		if (health == 19)
         {
 			disableWanderOrTarget = true;
@@ -255,6 +264,8 @@ public class AlgerNullScript : MonoBehaviour
 	public GameObject bc;
 
 	public AILocationSelectorScript wanderer;
+
+	public BossControllerScript bcs;
 
 	public AudioSource baldiAudio;
 
