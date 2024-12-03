@@ -160,7 +160,7 @@ public class AlgerNullScript : MonoBehaviour
 		}
 		baldiAudio.Stop();
 		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 10);
-		gc.playerScript.runSpeed += 0.75f;
+		gc.playerScript.runSpeed += 1.25f;
 		gc.playerScript.walkSpeed = gc.playerScript.runSpeed;
 		speed = 0;
 		baldiAudio.PlayOneShot(ow);
@@ -170,14 +170,6 @@ public class AlgerNullScript : MonoBehaviour
         {
 			pauseTime -= Time.deltaTime;
 			yield return null;
-        }
-		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
-		{
-			speed = (45 - (health * 2.25f)) / 1.8f;
-		}
-        else
-        {
-			speed = (55 - (health * 2.65f)) / 1.34f;
 		}
 
 		switch (health)
@@ -189,6 +181,12 @@ public class AlgerNullScript : MonoBehaviour
 			case 7: StartCoroutine(bcs.ChangeMusic(6)); break;
 			case 4: StartCoroutine(bcs.ChangeMusic(7)); break;
 			case 2: StartCoroutine(bcs.ChangeMusic(8)); break;
+		}
+		print((70 - (health * 3.25f)) + " player > " + (gc.player.runSpeed));
+		speed = (70 - (health * 3.05f));
+		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
+		{
+			speed = (45 - (health * 2.75f)) / 1.8f;
 		}
 
 		if (health == 19)
@@ -216,14 +214,7 @@ public class AlgerNullScript : MonoBehaviour
 			gc.camScript.follow = transform;
 			gc.camScript.FuckingDead = true;
 			yield return new WaitForSeconds(preBoss[1].length - 1);
-			if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
-			{
-				speed = (60 - (health * 2.5f)) / 1.7f;
-			}
-			else
-			{
-				speed = (65 - (health * 2.55f));
-			}
+			speed = (75 - (health * 3.25f));
 			canGetHit = true;
 			gc.camScript.FuckingDead = false;
 			gc.debugMode = false;
