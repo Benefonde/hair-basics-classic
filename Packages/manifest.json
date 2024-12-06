@@ -1,15 +1,5 @@
 {
-  "scopedRegistries": [
-    {
-      "name": "Hourai Teahouse",
-      "url": "https://upm.houraiteahouse.net",
-      "scopes": [
-        "com.discord"
-      ]
-    }
-  ],
   "dependencies": {
-    "com.discord.game-sdk": "file:C:/ProgramStuff/Discord-Game-SDK-master",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",

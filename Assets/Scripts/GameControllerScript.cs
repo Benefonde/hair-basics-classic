@@ -269,10 +269,10 @@ public class GameControllerScript : MonoBehaviour
         }
         LockMouse();
         UpdateNotebookCount();
-        if (dm != null)
+        /*if (dm != null)
         {
             dm.largeText = $"{mode.ToUpper()} Mode";
-        }
+        }*/
         itemSelected = 0;
         gameOverDelay = 0.5f;
     }
@@ -1036,11 +1036,11 @@ public class GameControllerScript : MonoBehaviour
 
     public void UpdateNotebookCount()
     {
-        if (dm != null)
+        /*if (dm != null)
         {
             dm.size = notebooks;
             dm.maxSize = maxNoteboos;
-        }
+        }*/
         int highScoreBotenook = PlayerPrefs.GetInt("HighBooks");
         if (mode != "endless")
         {
