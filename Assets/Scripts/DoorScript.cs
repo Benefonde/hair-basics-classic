@@ -111,9 +111,12 @@ public class DoorScript : MonoBehaviour
 				{
 					alger.Hear(base.transform.position, 1f);
 				}
-				if (baldiPlayer.isActiveAndEnabled & (silentOpens <= 0))
-				{
-					baldiPlayer.Hear(base.transform.position);
+				if (baldi.gc.mode == "panino")
+                {
+					if (baldiPlayer.isActiveAndEnabled & (silentOpens <= 0))
+					{
+						baldiPlayer.Hear(base.transform.position);
+					}
 				}
 				OpenDoor();
 				if (silentOpens > 0)

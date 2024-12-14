@@ -89,12 +89,12 @@ public class ExitTriggerScript : MonoBehaviour
                 {
 					PlayerPrefs.SetInt("speedyUnlocked", 1);
 					PlayerPrefs.SetInt("secretEnd", 1);
-					SceneManager.LoadScene("Secret");
+					SceneManager.LoadScene("MyTimeMachine");
 				}
                 else
                 {
 					PlayerPrefs.SetInt("secretEnd", 1);
-					SceneManager.LoadScene("Secret");
+					SceneManager.LoadScene("MyTimeMachine");
 				}
 			}
 			else if (gc.mode == "story")
@@ -181,6 +181,11 @@ public class ExitTriggerScript : MonoBehaviour
 				SceneManager.LoadScene("ChallengeBeat");
 				PlayerPrefs.SetInt("stealthyBeat", 1);
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"WALK THROUGH\" powerup. Use in modifier tab.");
+			}
+			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "classic")
+			{
+				PlayerPrefs.SetInt("secretClassicEnd", 1);
+				SceneManager.LoadScene("Secret");
 			}
 			else if (gc.mode == "classic")
 			{

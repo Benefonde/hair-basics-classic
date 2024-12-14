@@ -1270,9 +1270,9 @@ MonoBehaviour:
   stealthyMode: {fileID: 1322110685}
   stealthyText: {fileID: 991261273}
   stealthySprite: {fileID: 1322110686}
-  paninoMode: {fileID: 1856819482}
-  paninoText: {fileID: 1179601052}
-  paninoSprite: {fileID: 1856819483}
+  paninoMode: {fileID: 0}
+  paninoText: {fileID: 0}
+  paninoSprite: {fileID: 0}
   storyStar: {fileID: 1651963424}
   speedyStar: {fileID: 500162772}
   mikoStar: {fileID: 105779193}
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   stealthyStar: {fileID: 705429360}
   classicStar: {fileID: 1005697985}
   zombieStar: {fileID: 1434205031}
-  paninoStar: {fileID: 635076219}
+  paninoStar: {fileID: 0}
   beat: {fileID: 21300000, guid: 718d515452a5a0f46935674fd4c15389, type: 3}
   notbeat: {fileID: 21300000, guid: 51864e68c72878c498a6d822ddce6ee8, type: 3}
   speedBoost: {fileID: 1977848114}
@@ -11129,7 +11129,7 @@ MonoBehaviour:
   - paninoTrophy
   - slowTrophy
   - sorgyTrophy
-  - jugglerTrophy
+  - timeTrophy
   valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a000011000000070000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   valueString: []
   percentText: {fileID: 24955880}
@@ -28571,7 +28571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429ab73ab2247ef49932323823df4946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trophy: jugglerTrophy
+  trophy: timeTrophy
 --- !u!114 &707511042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28585,7 +28585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -31638,7 +31638,7 @@ MonoBehaviour:
   - sorryTrophy
   - congratulationsTrophy
   - paninoTrophy
-  - jugglerTrophy
+  - timeTrophy
   - sorgyTrophy
   - slowTrophy
   zestyEaten: 0
@@ -52058,7 +52058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Item Juggler
+  m_text: My Time Machine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -65877,7 +65877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Take and use every item (except the Ball item) in Story Mode
+  m_text: Check out Panino's time machine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -75980,13 +75980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33034fadcd586e945ba54f1c26fce642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: Exploring the menus
-  details: 
-  largeImage: panino
-  largeText: Main Menu
-  partyId: 
-  size: 0
-  maxSize: 0
 --- !u!4 &2124752977
 Transform:
   m_ObjectHideFlags: 0

@@ -59,7 +59,8 @@ public class Timer : MonoBehaviour
 					text.text = "Uh oh.. 0 seconds left.";
 					if (this.gc.mode == "speedy")
 					{
-						this.playerScript.gameOver = true;
+						gc.debugMode = false;
+						playerScript.transform.position = baldiScript.transform.position;
 					}
 					else
 					{
