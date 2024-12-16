@@ -81,6 +81,10 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(30);
         }
+        if (pizzafaceTime >= 60)
+        {
+            GetTrophy(31);
+        }
     }
 
     public void GetTrophy(int i)

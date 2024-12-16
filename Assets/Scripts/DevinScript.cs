@@ -202,7 +202,8 @@ public class DevinScript : MonoBehaviour
             else
             {
 				gc.player.health += 20;
-            }
+				gc.player.stamina += 50;
+			}
 		}
         else
         {

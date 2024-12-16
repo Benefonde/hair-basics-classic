@@ -254,7 +254,8 @@ public class PlayerScript : MonoBehaviour
 			if (Input.GetKey(KeyCode.LeftShift))
             {
 				cc.Move(1.8f * runSpeed * Time.deltaTime * transform.forward);
-            }
+				stamina -= staminaRate * Time.deltaTime * 3;
+			}
 		}
     }
 

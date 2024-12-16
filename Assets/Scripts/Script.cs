@@ -12,7 +12,7 @@ public class Script : MonoBehaviour
 	public bool mikoUnlock;
 	public bool paninis;
 
-	float timmer = 5;
+	float timmer = 2;
 
 	public Animator timeMachine;
 
@@ -43,6 +43,7 @@ public class Script : MonoBehaviour
 					played = false;
 					timmer = 1;
 					audioDevice.clip = itTworked;
+					timeMachine.gameObject.GetComponent<CapsuleCollider>().enabled = true;
 				}
 				if (timeMachine.GetFloat("twork") == 1)
 				{

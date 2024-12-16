@@ -9,9 +9,10 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1)
+        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1 || TestMode)
         {
             benefondCreates.SetActive(false);
+            cam = Camera.main.transform;
             aud = GetComponent<AudioSource>();
             aud.Play();
             t = GetComponent<TMP_Text>();
@@ -25,10 +26,13 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
             return;
         }
         timer += Time.deltaTime;
-        if (timer >= 300)
+        if (timer >= 300 || TestMode)
         {
             sorryTime = true;
             StartCoroutine(Sorry("Are you sorry for what you've done?"));
+            aud.Stop();
+            aud.clip = cooLSong;
+            aud.Play();
         }
     }
 
@@ -40,7 +44,10 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             t.text += c[i];
-            aud.PlayOneShot(blip);
+            if (!char.IsWhiteSpace(c[i]))
+            {
+                aud.PlayOneShot(blip);
+            }
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
@@ -60,10 +67,24 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
         FindObjectOfType<TrophyCollectingScript>().GetTrophy(26);
     }
 
-    public void No()
+    public void NoForButtons()
     {
+        StartCoroutine(No());
+    }
+
+    IEnumerator No()
+    {
+        StartCoroutine(Sorry("                                                                                                                    ", false));
+        for (int i = 0; i < 24; i++)
+        {
+            GameObject AAAAAAAAAAAAAAA = Instantiate(balls, transform.parent);
+            AAAAAAAAAAAAAAA.GetComponent<RectTransform>().localPosition = new Vector3(Random.Range(-40, 40), Random.Range(-480, -12), 0);
+            AAAAAAAAAAAAAAA.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0.4f);
         Application.Quit();
-        StartCoroutine(Sorry("GET OUT:bangbang:", true));
+        print("it dies succ ess fully");
     }
 
     public GameObject benefondCreates;
@@ -71,7 +92,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     float timer;
     TMP_Text t;
     bool sorryTime;
-
+    
     AudioSource aud;
     [SerializeField]
     AudioClip blip;
@@ -79,4 +100,12 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     AudioClip appear;
 
     public GameObject choices;
+
+    public bool TestMode;
+
+    public GameObject balls;
+
+    Transform cam;
+
+    public AudioClip cooLSong;
 }

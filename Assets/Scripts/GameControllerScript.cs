@@ -2639,7 +2639,7 @@ public class GameControllerScript : MonoBehaviour
                 FindObjectOfType<SubtitleManager>().Add3DSubtitle("run", run.length, Color.red, baldiApple.transform);
             }
             paninoAppleTimer -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(0.1667f); // 60fps basically
         }
         baldi.transform.position = baldiApple.transform.position;
         Destroy(baldiApple);

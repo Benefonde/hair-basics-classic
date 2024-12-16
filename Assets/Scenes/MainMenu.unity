@@ -1270,9 +1270,9 @@ MonoBehaviour:
   stealthyMode: {fileID: 1322110685}
   stealthyText: {fileID: 991261273}
   stealthySprite: {fileID: 1322110686}
-  paninoMode: {fileID: 0}
-  paninoText: {fileID: 0}
-  paninoSprite: {fileID: 0}
+  paninoMode: {fileID: 1856819482}
+  paninoText: {fileID: 1179601052}
+  paninoSprite: {fileID: 1856819483}
   storyStar: {fileID: 1651963424}
   speedyStar: {fileID: 500162772}
   mikoStar: {fileID: 105779193}
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   stealthyStar: {fileID: 705429360}
   classicStar: {fileID: 1005697985}
   zombieStar: {fileID: 1434205031}
-  paninoStar: {fileID: 0}
+  paninoStar: {fileID: 635076219}
   beat: {fileID: 21300000, guid: 718d515452a5a0f46935674fd4c15389, type: 3}
   notbeat: {fileID: 21300000, guid: 51864e68c72878c498a6d822ddce6ee8, type: 3}
   speedBoost: {fileID: 1977848114}
