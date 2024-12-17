@@ -134,7 +134,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 8;
             }
-            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino")
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino" || mode == "zombie" || mode == "triple" || mode == "speedy")
             {
                 math = 0;
             }

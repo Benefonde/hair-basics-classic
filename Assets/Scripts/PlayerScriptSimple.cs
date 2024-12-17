@@ -37,6 +37,7 @@ public class PlayerScriptSimple : MonoBehaviour
 		height = base.transform.position.y;
 		playerRotation = base.transform.rotation;
 		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		aud = GetComponent<AudioSource>();
 	}
 
 	private void Update()
@@ -122,20 +123,27 @@ public class PlayerScriptSimple : MonoBehaviour
 
 	IEnumerator TimeMachine()
 	{
+		
 		fade.color = Color.clear;
-		for (int i = 0; i < 25; i++)
+		aud.PlayOneShot(a);
+		for (int i = 0; i < 32; i++)
         {
-			fade.color = new Color(1, 1, 1, fade.color.a + 0.04f);
+			fade.color = new Color(1, 1, 1, fade.color.a + 0.03125f);
 			yield return new WaitForSeconds(0.1667f); // 60fps basically
-        }
+		}
+		camscript.enabled = false;
 		CutsceneAFTERTimeMachine();
     }
 
 	void CutsceneAFTERTimeMachine()
     {
 		camscript.gameObject.GetComponent<Animator>().SetTrigger("baldi dies time");
-		camscript.enabled = false;
 		fade.color = Color.clear;
+		RenderSettings.skybox = black;
+		for (int i = 0; i < stuffToDisableForTimeMachine.Length; i++)
+        {
+			stuffToDisableForTimeMachine[i].SetActive(false);
+        }
 		cutscene.SetActive(true);
 	}
 
@@ -144,4 +152,10 @@ public class PlayerScriptSimple : MonoBehaviour
 	public Image fade;
 
 	public GameObject cutscene;
+
+	public AudioClip a;
+	AudioSource aud;
+	public Material black;
+
+	public GameObject[] stuffToDisableForTimeMachine;
 }

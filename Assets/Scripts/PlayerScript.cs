@@ -252,9 +252,9 @@ public class PlayerScript : MonoBehaviour
 		if (pipeGameGravity != 0)
 		{
 			if (Input.GetKey(KeyCode.LeftShift))
-            {
+			{
+				stamina -= staminaRate * Time.deltaTime;
 				cc.Move(1.8f * runSpeed * Time.deltaTime * transform.forward);
-				stamina -= staminaRate * Time.deltaTime * 3;
 			}
 		}
     }

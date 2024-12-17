@@ -13,7 +13,7 @@ public class StartButton : MonoBehaviour
 		Triple = 4,
 		FJOTMY = 5,
 		Pizza = 6,
-		FreeRun = 7,
+		Free = 7,
 		Alger = 8,
 		Dark = 9,
 		Stealthy = 10,
