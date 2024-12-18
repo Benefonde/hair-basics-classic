@@ -129,16 +129,9 @@ public class EvilPlayerScript : MonoBehaviour
 
 	private void StaminaCheck()
 	{
-		if (rb.velocity.magnitude > 0.1f)
+		if (!timeToNun)
 		{
-			if ((stamina < 0f) & (stamina < -0.01f))
-			{
-				stamina = -0.01f;
-			}
-		}
-		else if (stamina < maxStamina)
-		{
-			stamina += staminaRate * Time.deltaTime;
+			stamina += (staminaRate / 30) * Time.deltaTime;
 		}
 	}
 

@@ -32,7 +32,7 @@ public class BullyScript : MonoBehaviour
 	private void Start()
 	{
 		audioDevice = GetComponent<AudioSource>();
-		waitTime = Random.Range(60f, 120f);
+		waitTime = Random.Range(10f, 120f);
 	}
 
 	private void Update()

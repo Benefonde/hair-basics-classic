@@ -188,7 +188,7 @@ public class DevinScript : MonoBehaviour
 		devinCanvas.SetActive(false);
 		gc.player.pipeGame = false;
 		gc.player.pipeGameGravity += 8 * Time.deltaTime;
-		pipeCoolDown = 30;
+		pipeCoolDown = 20;
 		agent.speed = 20;
 		if (pipeDucks == 5)
         {
@@ -207,7 +207,7 @@ public class DevinScript : MonoBehaviour
 		}
         else
         {
-			gc.player.health -= 40;
+			gc.player.health -= 35;
 			gc.camScript.ShakeNow(new Vector3(1, 0.5f, 1), 5);
 			if (gc.player.health <= 0)
             {

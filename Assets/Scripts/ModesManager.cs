@@ -224,7 +224,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 || TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 && PlayerPrefs.GetInt("paninoBeat") == 1 || TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -296,6 +296,14 @@ public class ModesManager : MonoBehaviour
             paninoMode.interactable = false;
             paninoText.text = "You need to beat Zombie Mode to unlock this mode!";
         }
+        if (PlayerPrefs.GetInt("paninoBeat") == 1)
+        {
+            paninoStar.sprite = beat;
+        }
+        else
+        {
+            paninoStar.sprite = notbeat;
+        }
     }
 
     void ModifierCheck()
@@ -304,7 +312,7 @@ public class ModesManager : MonoBehaviour
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
         int krille = PlayerPrefs.GetInt("paninoBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
-        int block = PlayerPrefs.GetInt("algerBeat", 0);
+        int block = PlayerPrefs.GetInt("mikoBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);
         int item = PlayerPrefs.GetInt("algerBeat", 0);
 

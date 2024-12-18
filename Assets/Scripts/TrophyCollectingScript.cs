@@ -77,7 +77,7 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(17);
         }
-        if (devinPipeHit > 10 && gc.camScript.FuckingDead)
+        if (devinPipeHit >= 5 && !gc.camScript.FuckingDead)
         {
             GetTrophy(30);
         }

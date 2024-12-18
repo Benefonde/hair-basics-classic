@@ -182,11 +182,10 @@ public class AlgerNullScript : MonoBehaviour
 			case 4: StartCoroutine(bcs.ChangeMusic(7)); break;
 			case 2: StartCoroutine(bcs.ChangeMusic(8)); break;
 		}
-		print((70 - (health * 3.25f)) + " player > " + (gc.player.runSpeed));
-		speed = (70 - (health * 3.05f));
+		speed = (70 - (health * 2.95f));
 		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
 		{
-			speed = (45 - (health * 2.75f)) / 1.8f;
+			speed = speed = (70 - (health * 2.55f));
 		}
 
 		if (health == 19)

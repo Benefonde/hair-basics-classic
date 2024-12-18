@@ -1092,7 +1092,7 @@ public class GameControllerScript : MonoBehaviour
         notebooks++;
         if (mode == "zombie")
         {
-            for (int i = 0; i < (notebooks + 1) / 3; i++)
+            for (int i = 0; i < (notebooks + 1.5f) / 5; i++)
             {
                 GameObject zombo = Instantiate(zombie);
                 zombo.SetActive(true);
@@ -1311,6 +1311,10 @@ public class GameControllerScript : MonoBehaviour
 
     private void ActivateFinaleMode()
     {
+        if (mode == "endless")
+        {
+            return;
+        }
         laps++;
         if (mode == "pizza")
         {
@@ -2639,7 +2643,7 @@ public class GameControllerScript : MonoBehaviour
                 FindObjectOfType<SubtitleManager>().Add3DSubtitle("run", run.length, Color.red, baldiApple.transform);
             }
             paninoAppleTimer -= Time.deltaTime;
-            yield return new WaitForSeconds(0.1667f); // 60fps basically
+            yield return new WaitForSeconds(0.01667f); // 60fps basically
         }
         baldi.transform.position = baldiApple.transform.position;
         Destroy(baldiApple);

@@ -168,6 +168,7 @@ public class BaldiPlayerScript : MonoBehaviour
 	}
 	public void Die()
 	{
+		timeToMove = 7;
 		gc.SomeoneTied(gameObject);
 		cc.enabled = false;
 		mouseSensitivity = 0;

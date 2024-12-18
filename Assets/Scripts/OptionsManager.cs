@@ -473,7 +473,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("secretsTrophy", 0);
 		PlayerPrefs.SetInt("desperateTrophy", 0);
 		PlayerPrefs.SetInt("prankedTrophy", 0);
-		PlayerPrefs.SetInt("woodTrophy", 0);
+		PlayerPrefs.SetInt("hurtTrophy", 0);
 		PlayerPrefs.SetInt("modeTrophy", 0);
 		PlayerPrefs.SetInt("looreTrophy", 0);
 		PlayerPrefs.SetInt("raTrophy", 0);
@@ -481,6 +481,10 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("problemTrophy", 0);
 		PlayerPrefs.SetInt("sorryTrophy", 0);
 		PlayerPrefs.SetInt("congratulationsTrophy", 0);
+		PlayerPrefs.SetInt("paninoTrophy", 0);
+		PlayerPrefs.SetInt("timeTrophy", 0);
+		PlayerPrefs.SetInt("sorgyTrophy", 0);
+		PlayerPrefs.SetInt("slowTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

@@ -9,9 +9,27 @@ public class NearExitTriggerScript : MonoBehaviour
 	public GameObject bossController;
 	public BoxCollider blockage;
 
+	public Transform evilPlayer;
+
 	public bool algerExit;
 
-	private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+		if (evilPlayer.gameObject.activeSelf)
+		{
+			if ((gc.exitsReached < gc.amountOfExit) && gc.finaleMode && Vector3.Distance(transform.position, evilPlayer.position) <= 10.5f && transform.position.y == 3)
+			{
+				gc.ExitReached();
+				es.Lower();
+				if (gc.baldiPlayerScript.isActiveAndEnabled)
+				{
+					gc.baldiPlayerScript.Hear(base.transform.position);
+				}
+			}
+		}
+	}
+
+    private void OnTriggerEnter(Collider other)
 	{
 		if (gc.mode == "panino" && gc.exitsReached == 4)
         {

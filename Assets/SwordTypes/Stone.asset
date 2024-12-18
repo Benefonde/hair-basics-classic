@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc3124a5143154dbb0f5c7cc6b6bd7, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  attack: 7
-  durability: 112
-  currentDurability: 112
+  attack: 9
+  durability: 168
+  currentDurability: 168
   color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   trophyKriller: 1

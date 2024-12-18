@@ -26,7 +26,7 @@ public class ExitTriggerScript : MonoBehaviour
         {
 			gc.tc.GetTrophy(28);
         }
-		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"BLOCK PATH\" powerup. Use in modifier tab.");
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLOWER KRILLERS\" powerup. Use in modifier tab.");
 		PlayerPrefs.SetInt("paninoBeat", 1);
 		SceneManager.LoadScene("ChallengeBeat");
 	}
@@ -83,6 +83,10 @@ public class ExitTriggerScript : MonoBehaviour
             {
 				gc.tc.GetTrophy(24);
             }
+			if (gc.playerScript.health < 4)
+            {
+				gc.tc.GetTrophy(20);
+			}
 			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "story")
 			{
 				if (PlayerPrefs.GetInt("speedyUnlocked", 0) == 0)
@@ -201,10 +205,6 @@ public class ExitTriggerScript : MonoBehaviour
 					return;
                 }
 				PlayerPrefs.SetInt("zombieBeat", 1);
-				if (gc.tc.onlyWooden)
-                {
-					gc.tc.GetTrophy(20);
-                }
 				if (!gc.tc.usedItem)
                 {
 					gc.tc.GetTrophy(7);
