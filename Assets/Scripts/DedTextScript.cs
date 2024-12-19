@@ -12,11 +12,19 @@ public class DedTextScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void PickRandomText(string person)
+    public void PickRandomText(string person, bool yellow)
     {
         CancelInvoke();
-        int rng = Random.Range(0, deathMessages.Length - 1);
-        text.text = $"{deathMessages[rng]} {person}{dendMessages[rng]}";
+        if (yellow)
+        {
+            int rng = Random.Range(0, deathMessages.Length);
+            text.text = $"{deathMessages[rng]}{person}{dendMessages[rng]}";
+        }
+        else
+        {
+            int rng = Random.Range(0, deathMessagesNoYellow.Length);
+            text.text = $"{deathMessagesNoYellow[rng]}{person}{dendMessagesNoYellow[rng]}";
+        }
         Invoke("LmaoFreakingDIE", 3);
     }
 
@@ -28,4 +36,7 @@ public class DedTextScript : MonoBehaviour
     private TMP_Text text;
     public string[] deathMessages;
     public string[] dendMessages;
+
+    public string[] deathMessagesNoYellow;
+    public string[] dendMessagesNoYellow;
 }

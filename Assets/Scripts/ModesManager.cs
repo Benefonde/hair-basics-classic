@@ -57,7 +57,7 @@ public class ModesManager : MonoBehaviour
                 walkThrough.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("mikoBeat", 0) == 1)
+        if (PlayerPrefs.GetInt("paninoBeat", 0) == 1)
         {
             blockPath.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("blockPath", 0) == 1)
@@ -147,7 +147,7 @@ public class ModesManager : MonoBehaviour
         {
             mikoSprite.color = Color.black;
             mikoMode.interactable = false;
-            mikoText.text = "You need to find a secret to unlock this mode!";
+            mikoText.text = "You need to find a secret code to unlock this mode!";
         }
         if (PlayerPrefs.GetInt("speedyUnlocked") == 1 || TestMode)
         {
@@ -193,10 +193,18 @@ public class ModesManager : MonoBehaviour
             if (randomnessHorray == 5)
             {
                 tripleText.text = "You need to beat mi?e????n Mode to unlock this mode!";
+                if (PlayerPrefs.GetInt("mikoUnlocked") == 1)
+                {
+                    stealthyText.text = "You need to beat mikeroqjn Mode to unlock this mode!";
+                }
             }
             else
             {
                 tripleText.text = "You need to beat M??? Mode to unlock this mode!";
+                if (PlayerPrefs.GetInt("mikoUnlocked") == 1)
+                {
+                    stealthyText.text = "You need to beat Miko Mode to unlock this mode!";
+                }
             }
         }
 
@@ -216,7 +224,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 || TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 && PlayerPrefs.GetInt("paninoBeat") == 1 || TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -247,6 +255,10 @@ public class ModesManager : MonoBehaviour
             stealthySprite.color = Color.black;
             stealthyMode.interactable = false;
             stealthyText.text = "You need to beat Sp???? Mode to unlock this mode!";
+            if (PlayerPrefs.GetInt("speedyUnlocked") == 1)
+            {
+                stealthyText.text = "You need to beat Speedy Mode to unlock this mode!";
+            }
         }
         if (PlayerPrefs.GetInt("stealthyBeat") == 1)
         {
@@ -272,13 +284,33 @@ public class ModesManager : MonoBehaviour
         {
             zombieStar.sprite = notbeat;
         }
+        if (PlayerPrefs.GetInt("zombieBeat") == 1 || TestMode)
+        {
+            paninoSprite.color = Color.white;
+            paninoMode.interactable = true;
+            paninoText.text = "Panino Mode                                                             Uh oh, Panino and Bob are alone in the ball, but luckily you're playing as Panino now! Try to catch Bob before he escapes the ball!";
+        }
+        else
+        {
+            paninoSprite.color = Color.black;
+            paninoMode.interactable = false;
+            paninoText.text = "You need to beat Zombie Mode to unlock this mode!";
+        }
+        if (PlayerPrefs.GetInt("paninoBeat") == 1)
+        {
+            paninoStar.sprite = beat;
+        }
+        else
+        {
+            paninoStar.sprite = notbeat;
+        }
     }
 
     void ModifierCheck()
     {
         int speede = PlayerPrefs.GetInt("speedyBeat", 0);
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
-        int krille = PlayerPrefs.GetInt("zombieBeat", 0);
+        int krille = PlayerPrefs.GetInt("paninoBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
         int block = PlayerPrefs.GetInt("mikoBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);
@@ -390,6 +422,10 @@ public class ModesManager : MonoBehaviour
     public TMP_Text stealthyText;
     public Image stealthySprite;
 
+    public Button paninoMode;
+    public TMP_Text paninoText;
+    public Image paninoSprite;
+
     public Image storyStar;
     public Image speedyStar;
     public Image mikoStar;
@@ -399,6 +435,7 @@ public class ModesManager : MonoBehaviour
     public Image stealthyStar;
     public Image classicStar;
     public Image zombieStar;
+    public Image paninoStar;
 
     public Sprite beat;
     public Sprite notbeat;

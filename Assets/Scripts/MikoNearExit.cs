@@ -21,6 +21,10 @@ public class MikoNearExit : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (mikoTransform == null)
+        {
+			return;
+        }
 		if (!mikoTransform.gameObject.activeSelf)
         {
 			return;
@@ -39,6 +43,7 @@ public class MikoNearExit : MonoBehaviour
 			mikoTransform.gameObject.GetComponent<AudioSource>().PlayOneShot(mikoDoesntLikeMeWaaaaaa);
 			FindObjectOfType<SubtitleManager>().AddChained3DSubtitle(a, b, c, mikoTransform);
 			player.transform.position = new Vector3(-65, 4, 335);
+			mikoTransform.gameObject.layer = 8;
 			ps.bob.gameObject.layer = 9;
 			ps.enabled = false;
 			ps.gc.audioDevice.PlayOneShot(ps.gc.aud_Switch);

@@ -7,11 +7,41 @@ public class ExitTriggerScript : MonoBehaviour
 
 	public GameObject time;
 
+	public void BeatPaninoMode()
+    {
+		if (PlayerPrefs.GetInt("timer") == 1 && gc.mode != "alger" && FindObjectsOfType<ZombieScript>().Length == 0)
+		{
+			GameObject a = Instantiate(time);
+			System.TimeSpan timee = System.TimeSpan.FromSeconds(gc.time);
+			a.GetComponent<TimeScript>().t[0].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+			a.GetComponent<TimeScript>().t[1].text = string.Format("Time: {0:00}:{1:00}:{2:000}", timee.Minutes, timee.Seconds, timee.Milliseconds);
+		}
+		if (gc.ModifierOn())
+		{
+			SceneManager.LoadScene("Anticheat");
+			gc.tc.GetTrophy(22);
+			return;
+		}
+		if (gc.notebooks <= 5)
+        {
+			gc.tc.GetTrophy(28);
+        }
+		PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"SLOWER KRILLERS\" powerup. Use in modifier tab.");
+		PlayerPrefs.SetInt("paninoBeat", 1);
+		SceneManager.LoadScene("ChallengeBeat");
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
+		if (gc.mode == "panino")
+        {
+			gc.baldiPlayerScript.Die();
+			gc.evilPlayerTransform.gameObject.SetActive(false);
+			return;
+        }
 		if ((gc.notebooks >= gc.maxNoteboos) & (other.tag == "Player"))
 		{
-			if (PlayerPrefs.GetInt("timer") == 1)
+			if (PlayerPrefs.GetInt("timer") == 1 && gc.mode != "alger" && FindObjectsOfType<ZombieScript>().Length == 0)
 			{
 				GameObject a = Instantiate(time);
 				System.TimeSpan timee = System.TimeSpan.FromSeconds(gc.time);
@@ -49,18 +79,26 @@ public class ExitTriggerScript : MonoBehaviour
             {
 				gc.tc.GetTrophy(10);
             }
+			if (!gc.tc.ruleBreak)
+            {
+				gc.tc.GetTrophy(24);
+            }
+			if (gc.playerScript.health < 4)
+            {
+				gc.tc.GetTrophy(20);
+			}
 			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "story")
 			{
 				if (PlayerPrefs.GetInt("speedyUnlocked", 0) == 0)
                 {
 					PlayerPrefs.SetInt("speedyUnlocked", 1);
 					PlayerPrefs.SetInt("secretEnd", 1);
-					SceneManager.LoadScene("Secret");
+					SceneManager.LoadScene("MyTimeMachine");
 				}
                 else
                 {
 					PlayerPrefs.SetInt("secretEnd", 1);
-					SceneManager.LoadScene("Secret");
+					SceneManager.LoadScene("MyTimeMachine");
 				}
 			}
 			else if (gc.mode == "story")
@@ -148,6 +186,11 @@ public class ExitTriggerScript : MonoBehaviour
 				PlayerPrefs.SetInt("stealthyBeat", 1);
 				PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"WALK THROUGH\" powerup. Use in modifier tab.");
 			}
+			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "classic")
+			{
+				PlayerPrefs.SetInt("secretClassicEnd", 1);
+				SceneManager.LoadScene("Secret");
+			}
 			else if (gc.mode == "classic")
 			{
 				SceneManager.LoadScene("ClassicEnding");
@@ -159,14 +202,9 @@ public class ExitTriggerScript : MonoBehaviour
                 {
 					StopCoroutine(gc.KillZombies());
 					StartCoroutine(gc.KillZombies());
-					Destroy(FindObjectOfType<TimeScript>());
 					return;
                 }
 				PlayerPrefs.SetInt("zombieBeat", 1);
-				if (gc.tc.onlyWooden)
-                {
-					gc.tc.GetTrophy(20);
-                }
 				if (!gc.tc.usedItem)
                 {
 					gc.tc.GetTrophy(7);

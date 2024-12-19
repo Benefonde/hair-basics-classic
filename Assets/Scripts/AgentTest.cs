@@ -134,7 +134,7 @@ public class AgentTest : MonoBehaviour
         {
 			if (!touchingPlayer  || !gc.playerScript.bootsActive)
 			{
-				clickery = Mathf.RoundToInt(Vector3.Distance(player.transform.position, baldi.transform.position) / 5.5f);
+				clickery = Mathf.RoundToInt(Vector3.Distance(player.transform.position, baldi.transform.position) / 8.5f);
 				clickCount = clickery;
 				touchingPlayer = true;
 			}

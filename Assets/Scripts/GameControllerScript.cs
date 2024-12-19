@@ -80,6 +80,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void Start()
     {
+        dm = FindObjectOfType<DicordManager>();
         tc = GetComponent<TrophyCollectingScript>();
         if (PlayerPrefs.GetInt("heldItemShow", 0) == 0)
         {
@@ -133,7 +134,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 8;
             }
-            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free")
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino" || mode == "zombie" || mode == "triple" || mode == "speedy")
             {
                 math = 0;
             }
@@ -203,6 +204,10 @@ public class GameControllerScript : MonoBehaviour
             {
                 ZombieStart();
             }
+            else if (mode == "panino")
+            {
+                PaninoStart();
+            }
 
             if (extraStamina == 1)
             {
@@ -264,6 +269,10 @@ public class GameControllerScript : MonoBehaviour
         }
         LockMouse();
         UpdateNotebookCount();
+        /*if (dm != null)
+        {
+            dm.largeText = $"{mode.ToUpper()} Mode";
+        }*/
         itemSelected = 0;
         gameOverDelay = 0.5f;
     }
@@ -328,6 +337,12 @@ public class GameControllerScript : MonoBehaviour
         if (slowerKriller == 1)
         {
             baldiScript.baldiSpeedScale = 0.5875f;
+        }
+        if (mode == "story" && Random.Range(0, 2) == 1)
+        {
+            pharohsWall.transform.rotation = Quaternion.Euler(new Vector3(91, 0, 180.5f));
+            pharohsWall.GetComponent<MeshCollider>().enabled = false;
+            print("CURSE OF RA ISRAEL");
         }
         schoolMusic.Play();
     }
@@ -523,6 +538,54 @@ public class GameControllerScript : MonoBehaviour
         ambient.Play();
     }
 
+    void PaninoStart()
+    {
+        notebooks = 2;
+        dwaynes[10].GoesDown();
+        dwaynes[14].GoesDown();
+        spoopMode = true;
+        entrance_0.Lower();
+        entrance_1.Lower();
+        entrance_2.Lower();
+        entrance_3.Lower();
+        baldiTutor.SetActive(false);
+        playerTransform.gameObject.SetActive(false);
+        baldiPlayer.SetActive(true);
+        evilPlayerTransform.gameObject.SetActive(true);
+        audioDevice.PlayOneShot(aud_Hang);
+        FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
+        camScript.player = baldiPlayer;
+        cameraTransform.position = new Vector3(5, 7, 10);
+        for (int i = 0; i > playerHudStuff.Length; i++)
+        {
+            playerHudStuff[i].SetActive(false);
+        }
+        for (int i = 0; i > FindObjectsOfType<Minimap>().Length; i++)
+        {
+            FindObjectsOfType<Minimap>()[i].player = baldiPlayer.transform;
+        }
+        paninisSlider.SetActive(true);
+        locationText.text = $"Panino's Ball, {hour}:{minute}\nPress/Hold W to move!";
+        locationText.color = Color.yellow;
+        if (hour < 7 || hour > 18)
+        {
+            RenderSettings.skybox = night;
+            RenderSettings.ambientLight = new Color(0.8f, 0.8f, 0.8f);
+        }
+        else
+        {
+            RenderSettings.skybox = day;
+        }
+        if (slowerKriller == 1)
+        {
+            baldiScript.baldiSpeedScale = 0.5875f;
+            locationText.text = "Lol!!!!!!!";
+        }
+        camScript.camYoffset = 5;
+        camScript.camYdefault = 5;
+        camScript.originalPosition = new Vector3(camScript.originalPosition.x, 5, camScript.originalPosition.z);
+    }
+
     public bool ModifierOn()
     {
         if (speedBoost == 1)
@@ -533,7 +596,7 @@ public class GameControllerScript : MonoBehaviour
         {
             return true;
         }
-        if (slowerKriller == 1)
+        if (slowerKriller == 1 && mode != "panino")
         {
             return true;
         }
@@ -569,21 +632,21 @@ public class GameControllerScript : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 60; i++)
             {
                 GameObject bro = Instantiate(principal);
                 bro.transform.name = "Alger (Hair Basics)";
             }
             windowedWall.material = broken;
             yellowFace.SetActive(true);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 4; i++)
             {
                 GameObject bro = Instantiate(yellowFace);
                 bro.transform.name = "Yellow Face";
             }
             MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
             yellowey.baldiAudio.PlayOneShot(brokenWindow);
-            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
+            camScript.ShakeNow(new Vector3(1f, 1f, 1f), 10);
         }
     }
 
@@ -727,6 +790,10 @@ public class GameControllerScript : MonoBehaviour
             finaleMode = true;
             entrance_4.Raise();
         }
+        if (curseOfRaActive && !gamePaused)
+        {
+            StartCoroutine(CurseOfRaLogic());
+        }
         if (!learningActive)
         {
             if (Input.GetButtonDown("Pause") && !disablePausing)
@@ -819,7 +886,7 @@ public class GameControllerScript : MonoBehaviour
             }
             if (gameOverDelay < 0)
             {
-                if (camScript.character.name == "Alger")
+                if (camScript.character.name == "Alger" || PlayerPrefs.GetInt("duplicatedBalls", 0) == 1)
                 {
                     Application.Quit();
                     return;
@@ -840,6 +907,24 @@ public class GameControllerScript : MonoBehaviour
         {
             notebooks = maxNoteboos;
             UpdateNotebookCount();
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            player.walkSpeed *= 1.25f;
+        }
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            playerTransform.gameObject.SetActive(false);
+            time = 0;
+            camScript.follow = baldi.transform;
+            camScript.FuckingDead = true;
+            if (!spoopMode)
+            {
+                ActivateSpoopMode();
+            }
+            baldiScript.baldiWait = 1;
+            baldiScript.timeToMove = 2;
+            bigball.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -878,7 +963,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    public void SomeoneTied(GameObject gObject)
+    public void SomeoneTied(GameObject gObject, bool yellow = true)
     {
         print(gObject.transform.name);
         audioDevice.PlayOneShot(aud_chrisAAAAA);
@@ -892,7 +977,7 @@ public class GameControllerScript : MonoBehaviour
         {
             return;
         }
-        ded.PickRandomText(gObject.transform.name);
+        ded.PickRandomText(gObject.transform.name, yellow);
     }
 
     public void UpdateAllItem()
@@ -951,6 +1036,11 @@ public class GameControllerScript : MonoBehaviour
 
     public void UpdateNotebookCount()
     {
+        /*if (dm != null)
+        {
+            dm.size = notebooks;
+            dm.maxSize = maxNoteboos;
+        }*/
         int highScoreBotenook = PlayerPrefs.GetInt("HighBooks");
         if (mode != "endless")
         {
@@ -966,13 +1056,13 @@ public class GameControllerScript : MonoBehaviour
             principal.SetActive(true);
             principalScript.angry = false;
         }
-        if ((notebooks == maxNoteboos) & (mode == "speedy" || mode == "miko" || mode == "triple" || mode == "alger" || mode == "stealthy" || mode == "classic" || mode == "zombie"))
-        {
-            ActivateFinaleMode();
-        }
-        if (notebooks == maxNoteboos && mode == "pizza")
+        else if (notebooks == maxNoteboos && mode == "pizza")
         {
             StartCoroutine(EventRing());
+        }
+        else if ((notebooks == maxNoteboos))
+        {
+            ActivateFinaleMode();
         }
         if (notebooks > -1 && dwayneDebt.activeSelf)
         {
@@ -1002,7 +1092,7 @@ public class GameControllerScript : MonoBehaviour
         notebooks++;
         if (mode == "zombie")
         {
-            for (int i = 0; i < (notebooks + 1) / 3; i++)
+            for (int i = 0; i < (notebooks + 1.5f) / 5; i++)
             {
                 GameObject zombo = Instantiate(zombie);
                 zombo.SetActive(true);
@@ -1191,7 +1281,7 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(baba, 1, 1, 1, true);
             SpawnWithChance(devin, 1, 1, 1, true);
         }
-        else
+        else if (mode != "panino")
         {
             baldiTutor.SetActive(value: false);
             baldi.SetActive(value: true);
@@ -1201,6 +1291,13 @@ public class GameControllerScript : MonoBehaviour
             bully.SetActive(true);
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true);
+        }
+        else
+        {
+            baldiTutor.SetActive(false);
+            playerTransform.gameObject.SetActive(false);
+            baldiPlayer.SetActive(true);
+            evilPlayerTransform.gameObject.SetActive(true);
         }
         audioDevice.PlayOneShot(aud_Hang);
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
@@ -1214,6 +1311,10 @@ public class GameControllerScript : MonoBehaviour
 
     private void ActivateFinaleMode()
     {
+        if (mode == "endless")
+        {
+            return;
+        }
         laps++;
         if (mode == "pizza")
         {
@@ -1700,7 +1801,7 @@ public class GameControllerScript : MonoBehaviour
                 else if ((hitInfo3.collider.name == "RandomMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
-                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24));
+                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24, 25));
                     audioDevice.PlayOneShot(aud_Paid);
                     tc.usedItem = true;
                 }
@@ -1812,11 +1913,11 @@ public class GameControllerScript : MonoBehaviour
                 if (baldiScript.isActiveAndEnabled)
                 {
                     baldiScript.GetAngry(4.525f);
-                    baldiScript.baldiWait -= 1.115f;
+                    baldiScript.baldiWait -= 0.215f;
                     baldiScript.Hear(player.transform.position, 6f);
                 }
-                player.walkSpeed += 2f;
-                player.runSpeed += 4f;
+                player.walkSpeed += 6f;
+                player.runSpeed += 6f;
                 ResetItem();
                 if (PlayerPrefs.GetInt("shake", 1) == 1)
                 {
@@ -2028,6 +2129,40 @@ public class GameControllerScript : MonoBehaviour
             player.Invoke(nameof(player.DisableInfStamina), 5);
             tc.usedItem = true;
         }
+        else if (item[itemSelected] == 26)
+        {
+            PlayerPrefs.SetInt("duplicatedBalls", 1);
+            PlayerPrefs.Save();
+            item[0] = 26;
+            item[1] = 26;
+            item[2] = 26;
+            item[3] = 26;
+            UpdateAllItem();
+            for (int i = 0; i < 30; i++)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
+                Physics.Raycast(ray, out RaycastHit hitInfo, 20);
+                if (hitInfo.transform != null && hitInfo.transform.GetComponent<MeshRenderer>() != null)
+                {
+                    hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = ballWall;
+                }
+            }
+            for (int i = 0; i < notebookPickups.Length; i++)
+            {
+                notebookPickups[i].SetActive(false);
+            }
+            pizzaTimeMusic.Play();
+            pizzaTimeMusic.time = Random.Range(20, 180);
+            baldi.SetActive(true);
+            baldiScript.timeToMove = 0;
+            baldiScript.baldiWait = 0;
+            baldiScript.TargetPlayer();
+            principal.SetActive(true);
+            principalScript.angry = true;
+            principalScript.summon = true;
+            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 276300);
+            tc.usedItem = true;
+        }
     }
 
     public void Objection()
@@ -2081,8 +2216,8 @@ public class GameControllerScript : MonoBehaviour
         player.runSpeed += 12;
         yield return new WaitForSeconds(time);
         audioDevice.PlayOneShot(boowomp);
-        player.runSpeed -= 20;
-        player.walkSpeed -= 20;
+        player.runSpeed = 6;
+        player.walkSpeed = 4;
         StartCoroutine(playerScript.ActivateTrolling(5));
         if (mode == "pizza")
         {
@@ -2192,6 +2327,48 @@ public class GameControllerScript : MonoBehaviour
         }
         Texture2D tex = (Texture2D)itemTextures[item[itemSelected]];
         heldItem.GetComponent<SpriteRenderer>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+    }
+
+    public void CurseOfRa()
+    {
+        if (curseOfRaActive)
+        {
+            return;
+        }
+        curseOfRaMusic.Play();
+        curseOfRaActive = true;
+    }
+
+    IEnumerator CurseOfRaLogic()
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+        curseOfRaTime += Time.deltaTime / 2;
+        if (Random.Range(1, Mathf.RoundToInt(900 / curseOfRaTime)) <= 2)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Random.rotation.eulerAngles);
+            Physics.Raycast(ray, out RaycastHit hitInfo, 20);
+            if (hitInfo.transform != null && hitInfo.transform.GetComponent<MeshRenderer>() != null)
+            {
+                hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material = sand;
+            }
+            sandUI.color = new Color(1, 1, 1, sandUI.color.a + Random.Range(0.0f, 0.01f));
+            camScript.ShakeNow(new Vector3(0.1f, 0.1f, 0.1f), 2);
+            if (sandUI.color.a >= 0.85f)
+            {
+                player.health = 0;
+            }
+        }
+    }
+
+    public void UndoCurse()
+    {
+        curseOfRaMusic.Stop();
+        curseOfRaActive = false;
+        if (sandUI.color.a >= 0.625)
+        {
+            tc.GetTrophy(23);
+        }
+        sandUI.color = new Color(1, 1, 1, 0);
     }
 
     public void ExitReached()
@@ -2400,17 +2577,17 @@ public class GameControllerScript : MonoBehaviour
         {
             if (mode == "classic")
             {
-                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24));
+                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26));
             }
             else
             {
                 if (principal.activeSelf)
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25, 26));
                 }
                 else
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25, 26));
                 }
             }
         }
@@ -2466,7 +2643,7 @@ public class GameControllerScript : MonoBehaviour
                 FindObjectOfType<SubtitleManager>().Add3DSubtitle("run", run.length, Color.red, baldiApple.transform);
             }
             paninoAppleTimer -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(0.01667f); // 60fps basically
         }
         baldi.transform.position = baldiApple.transform.position;
         Destroy(baldiApple);
@@ -2531,6 +2708,10 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject jammerMeter;
 
+    public GameObject[] playerHudStuff;
+
+    public GameObject paninisSlider;
+
     public GameObject hud;
 
     public AgentTest at;
@@ -2564,6 +2745,8 @@ public class GameControllerScript : MonoBehaviour
     public PlayerScript player;
 
     public Transform playerTransform;
+
+    public Transform evilPlayerTransform;
 
     public Transform cameraTransform;
 
@@ -2600,6 +2783,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject baldiTutor;
 
     public GameObject baldi;
+
+    public GameObject baldiPlayer;
 
     public BaldiScript baldiScrpt;
     public MikoScript mikoScript;
@@ -2689,6 +2874,8 @@ public class GameControllerScript : MonoBehaviour
     public TMP_Text notebookCount;
 
     public Material wall;
+    public Material sand;
+    public Material ballWall;
 
     public GameObject pauseMenu;
 
@@ -2705,6 +2892,9 @@ public class GameControllerScript : MonoBehaviour
     public bool gamePaused;
 
     private bool learningActive;
+
+    bool curseOfRaActive;
+    float curseOfRaTime;
 
     private float gameOverDelay;
 
@@ -2740,6 +2930,7 @@ public class GameControllerScript : MonoBehaviour
     public AudioSource pizzaTimeMusic;
     public AudioSource lap2Music;
     public AudioSource wwnMusic;
+    public AudioSource curseOfRaMusic;
 
     public AudioSource ambient;
 
@@ -2748,6 +2939,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip aud_Paid;
 
     public BaldiScript baldiScript;
+
+    public BaldiPlayerScript baldiPlayerScript;
 
     public AudioSource ESCAPEmusic;
 
@@ -2810,6 +3003,10 @@ public class GameControllerScript : MonoBehaviour
 
     public VideoPlayer[] tutorals;
 
+    public GameObject pharohsWall;
+
+    public Image sandUI;
+
     public VideoClip panic;
 
     public GameObject miko;
@@ -2857,4 +3054,6 @@ public class GameControllerScript : MonoBehaviour
     public GameObject lap2Portal;
 
     public AudioClip congratulatation;
+
+    DicordManager dm;
 }

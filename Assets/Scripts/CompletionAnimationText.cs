@@ -11,6 +11,7 @@ public class CompletionAnimationText : MonoBehaviour
         Time.timeScale = 1;
         aud = GetComponent<AudioSource>();
         aud2 = gameObject.AddComponent<AudioSource>();
+        aud3 = gameObject.AddComponent<AudioSource>();
         txt = GetComponent<TMP_Text>();
         StartCoroutine(PercentGoUp());
         aud.pitch = 1;
@@ -26,13 +27,13 @@ public class CompletionAnimationText : MonoBehaviour
         StartCoroutine(PercentActuallyGoUp());
         yield return new WaitForSeconds(5);
         yield return new WaitUntil(() => percent >= PlayerPrefs.GetInt("completion", 0));
-        if (percent == 100)
-        {
-            GetComponent<TrophyCollectingScript>().GetTrophy(23);
-        }
         yield return new WaitForSeconds(1.5f);
         StartRankScreen();
         yield return new WaitForSeconds(5);
+        if (ranks[7].activeSelf)
+        {
+            aud2.PlayOneShot(JUDGEMENT);
+        }
         inputToGoBarack = true;
     }
 
@@ -40,9 +41,10 @@ public class CompletionAnimationText : MonoBehaviour
     {
         while (percent < PlayerPrefs.GetInt("completion", 0))
         {
-            aud.PlayOneShot(blip);
+            aud3.Stop();
+            aud3.PlayOneShot(blip);
             percent++;
-            aud.pitch += 0.02f;
+            aud3.pitch += 0.02f;
             yield return new WaitForSeconds(0.049f - (percent / 1000));
             if (percent >= 80 && percent < 95)
             {
@@ -66,11 +68,23 @@ public class CompletionAnimationText : MonoBehaviour
 
     void StartRankScreen()
     {
+        int arrEnGee = Random.Range(1, 21);
         aud2.Stop();
         aud2.clip = music;
+        if (arrEnGee == 2)
+        {
+            aud2.clip = musicIfItWasGood;
+        }
         aud2.Play();
         rankBg.gameObject.SetActive(true);
         print(percentages.Length);
+        if (arrEnGee == 2)
+        {
+            ranks[7].SetActive(true);
+            rankBg.color = bgColors[7];
+            print($"{percentages[7]} percent");
+            return;
+        }
         for (int i = 0; i < percentages.Length - 1; i++)
         {
             if (percent < percentages[i + 1])
@@ -95,14 +109,17 @@ public class CompletionAnimationText : MonoBehaviour
 
     AudioSource aud;
     AudioSource aud2;
+    AudioSource aud3;
     public AudioClip blip;
     public AudioClip meatophobia;
     public AudioClip music;
+    public AudioClip musicIfItWasGood;
+    public AudioClip JUDGEMENT;
     public GameObject[] ranks;
     public Image rankBg;
     public Color[] bgColors;
 
-    int[] percentages = { 0, 50, 61, 72, 83, 94, 100, 100 };
+    int[] percentages = { 0, 20, 41, 52, 73, 90, 100, 2763 };
 
     bool inputToGoBarack;
 }

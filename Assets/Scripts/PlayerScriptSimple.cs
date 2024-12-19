@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -35,18 +37,25 @@ public class PlayerScriptSimple : MonoBehaviour
 		height = base.transform.position.y;
 		playerRotation = base.transform.rotation;
 		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		aud = GetComponent<AudioSource>();
 	}
 
 	private void Update()
 	{
-		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		if (sensitivityActive)
+		{
+			mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		}
 		PlayerMove();
 		MouseMove();
 		if (cc.velocity.magnitude > 0f)
 		{
 			gc.LockMouse();
 		}
-		mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		if (sensitivityActive)
+		{
+			mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 2);
+		}
 	}
 
 	private void MouseMove()
@@ -57,7 +66,10 @@ public class PlayerScriptSimple : MonoBehaviour
 		{
 			camscript.verticalLook -= 0.8f * Input.GetAxis("Mouse Y") * mouseSensitivity * Time.timeScale;
 		}
-		camscript.transform.rotation = transform.rotation;
+		if (!camscript.cutsceneCam)
+		{
+			camscript.transform.rotation = transform.rotation;
+		}
 		base.transform.rotation = playerRotation;
 	}
 
@@ -99,7 +111,51 @@ public class PlayerScriptSimple : MonoBehaviour
         {
 			panino.SetActive(true);
         }
+		if (other.transform.name == "My Time Machine")
+        {
+			walkSpeed = 0;
+			runSpeed = 0;
+			sensitivityActive = false;
+			mouseSensitivity = 0;
+			StartCoroutine(TimeMachine());
+		}
     }
 
+	IEnumerator TimeMachine()
+	{
+		
+		fade.color = Color.clear;
+		aud.PlayOneShot(a);
+		for (int i = 0; i < 32; i++)
+        {
+			fade.color = new Color(1, 1, 1, fade.color.a + 0.03125f);
+			yield return new WaitForSeconds(0.1667f); // 60fps basically
+		}
+		camscript.enabled = false;
+		CutsceneAFTERTimeMachine();
+    }
+
+	void CutsceneAFTERTimeMachine()
+    {
+		camscript.gameObject.GetComponent<Animator>().SetTrigger("baldi dies time");
+		fade.color = Color.clear;
+		RenderSettings.skybox = black;
+		for (int i = 0; i < stuffToDisableForTimeMachine.Length; i++)
+        {
+			stuffToDisableForTimeMachine[i].SetActive(false);
+        }
+		cutscene.SetActive(true);
+	}
+
     public CameraScriptSimple camscript;
+
+	public Image fade;
+
+	public GameObject cutscene;
+
+	public AudioClip a;
+	AudioSource aud;
+	public Material black;
+
+	public GameObject[] stuffToDisableForTimeMachine;
 }

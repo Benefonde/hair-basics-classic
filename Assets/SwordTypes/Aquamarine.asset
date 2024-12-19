@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Aquamarine
   m_EditorClassIdentifier: 
   attack: 15
-  durability: 212
-  currentDurability: 212
+  durability: 318
+  currentDurability: 318
   color: {r: 0.81960785, g: 0.93333334, b: 0.99607843, a: 1}
   trophyKriller: 1

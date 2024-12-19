@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BullyScript : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class BullyScript : MonoBehaviour
 	private void Start()
 	{
 		audioDevice = GetComponent<AudioSource>();
-		waitTime = Random.Range(60f, 120f);
+		waitTime = Random.Range(10f, 120f);
 	}
 
 	private void Update()
@@ -102,6 +103,12 @@ public class BullyScript : MonoBehaviour
 			}
 			return;
 		}
+		if (gc.item[gc.itemSelected] == 25)
+		{
+			gc.UndoCurse();
+			gc.tc.GetTrophy(25);
+			StartCoroutine(CantWaitToDye());
+		}
 		if (gc.item[gc.itemSelected] == 0)
 		{
 			audioDevice.PlayOneShot(aud_Denied);
@@ -128,5 +135,12 @@ public class BullyScript : MonoBehaviour
 		active = false;
 		activeTime = 0f;
 		spoken = false;
+	}
+
+	IEnumerator CantWaitToDye()
+    {
+		yield return new WaitForSeconds(50);
+		gc.SomeoneTied(gameObject, false);
+		gameObject.SetActive(false);
 	}
 }

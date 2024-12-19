@@ -165,6 +165,7 @@ public class MathGameScript : MonoBehaviour
         {
 			baldiScript.GetAngry(2);
 			mikoScript.GetAngry(2);
+			algerScript.GetAngry(0.75f);
 			gc.DeactivateLearningGame(gameObject);
         }
 	}
@@ -402,9 +403,10 @@ public class MathGameScript : MonoBehaviour
 				if (gc.mode != "classic")
 				{
 					mikoScript.GetAngry(0.15f);
+					baldiScript.GetTempAngry(0.1f);
 				}
-				baldiScript.GetTempAngry(0.1f);
-				baldiScript.GetAngry(0.5f);
+				baldiScript.GetTempAngry(0.15f);
+				baldiScript.GetAngry(0.3f);
 			}
 		}
 		else

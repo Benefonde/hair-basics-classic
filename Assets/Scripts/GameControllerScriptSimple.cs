@@ -57,6 +57,12 @@ public class GameControllerScriptSimple : MonoBehaviour
         SceneManager.LoadScene("BenefondCrates");
     }
 
+    public void TeleportPlayerTo(Vector3 pos, Quaternion rot)
+    {
+        player.position = pos;
+        ps.playerRotation = rot;
+    }
+
     public CursorControllerScript cursorController;
 
     public bool mouseLocked;

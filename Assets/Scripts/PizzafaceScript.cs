@@ -22,6 +22,14 @@ public class PizzafaceScript : MonoBehaviour
             return;
         }
         gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, (moveSpeed) * (1 * Time.deltaTime));
+        if (Time.deltaTime == 1)
+        {
+            gc.tc.pizzafaceTime += Time.deltaTime;
+        }
+        else if (Time.deltaTime != 0)
+        {
+            gc.tc.pizzafaceTime += Time.unscaledDeltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

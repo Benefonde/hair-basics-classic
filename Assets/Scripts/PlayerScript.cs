@@ -252,9 +252,10 @@ public class PlayerScript : MonoBehaviour
 		if (pipeGameGravity != 0)
 		{
 			if (Input.GetKey(KeyCode.LeftShift))
-            {
-				cc.Move(1.8f * runSpeed * transform.forward * Time.deltaTime);
-            }
+			{
+				stamina -= staminaRate * Time.deltaTime;
+				cc.Move(1.8f * runSpeed * Time.deltaTime * transform.forward);
+			}
 		}
     }
 
@@ -493,7 +494,7 @@ public class PlayerScript : MonoBehaviour
 	public void DisableInfStamina()
     {
 		infStamina = false;
-		stamina = maxStamina * 0.25f;
+		stamina = maxStamina * 0f;
     }
 
 	private void HealthCheck()
@@ -603,11 +604,19 @@ public class PlayerScript : MonoBehaviour
 		if (other.transform.name == "Panino" || other.transform.name == "Miko" || other.transform.name == "Alger (Alger's Basics")
 		{
 			health = 0.1f;
+			if (babaWinThing.activeSelf)
+            {
+				gc.tc.GetTrophy(27);
+            }
 		}
 	}
 
 	public void Die()
-    {
+	{
+		if (babaWinThing.activeSelf)
+		{
+			gc.tc.GetTrophy(27);
+		}
 		gc.SomeoneTied(gameObject);
 		gc.playerCollider.enabled = false;
 		playerRotation.eulerAngles = new Vector3(-35, playerRotation.y, playerRotation.z);
@@ -703,6 +712,10 @@ public class PlayerScript : MonoBehaviour
 		{
 			guilt = amount;
 			guiltType = type;
+			if (guilt != 0)
+			{
+				gc.tc.ruleBreak = true;
+			}
 		}
 	}
 

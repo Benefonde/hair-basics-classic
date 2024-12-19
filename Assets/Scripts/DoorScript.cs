@@ -10,6 +10,7 @@ public class DoorScript : MonoBehaviour
 	public BaldiScript baldi;
 	public MikoScript miko;
 	public AlgerScript alger;
+	public BaldiPlayerScript baldiPlayer;
 
 	public MeshCollider barrier;
 	public NavMeshObstacle locked;
@@ -110,6 +111,16 @@ public class DoorScript : MonoBehaviour
 				{
 					alger.Hear(base.transform.position, 1f);
 				}
+				if (baldi.gc != null)
+				{
+					if (baldi.gc.mode == "panino")
+					{
+						if (baldiPlayer.isActiveAndEnabled & (silentOpens <= 0))
+						{
+							baldiPlayer.Hear(base.transform.position);
+						}
+					}
+				}
 				OpenDoor();
 				if (silentOpens > 0)
 				{
@@ -123,6 +134,16 @@ public class DoorScript : MonoBehaviour
 
 			}
 		}
+
+		if (baldi.gc == null)
+        {
+			return;
+        }
+		if (!bDoorOpen && baldi.gc.mode == "panino" && Vector3.Distance(baldi.gc.evilPlayerTransform.position, transform.position) <= 2)
+        {
+			OpenDoor();
+			baldiPlayer.Hear(transform.position);
+        }
 	}
 
 	public void OpenDoor()
@@ -142,13 +163,13 @@ public class DoorScript : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (!bDoorLocked & other.CompareTag("NPC"))
+		if (!bDoorLocked && other.CompareTag("NPC"))
 		{
 			OpenDoor();
 		}
 	}
 
-	public void LockDoor(float time)
+    public void LockDoor(float time)
 	{
 		if (!bDoorLocked)
 		{

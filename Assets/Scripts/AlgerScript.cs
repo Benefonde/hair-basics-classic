@@ -127,7 +127,7 @@ public class AlgerScript : MonoBehaviour
 		{
 			this.baldiAnger = 0.5f;
 		}
-		this.baldiWait = -3f * this.baldiAnger / (this.baldiAnger + 3 / 0.6f) + 1.8f; //Some formula I don't understand.
+		baldiWait = -3f * baldiAnger / (baldiAnger + 2.5f / baldiSpeedScale) + 3f;//Some formula I don't understand.
 	}
 
 	// Token: 0x060009AA RID: 2474 RVA: 0x00024992 File Offset: 0x00022D92

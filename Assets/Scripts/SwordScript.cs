@@ -9,6 +9,7 @@ public class SwordScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main.transform;
         durability = swordType.durability;
         attack = swordType.attack;
         fill.color = swordType.color;
@@ -31,7 +32,7 @@ public class SwordScript : MonoBehaviour
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && Time.timeScale != 0)
         {
-            Physics.Raycast(player.position, player.forward, out RaycastHit h, 10);
+            Physics.Raycast(player.position, cam.forward, out RaycastHit h, 10);
             if (h.transform == null)
             {
                 return;
@@ -70,4 +71,5 @@ public class SwordScript : MonoBehaviour
     public TMP_Text swordTypeText;
 
     public Transform player;
+    Transform cam;
 }

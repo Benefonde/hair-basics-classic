@@ -51,7 +51,7 @@ public class DevinScript : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		anim = GetComponentInChildren<Animator>();
 		Wander();
-		pipeCoolDown = 25;
+		pipeCoolDown = 5;
 		anim.SetBool("oh", false);
 		agent.speed = 20;
 	}
@@ -188,7 +188,7 @@ public class DevinScript : MonoBehaviour
 		devinCanvas.SetActive(false);
 		gc.player.pipeGame = false;
 		gc.player.pipeGameGravity += 8 * Time.deltaTime;
-		pipeCoolDown = 45;
+		pipeCoolDown = 20;
 		agent.speed = 20;
 		if (pipeDucks == 5)
         {
@@ -202,15 +202,20 @@ public class DevinScript : MonoBehaviour
             else
             {
 				gc.player.health += 20;
-            }
+				gc.player.stamina += 50;
+			}
 		}
         else
         {
-			gc.player.health -= 30;
-			gc.camScript.ShakeNow(new Vector3(1, 1, 1), 5);
+			gc.player.health -= 35;
+			gc.camScript.ShakeNow(new Vector3(1, 0.5f, 1), 5);
 			if (gc.player.health <= 0)
             {
 				gc.camScript.follow = transform;
+            }
+            else
+            {
+				gc.tc.devinPipeHit++;
             }
 			audioDevice.PlayOneShot(outcome[1]);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Oops, you got hit, see you later.", outcome[1].length, new Color(255, 165, 0), transform);

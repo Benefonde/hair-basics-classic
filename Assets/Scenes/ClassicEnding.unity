@@ -6372,6 +6372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987ef8c721180952ded1b1163142459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tc: {fileID: 0}
   SchoolScene: 0
   ClassicSchoolScene: 0
   night: {fileID: 0}
@@ -6388,20 +6389,27 @@ MonoBehaviour:
   yellowey: {fileID: 0}
   secretsFound: 0
   slideWhistle: {fileID: 0}
+  killZombiesToWin: {fileID: 0}
   lapCount: {fileID: 0}
   old: 0
   dwaynes: []
+  modeTimer: {fileID: 0}
+  time: 0
   donutShooter: {fileID: 0}
   donut: {fileID: 0}
   paninoAppleTimer: 0
   amountOfExit: 0
+  eventText: {fileID: 0}
+  riiiing: {fileID: 0}
   dwayneDebtTimer: 0
   darkSchool: {fileID: 0}
   fadeToWhite: {fileID: 0}
+  jammerMeter: {fileID: 0}
   hud: {fileID: 0}
   at: {fileID: 0}
   bigball: {fileID: 0}
   whistle: {fileID: 0}
+  originalTimeScale: 0
   windowedWall: {fileID: 0}
   broken: {fileID: 0}
   brokenWindow: {fileID: 0}
@@ -6411,6 +6419,7 @@ MonoBehaviour:
   craftersWaitTime: 0
   timer: {fileID: 0}
   pizzaTimeTimer: {fileID: 0}
+  pizzaTimee: {fileID: 0}
   cursorController: {fileID: 0}
   player: {fileID: 0}
   playerTransform: {fileID: 0}
@@ -6425,6 +6434,11 @@ MonoBehaviour:
   entrance_3: {fileID: 0}
   entrance_4: {fileID: 0}
   chalkCloud: {fileID: 0}
+  squee: {fileID: 0}
+  heldItem: {fileID: 0}
+  soapHeldParticle: {fileID: 0}
+  windowWipe: {fileID: 0}
+  jammersTimer: 0
   baldiTutor: {fileID: 0}
   baldi: {fileID: 0}
   baldiScrpt: {fileID: 0}
@@ -6438,12 +6452,15 @@ MonoBehaviour:
   yellowFace: {fileID: 0}
   guardianAngel: {fileID: 0}
   playtime: {fileID: 0}
+  zombie: {fileID: 0}
   playtimeScript: {fileID: 0}
   gottaSweep: {fileID: 0}
   bully: {fileID: 0}
   firstPrize: {fileID: 0}
   TestEnemy: {fileID: 0}
+  baba: {fileID: 0}
   algerNull: {fileID: 0}
+  devin: {fileID: 0}
   firstPrizeScript: {fileID: 0}
   quarter: {fileID: 0}
   tutorBaldi: {fileID: 0}
@@ -6461,6 +6478,8 @@ MonoBehaviour:
   item: 
   itemSlot: []
   itemNames: []
+  stuffNoZombieMode: []
+  stuffYesZombieMode: []
   itemText: {fileID: 0}
   itemTextures: []
   itemHudTextures: []
@@ -6468,8 +6487,9 @@ MonoBehaviour:
   objection: {fileID: 0}
   alarmClock: {fileID: 0}
   notebookCount: {fileID: 0}
-  posters: []
   wall: {fileID: 0}
+  sand: {fileID: 0}
+  ballWall: {fileID: 0}
   pauseMenu: {fileID: 0}
   highScoreText: {fileID: 0}
   warning: {fileID: 0}
@@ -6494,6 +6514,9 @@ MonoBehaviour:
   learnMusic: {fileID: 0}
   pizzaTimeMusic: {fileID: 0}
   lap2Music: {fileID: 0}
+  wwnMusic: {fileID: 0}
+  curseOfRaMusic: {fileID: 0}
+  ambient: {fileID: 0}
   crazyAppleMusic: {fileID: 0}
   aud_Paid: {fileID: 0}
   baldiScript: {fileID: 0}
@@ -6522,26 +6545,30 @@ MonoBehaviour:
   locationText: {fileID: 0}
   hour: 20
   minute: 30
+  pillarHit: {fileID: 0}
   normalItemLayout: {fileID: 0}
   speedyItemLayout: {fileID: 0}
   mikoItemLayout: {fileID: 0}
   algerItemLayout: {fileID: 0}
   stealthyItemLayout: {fileID: 0}
-  classicItemLayout: {fileID: 0}
+  zombieItemLayout: {fileID: 0}
   tutorals: []
+  pharohsWall: {fileID: 0}
+  sandUI: {fileID: 0}
   panic: {fileID: 0}
   miko: {fileID: 0}
   alger: {fileID: 0}
   boowomp: {fileID: 0}
   camScript: {fileID: 0}
-  objecUses: 0
   maxNoteboos: 0
   exitIndicator: {fileID: 0}
+  asdaa: {fileID: 0}
   maxItems: 0
   pss: {fileID: 0}
   psgo: {fileID: 0}
   scoreDecayTimer: 0
   getInPortal: {fileID: 0}
+  escapeCollect: {fileID: 0}
   disablePausing: 0
   laps: 0
   gameOverPlayed: 0
@@ -6574,6 +6601,7 @@ MonoBehaviour:
   timeToMove: 0
   baldiAnger: 0
   gc: {fileID: 0}
+  squee: []
   baldiTempAnger: 0
   baldiWait: 0
   baldiSpeedScale: 0
@@ -8130,7 +8158,6 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   originalPosition: {x: 0, y: 5, z: 0}
   cam: {fileID: 166455324}
-  gc: {fileID: 1452330744}
   camYoffset: 1
   camYdefault: 1
 --- !u!20 &166455324
@@ -8223,7 +8250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1 &173321074
 GameObject:
@@ -32040,6 +32067,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769073920}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &769221227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769221229}
+  - component: {fileID: 769221228}
+  m_Layer: 0
+  m_Name: This Coord
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &769221228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769221227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33034fadcd586e945ba54f1c26fce642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: ???
+  details: Somewhere they probably shouldn't be
+  largeImage: question
+  largeText: A secret area...
+  partyId: 
+  size: 0
+  maxSize: 0
+--- !u!4 &769221229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769221227}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773254390
 GameObject:
   m_ObjectHideFlags: 0
@@ -37698,7 +37775,7 @@ Transform:
   - {fileID: 495298791}
   - {fileID: 2039146267}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920157472
 GameObject:
@@ -44343,7 +44420,7 @@ Transform:
   m_Children:
   - {fileID: 641648277}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059934543
 GameObject:
@@ -58283,7 +58360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1454262060
 GameObject:
@@ -58814,7 +58891,7 @@ Transform:
   m_LocalScale: {x: 300, y: 0.1, z: 300}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1472139047
 GameObject:
@@ -61563,7 +61640,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536669399
 GameObject:
@@ -63591,7 +63668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583730632
 GameObject:
@@ -67784,7 +67861,7 @@ Transform:
   - {fileID: 1244255830}
   - {fileID: 1758609410}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!23 &1705432646
 MeshRenderer:

@@ -21,7 +21,7 @@ public class ZombieScript : MonoBehaviour
 				switch (i)
                 {
 					case 0: defense += 2; health += 5; break;
-					case 1: defense += 5; health += 10; break;
+					case 1: defense += 4; health += 5; break;
 					case 2: defense += 3; health += 5; break;
 					case 3: defense += 1; break;
 				}
@@ -140,7 +140,7 @@ public class ZombieScript : MonoBehaviour
 		health -= attack - Mathf.RoundToInt(defense / 2.5f);
 		if (ss.swordType.name == "Wooden")
 		{
-			if (Random.Range(1, 3) == 2)
+			if (Random.Range(1, 3) == 2 && PlayerPrefs.GetInt("infItem", 0) == 0)
 			{
 				ss.durability -= 1;
 			}

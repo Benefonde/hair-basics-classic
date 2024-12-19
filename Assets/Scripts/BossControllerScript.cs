@@ -27,6 +27,9 @@ public class BossControllerScript : MonoBehaviour
         Color[] thingest = { Color.blue, Color.blue };
         gc.entrance_4.Lower();
         alger.baldiAudio.PlayOneShot(alger.preBoss[0]);
+        musicAud.loop = true;
+        musicAud.clip = bossMusic[0]; 
+        musicAud.Play();
         FindObjectOfType<SubtitleManager>().AddChained3DSubtitle(thing, thingie, thingest, alger.transform);
         gc.audioDevice.PlayOneShot(gc.aud_Switch);
         gc.playerScript.walkSpeed = 30;
@@ -67,6 +70,30 @@ public class BossControllerScript : MonoBehaviour
         hp.text = $"{alger.health}/20";
     }
 
+    public IEnumerator ChangeMusic(int i)
+    {
+        musicAud.loop = false;
+        yield return new WaitUntil(() => !musicAud.isPlaying);
+        musicAud.clip = bossMusic[i];
+        if (i != 2)
+        {
+            musicAud.Play();
+        }
+        if (i != 1)
+        {
+            musicAud.loop = true;
+        }
+        else
+        {
+            StartCoroutine(ChangeMusic(2));
+        }
+        if (i == 2)
+        {
+            yield return new WaitUntil(() => !musicAud.isPlaying);
+            musicAud.Play();
+        }
+    }
+
     public AlgerNullScript alger;
     public GameControllerScript gc;
 
@@ -75,4 +102,17 @@ public class BossControllerScript : MonoBehaviour
 
     public Slider bar;
     public TMP_Text hp;
+
+    public AudioSource musicAud;
+    public AudioClip[] bossMusic;
+    // 0 - intro loop
+    // 1 - intro
+    // 2 - part/phase 1
+    // 3 - part/phase 1.5
+    // 4 - part/phase 2
+    // 5 - part/phase 2.5
+    // 6 - part/phase 3
+    // 7 - part/phase 3.5
+    // 8 - part/phase 3.75
+    // 9 - outro, unused
 }

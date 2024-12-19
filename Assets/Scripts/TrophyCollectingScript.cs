@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class TrophyCollectingScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         gc = GetComponent<GameControllerScript>();
@@ -33,6 +32,10 @@ public class TrophyCollectingScript : MonoBehaviour
         if (windowCleanAmount == 2763)
         {
             GetTrophy(15);
+        }
+        if (windowCleanAmount == 282828)
+        {
+            GetTrophy(29);
         }
         if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
         {
@@ -74,6 +77,14 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(17);
         }
+        if (devinPipeHit >= 5 && !gc.camScript.FuckingDead)
+        {
+            GetTrophy(30);
+        }
+        if (pizzafaceTime >= 60)
+        {
+            GetTrophy(31);
+        }
     }
 
     public void GetTrophy(int i)
@@ -106,14 +117,18 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[24];
+    private bool[] dontCheckAga = new bool[32];
 
     public int zestyEaten;
     public int esteEaten;
 
+    public int devinPipeHit;
+    public float pizzafaceTime;
+
     public bool babaGotPushed;
     public bool usedItem;
     public bool onlyWooden;
+    public bool ruleBreak;
 
     public int collectedToppings;
     public int collectToppingsNeeded;
