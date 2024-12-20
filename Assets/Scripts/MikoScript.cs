@@ -6,6 +6,15 @@ public class MikoScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			disableTime += 5;
+			if (!YellowFace && (baldiAudio.time > 2 || !baldiAudio.isPlaying))
+            {
+				baldiAudio.PlayOneShot(stopIt);
+				FindObjectOfType<SubtitleManager>().Add3DSubtitle("stop it", 1.5f, Color.gray, transform);
+			}
+		}
 		if ((other.transform.name == "BSODA_Spray(Clone)" && (baldiAudio.time > 2 || !baldiAudio.isPlaying)) && !YellowFace)
 		{
 			baldiAudio.PlayOneShot(stopIt);

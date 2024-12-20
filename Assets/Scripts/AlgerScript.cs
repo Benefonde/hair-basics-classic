@@ -166,6 +166,10 @@ public class AlgerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			timeToMove += 5;
+		}
 		if (other.transform.name == "Yellow Face")
 		{
 			gc.SomeoneTied(gameObject);

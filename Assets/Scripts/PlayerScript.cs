@@ -162,8 +162,8 @@ public class PlayerScript : MonoBehaviour
 		}
 		if (inSecret)
 		{
-			CheckGround();
 			Jump();
+			CheckGround();
 		}
 		if (!pipeGame)
 		{

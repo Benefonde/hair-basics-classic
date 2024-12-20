@@ -43,6 +43,7 @@ public class Script : MonoBehaviour
 					played = false;
 					timmer = 1;
 					audioDevice.clip = itTworked;
+					FindObjectOfType<SubtitleManager>().Add3DSubtitle("It (t)worked! My time machine (t)worked!", audioDevice.clip.length, Color.cyan, transform);
 					timeMachine.gameObject.GetComponent<CapsuleCollider>().enabled = true;
 				}
 				if (timeMachine.GetFloat("twork") == 1)
@@ -59,6 +60,10 @@ public class Script : MonoBehaviour
 		if ((other.name == "Player") & !played)
 		{
 			audioDevice.Play();
+			if (paninis && audioDevice.clip != itTworked)
+            {
+				FindObjectOfType<SubtitleManager>().Add3DSubtitle("Myyy time machine.", audioDevice.clip.length, Color.cyan, transform);
+            }
 			played = true;
 		}
 	}

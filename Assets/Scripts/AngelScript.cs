@@ -12,7 +12,7 @@ public class AngelScript : MonoBehaviour
 
 	private void Update()
 	{
-		if (this.coolDown > 0f)
+		if (this.coolDown > 0f && agent.velocity.magnitude <= 0.01f)
 		{
 			this.coolDown -= 1f * Time.deltaTime;
 		}
@@ -23,17 +23,17 @@ public class AngelScript : MonoBehaviour
 		Vector3 direction = this.player.position - base.transform.position;
 		if (Physics.Raycast(base.transform.position + Vector3.up * 2f, direction, out var hitInfo, float.PositiveInfinity, 769, QueryTriggerInteraction.Ignore) & (hitInfo.transform.tag == "Player"))
 		{
-			if (!db && !audioDevice.isPlaying)
-            {
-				audioDevice.PlayOneShot(found);
-				FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Player found*", found.length, Color.green, transform);
-            }
-			this.db = true;
-			PlayerScript ps = player.GetComponent<PlayerScript>();
-			agent.speed = ps.walkSpeed + 1;
-			if ((gc.item[0] == 0) || (gc.item[1] == 0) || (gc.item[2] == 0) || (gc.item[3] == 0))
+			if (((gc.item[0] == 0) || (gc.item[1] == 0) || (gc.item[2] == 0) || (gc.item[3] == 0)) && ignorePlayer <= 0)
 			{
 				TargetPlayer();
+				if (!db && !audioDevice.isPlaying)
+				{
+					audioDevice.PlayOneShot(found);
+					FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Player found*", found.length, Color.green, transform);
+				}
+				this.db = true;
+				PlayerScript ps = player.GetComponent<PlayerScript>();
+				agent.speed = ps.walkSpeed + 1;
 			}
 			else if (coolDown <= 0f)
 			{
@@ -72,7 +72,11 @@ public class AngelScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Player")
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			ignorePlayer = 45;	
+		}
+		if (other.transform.name == "Player" && ignorePlayer <= 0)
         {
 			if ((gc.item[0] == 0) || (gc.item[1] == 0) || (gc.item[2] == 0) || (gc.item[3] == 0))
 			{
@@ -118,4 +122,6 @@ public class AngelScript : MonoBehaviour
 	public AudioClip lost;
 
 	private AudioSource audioDevice;
+
+	float ignorePlayer;
 }

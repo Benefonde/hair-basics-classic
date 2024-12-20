@@ -15,7 +15,7 @@ public class PaninoTV : MonoBehaviour
             StartCoroutine(EventTime(TestValue));
             return;
         }
-        if (((gc.mode == "story" || gc.mode == "pizza" || gc.mode == "triple" || gc.mode == "free") && Random.Range(1, 10) == 5) || gc.mode == "endless")
+        if (((gc.mode == "story" || gc.mode == "pizza" || gc.mode == "triple" || gc.mode == "free") && Random.Range(1, 3) == 2) || gc.mode == "endless")
         {
             eventWillHappne = true;
             print("event happens");
@@ -82,11 +82,17 @@ public class PaninoTV : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         tvStatic.SetActive(false);
         panino.SetActive(true);
+        switch (thing)
+        {
+            case 0: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber0, duration0, colore0); break;
+            case 1: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber1, duration1, colore1); break;
+            case 2: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber2, duration2, colore0); break;
+        }
         if (thing == 2)
         {
             prisonDoor.ItemsAreNowGoingToJail();
         }
-        yield return new WaitForSeconds(paninoAnnounce[thing].length);
+        yield return new WaitForSeconds(paninoAnnounce[thing].length + 0.5f);
         tvStatic.SetActive(true);
         panino.SetActive(false);
         stillBlabbering = false;
@@ -120,4 +126,13 @@ public class PaninoTV : MonoBehaviour
 
     bool stillBlabbering;
     bool queued;
+
+    string[] blabber0 = { "Congrattation!", "You found all 7 Dwaynes,", "now all you need to do is...", "GET OUT." };
+    float[] duration0 = { 1.8f, 3f, 2.8f, 1.935f };
+    Color[] colore0 = { Color.white, Color.white, Color.white, Color.white };
+    string[] blabber1 = { "The Pillar John door in the first cafeteria has just been unlocked,", "and we don't know why.", "You should totes stay out of there bro, please" };
+    float[] duration1 = { 4.609f, 2.05f,  2.192f};
+    Color[] colore1 = { Color.white, Color.white, Color.white };
+    string[] blabber2 = { "I have decided that any items that you have are a big meanie", "and I will put them into the.", "Jail.", "Good luck breaking them out, assuming you have any." };
+    float[] duration2 = { 3.61f, 2.64f, 1f, 2.5f };
 }

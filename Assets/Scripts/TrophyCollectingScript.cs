@@ -73,7 +73,7 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(11);
         }
-        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1 && dontCheckAga[5])
+        if (PlayerPrefs.GetInt("pSecretFound", 0) == 1)
         {
             GetTrophy(17);
         }

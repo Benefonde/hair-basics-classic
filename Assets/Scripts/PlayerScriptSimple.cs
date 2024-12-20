@@ -126,10 +126,10 @@ public class PlayerScriptSimple : MonoBehaviour
 		
 		fade.color = Color.clear;
 		aud.PlayOneShot(a);
-		for (int i = 0; i < 32; i++)
+		for (int i = 0; i < 210; i++)
         {
-			fade.color = new Color(1, 1, 1, fade.color.a + 0.03125f);
-			yield return new WaitForSeconds(0.1667f); // 60fps basically
+			fade.color = new Color(1, 1, 1, fade.color.a + 0.005f);
+			yield return new WaitForSeconds(0.01667f); // 60fps basically
 		}
 		camscript.enabled = false;
 		CutsceneAFTERTimeMachine();

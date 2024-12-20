@@ -42,8 +42,20 @@ public class SubtitleScript : MonoBehaviour
 
         //save these vals for reuse so we reduce overhead
         Vector3 camPos = sm.cameraTransform.position;
-        Vector3 proPos = producer.position;
+        Vector3 proPos;
+        if (producer != null)
+        {
+            proPos = producer.position;
+        }
+        else
+        {
+            proPos = transform.position;
+        }
         float distance = Vector3.Distance(proPos, camPos);
+        if (producerAud == null)
+        {
+            is3d = false;
+        }
         float maxDist = producerAud.maxDistance;
         float minDist = producerAud.minDistance;
         float spatial = producerAud.spatialBlend;

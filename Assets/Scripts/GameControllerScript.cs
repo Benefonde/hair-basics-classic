@@ -80,7 +80,6 @@ public class GameControllerScript : MonoBehaviour
 
     private void Start()
     {
-        dm = FindObjectOfType<DicordManager>();
         tc = GetComponent<TrophyCollectingScript>();
         if (PlayerPrefs.GetInt("heldItemShow", 0) == 0)
         {
@@ -914,17 +913,7 @@ public class GameControllerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            playerTransform.gameObject.SetActive(false);
-            time = 0;
-            camScript.follow = baldi.transform;
-            camScript.FuckingDead = true;
-            if (!spoopMode)
-            {
-                ActivateSpoopMode();
-            }
-            baldiScript.baldiWait = 1;
-            baldiScript.timeToMove = 2;
-            bigball.SetActive(true);
+            StartCoroutine(paninoTv.EventTime(2));
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -2165,6 +2154,16 @@ public class GameControllerScript : MonoBehaviour
             camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 276300);
             tc.usedItem = true;
         }
+        else if (item[itemSelected] == 27)
+        {
+            GameObject a = Instantiate(ubrSpray, playerTransform.position + Vector3.up, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y), 0f));
+            a.transform.name = "UbrSpray(Clone)";
+            audioDevice.PlayOneShot(aud_Spray);
+            if (Random.Range(1, 10) != 2)
+            {
+                ResetItem();
+            }
+        }
     }
 
     public void Objection()
@@ -2273,7 +2272,11 @@ public class GameControllerScript : MonoBehaviour
 
     public void ResetItem()
     {
-        if (!TestingItemsMode || mode != "zombie")
+        if (mode == "zombie")
+        {
+            return;
+        }
+        if (!TestingItemsMode)
         {
             item[itemSelected] = 0;
             itemSlot[itemSelected].texture = itemTextures[0];
@@ -2283,7 +2286,11 @@ public class GameControllerScript : MonoBehaviour
 
     public void LoseItem(int id)
     {
-        if (!TestingItemsMode || mode != "zombie")
+        if (mode == "zombie")
+        {
+            return;
+        }
+        if (!TestingItemsMode)
         {
             item[id] = 0;
             itemSlot[id].texture = itemTextures[0];
@@ -2565,10 +2572,6 @@ public class GameControllerScript : MonoBehaviour
 
     public void DespawnCrafters()
     {
-        if (mode == "pizza")
-        {
-            pss.AddPoints(-50, 2);
-        }
         crafters.SetActive(value: false);
         craftersWaitTime = 45;
     }
@@ -2579,7 +2582,7 @@ public class GameControllerScript : MonoBehaviour
         {
             if (mode == "classic")
             {
-                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26));
+                CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27));
             }
             else
             {
@@ -2661,13 +2664,13 @@ public class GameControllerScript : MonoBehaviour
 
     public bool craftersTime;
 
-    private int speedBoost;
-    private int extraStamina;
-    private int slowerKriller;
-    private int walkThrough;
-    private int blockPath;
-    private int infItem;
-    private int jammers;
+    public int speedBoost;
+    public int extraStamina;
+    public int slowerKriller;
+    public int walkThrough;
+    public int blockPath;
+    public int infItem;
+    public int jammers;
 
     public TMP_Text dwayneDebtTimerText;
 
@@ -3059,5 +3062,5 @@ public class GameControllerScript : MonoBehaviour
 
     public AudioClip congratulatation;
 
-    DicordManager dm;
+    public GameObject ubrSpray;
 }

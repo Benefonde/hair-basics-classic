@@ -34,6 +34,10 @@ public class PizzafaceScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.transform.name == "UbrSpray(Clone)")
+        {
+            pauseTime = 15;
+        }
         if (other.transform.name == "Yellow Face")
         {
             gc.SomeoneTied(gameObject);

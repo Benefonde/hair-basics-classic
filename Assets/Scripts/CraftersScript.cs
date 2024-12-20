@@ -156,12 +156,27 @@ public class CraftersScript : MonoBehaviour
 			audioDevice.pitch = 1;
 			cc.enabled = true;
 			gc.playerScript.health -= 60;
+			if (gc.mode == "pizza")
+			{
+				gc.pss.AddPoints(-50, 2);
+			}
 			gc.DespawnCrafters();
 		}
 		if (other.transform.name == "Yellow Face")
 		{
 			gc.SomeoneTied(gameObject);
 			gameObject.SetActive(false);
+		}
+
+		if (other.transform.name == "UbrSpray(Clone)" & angry)
+		{
+			angry = false;
+			agent.speed = 20;
+			audioDevice.Stop();
+			anger = 0;
+			spriteImage.sprite = normalSprite;
+			audioDevice.pitch = 1;
+			gc.DespawnCrafters();
 		}
 	}
 

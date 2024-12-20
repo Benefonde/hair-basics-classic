@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class PrisonDoor : MonoBehaviour
 {
@@ -20,7 +22,11 @@ public class PrisonDoor : MonoBehaviour
 	[SerializeField]
 	int clicksLeft = 128;
 
+	public TMP_Text clicksText;
+
 	private AudioSource myAudio;
+
+	public AudioSource theirAudio;
 
 	Animator anim;
 
@@ -54,16 +60,20 @@ public class PrisonDoor : MonoBehaviour
             {
 				return;
             }
-			if (clicksLeft >= 1)
+			if (clicksLeft > 1)
             {
 				clicksLeft--;
+				clicksText.text = clicksLeft.ToString();
 				myAudio.PlayOneShot(doorHit, 0.3f);
+				if (Random.Range(1, 500) == 20)
+                {
+					StartCoroutine(ThisPrisonToHoldMe());
+                }
             }
             else
             {
 				OpenDoor();
-				myAudio.PlayOneShot(doorOpen, 1f);
-				FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door breaks open*", 2f, Color.white, transform);
+				clicksText.text = string.Empty;
 			}
 		}
 	}
@@ -78,11 +88,33 @@ public class PrisonDoor : MonoBehaviour
         }
     }
 
-	public void OpenDoor()
+	public void OpenDoor(bool itemsa = false)
 	{
 		invisibleBarrier.gameObject.SetActive(false);
-		anim.SetTrigger("open");
+		if (!itemsa)
+		{
+			anim.SetTrigger("open");
+		}
+		else
+		{
+			anim.SetTrigger("itemsOpen");
+		}
 		baldi.Hear(transform.position, 6);
 		openable = false;
+	}
+
+	IEnumerator ThisPrisonToHoldMe()
+    {
+		openable = false;
+		theirAudio.Play();
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("This prison... to hold... ME?", theirAudio.clip.length, Color.white, theirAudio.transform);
+		yield return new WaitForSeconds(theirAudio.clip.length);
+		OpenDoor(true);
+		for (int i = 0; i < 4; i++)
+        {
+			items[i].transform.localPosition = new Vector3(-40, 4, items[i].transform.localPosition.z);
+		}
+		myAudio.PlayOneShot(doorOpen, 1f);
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door breaks open*", 2f, Color.white, transform);
 	}
 }

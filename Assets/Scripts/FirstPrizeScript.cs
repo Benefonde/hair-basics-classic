@@ -190,6 +190,10 @@ public class FirstPrizeScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+        {
+			crazyTime += 5;
+        }
 		if (other.tag == "Player")
 		{
 			if (!audioDevice.isPlaying & !hugAnnounced)

@@ -45,7 +45,7 @@ public class CompletionAnimationText : MonoBehaviour
             aud3.PlayOneShot(blip);
             percent++;
             aud3.pitch += 0.02f;
-            yield return new WaitForSeconds(0.049f - (percent / 1000));
+            yield return new WaitForSeconds(0.05f - percent / 3000f);
             if (percent >= 80 && percent < 95)
             {
                 yield return new WaitForSeconds(percent / 2000f);

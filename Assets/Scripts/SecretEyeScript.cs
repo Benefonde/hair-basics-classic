@@ -58,16 +58,6 @@ public class SecretEyeScript : MonoBehaviour
             }
             secretMusic.SetActive(true);
             RenderSettings.skybox = secretSky;
-            player.gc.baldiScrpt.enabled = false;
-            player.gc.principalScript.enabled = false;
-            player.gc.firstPrizeScript.enabled = false;
-            player.gc.bigball.GetComponent<AgentTest>().enabled = false;
-            player.gc.crafters.GetComponent<CraftersScript>().enabled = false;
-            player.gc.baba.GetComponent<BabaScript>().enabled = false;
-            if (PlayerPrefs.GetInt("yellow", 0) == 1)
-            {
-                player.gc.yellowFace.SetActive(false);
-            }
         }
         else
         {
@@ -80,22 +70,11 @@ public class SecretEyeScript : MonoBehaviour
                 player.gc.pizzaTimeTimer.SetBool("up", true);
             }
             RenderSettings.skybox = normalSky;
-            player.gc.baldiScrpt.enabled = true;
-            player.gc.principalScript.enabled = true;
-            player.gc.firstPrizeScript.enabled = true;
-            player.gc.bigball.GetComponent<AgentTest>().enabled = true;
-            player.gc.crafters.GetComponent<CraftersScript>().enabled = true;
-            player.gc.baba.GetComponent<BabaScript>().enabled = true;
-            if (PlayerPrefs.GetInt("yellow", 0) == 1)
-            {
-                player.gc.yellowFace.SetActive(true);
-            }
         }
         player.runSpeed = playerRunSpeed;
         player.walkSpeed = playerWlkSpeed;
         player.transform.position = pos;
         gameObject.SetActive(false);
-        StartCoroutine(player.PlayerInv());
     }
 
     public Vector3 pos;

@@ -97,11 +97,11 @@ public class AlgerNullScript : MonoBehaviour
 		{
 			if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
 			{
-				speed = gc.notebooks * 2f;
+				speed = (gc.notebooks + anger) * 2f;
 			}
             else
 			{
-				speed = gc.notebooks * 2.65f;
+				speed = (gc.notebooks + anger * 1.5f) * 2.65f;
 			}
 		}
 		if (timeToMove < 0)
@@ -136,7 +136,11 @@ public class AlgerNullScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "HitObject(Clone)")
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			anger += 5;
+		}
+		if (other.transform.name == "HitObject(Clone)")
         {
 			if (other.GetComponent<HitObjectBossScript>().state == 2 && canGetHit)
 			{
@@ -261,6 +265,8 @@ public class AlgerNullScript : MonoBehaviour
 	public BossControllerScript bcs;
 
 	public AudioSource baldiAudio;
+
+	public float anger;
 
 	public AudioClip[] speech;
 	public AudioClip[] found;

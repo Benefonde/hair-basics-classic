@@ -8,9 +8,11 @@ public class PrisonItemScript : MonoBehaviour
         if (ID == 0)
         {
             mapThing.SetActive(false);
+            gameObject.tag = "Untagged";
             return;
         }
         mapThing.SetActive(true);
+        gameObject.tag = "Item";
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
