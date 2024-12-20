@@ -7,5 +7,4 @@ public class Sword : ScriptableObject
     public int durability;
     public int currentDurability;
     public Color color = Color.white;
-    public bool trophyKriller;
 }

@@ -8,19 +8,18 @@ public class PaninoTV : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim.SetFloat("state", 3);
         exclamationSound = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         if (TestMode)
         {
-            StartCoroutine(EventTime());
+            StartCoroutine(EventTime(TestValue));
             return;
         }
-        if ((gc.mode == "story" || gc.mode == "pizza") && Random.Range(1, 20) == 5)
+        if (((gc.mode == "story" || gc.mode == "pizza" || gc.mode == "triple" || gc.mode == "free") && Random.Range(1, 10) == 5) || gc.mode == "endless")
         {
             eventWillHappne = true;
             print("event happens");
-            timmer = Random.Range(70, 700);
+            timmer = Random.Range(70, 350);
         }
     }
 
@@ -35,31 +34,68 @@ public class PaninoTV : MonoBehaviour
             }
             if (timmer <= 0 && eventWillHappne)
             {
-                StartCoroutine(EventTime());
+                StartCoroutine(EventTime(2));
                 eventWillHappne = false;
             }
         }
     }
 
-    IEnumerator EventTime()
+    public IEnumerator EventTime(int thing)
     {
-        anim.SetFloat("state", 1); // 0 - stay, 1 - go down, 2 - go up, 3 nothing
-        exclamationSound.Play();
-        exclamation.SetActive(true);
-        yield return new WaitForEndOfFrame();
-        anim.SetFloat("state", 0);
-        yield return new WaitForSeconds(2.5f);
+        if (!stillBlabbering)
+        {
+            anim.SetTrigger("neverGoDown");
+        }
+        panino.GetComponent<AudioSource>().clip = paninoAnnounce[thing];
+        if (thing != 0)
+        {
+            exclamationSound.Play();
+            if (stillBlabbering)
+            {
+                queued = true;
+                yield return new WaitUntil(() => !stillBlabbering);
+            }
+        }
+        if (thing != 0)
+        {
+            if (stillBlabbering)
+            {
+                queued = true;
+                yield return new WaitUntil(() => !stillBlabbering);
+            }
+            yield return new WaitForSeconds(2.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1); 
+            if (stillBlabbering)
+            {
+                queued = true;
+                yield return new WaitUntil(() => !stillBlabbering);
+            }
+        }
+        queued = false;
+        panino.SetActive(false);
         exclamation.SetActive(false);
         tvStatic.SetActive(true);
+        stillBlabbering = true;
         yield return new WaitForSeconds(0.25f);
         tvStatic.SetActive(false);
         panino.SetActive(true);
-        yield return new WaitForSeconds(10);
+        if (thing == 2)
+        {
+            prisonDoor.ItemsAreNowGoingToJail();
+        }
+        yield return new WaitForSeconds(paninoAnnounce[thing].length);
         tvStatic.SetActive(true);
         panino.SetActive(false);
+        stillBlabbering = false;
         yield return new WaitForSeconds(0.25f);
         tvStatic.SetActive(false);
-        anim.SetFloat("state", 2);
+        if (!queued)
+        {
+            anim.SetTrigger("alwaysGoUp");
+        }
     }
 
     AudioSource exclamationSound;
@@ -74,5 +110,14 @@ public class PaninoTV : MonoBehaviour
     [SerializeField]
     bool eventWillHappne;
 
+    public AudioClip[] paninoAnnounce; // 0 - congrattation, 1 - pillar john, 2 - jailed items
+
+    [SerializeField]
+    int TestValue;
     public bool TestMode;
+
+    public PrisonDoor prisonDoor;
+
+    bool stillBlabbering;
+    bool queued;
 }

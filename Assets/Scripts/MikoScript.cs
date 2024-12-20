@@ -68,11 +68,11 @@ public class MikoScript : MonoBehaviour
         {
 			if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
 			{
-				speed = baldiAnger * 1f;
+				speed = baldiAnger * 0.8f;
 			}
             else
 			{
-				speed = baldiAnger * 1.3f;
+				speed = baldiAnger * 1.1f;
 			}
 		}
 	}

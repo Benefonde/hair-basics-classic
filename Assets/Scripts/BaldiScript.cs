@@ -190,7 +190,7 @@ public class BaldiScript : MonoBehaviour
 				Wander();
 			}
 		}
-		moveFrames = 6f;
+		moveFrames = 8f;
 		timeToMove = baldiWait - baldiTempAnger;
 		previous = base.transform.position;
 		baldiAudio.PlayOneShot(slap);

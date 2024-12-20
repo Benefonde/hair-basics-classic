@@ -1058,7 +1058,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (notebooks == maxNoteboos && mode == "pizza")
         {
-            StartCoroutine(EventRing());
+            StartCoroutine(paninoTv.EventTime(1));
         }
         else if ((notebooks == maxNoteboos))
         {
@@ -1537,8 +1537,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if ((notebooks == maxNoteboos) & (mode == "story"))
         {
-            audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
-            FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
+            StartCoroutine(paninoTv.EventTime(0));
             ESCAPEmusic.Play();
             if (baldiScrpt.isActiveAndEnabled)
             {
@@ -1556,8 +1555,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if ((notebooks == maxNoteboos) & (mode == "speedy"))
         {
-            audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
-            FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
+            StartCoroutine(paninoTv.EventTime(0));
             if (slowerKriller == 1)
             {
                 baldiScript.baldiWait = 0.275f;
@@ -1572,7 +1570,11 @@ public class GameControllerScript : MonoBehaviour
         {
             entrance_2.Lower();
         }
-        else if ((notebooks == maxNoteboos) & (mode == "triple"|| mode == "free" || mode == "classic"))
+        else if ((notebooks == maxNoteboos) & (mode == "triple"|| mode == "free"))
+        {
+            StartCoroutine(paninoTv.EventTime(0));
+        }
+        else if (mode == "classic")
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);
@@ -2878,6 +2880,8 @@ public class GameControllerScript : MonoBehaviour
     public Material ballWall;
 
     public GameObject pauseMenu;
+
+    public PaninoTV paninoTv;
 
     public GameObject highScoreText;
 

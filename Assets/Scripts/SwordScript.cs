@@ -48,10 +48,6 @@ public class SwordScript : MonoBehaviour
     public void ChangeSword(Sword s)
     {
         swordType = s;
-        if (s.trophyKriller)
-        {
-            FindObjectOfType<TrophyCollectingScript>().onlyWooden = false;
-        }
         if (s != none)
         {
             FindObjectOfType<TrophyCollectingScript>().usedItem = true;
