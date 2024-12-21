@@ -22,6 +22,7 @@ public class OptionsManager : MonoBehaviour
 	public Toggle itemHeld;
 	public Toggle timer;
 	public Toggle vsync;
+	public Toggle fastRestart;
 	public TMP_InputField fps;
 	public TMP_InputField scaleFactor;
 
@@ -117,6 +118,14 @@ public class OptionsManager : MonoBehaviour
 			else
 			{
 				this.timer.isOn = false;
+			}
+			if (PlayerPrefs.GetInt("fastRestart", 0) == 1)
+			{
+				this.fastRestart.isOn = true;
+			}
+			else
+			{
+				this.fastRestart.isOn = false;
 			}
 			this.fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
 			this.scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
@@ -249,6 +258,14 @@ public class OptionsManager : MonoBehaviour
 		{
 			QualitySettings.vSyncCount = 0;
 			PlayerPrefs.SetInt("vsync", 0);
+		}
+		if (fastRestart.isOn)
+		{
+			PlayerPrefs.SetInt("fastRestart", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("fastRestart", 0);
 		}
 		this.CheckInput();
 		
@@ -384,22 +401,21 @@ public class OptionsManager : MonoBehaviour
 
 	public void SetFps()
 	{
-		if (vsync.isOn)
-        {
-			QualitySettings.vSyncCount = 1;
-			return;
-        }
-		QualitySettings.vSyncCount = 0;
 		if (!int.TryParse(this.fps.text, out int num) || num < 5)
 		{
 			this.fps.text = "5";
 			num = 5;
 		}
-		Debug.Log("Target Frame Rate: " + num);
-		
-		Application.targetFrameRate = num;
 		PlayerPrefs.SetInt("fps", num);
-		Debug.Log("Stored FPS in PlayerPrefs: " + PlayerPrefs.GetInt("fps"));
+
+		if (vsync.isOn)
+		{
+			QualitySettings.vSyncCount = 1;
+			return;
+		}
+
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = num;
 	}
 
 	public void SetFactor()
@@ -512,6 +528,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetFloat("scaleFactor", 1.5f);
 		PlayerPrefs.DeleteKey("heldItemShow");
 		PlayerPrefs.DeleteKey("timer");
+		PlayerPrefs.DeleteKey("fastRestart");
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("BenefondCrates");
 	}

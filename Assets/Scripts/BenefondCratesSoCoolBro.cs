@@ -9,7 +9,13 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1 || TestMode)
+        if (Random.Range(1, 21) == 2 || TestMode == 1)
+        {
+            benefondCreatesAud.clip = benefondCratesEasterEggs[Random.Range(0, benefondCratesEasterEggs.Length - 1)];
+        }
+        benefondCreatesAud.Play();
+
+        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1 || TestMode == 2)
         {
             benefondCreates.SetActive(false);
             cam = Camera.main.transform;
@@ -21,12 +27,20 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("BenefondCreates");
+            }
+        }
+
         if (sorryTime)
         {
             return;
         }
         timer += Time.deltaTime;
-        if (timer >= 300 || TestMode)
+        if (timer >= 300 || TestMode == 2)
         {
             sorryTime = true;
             StartCoroutine(Sorry("Are you sorry for what you've done?"));
@@ -101,11 +115,14 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
 
     public GameObject choices;
 
-    public bool TestMode;
+    public int TestMode;
 
     public GameObject balls;
 
     Transform cam;
 
     public AudioClip cooLSong;
+
+    public AudioSource benefondCreatesAud;
+    public AudioClip[] benefondCratesEasterEggs;
 }

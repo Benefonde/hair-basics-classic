@@ -102,7 +102,7 @@ public class FirstPrizeScript : MonoBehaviour
 			base.transform.Rotate(new Vector3(0f, 180f * Time.deltaTime, 0f));
 			crazyTime -= Time.deltaTime;
 		}
-		if (prevSpeed - agent.velocity.magnitude > 45f)
+		if (prevSpeed - agent.velocity.magnitude > 85f)
 		{
 			audioDevice.PlayOneShot(audBang);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Bang!*", audBang.length, Color.gray, transform);
@@ -211,7 +211,7 @@ public class FirstPrizeScript : MonoBehaviour
 		}
 		if (other.tag == "Player" || baldiScript.gc.playerScript.hugging)
         {
-			if (prevSpeed - agent.velocity.magnitude > 45f)
+			if (prevSpeed - agent.velocity.magnitude > 85f)
 			{
 				baldiScript.gc.playerScript.health -= 50;
 				baldiScript.gc.camScript.ShakeNow(new Vector3(0.5f, 0.5f, 0.5f), 5);
@@ -228,7 +228,7 @@ public class FirstPrizeScript : MonoBehaviour
     {
 		if (other.tag == "Player" || baldiScript.gc.playerScript.hugging)
 		{
-			if (prevSpeed - agent.velocity.magnitude > 45f)
+			if (prevSpeed - agent.velocity.magnitude > 85f)
 			{
 				baldiScript.gc.playerScript.health -= 50;
 				baldiScript.gc.camScript.ShakeNow(new Vector3(0.5f, 0.5f, 0.5f), 5);

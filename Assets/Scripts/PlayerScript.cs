@@ -375,7 +375,7 @@ public class PlayerScript : MonoBehaviour
 	{
 		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.1f) && gravity <= 0)
+		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.01f) && gravity <= 0)
 		{
 			if (hit.collider.transform.name == "Floor")
 			{

@@ -580,6 +580,14 @@ public class GameControllerScript : MonoBehaviour
             baldiScript.baldiSpeedScale = 0.5875f;
             locationText.text = "Lol!!!!!!!";
         }
+        if (yellowFaceOn == 1)
+        {
+            windowedWall.material = broken;
+            yellowFace.SetActive(true);
+            MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
+            yellowey.baldiAudio.PlayOneShot(brokenWindow);
+            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
+        }
         camScript.camYoffset = 5;
         camScript.camYdefault = 5;
         camScript.originalPosition = new Vector3(camScript.originalPosition.x, 5, camScript.originalPosition.z);
@@ -638,7 +646,7 @@ public class GameControllerScript : MonoBehaviour
             }
             windowedWall.material = broken;
             yellowFace.SetActive(true);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
                 GameObject bro = Instantiate(yellowFace);
                 bro.transform.name = "Yellow Face";
@@ -891,6 +899,11 @@ public class GameControllerScript : MonoBehaviour
                     return;
                 }
                 Time.timeScale = 1f;
+                if (PlayerPrefs.GetInt("fastRestart", 0) == 1)
+                {
+                    SceneManager.LoadScene("School");
+                    return;
+                }
                 SceneManager.LoadScene("GameOver");
             }
         }
@@ -1279,7 +1292,16 @@ public class GameControllerScript : MonoBehaviour
             gottaSweep.SetActive(true);
             bully.SetActive(true);
             firstPrize.SetActive(true);
-            guardianAngel.SetActive(true);
+            guardianAngel.SetActive(true); 
+            int rng = yellowFaceOn;
+            if (rng == 1)
+            {
+                windowedWall.material = broken;
+                yellowFace.SetActive(true);
+                MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
+                yellowey.baldiAudio.PlayOneShot(brokenWindow);
+                camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
+            }
         }
         else
         {
