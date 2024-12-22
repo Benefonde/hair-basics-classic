@@ -100,6 +100,8 @@ public class PrisonDoor : MonoBehaviour
 			anim.SetTrigger("itemsOpen");
 		}
 		baldi.Hear(transform.position, 6);
+		myAudio.PlayOneShot(doorOpen, 1f);
+		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door breaks open*", 2f, Color.white, transform);
 		openable = false;
 	}
 
@@ -114,7 +116,5 @@ public class PrisonDoor : MonoBehaviour
         {
 			items[i].transform.localPosition = new Vector3(-40, 4, items[i].transform.localPosition.z);
 		}
-		myAudio.PlayOneShot(doorOpen, 1f);
-		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door breaks open*", 2f, Color.white, transform);
 	}
 }

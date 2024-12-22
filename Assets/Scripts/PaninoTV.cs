@@ -63,6 +63,7 @@ public class PaninoTV : MonoBehaviour
                 queued = true;
                 yield return new WaitUntil(() => !stillBlabbering);
             }
+            exclamation.SetActive(true);
             yield return new WaitForSeconds(2.5f);
         }
         else

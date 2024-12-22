@@ -196,11 +196,12 @@ public class CameraScript : MonoBehaviour
 		if (shake == 1)
         {
 			Vector3 accumulatedOffset = Vector3.zero;
+			float camYdefaultForShake = camYoffset;
 
 			for (int i = 0; i < frames; i++)
 			{
 				float ran1 = Random.Range(-intensity.x, intensity.x);
-				float ran2 = Random.Range(camYdefault - intensity.y, camYdefault + intensity.y);
+				float ran2 = Random.Range(camYdefaultForShake - intensity.y, camYdefaultForShake + intensity.y);
 				float ran3 = Random.Range(-intensity.z, intensity.z);
 				Vector3 frameOffset = new Vector3(ran1, ran2, ran3);
 

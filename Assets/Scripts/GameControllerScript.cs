@@ -535,6 +535,7 @@ public class GameControllerScript : MonoBehaviour
         cameraTransform.position = new Vector3(5, 5, 5);
         zombieItemLayout.SetActive(true);
         ambient.Play();
+        windowedWall.material = broken;
     }
 
     void PaninoStart()
@@ -579,14 +580,6 @@ public class GameControllerScript : MonoBehaviour
         {
             baldiScript.baldiSpeedScale = 0.5875f;
             locationText.text = "Lol!!!!!!!";
-        }
-        if (yellowFaceOn == 1)
-        {
-            windowedWall.material = broken;
-            yellowFace.SetActive(true);
-            MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
-            yellowey.baldiAudio.PlayOneShot(brokenWindow);
-            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
         }
         camScript.camYoffset = 5;
         camScript.camYdefault = 5;
@@ -1099,6 +1092,12 @@ public class GameControllerScript : MonoBehaviour
                 GameObject zombo = Instantiate(zombie);
                 zombo.SetActive(true);
                 zombo.transform.name = "Zombie";
+                if (yellowFaceOn == 1)
+                {
+                    GameObject yellowey = Instantiate(yellowFace);
+                    yellowey.SetActive(true);
+                    yellowey.transform.name = "Yellow Face";
+                }
             }
         }
         UpdateNotebookCount();
@@ -1814,7 +1813,7 @@ public class GameControllerScript : MonoBehaviour
                 else if ((hitInfo3.collider.name == "RandomMachine") & (Vector3.Distance(playerTransform.position, hitInfo3.transform.position) <= 10f))
                 {
                     ResetItem();
-                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24, 25));
+                    CollectItem(CollectItemExcluding(5, 18, 15, 16, 22, 24, 25, 27));
                     audioDevice.PlayOneShot(aud_Paid);
                     tc.usedItem = true;
                 }
@@ -2610,11 +2609,11 @@ public class GameControllerScript : MonoBehaviour
             {
                 if (principal.activeSelf)
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25, 26));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 15, 16, 18, 21, 22, 24, 25, 26, 27));
                 }
                 else
                 {
-                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25, 26));
+                    CollectItem(CollectItemExcluding(2, 3, 7, 8, 9, 10, 13, 14, 15, 16, 18, 21, 22, 24, 25, 26, 27));
                 }
             }
         }
