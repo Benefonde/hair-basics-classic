@@ -5,6 +5,8 @@ public class PickupAnimationScript : MonoBehaviour
 {
 	private Transform itemPosition;
 
+	float thing;
+
 	private void Start()
 	{
 		itemPosition = GetComponent<Transform>();
@@ -12,8 +14,7 @@ public class PickupAnimationScript : MonoBehaviour
 
 	private void Update()
 	{
-		itemPosition.localPosition = new Vector3(0f, (Mathf.Sin((float)(Time.frameCount) / 5) / 1.75f) + 1f, 0f);
+		thing += Time.deltaTime;
+		itemPosition.localPosition = new Vector3(0f, (Mathf.Sin((float)(thing) * 20) / 1.75f) + 1f, 0f);
 	}
-
-
 }

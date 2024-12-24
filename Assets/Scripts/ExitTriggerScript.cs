@@ -79,7 +79,7 @@ public class ExitTriggerScript : MonoBehaviour
             {
 				gc.tc.GetTrophy(10);
             }
-			if (!gc.tc.ruleBreak)
+			if (!gc.tc.ruleBreak && gc.mode == "story")
             {
 				gc.tc.GetTrophy(24);
             }

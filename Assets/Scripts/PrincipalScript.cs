@@ -400,6 +400,13 @@ public class PrincipalScript : MonoBehaviour
 			gc.SomeoneTied(gameObject);
 			gameObject.SetActive(false);
 		}
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			seesRuleBreak = false;
+			timeSeenRuleBreak = 0;
+			angry = false;
+			Wander();
+        }
 	}
 
 	public bool summon;

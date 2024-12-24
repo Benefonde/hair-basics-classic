@@ -130,6 +130,10 @@ public class AgentTest : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			disableTime = 15;
+		}
 		if (other.transform.name == "Player")
         {
 			if (!touchingPlayer  || !gc.playerScript.bootsActive)

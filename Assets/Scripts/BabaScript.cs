@@ -11,7 +11,7 @@ public class BabaScript : MonoBehaviour
 
 	private void Update()
 	{
-		if (this.coolDown > 0f)
+		if (this.coolDown > 0f && agent.velocity.magnitude <= 0.01f)
 		{
 			this.coolDown -= 1f * Time.deltaTime;
 		}
@@ -75,6 +75,11 @@ public class BabaScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			ignorePlayer = 10;
+			Wander();
+		}
 		if (other.transform.name == "Player" && ignorePlayer <= 0f)
 		{
             StartCoroutine(gc.playerScript.BabaTime());

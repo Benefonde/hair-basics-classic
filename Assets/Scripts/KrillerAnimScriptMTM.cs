@@ -46,6 +46,8 @@ public class KrillerAnimScriptMTM : MonoBehaviour
             {
                 agent.SetDestination(new Vector3(-180, 4, 130));
                 interval = 0.6f;
+                speed = 100;
+                moveFrames = 8;
                 BaldiDies();
                 Invoke(nameof(GaymeJoever), 3);
             }

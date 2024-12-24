@@ -226,6 +226,18 @@ public class DevinScript : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			if (minigaming)
+            {
+				devinCanvas.SetActive(false);
+				gc.player.pipeGame = false;
+				gc.player.pipeGameGravity += 8 * Time.deltaTime;
+				agent.speed = 20;
+				pipeDucks = 0;
+			}
+			pipeCoolDown = 15;
+		}
 		if (other.tag == "Player" && pipeCoolDown <= 0 && !minigaming)
 		{
 			StartPipeMinigame();

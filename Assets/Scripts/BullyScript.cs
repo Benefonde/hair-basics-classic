@@ -94,6 +94,10 @@ public class BullyScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			Reset();
+		}
 		if ((other.transform.tag != "Player"))
 		{
 			if (other.transform.name == "Yellow Face")

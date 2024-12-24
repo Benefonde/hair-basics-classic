@@ -1022,6 +1022,13 @@ MonoBehaviour:
   TestMode: 0
   balls: {fileID: 1127738699}
   cooLSong: {fileID: 8300000, guid: 28aa437b5fb83224e9c23672280d2f5b, type: 3}
+  benefondCreatesAud: {fileID: 1435957918}
+  benefondCratesEasterEggs:
+  - {fileID: 8300000, guid: f8c094225dc53354a986fc1706cd964f, type: 3}
+  - {fileID: 8300000, guid: 3fac0bd3ab83e3041905ce92a822621b, type: 3}
+  - {fileID: 8300000, guid: 9e93e736cc663654f815fe75b61ecb37, type: 3}
+  - {fileID: 8300000, guid: b63cb2eba6eb5e246b5736ff4bdccb29, type: 3}
+  - {fileID: 8300000, guid: 014db26ec64733d4db5efc52e978d91c, type: 3}
 --- !u!114 &968392193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1181,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

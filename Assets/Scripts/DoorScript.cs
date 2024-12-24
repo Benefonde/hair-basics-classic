@@ -98,7 +98,8 @@ public class DoorScript : MonoBehaviour
 		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && Time.timeScale != 0f && Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo) && ((hitInfo.collider == trigger) & (Vector3.Distance(player.position, base.transform.position) < openingDistance)))
 		{
 			if (!bDoorLocked)
-            {
+			{
+				OpenDoor();
 				if (baldi.isActiveAndEnabled & (silentOpens <= 0))
 				{
 					baldi.Hear(base.transform.position, 1f);
@@ -121,7 +122,6 @@ public class DoorScript : MonoBehaviour
 						}
 					}
 				}
-				OpenDoor();
 				if (silentOpens > 0)
 				{
 					silentOpens--;
@@ -131,7 +131,6 @@ public class DoorScript : MonoBehaviour
             {
 				myAudio.PlayOneShot(rattle);
 				FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Rattling*", rattle.length, Color.white, transform);
-
 			}
 		}
 

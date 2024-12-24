@@ -48,6 +48,7 @@ public class SweepScript : MonoBehaviour
 		else if (!active)
 		{
 			active = true;
+			GetComponent<CapsuleCollider>().enabled = true;
 			wanders = 0;
 			Wander();
 			audioDevice.PlayOneShot(aud_Intro);
@@ -85,6 +86,11 @@ public class SweepScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			GoHome();
+			GetComponent<CapsuleCollider>().enabled = false;
+		}
 		if (other.tag == "NPC" || other.tag == "Player")
 		{
 			audioDevice.PlayOneShot(aud_Sweep);

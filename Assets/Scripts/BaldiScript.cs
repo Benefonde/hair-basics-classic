@@ -69,7 +69,7 @@ public class BaldiScript : MonoBehaviour
 	public bool resetAnger;
 
 	public bool classicEnding;
-
+	[SerializeField]
 	List<Collider> squee = new List<Collider>();
 
 	private void Start()
@@ -190,7 +190,7 @@ public class BaldiScript : MonoBehaviour
 				Wander();
 			}
 		}
-		moveFrames = 6f;
+		moveFrames = 8f;
 		timeToMove = baldiWait - baldiTempAnger;
 		previous = base.transform.position;
 		baldiAudio.PlayOneShot(slap);
@@ -234,6 +234,10 @@ public class BaldiScript : MonoBehaviour
 		{
 			for (int i = 0; i < squee.Count; i++)
 			{
+				if (squee[i] == null)
+                {
+					squee.RemoveAt(i);
+                }
 				if (squee[i].bounds.Contains(soundLocation))
 				{
 					return;
@@ -250,7 +254,6 @@ public class BaldiScript : MonoBehaviour
         {
             head.SetTrigger("confused");
 		}
-		
     }
 
 	public void ActivateAntiHearing(float t)
@@ -262,7 +265,11 @@ public class BaldiScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Yellow Face")
+		if (other.transform.name == "UbrSpray(Clone)")
+		{
+			timeToMove += 5;
+		}
+		if (other.transform.name == "Yellow Face")
         {
 			gc.SomeoneTied(gameObject);
 			gameObject.SetActive(false);
