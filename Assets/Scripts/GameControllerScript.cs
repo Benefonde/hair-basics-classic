@@ -206,6 +206,9 @@ public class GameControllerScript : MonoBehaviour
             else if (mode == "panino")
             {
                 PaninoStart();
+                playerHudStuff[0].SetActive(false);
+                playerHudStuff[1].SetActive(false);
+                playerHudStuff[2].SetActive(false);
             }
 
             if (extraStamina == 1)
@@ -556,10 +559,6 @@ public class GameControllerScript : MonoBehaviour
         FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
         camScript.player = baldiPlayer;
         cameraTransform.position = new Vector3(5, 7, 10);
-        for (int i = 0; i > playerHudStuff.Length; i++)
-        {
-            playerHudStuff[i].SetActive(false);
-        }
         for (int i = 0; i > FindObjectsOfType<Minimap>().Length; i++)
         {
             FindObjectsOfType<Minimap>()[i].player = baldiPlayer.transform;
