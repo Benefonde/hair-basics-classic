@@ -13,6 +13,10 @@ public class TitleScreen : MonoBehaviour
         }
         else if (((System.DateTime.Now.Month == 10 && System.DateTime.Now.Day >= 20) || (System.DateTime.Now.Month == 11 && System.DateTime.Now.Day <= 7)) || PlayerPrefs.GetInt("duplicatedBalls") == 1)
         {
+            if (evil)
+            {
+                return;
+            }
             EVILtitle.SetActive(true);
             gameObject.SetActive(false);
         }
