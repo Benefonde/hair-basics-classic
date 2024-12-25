@@ -206,9 +206,6 @@ public class GameControllerScript : MonoBehaviour
             else if (mode == "panino")
             {
                 PaninoStart();
-                playerHudStuff[0].SetActive(false);
-                playerHudStuff[1].SetActive(false);
-                playerHudStuff[2].SetActive(false);
             }
 
             if (extraStamina == 1)
@@ -583,6 +580,9 @@ public class GameControllerScript : MonoBehaviour
         camScript.camYoffset = 5;
         camScript.camYdefault = 5;
         camScript.originalPosition = new Vector3(camScript.originalPosition.x, 5, camScript.originalPosition.z);
+        playerHudStuff[0].SetActive(false);
+        playerHudStuff[1].SetActive(false);
+        playerHudStuff[2].SetActive(false);
     }
 
     public bool ModifierOn()
@@ -906,6 +906,19 @@ public class GameControllerScript : MonoBehaviour
         if (lap2Music.time < 21.25f && playAgain)
         {
             lap2Music.time = 21.25f;
+        }
+        if (Input.GetKeyDown(KeyCode.F1) && mode == "free")
+        {
+            baldiTutor.SetActive(value: false);
+            principal.SetActive(value: false);
+            crafters.SetActive(false);
+            gottaSweep.SetActive(false);
+            bully.SetActive(false);
+            firstPrize.SetActive(false);
+            guardianAngel.SetActive(false);
+            craftersTime = false;
+            crafters.SetActive(false);
+            schoolMusic.gameObject.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.F8))
         {
