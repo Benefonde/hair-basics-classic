@@ -919,6 +919,7 @@ public class GameControllerScript : MonoBehaviour
             craftersTime = false;
             crafters.SetActive(false);
             schoolMusic.gameObject.SetActive(false);
+            evilLeafy.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.F8))
         {
@@ -1018,6 +1019,12 @@ public class GameControllerScript : MonoBehaviour
                 audioDevice.PlayOneShot(algerKrilledYouHaha);
                 gameOverDelay = 5f;
             }
+            else if (charac == "Evil Leafy")
+            {
+                audioDevice.PlayOneShot(bfdiScream);
+                FindObjectOfType<SubtitleManager>().Add2DSubtitle("AAAAAAAAAAHHHHH!!!", bfdiScream.length, Color.white);
+                gameOverDelay = 1;
+            }
             else
             {
                 audioDevice.PlayOneShot(aud_chrisAAAAA);
@@ -1092,6 +1099,22 @@ public class GameControllerScript : MonoBehaviour
         eventText.SetActive(true);
         yield return new WaitForSeconds(5);
         eventText.SetActive(false);
+    }
+
+    public void SpawnEvilLeafy()
+    {
+        baldiTutor.SetActive(value: false);
+        principal.SetActive(value: false);
+        crafters.SetActive(false);
+        gottaSweep.SetActive(false);
+        bully.SetActive(false);
+        firstPrize.SetActive(false);
+        guardianAngel.SetActive(false);
+        craftersTime = false;
+        crafters.SetActive(false);
+        schoolMusic.gameObject.SetActive(false);
+        evilLeafy.SetActive(true);
+        math = 0;
     }
 
     public void CollectNotebook()
@@ -1228,6 +1251,18 @@ public class GameControllerScript : MonoBehaviour
         entrance_1.Lower();
         entrance_2.Lower();
         entrance_3.Lower();
+        audioDevice.PlayOneShot(aud_Hang);
+        FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
+        learnMusic.Stop();
+        schoolMusic.Stop();
+        if (mode == "pizza")
+        {
+            pss.AddPoints(50, 2);
+        }
+        if (evilLeafy.activeSelf)
+        {
+            return;
+        }
         if (mode == "story" || mode == "pizza")
         {
             baldiTutor.SetActive(value: false);
@@ -1320,14 +1355,6 @@ public class GameControllerScript : MonoBehaviour
             playerTransform.gameObject.SetActive(false);
             baldiPlayer.SetActive(true);
             evilPlayerTransform.gameObject.SetActive(true);
-        }
-        audioDevice.PlayOneShot(aud_Hang);
-        FindObjectOfType<SubtitleManager>().Add2DSubtitle("Ayo", aud_Hang.length, Color.cyan);
-        learnMusic.Stop();
-        schoolMusic.Stop();
-        if (mode == "pizza")
-        {
-            pss.AddPoints(50, 2);
         }
     }
 
@@ -1553,7 +1580,7 @@ public class GameControllerScript : MonoBehaviour
         {
             quarter.SetActive(false);
         }
-        if ((notebooks == 4 && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
+        if ((notebooks == 4 && !evilLeafy.activeSelf && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
         {
             bigball.SetActive(true);
         }
@@ -2846,6 +2873,8 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject zombie;
 
+    public GameObject evilLeafy;
+
     public PlaytimeScript playtimeScript;
 
     public GameObject gottaSweep;
@@ -2950,6 +2979,7 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip aud_buzz;
     public AudioClip aud_chrisAAAAA;
     public AudioClip algerKrilledYouHaha;
+    public AudioClip bfdiScream;
 
     public AudioClip aud_Hang;
 

@@ -127,7 +127,7 @@ public class CameraScript : MonoBehaviour
 			{
 				if (character.name == "Miko")
 				{
-					base.transform.position = character.transform.position + character.transform.forward * 2f + new Vector3(0f, 2.75f, 0f) + offset;
+					base.transform.position = character.transform.position + character.transform.forward * 3f + new Vector3(0f, 2.75f, 0f) + offset;
 					base.transform.LookAt(new Vector3(character.transform.position.x, character.transform.position.y + 2.75f, character.transform.position.z) + offset);
 				}
 				else if (character.name == "Alger (Alger's Basics)")
@@ -141,8 +141,13 @@ public class CameraScript : MonoBehaviour
 					base.transform.position = character.transform.position + character.transform.forward * 1f + new Vector3(0f, 2.05f, 0f) + offset;
 					base.transform.LookAt(new Vector3(character.transform.position.x, character.transform.position.y + 2.05f, character.transform.position.z) + offset);
 				}
-				else
+				else if (character.name == "Evil Leafy")
 				{
+					base.transform.position = character.transform.position + character.transform.forward * 3f + new Vector3(0f, 3.25f, 0f) + offset;
+					base.transform.LookAt(new Vector3(character.transform.position.x, character.transform.position.y + 3.25f, character.transform.position.z) + offset);
+				}
+				else
+                {
 					base.transform.position = character.transform.position + character.transform.forward * 2f + new Vector3(0f, 4.25f, 0f) + offset;
 					base.transform.LookAt(new Vector3(character.transform.position.x, character.transform.position.y + 4.25f, character.transform.position.z) + offset);
 				}

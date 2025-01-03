@@ -354,6 +354,11 @@ public class MathGameScript : MonoBehaviour
 			playerScript.walkSpeed = 2;
 			playerScript.stamina = 20;
 		}
+		else if (playerAnswer.text.ToLower().Contains("evil leafy"))
+        {
+			gc.SpawnEvilLeafy();
+			ExitGame();
+        }
 		if (problem > 3)
 		{
 			return;
