@@ -1067,8 +1067,6 @@ public class GameControllerScript : MonoBehaviour
         if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free"))
         {
             ActivateFinaleMode();
-            principal.SetActive(true);
-            principalScript.angry = false;
         }
         else if (notebooks == maxNoteboos && mode == "pizza")
         {
@@ -1790,14 +1788,12 @@ public class GameControllerScript : MonoBehaviour
                 hitInfo.collider.gameObject.GetComponent<SwingingDoorScript>().LockDoor(15f);
                 ResetItem();
                 tc.usedItem = true;
-                player.ResetGuilt("bullying", 2);
             }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out hitInfo) && ((hitInfo.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo.transform.position) <= 10f)))
             {
                 hitInfo.collider.gameObject.GetComponent<DoorScript>().LockDoor(65f);
                 ResetItem();
                 tc.usedItem = true;
-                player.ResetGuilt("bullying", 2);
             }
         }
         else if (item[itemSelected] == 3)
@@ -1870,7 +1866,6 @@ public class GameControllerScript : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo4) && ((hitInfo4.collider.name == "TapePlayer") & (Vector3.Distance(playerTransform.position, hitInfo4.transform.position) <= 10f)))
             {
                 hitInfo4.collider.gameObject.GetComponent<TapePlayerScript>().Play();
-                player.ResetGuilt("bullying", 5);
                 ResetItem();
                 tc.usedItem = true;
             }
@@ -1943,7 +1938,6 @@ public class GameControllerScript : MonoBehaviour
             {
                 camScript.ShakeNow(new Vector3(0.1f, 0.01f, 0.1f), 5);
             }
-            player.ResetGuilt("bullying", 3);
             ResetItem();
             audioDevice.PlayOneShot(aud_Switch);
             tc.usedItem = true;
@@ -1976,6 +1970,7 @@ public class GameControllerScript : MonoBehaviour
                 }
                 algerKrilledByPlayer = true;
                 tc.usedItem = true;
+                StartCoroutine(SpawnAlgerAfter(130));
             }
             else if (hitInfo7.collider.name == "Alger (Alger's Basics)")
             {
@@ -2269,6 +2264,13 @@ public class GameControllerScript : MonoBehaviour
         }
         yield return new WaitForSeconds(frozen);
         this.debugMode = false;
+    }
+
+    public IEnumerator SpawnAlgerAfter(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        principal.SetActive(true);
+        principalScript.angry = false;
     }
 
     public IEnumerator BeginTroll(int time)

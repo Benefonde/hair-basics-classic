@@ -101,8 +101,11 @@ public class PrisonDoor : MonoBehaviour
 		}
 		FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door breaks open*", 2f, Color.white, transform);
 		openable = false;
-		baldi.Hear(transform.position, 6);
 		myAudio.PlayOneShot(doorOpen, 1f);
+		if (baldi.isActiveAndEnabled)
+		{
+			baldi.Hear(transform.position, 6);
+		}
 	}
 
 	IEnumerator ThisPrisonToHoldMe()

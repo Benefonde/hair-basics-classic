@@ -407,6 +407,13 @@ public class PrincipalScript : MonoBehaviour
 			angry = false;
 			Wander();
         }
+		if (other.transform.name == "Objection(Clone)")
+		{
+			seesRuleBreak = false;
+			timeSeenRuleBreak = 0;
+			angry = false;
+			Wander();
+		}
 	}
 
 	public bool summon;

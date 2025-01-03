@@ -24,6 +24,8 @@ public class EvilLeafyScript : MonoBehaviour
 
 	public GameControllerScript gc;
 
+	public bool screamed;
+
 	private void Start()
 	{
 		baldiAudio = GetComponent<AudioSource>();
@@ -36,11 +38,24 @@ public class EvilLeafyScript : MonoBehaviour
 		if (timeToMove > 0f)
 		{
 			timeToMove -= 1f * Time.deltaTime;
+			if (!screamed && agent.speed == 0)
+            {
+				screamed = true;
+
+				if (Vector3.Distance(player.position, transform.position) <= 30)
+				{
+					gc.audioDevice.PlayOneShot(gc.bfdiScream, 0.6f);
+				}
+			}
 		}
 		else
 		{
 			Move();
+			screamed = false;
 		}
+		float a = Mathf.Clamp(Vector3.Distance(player.position, transform.position) / 75, 0.3f, 1f);
+		RenderSettings.ambientLight = new Color(a, a, a);
+		RenderSettings.fogColor = new Color(0, 0, 0);
 	}
 
 	private void FixedUpdate()
@@ -50,10 +65,6 @@ public class EvilLeafyScript : MonoBehaviour
 			moveFrames -= 1;
 			agent.acceleration = speed * 200;
 			agent.speed = speed;
-			if (Vector3.Distance(player.position, transform.position) <= 40)
-            {
-				gc.audioDevice.PlayOneShot(gc.bfdiScream, 0.6f);
-            }
 		}
 		else
 		{
@@ -78,10 +89,14 @@ public class EvilLeafyScript : MonoBehaviour
 
 	private void Move()
 	{
-		moveFrames = 1;
-		baldiWait -= 0.01015f;
+		baldiWait -= 0.0125f;
+		if (baldiWait < 0.15f)
+        {
+			baldiWait = 0.15f;
+        }
 		timeToMove = baldiWait;
 		baldiAudio.PlayOneShot(slap);
+		moveFrames = 2;
 		if (gc.isActiveAndEnabled)
 		{
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*BOOM*", 2, Color.red, transform);

@@ -7,22 +7,27 @@ public class DontDestroyOnLoadScript : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void Update()
-    {
         if (die)
         {
-            Invoke(nameof(Die), dieTime);
+            StartCoroutine(Die());
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
+        if (unscaled)
+        {
+            yield return new WaitForSecondsRealtime(dieTime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(dieTime);
+        }
         Destroy(gameObject);
     }
 
     public bool die;
 
     public float dieTime = 3.5f;
+    public bool unscaled;
 }

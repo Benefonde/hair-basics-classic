@@ -473,6 +473,11 @@ public class MathGameScript : MonoBehaviour
 			baldiScript.GetAngry(-1f);
 		}
 		gc.DeactivateLearningGame(base.gameObject);
+		if (gc.notebooks == 1)
+		{
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("Now it's time for a cool subject, which is math");
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("So basically put goo answer in box for big prize and answer them correctly or I will hit you with my ball");
+		}
 	}
 
 	public void ButtonPress(int value)

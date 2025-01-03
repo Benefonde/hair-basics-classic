@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MyTimeMachine.unity
     guid: 4dcdfaba74952174fb1f2c44bea3e26a
+  - enabled: 1
+    path: Assets/Scenes/Minigames.unity
+    guid: b5850dacca987c946b6d474e052047bb
   m_configObjects: {}
