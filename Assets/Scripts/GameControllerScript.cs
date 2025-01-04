@@ -1101,6 +1101,10 @@ public class GameControllerScript : MonoBehaviour
 
     public void SpawnEvilLeafy()
     {
+        if (evilLeafy.activeSelf)
+        {
+            evilLeafy.GetComponent<EvilLeafyScript>().baldiWait -= 0.2f;
+        }
         baldiTutor.SetActive(value: false);
         principal.SetActive(value: false);
         crafters.SetActive(false);

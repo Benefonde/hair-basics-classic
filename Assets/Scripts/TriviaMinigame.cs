@@ -93,6 +93,7 @@ public class TriviaMinigame : MonoBehaviour
                 questionText.text = "You lose...";
             }
             SceneManager.LoadScene("MainMenu");
+            return 1;
         }
         return validNumbers[randomIndex];
     }
