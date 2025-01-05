@@ -16,6 +16,7 @@ public class SpeechRecognize : MonoBehaviour
     {
         keywords.Add("evil leafy", () =>
         {
+            print("ay yo i heard you say EVIL LEAFY so here is EVIL LEAFY");
             gc.SpawnEvilLeafy();
         }); 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
@@ -52,11 +53,5 @@ public class SpeechRecognize : MonoBehaviour
     private void DictationRecognizer_DictationError(string error, int hresult)
     {
         print("aw yuck " + error);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

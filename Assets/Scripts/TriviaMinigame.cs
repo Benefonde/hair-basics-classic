@@ -81,10 +81,10 @@ public class TriviaMinigame : MonoBehaviour
     {
         System.Random random = new System.Random();
 
-        List<int> validNumbers = Enumerable.Range(0, 9).Except(questionsAlreadyAsked).ToList();
+        List<int> validNumbers = Enumerable.Range(0, 11).Except(questionsAlreadyAsked).ToList();
 
         int randomIndex = random.Next(validNumbers.Count);
-        if (questionsAsked >= 9 || strike == 4)
+        if (questionsAsked >= 11 || strike == 4)
         {
             questionText.text = "You win!"; 
             if (strike == 4)
@@ -95,7 +95,7 @@ public class TriviaMinigame : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             return 1;
         }
-        return validNumbers[randomIndex];
+        return validNumbers[randomIndex] - 1;
     }
 
     public TMP_Text questionText;

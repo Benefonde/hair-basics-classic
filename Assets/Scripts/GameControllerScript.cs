@@ -893,7 +893,7 @@ public class GameControllerScript : MonoBehaviour
                 Time.timeScale = 1f;
                 if (PlayerPrefs.GetInt("fastRestart", 0) == 1)
                 {
-                    SceneManager.LoadScene("School");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     return;
                 }
                 SceneManager.LoadScene("GameOver");
@@ -1261,10 +1261,13 @@ public class GameControllerScript : MonoBehaviour
         {
             pss.AddPoints(50, 2);
         }
-        if (evilLeafy.activeSelf)
+        if (evilLeafy != null)
         {
-            return;
-        }
+            if (evilLeafy.activeSelf)
+            {
+                return;
+            }
+        } 
         if (mode == "story" || mode == "pizza")
         {
             baldiTutor.SetActive(value: false);
@@ -1625,7 +1628,7 @@ public class GameControllerScript : MonoBehaviour
         {
             StartCoroutine(paninoTv.EventTime(0));
         }
-        else if (mode == "classic")
+        else if ((notebooks == maxNoteboos) & mode == "classic")
         {
             audioDevice.PlayOneShot(aud_AllNotebooks, 0.8f);
             FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(escape, duration, colors);

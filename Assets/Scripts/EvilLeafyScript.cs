@@ -89,6 +89,10 @@ public class EvilLeafyScript : MonoBehaviour
 
 	private void Move()
 	{
+		if (gc.mode == "classic")
+        {
+			baldiWait -= 0.01f;
+		}
 		baldiWait -= 0.0125f;
 		if (baldiWait < 0.15f)
         {
