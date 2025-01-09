@@ -2906,7 +2906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629851422
@@ -5596,7 +5596,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: That minigame doesn't exist yet!
+  m_text: 'That minigame doesn''t exist yet!
+
+    Check back next update.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -5666,12 +5668,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1334085532}
-    characterCount: 32
+    characterCount: 56
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 8
+    wordCount: 9
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
