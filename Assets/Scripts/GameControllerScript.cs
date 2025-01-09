@@ -1592,6 +1592,10 @@ public class GameControllerScript : MonoBehaviour
         else if ((notebooks == maxNoteboos) & (mode == "story"))
         {
             StartCoroutine(paninoTv.EventTime(0));
+            if (Random.Range(1, 40) == 28 || System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
+            {
+                ESCAPEmusic.clip = BESTESCAPE;
+            }
             ESCAPEmusic.Play();
             if (baldiScrpt.isActiveAndEnabled)
             {
@@ -3022,6 +3026,7 @@ public class GameControllerScript : MonoBehaviour
     public BaldiPlayerScript baldiPlayerScript;
 
     public AudioSource ESCAPEmusic;
+    public AudioClip BESTESCAPE;
 
     public ObjectionItem[] objectItem;
     private int objecUsesinit;

@@ -1876,6 +1876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534879518}
   - component: {fileID: 534879519}
+  - component: {fileID: 534879520}
   m_Layer: 5
   m_Name: Speedometer
   m_TagString: Untagged
@@ -1901,7 +1902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190, y: 145}
+  m_AnchoredPosition: {x: -190, y: -165}
   m_SizeDelta: {x: 95, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534879519
@@ -1954,6 +1955,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &534879520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534879517}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13729c109c07ab47bd44c981aecaee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -190, y: -165, z: 0}
+  intensity: {x: 1, y: 1, z: 0}
+  uiElement: 1
 --- !u!1 &585352266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,7 +3768,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.5, z: 1}
+  m_Size: {x: 0.3, y: 0.4, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &830777832
 SpriteRenderer:
@@ -3812,7 +3828,7 @@ Transform:
   m_GameObject: {fileID: 830777829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 931828647}
   m_RootOrder: 3
@@ -4609,6 +4625,7 @@ MonoBehaviour:
   - What is the update minigames were added?
   - How many toppins are in Pizza Mode?
   - What is Baba?
+  - What is Baba?
   answers1:
   - A secret character
   - 7
@@ -4620,6 +4637,7 @@ MonoBehaviour:
   - 5
   - Release 1.7
   - 6
+  - No, it isn't
   - No, it isn't
   answers2:
   - Not a character
@@ -4633,6 +4651,7 @@ MonoBehaviour:
   - Release 1.6.1
   - 5
   - A sheep
+  - A sheep
   answers3:
   - The player
   - 12
@@ -4645,8 +4664,9 @@ MonoBehaviour:
   - Release 1.0
   - 4
   - A cat
+  - A cat
   answers4:
-  - The main character [not the player]
+  - The main antagonist
   - Depends
   - 2021
   - Player
@@ -4656,6 +4676,7 @@ MonoBehaviour:
   - 8
   - Release 1.2
   - 3
+  - I don't know
   - I don't know
   rightAnswer: 0200000004000000030000000200000001000000040000000300000002000000010000000200000004000000
   strikes:
@@ -6527,7 +6548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220, y: -165}
+  m_AnchoredPosition: {x: -220, y: -145}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733055626

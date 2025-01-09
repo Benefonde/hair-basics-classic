@@ -42,7 +42,7 @@ public class TriviaMinigame : MonoBehaviour
         questionsAsked++;
         questionInProgress = true;
         question = NewQuestionNum(); 
-        if (questionsAsked >= 9 || strike == 4)
+        if (questionsAsked >= 11 || strike == 4)
         {
             return;
         }
@@ -95,7 +95,7 @@ public class TriviaMinigame : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             return 1;
         }
-        return validNumbers[randomIndex] - 1;
+        return validNumbers[randomIndex];
     }
 
     public TMP_Text questionText;
@@ -119,7 +119,7 @@ public class TriviaMinigame : MonoBehaviour
 
     public GameObject[] strikes;
 
-    int[] questionsAlreadyAsked = new int[10];
+    int[] questionsAlreadyAsked = new int[12];
 
     float timer;
     bool questionInProgress;

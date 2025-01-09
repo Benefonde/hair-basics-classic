@@ -11278,7 +11278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37589ff95908aa4aa4f375ae22f9829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountToGive: 2.173913
+  amountToGive: 1.8518518
   percent: 0
   requirements:
   - mikoUnlocked
@@ -11327,7 +11327,15 @@ MonoBehaviour:
   - sorgyTrophy
   - timeTrophy
   - problemTrophy
-  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a00001100000007000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  - kikerTrophy
+  - evilTrophy
+  - expelledTrophy
+  - fieldTrophy
+  - lapTrophy
+  - richTrophy
+  - findTrophy
+  - stupidTrophy
+  valueInt: 01000000010000000100000001000000010000000100000001000000010000000100000001000000cb0a000011000000070000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   valueString: []
   percentText: {fileID: 24955880}
   judgements:
@@ -15045,7 +15053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Get 200% or more health
+  m_text: Get the 2+2 question wrong in Panino's Trivia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -16204,10 +16212,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 289098940}
-    characterCount: 11
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -22381,10 +22389,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3df6ceb540d718d48bd5b0995da31d9f, type: 3}
   - {fileID: 8300000, guid: 6f794de3ff5f970428f38c604e38bd04, type: 3}
   - {fileID: 8300000, guid: ce2e5da591665cc4fbef539a4c65d68f, type: 3}
-  - {fileID: 8300000, guid: 0db240649dfda9949ba6a0b1b2999317, type: 3}
+  - {fileID: 8300000, guid: 4ff3867adfc552647a065d08f11e8770, type: 3}
   - {fileID: 8300000, guid: 8831d812768e5b341b755f94d84725c8, type: 3}
   - {fileID: 8300000, guid: 30348963f3a8dc949b4db5df26ac3b11, type: 3}
   - {fileID: 8300000, guid: 8b9173d1531db8242a6539ff4aa1d951, type: 3}
+  - {fileID: 8300000, guid: 1866f5b77e855c240b180710b7f549cf, type: 3}
+  - {fileID: 8300000, guid: 6fdae01ef93c43044ae5e92c0113d494, type: 3}
   - {fileID: 8300000, guid: 05f5912d7c2f7684d87905c14ee1681e, type: 3}
   loopText: {fileID: 1070555668}
 --- !u!82 &431317728
@@ -26433,7 +26443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f9823491c4c01d4d939d8a304a797bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b8a02865b5ef534ab82c89e9d872860, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -40497,6 +40507,10 @@ MonoBehaviour:
     - m_Text: Meatophobia
       m_Image: {fileID: 0}
     - m_Text: Your Performance Was...
+      m_Image: {fileID: 0}
+    - m_Text: Fun Friendly Activities
+      m_Image: {fileID: 0}
+    - m_Text: The Ball's Ticking...
       m_Image: {fileID: 0}
     - m_Text: (BONUS) Noteboo Gathering
       m_Image: {fileID: 0}
@@ -61553,7 +61567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Don't make a single mistake during the summer field trip
+  m_text: Get 5000 score in Avoid the Obstacles or 300 score in Volleyball with Panino
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -61590,7 +61604,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 257
-  m_characterSpacing: 0
+  m_characterSpacing: -1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -61599,7 +61613,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 20
+  m_firstOverflowCharacterIndex: 28
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -61623,10 +61637,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1501807733}
-    characterCount: 56
+    characterCount: 76
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -72077,7 +72091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: True Overheal
+  m_text: Stupid Idiot Stupid
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f104ab5c06b6f34ab0816f086069b5b, type: 2}
   m_sharedMaterial: {fileID: 824898514370142616, guid: 1f104ab5c06b6f34ab0816f086069b5b,
@@ -75035,7 +75049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429ab73ab2247ef49932323823df4946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trophy: overhealTrophy
+  trophy: stupidTrophy
 --- !u!114 &1879884630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75054,7 +75068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b86371fdeedc7b94f82da25abc17d75f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53d05b04627196341a1e4bcbc04e0b54, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -81418,7 +81432,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 26
+  m_firstOverflowCharacterIndex: 27
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -81442,12 +81456,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2064978531}
-    characterCount: 62
+    characterCount: 47
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 13
+    spaceCount: 8
+    wordCount: 9
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

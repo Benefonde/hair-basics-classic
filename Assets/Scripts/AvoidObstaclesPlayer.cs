@@ -20,11 +20,30 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     {
         if (speed < 30)
         {
-            speed += 0.7495f * Time.deltaTime;
+            speed += 0.75f * Time.deltaTime;
         }
         speedometer.value = Mathf.FloorToInt(speed * 2);
-        score += speed / 8 * Time.deltaTime;
-        scoreText.text = $"Score: {Mathf.RoundToInt(score)}";
+        if (speed >= 28.5f)
+        {
+            score += speed * 6 * Time.deltaTime;
+        }
+        score += speed / 7 * Time.deltaTime;
+        string a = "<color=white>";
+        if (speed <= 28.5f && speed >= 0)
+        {
+            a = "<color=white>";
+            speedometer.GetComponent<ShakyCamScript>().enabled = false;
+        }
+        if (speed < 0)
+        {
+            a = "<color=red>";
+        }
+        if (speed >= 28.5f)
+        {
+            a = "<color=green>";
+            speedometer.GetComponent<ShakyCamScript>().enabled = true;
+        }
+        scoreText.text = $"Score: {a}{Mathf.RoundToInt(score)}";
 
         x += (Input.GetAxis("Strafe") * speed) * (Time.deltaTime);
         y += (Input.GetAxis("Forward") * speed) * (Time.deltaTime);
@@ -38,10 +57,9 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     {
         if (other.transform.name == "Obstacle(Clone)")
         {
-            speed /= 1.5f;
+            speed -= 3.5f;
             hp--;
             healthMeter.value--;
-            score -= 5;
             Destroy(other.gameObject);
             anim.SetTrigger("hit");
             aud.PlayOneShot(hurt[Random.Range(0, 2)]);
@@ -58,25 +76,29 @@ public class AvoidObstaclesPlayer : MonoBehaviour
 
     void TotallyRealClampingBroTrustMe()
     {
-        if (x > 4.45f)
+        if (x > 4.75f)
         {
-            x = 4.45f;
+            x = 4.75f;
         }
-        if (x < -4.45f)
+        if (x < -4.75f)
         {
-            x = -4.45f;
+            x = -4.75f;
         }
-        if (y > 5.35f)
+        if (y > 5.75f)
         {
-            y = 5.35f;
+            y = 5.75f;
         }
-        if (y < -3.3f)
+        if (y < -3.75f)
         {
-            y = -3.3f;
+            y = -3.75f;
         }
         if (speed > 30)
         {
             speed = 30;
+        }
+        if (speed < 1)
+        {
+            speed = 1;
         }
     }
 
@@ -94,7 +116,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
         }
     }
 
-    public float speed = 4;
+    public float speed = 2;
     int hp = 10;
     float score = 0;
 
