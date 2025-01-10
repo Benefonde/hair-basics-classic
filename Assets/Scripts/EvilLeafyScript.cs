@@ -91,7 +91,10 @@ public class EvilLeafyScript : MonoBehaviour
 	{
 		if (gc.mode == "classic")
         {
-			baldiWait -= 0.01f;
+			baldiWait -= 0.005f;
+			gc.playerScript.walkSpeed += 0.01f;
+			gc.playerScript.runSpeed += 0.0115f;
+			gc.playerScript.stamina += 0.01f;
 		}
 		baldiWait -= 0.0125f;
 		if (baldiWait < 0.15f)

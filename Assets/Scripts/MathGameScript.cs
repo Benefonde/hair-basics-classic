@@ -146,15 +146,8 @@ public class MathGameScript : MonoBehaviour
 		}
 		if (gc.notebooks == 1 && gc.math == 1)
 		{
-			string[] strings = { "Now it's time for a cool subject, which is math", "So basically put goo answer in box for big prize and answer them correctly or I will hit you with my ball" };
-			float[] floats = { bal_intro.length + 0.5f, bal_howto.length };
-			Color[] colors = { Color.cyan, Color.cyan };
 			QueueAudio(bal_intro);
 			QueueAudio(bal_howto);
-			if (!gc.spoopMode)
-			{
-				FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(strings, floats, colors);
-			}
 		}
 		NewProblem();
 		if (gc.spoopMode)
@@ -431,6 +424,14 @@ public class MathGameScript : MonoBehaviour
 	{
 		audioQueue[audioInQueue] = sound;
 		audioInQueue++;
+		if (sound == bal_intro)
+        {
+			FindObjectOfType<SubtitleManager>().Add2DSubtitle("Now it's time for a cool subject, which is math", bal_intro.length + 0.5f, Color.cyan);
+		}
+		if (sound == bal_howto)
+        {
+			FindObjectOfType<SubtitleManager>().Add2DSubtitle("So basically put goo answer in box for big prize and answer them correctly or I will hit you with my ball", bal_howto.length, Color.cyan);	
+		}
 	}
 
 	private void PlayQueue()
@@ -459,6 +460,11 @@ public class MathGameScript : MonoBehaviour
 			audioQueue[i - 1] = audioQueue[i];
 		}
 		audioInQueue--;
+		if (gc.notebooks == 1)
+		{
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("Now it's time for a cool subject, which is math");
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("So basically put goo answer in box for big prize and answer them correctly or I will hit you with my ball");
+		}
 	}
 
 	private void ClearAudioQueue()

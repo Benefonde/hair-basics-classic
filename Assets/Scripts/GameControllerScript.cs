@@ -1345,6 +1345,10 @@ public class GameControllerScript : MonoBehaviour
             firstPrize.SetActive(true);
             guardianAngel.SetActive(true); 
             int rng = yellowFaceOn;
+            if (mode == "classic")
+            {
+                rng = 0;
+            }
             if (rng == 1)
             {
                 windowedWall.material = broken;
