@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using FluidMidi;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -1174,6 +1175,10 @@ public class GameControllerScript : MonoBehaviour
                 {
                     tutorals[i].Pause();
                 }
+                for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
+                {
+                    FindObjectsOfType<SongPlayer>()[i].Pause();
+                }
             }
         }
     }
@@ -1197,6 +1202,10 @@ public class GameControllerScript : MonoBehaviour
             for (int i = 0; i < tutorals.Length; i++)
             {
                 tutorals[i].Play();
+            }
+            for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
+            {
+                FindObjectsOfType<SongPlayer>()[i].Resume();
             }
         }
     }

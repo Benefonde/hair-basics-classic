@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using FluidMidi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,12 +43,20 @@ public class MinigamesStartScript : MonoBehaviour
             Time.timeScale = 0;
             pause[0].SetActive(true);
             AudioListener.pause = true;
+            for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
+            {
+                FindObjectsOfType<SongPlayer>()[i].Pause();
+            }
         }
         else
         {
             Time.timeScale = 1;
             pause[0].SetActive(false);
             AudioListener.pause = false;
+            for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
+            {
+                FindObjectsOfType<SongPlayer>()[i].Resume();
+            }
         }
     }
 
