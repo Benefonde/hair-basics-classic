@@ -153,7 +153,7 @@ public class AlgerNullScript : MonoBehaviour
 	public IEnumerator GetHit()
 	{
 		pauseTime += ow.length + 0.25f;
-		string[] thing = { "Ow, ok, if you want REAL null bossfight im gonna null bossfight you then!", "AAAAAAAAAAAAAAAAA" };
+		string[] thing = { "Ow, ok, if you want <i>REAL</i> null bossfight im gonna null bossfight you then!", "AAAAAAAAAAAAAAAAA" };
 		float[] thingie = { 4.9f, 0.949f };
 		Color[] thingest = { Color.blue, Color.blue };
 		canGetHit = true;
@@ -163,8 +163,8 @@ public class AlgerNullScript : MonoBehaviour
 			canGetHit = false;
 		}
 		baldiAudio.Stop();
-		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 10);
-		gc.playerScript.runSpeed += 1.3f;
+		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 20);
+		gc.playerScript.runSpeed += 1.5f;
 		gc.playerScript.walkSpeed = gc.playerScript.runSpeed;
 		speed = 0;
 		baldiAudio.PlayOneShot(ow);
@@ -180,16 +180,16 @@ public class AlgerNullScript : MonoBehaviour
 			pauseTime -= Time.deltaTime;
 			yield return null;
 		}
-		bcs.musicAud[bcs.lastSongOn].Tempo = healthTimesThings[19 - health];
-		if (healthTimesThings[19 - health] == 0.0001f)
-        {
-			bcs.musicAud[5].gameObject.SetActive(true);
-        }
 		switch (health)
 		{
 			case 19: StartCoroutine(bcs.ChangeMusic(1)); break;
 			case 10: StartCoroutine(bcs.ChangeMusic(3)); break;
 			case 4: StartCoroutine(bcs.ChangeMusic(4)); break;
+		}
+		bcs.musicAud[bcs.lastSongOn].Tempo = healthTimesThings[19 - health];
+		if (healthTimesThings[19 - health] == 0.0001f)
+		{
+			bcs.musicAud[5].gameObject.SetActive(true);
 		}
 		speed = (70 - (health * 2.65f));
 		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)

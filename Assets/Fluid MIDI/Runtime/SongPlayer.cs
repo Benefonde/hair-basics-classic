@@ -340,6 +340,7 @@ namespace FluidMidi
 
         void Start()
         {
+            gain = 0.2f / AudioListener.volume;
             if (playOnStart)
             {
                 Play();
