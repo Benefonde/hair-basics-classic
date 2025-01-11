@@ -85,6 +85,10 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(31);
         }
+        if (promplyTime >= 90)
+        {
+            GetTrophy(32);
+        }
     }
 
     public void GetTrophy(int i)
@@ -124,6 +128,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public int devinPipeHit;
     public float pizzafaceTime;
+    public float promplyTime;
 
     public bool babaGotPushed;
     public bool usedItem;

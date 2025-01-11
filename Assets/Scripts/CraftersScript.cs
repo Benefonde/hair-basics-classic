@@ -89,6 +89,7 @@ public class CraftersScript : MonoBehaviour
 			}
 			return;
 		}
+		gc.tc.promplyTime += Time.deltaTime;
 		agent.speed += 2 * Time.deltaTime;
 		TargetPlayer();
 		audioDevice.pitch += Time.deltaTime / 180;
@@ -132,6 +133,7 @@ public class CraftersScript : MonoBehaviour
 	{
 		if ((other.tag == "Player") & angry)
 		{
+			gc.tc.promplyTime = 0;
 			cc.enabled = false;
 			player.position = new Vector3(5f, player.position.y, 45f);
 			baldiAgent.Warp(new Vector3(5f, baldi.position.y, 165f));

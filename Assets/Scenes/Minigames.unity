@@ -1545,6 +1545,147 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335928774}
   m_CullTransparentMesh: 0
+--- !u!1 &371804388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371804390}
+  - component: {fileID: 371804389}
+  m_Layer: 0
+  m_Name: TrophyCollectingScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &371804389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371804388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6beeb354f3f03429620629b97dc384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gc: {fileID: 0}
+  gotTrophy: {fileID: 2352408827044714397, guid: 4390bdebe661daf40b295d58c1d790f6,
+    type: 3}
+  trophies:
+  - {fileID: 21300000, guid: 78f909ef90ff8484583cf24fcb7c301f, type: 3}
+  - {fileID: 21300000, guid: e65df9b5cf2bb834d91558b011184f92, type: 3}
+  - {fileID: 21300000, guid: e63724d55cf3b394db58282400fbe6cc, type: 3}
+  - {fileID: 21300000, guid: f1c8fed8abffa5e4698dfd2bd16b9941, type: 3}
+  - {fileID: 21300000, guid: f667bd610b1f5254798a912cec98e687, type: 3}
+  - {fileID: 21300000, guid: 29c4cfb82ea14c840820a2b640935b2e, type: 3}
+  - {fileID: 21300000, guid: 30e08147785233547be3aa3003178cb5, type: 3}
+  - {fileID: 21300000, guid: 32874f3ea4a9a3f4887eb3688a3b530d, type: 3}
+  - {fileID: 21300000, guid: 892f7536ed327ab4cb70c90a45ea54d9, type: 3}
+  - {fileID: 21300000, guid: 3806784d2c6d93a4f8d3672b0f4f87c6, type: 3}
+  - {fileID: 21300000, guid: 865bb631c6df8b643b3791ae1695bf50, type: 3}
+  - {fileID: 21300000, guid: ba31e0d50925e324baa9778a343a82f8, type: 3}
+  - {fileID: 21300000, guid: 6e334c2e5f4cd99458d0a17941dd8ab9, type: 3}
+  - {fileID: 21300000, guid: 8ba33753501a18a4289069c9c1497e25, type: 3}
+  - {fileID: 21300000, guid: 302cb5b4757adca48aa61f14f8b5222f, type: 3}
+  - {fileID: 21300000, guid: 658455b419e06e845bf864e118593bdd, type: 3}
+  - {fileID: 21300000, guid: 109cb6255b9ff20469b2cba61ca992eb, type: 3}
+  - {fileID: 21300000, guid: 76f71d74648c21a42ab401dd7dd7ebca, type: 3}
+  - {fileID: 21300000, guid: 37848f53d187bf447a4364d4c9e92e88, type: 3}
+  - {fileID: 21300000, guid: 9ea03af4efe22644cb99e3ad5d80d333, type: 3}
+  - {fileID: 21300000, guid: 88e61f94190e2bc47814e2a7b01c3a31, type: 3}
+  - {fileID: 21300000, guid: 73c53b5084fd6c0408cbec544c5245d1, type: 3}
+  - {fileID: 21300000, guid: dcae14a6a264c3d49ae1b13194f0a85e, type: 3}
+  - {fileID: 21300000, guid: de9d0b3ae8f36b3459ca59d8827af7f6, type: 3}
+  - {fileID: 21300000, guid: cda019d935288394db0d595a175b3703, type: 3}
+  - {fileID: 21300000, guid: 5138afb7ce5f8ab448193a3a8d2c736e, type: 3}
+  - {fileID: 21300000, guid: b86371fdeedc7b94f82da25abc17d75f, type: 3}
+  - {fileID: 21300000, guid: 21eed736c36ae7442ac92772712667f8, type: 3}
+  - {fileID: 21300000, guid: 8f9823491c4c01d4d939d8a304a797bd, type: 3}
+  - {fileID: 21300000, guid: 3b860c383fef27344951117be97bebb8, type: 3}
+  - {fileID: 21300000, guid: 520d4b58bae9ed6429f8cc218554e179, type: 3}
+  - {fileID: 21300000, guid: fb59ab5c5fa9c154cafcb6b9e4168be5, type: 3}
+  - {fileID: 21300000, guid: 078a2a4c040364549b64545f917a2568, type: 3}
+  - {fileID: 21300000, guid: 316202a457641d349985c4a365966a8b, type: 3}
+  - {fileID: 21300000, guid: 53d05b04627196341a1e4bcbc04e0b54, type: 3}
+  - {fileID: 21300000, guid: c8b021d9c9bfa994e98a43bf91ebb58c, type: 3}
+  - {fileID: 21300000, guid: 3b8a02865b5ef534ab82c89e9d872860, type: 3}
+  - {fileID: 21300000, guid: 33fa879e45d8eaa48bc6a11dc6ddd32f, type: 3}
+  - {fileID: 21300000, guid: 411a351666f54ec46b18ce05c1e684ce, type: 3}
+  - {fileID: 21300000, guid: 875e22d054e5a9248873e5f886eaf8c7, type: 3}
+  trophyName:
+  - congrattationTrophy
+  - cleanTrophy
+  - noiseTrophy
+  - giveAllTrophy
+  - cautionTrophy
+  - jamTrophy
+  - blueTrophy
+  - bareTrophy
+  - secretTrophy
+  - speedTrophy
+  - horribleTrophy
+  - lightTrophy
+  - mamaMiaTrophy
+  - debtTrophy
+  - codeTrophy
+  - bfdiTrophy
+  - stealthyBlueTrophy
+  - secretsTrophy
+  - desperateTrophy
+  - prankedTrophy
+  - hurtTrophy
+  - modeTrophy
+  - looreTrophy
+  - raTrophy
+  - ruleTrophy
+  - problemTrophy
+  - sorryTrophy
+  - congratulationsTrophy
+  - paninoTrophy
+  - jugglerTrophy
+  - sorgyTrophy
+  - slowTrophy
+  - kikerTrophy
+  - richTrophy
+  - stupidTrophy
+  - evilTrophy
+  - fieldTrophy
+  - expelledTrophy
+  - findTrophy
+  - lapTrophy
+  zestyEaten: 0
+  esteEaten: 0
+  devinPipeHit: 0
+  pizzafaceTime: 0
+  promplyTime: 0
+  babaGotPushed: 0
+  usedItem: 0
+  onlyWooden: 0
+  ruleBreak: 0
+  collectedToppings: 0
+  collectToppingsNeeded: 5
+  windowsCleaned: 0
+  windowCleanAmount: 7
+--- !u!4 &371804390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371804388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &377373498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,7 +3255,7 @@ RectTransform:
   - {fileID: 232337252}
   - {fileID: 1546270247}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4401,7 +4542,7 @@ Transform:
   - {fileID: 830777833}
   - {fileID: 1765976582}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &931828648
 AudioSource:
@@ -6352,7 +6493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563779312
 GameObject:
@@ -7233,7 +7374,7 @@ RectTransform:
   - {fileID: 6315470}
   - {fileID: 5728901}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8436,7 +8577,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9119839804453363707
 MonoBehaviour:
