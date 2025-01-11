@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using FluidMidi;
 
 public class AvoidObstaclesPlayer : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class AvoidObstaclesPlayer : MonoBehaviour
         TotallyRealClampingBroTrustMe(); // Mathf.Clamp didn't work
 
         transform.localPosition = new Vector2(x, y);
+
+        fluidMidi.Tempo = Mathf.Clamp(speed / 20, 0.65f, 2f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -135,4 +138,6 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     AudioSource aud;
     public AudioClip[] music;
     public AudioClip[] hurt;
+
+    public SongPlayer fluidMidi;
 }

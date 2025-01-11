@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using FluidMidi;
 
 public class BossControllerScript : MonoBehaviour
 {
@@ -27,9 +28,7 @@ public class BossControllerScript : MonoBehaviour
         Color[] thingest = { Color.blue, Color.blue };
         gc.entrance_4.Lower();
         alger.baldiAudio.PlayOneShot(alger.preBoss[0]);
-        musicAud.loop = true;
-        musicAud.clip = bossMusic[0]; 
-        musicAud.Play();
+        musicAud[0].gameObject.SetActive(true); 
         FindObjectOfType<SubtitleManager>().AddChained3DSubtitle(thing, thingie, thingest, alger.transform);
         gc.audioDevice.PlayOneShot(gc.aud_Switch);
         gc.playerScript.walkSpeed = 30;
@@ -72,25 +71,18 @@ public class BossControllerScript : MonoBehaviour
 
     public IEnumerator ChangeMusic(int i)
     {
-        musicAud.loop = false;
-        yield return new WaitUntil(() => !musicAud.isPlaying);
-        musicAud.clip = bossMusic[i];
-        if (i != 2)
+        if (lastSongOn != 2763)
         {
-            musicAud.Play();
+            musicAud[lastSongOn].gameObject.SetActive(false);
         }
-        if (i != 1)
+        
+        musicAud[i].gameObject.SetActive(true);
+        lastSongOn = i;
+        if (i == 1)
         {
-            musicAud.loop = true;
-        }
-        else
-        {
+            yield return new WaitUntil(() => musicAud[i].IsDone);
+            musicAud[2].Tempo = musicAud[1].Tempo;
             StartCoroutine(ChangeMusic(2));
-        }
-        if (i == 2)
-        {
-            yield return new WaitUntil(() => !musicAud.isPlaying);
-            musicAud.Play();
         }
     }
 
@@ -103,16 +95,12 @@ public class BossControllerScript : MonoBehaviour
     public Slider bar;
     public TMP_Text hp;
 
-    public AudioSource musicAud;
-    public AudioClip[] bossMusic;
+    public SongPlayer[] musicAud;
     // 0 - intro loop
     // 1 - intro
     // 2 - part/phase 1
-    // 3 - part/phase 1.5
-    // 4 - part/phase 2
-    // 5 - part/phase 2.5
-    // 6 - part/phase 3
-    // 7 - part/phase 3.5
-    // 8 - part/phase 3.75
-    // 9 - outro, unused
+    // 3 - part/phase 2
+    // 4 - part/phase 3
+    // 5 - drums only
+    public int lastSongOn = 2763;
 }
