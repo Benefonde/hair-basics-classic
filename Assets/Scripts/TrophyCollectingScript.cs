@@ -113,6 +113,22 @@ public class TrophyCollectingScript : MonoBehaviour
         }
     }
 
+    public void QuarterCheck()
+    {
+        quarterCount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (gc.item[i] == 5)
+            {
+                quarterCount++;
+            }
+            if (quarterCount == 4)
+            {
+                GetTrophy(33);
+            }
+        }
+    }
+
     public GameControllerScript gc;
 
     public GameObject gotTrophy;
@@ -121,7 +137,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[32];
+    private bool[] dontCheckAga = new bool[40];
 
     public int zestyEaten;
     public int esteEaten;
@@ -137,6 +153,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public int collectedToppings;
     public int collectToppingsNeeded;
+    int quarterCount;
 
     public int windowsCleaned;
     [SerializeField]

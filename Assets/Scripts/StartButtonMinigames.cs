@@ -9,7 +9,8 @@ public class StartButtonMinigames : MonoBehaviour
 		Volleyball = 0,
 		TowerDefense = 1,
 		AvoidObstacles = 2,
-		Trivia = 3
+		Trivia = 3,
+		Missing = 4
 	}
 
 	public Mode currentMode;

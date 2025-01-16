@@ -14,6 +14,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
         Invoke(nameof(SummonObstacle), 3);
         aud = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+        tc = FindObjectOfType<TrophyCollectingScript>();
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
         speedometer.value = Mathf.FloorToInt(speed * 2);
         if (speed >= 28.5f)
         {
-            score += speed * 6 * Time.deltaTime;
+            score += speed * 3 * Time.deltaTime;
         }
         score += speed / 7 * Time.deltaTime;
         string a = "<color=white>";
@@ -45,6 +46,10 @@ public class AvoidObstaclesPlayer : MonoBehaviour
             speedometer.GetComponent<ShakyCamScript>().enabled = true;
         }
         scoreText.text = $"Score: {a}{Mathf.RoundToInt(score)}";
+        if (Mathf.RoundToInt(score) >= 6500)
+        {
+            tc.GetTrophy(36);
+        }
 
         x += (Input.GetAxis("Strafe") * speed) * (Time.deltaTime);
         y += (Input.GetAxis("Forward") * speed) * (Time.deltaTime);
@@ -140,4 +145,6 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     public AudioClip[] hurt;
 
     public SongPlayer fluidMidi;
+
+    TrophyCollectingScript tc;
 }

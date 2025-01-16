@@ -12486,7 +12486,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 183098458}
-    characterCount: 18
+    characterCount: 22
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -35155,6 +35155,7 @@ MonoBehaviour:
   esteEaten: 0
   devinPipeHit: 0
   pizzafaceTime: 0
+  promplyTime: 0
   babaGotPushed: 0
   usedItem: 0
   onlyWooden: 0
@@ -62015,7 +62016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Get 5000 score in Avoid the Obstacles or 300 score in Volleyball with Panino
+  m_text: Get 6500 score in Avoid the Obstacles or 300 score in Volleyball with Panino
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -81983,7 +81984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Beat Story Mode while Evil Leafy is chasing you
+  m_text: Beat Classic Mode while Evil Leafy is chasing you
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,

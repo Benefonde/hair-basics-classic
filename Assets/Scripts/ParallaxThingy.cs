@@ -9,8 +9,12 @@ public class ParallaxThingy : MonoBehaviour
         trans = GetComponent<RectTransform>();
     }
 
-    void Update()
+    private void LateUpdate()
     {
+        if (posyshynObjecD != null)
+        {
+            posyshyn = posyshynObjecD.localPosition;
+        }
         if (posyshynObject != null)
         {
             posyshyn = posyshynObject.localPosition;
@@ -24,4 +28,5 @@ public class ParallaxThingy : MonoBehaviour
     RectTransform trans;
 
     public RectTransform posyshynObject;
+    public Transform posyshynObjecD;
 }

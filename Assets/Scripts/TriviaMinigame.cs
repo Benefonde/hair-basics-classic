@@ -74,6 +74,10 @@ public class TriviaMinigame : MonoBehaviour
             questionText.color = Color.red;
             strikes[strike].SetActive(true);
             strike++;
+            if (question == 5)
+            {
+                FindObjectOfType<TrophyCollectingScript>().GetTrophy(34);
+            }
         }
     }
 

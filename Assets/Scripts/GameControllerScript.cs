@@ -1738,6 +1738,10 @@ public class GameControllerScript : MonoBehaviour
             itemSlot[itemSelected].texture = itemHudTextures[item_ID];
         }
         UpdateItemName();
+        if (item_ID == 5)
+        {
+            tc.QuarterCheck();
+        }
     }
 
     private IEnumerator Teleporter()
