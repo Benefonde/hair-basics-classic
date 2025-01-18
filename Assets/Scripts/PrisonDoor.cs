@@ -28,6 +28,8 @@ public class PrisonDoor : MonoBehaviour
 
 	public AudioSource theirAudio;
 
+	public bool playerJailed;
+
 	Animator anim;
 
 	bool opened;
@@ -110,6 +112,10 @@ public class PrisonDoor : MonoBehaviour
 
 	IEnumerator ThisPrisonToHoldMe()
     {
+		if (playerJailed)
+        {
+			yield break;
+        }
 		openable = false;
 		theirAudio.Play();
 		FindObjectOfType<SubtitleManager>().Add3DSubtitle("This prison... to hold... ME?", theirAudio.clip.length, Color.white, theirAudio.transform);
