@@ -22,7 +22,7 @@ public class PrisonDoor : MonoBehaviour
 	[SerializeField]
 	int clicksLeft = 128;
 
-	public TMP_Text clicksText;
+	public TMP_Text[] clicksText;
 
 	private AudioSource myAudio;
 
@@ -30,10 +30,12 @@ public class PrisonDoor : MonoBehaviour
 
 	public bool playerJailed;
 
-	Animator anim;
+	public Animator anim;
 
 	bool opened;
 	public bool openable;
+
+	Vector3 origin;
 
 	public PrisonItemScript[] items;
 
@@ -43,6 +45,7 @@ public class PrisonDoor : MonoBehaviour
 		anim = GetComponent<Animator>();
 		openable = false;
 		opened = false;
+		origin = transform.localPosition;
 	}
 
 	private void Update()
@@ -65,7 +68,8 @@ public class PrisonDoor : MonoBehaviour
 			if (clicksLeft > 1)
             {
 				clicksLeft--;
-				clicksText.text = clicksLeft.ToString();
+				clicksText[0].text = clicksLeft.ToString();
+				clicksText[1].text = clicksLeft.ToString();
 				myAudio.PlayOneShot(doorHit, 0.3f);
 				if (Random.Range(1, 500) == 20)
                 {
@@ -75,8 +79,25 @@ public class PrisonDoor : MonoBehaviour
             else
             {
 				OpenDoor();
-				clicksText.text = string.Empty;
+				clicksText[0].text = string.Empty;
+				clicksText[1].text = string.Empty;
 			}
+		}
+	}
+
+	public void SetClicks(int amount)
+    {
+		clicksLeft = amount;
+		clicksText[0].text = clicksLeft.ToString();
+		clicksText[1].text = clicksLeft.ToString();
+		if (playerJailed)
+        {
+			transform.localPosition = origin;
+			openable = true;
+			anim.StopPlayback();
+			invisibleBarrier.gameObject.SetActive(true);
+			anim.enabled = false;
+			transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, -90, transform.localRotation.z));
 		}
 	}
 
@@ -92,10 +113,13 @@ public class PrisonDoor : MonoBehaviour
 
 	public void OpenDoor(bool itemsa = false)
 	{
+		transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, 90, transform.localRotation.z));
+		anim.enabled = true;
 		invisibleBarrier.gameObject.SetActive(false);
-		if (!itemsa)
+		if (!itemsa || playerJailed)
 		{
 			anim.SetTrigger("open");
+			playerJailed = false;
 		}
 		else
 		{

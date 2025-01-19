@@ -68,6 +68,10 @@ public class TrophyCollectingScript : MonoBehaviour
             {
                 GetTrophy(13);
             }
+            if (gc.laps >= 50)
+            {
+                GetTrophy(39);
+            }
         }
         if (esteEaten >= 1 && zestyEaten >= 4 && !dontCheckAga[11])
         {
@@ -88,6 +92,10 @@ public class TrophyCollectingScript : MonoBehaviour
         if (promplyTime >= 90)
         {
             GetTrophy(32);
+        }
+        if (hideTime >= 120)
+        {
+            GetTrophy(38);
         }
     }
 
@@ -145,6 +153,7 @@ public class TrophyCollectingScript : MonoBehaviour
     public int devinPipeHit;
     public float pizzafaceTime;
     public float promplyTime;
+    public float hideTime;
 
     public bool babaGotPushed;
     public bool usedItem;

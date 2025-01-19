@@ -159,10 +159,15 @@ public class BaldiScript : MonoBehaviour
 		{
 			db = true;
 			TargetPlayer();
+			gc.tc.hideTime = 0; 
 		}
 		else
 		{
 			db = false;
+			if (gc.timer.timeLeft <= 0)
+			{
+				gc.tc.hideTime += Time.deltaTime;
+			}
 		}
 	}
 

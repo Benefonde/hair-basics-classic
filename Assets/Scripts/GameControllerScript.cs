@@ -1829,12 +1829,24 @@ public class GameControllerScript : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo2) && ((hitInfo2.collider.tag == "Door") & (Vector3.Distance(playerTransform.position, hitInfo2.transform.position) <= 10f)))
             {
                 DoorScript component = hitInfo2.collider.gameObject.GetComponent<DoorScript>();
-                if (component.DoorLocked && !component.johnDoor)
+                PrisonDoor component2 = hitInfo2.collider.gameObject.GetComponent<PrisonDoor>();
+                if (component != null)
                 {
-                    component.UnlockDoor();
-                    audioDevice.PlayOneShot(aud_Unlock);
-                    ResetItem();
-                    tc.usedItem = true;
+                    if (!component.johnDoor)
+                    {
+
+                        component.UnlockDoor();
+                        audioDevice.PlayOneShot(aud_Unlock);
+                        ResetItem();
+                        tc.usedItem = true;
+                    }
+                }
+                if (component2 != null)
+                {
+                    if (component2.openable)
+                    {
+                        component2.SetClicks(1);
+                    }
                 }
             }
         }
