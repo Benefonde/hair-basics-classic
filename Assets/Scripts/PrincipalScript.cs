@@ -312,7 +312,6 @@ public class PrincipalScript : MonoBehaviour
 			string[] saythisshit = { $"{lockTime[detentions]} seconds,", "depression for you!", "" };
 			float[] waitthisshit = { audTimes[detentions].length + 0.2f, audDetention.length + 0.2f, 0.2f };
 			Color[] colorthisshit = { Color.blue, Color.blue, Color.blue };
-			inOffice = true;
 			playerScript.principalBugFixer = 0;
 			agent.isStopped = true;
 			cc.enabled = false;
@@ -329,6 +328,7 @@ public class PrincipalScript : MonoBehaviour
 			{
 				agent.Warp(new Vector3(10f, 0f, 170f));
 				other.transform.position = new Vector3(10f, 4f, 160f);
+				inOffice = true;
 			}
 			other.transform.LookAt(new Vector3(base.transform.position.x, other.transform.position.y, base.transform.position.z));
 			cc.enabled = true;
