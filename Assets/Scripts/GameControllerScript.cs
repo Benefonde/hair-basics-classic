@@ -1559,7 +1559,11 @@ public class GameControllerScript : MonoBehaviour
         Color[] colors = { Color.white, Color.white, Color.white, Color.white };
         ESCAPEmusic.UnPause();
         cameraNormal.cullingMask = cullingMask;
-        learningActive = false;
+        learningActive = false; 
+        if (Random.Range(1, 40) == 28 || System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
+        {
+            ESCAPEmusic.clip = BESTESCAPE;
+        }
         if (subject != null)
         {
             Destroy(subject);
@@ -1605,10 +1609,6 @@ public class GameControllerScript : MonoBehaviour
         else if ((notebooks == maxNoteboos) & (mode == "story"))
         {
             StartCoroutine(paninoTv.EventTime(0));
-            if (Random.Range(1, 40) == 28 || System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
-            {
-                ESCAPEmusic.clip = BESTESCAPE;
-            }
             ESCAPEmusic.Play();
             if (baldiScrpt.isActiveAndEnabled)
             {
@@ -1641,7 +1641,7 @@ public class GameControllerScript : MonoBehaviour
         {
             entrance_2.Lower();
         }
-        else if ((notebooks == maxNoteboos) & (mode == "triple"|| mode == "free"))
+        else if ((notebooks == maxNoteboos) & (mode == "triple" || mode == "free"))
         {
             StartCoroutine(paninoTv.EventTime(0));
         }

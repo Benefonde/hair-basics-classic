@@ -13,7 +13,6 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     {
         Invoke(nameof(SummonObstacle), 3);
         aud = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
         tc = FindObjectOfType<TrophyCollectingScript>();
     }
 
@@ -84,21 +83,21 @@ public class AvoidObstaclesPlayer : MonoBehaviour
 
     void TotallyRealClampingBroTrustMe()
     {
-        if (x > 4.75f)
+        if (x > 4.5f)
         {
-            x = 4.75f;
+            x = 4.5f;
         }
-        if (x < -4.75f)
+        if (x < -4.5f)
         {
-            x = -4.75f;
+            x = -4.5f;
         }
-        if (y > 5.75f)
+        if (y > 5.5f)
         {
-            y = 5.75f;
+            y = 5.5f;
         }
-        if (y < -3.75f)
+        if (y < -3.5f)
         {
-            y = -3.75f;
+            y = -3.5f;
         }
         if (speed > 30)
         {
@@ -139,7 +138,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     [SerializeField]
     float y = -3;
 
-    Animator anim;
+    public Animator anim;
     AudioSource aud;
     public AudioClip[] music;
     public AudioClip[] hurt;

@@ -1789,6 +1789,7 @@ MonoBehaviour:
   devinPipeHit: 0
   pizzafaceTime: 0
   promplyTime: 0
+  hideTime: 0
   babaGotPushed: 0
   usedItem: 0
   onlyWooden: 0
@@ -4041,6 +4042,7 @@ MonoBehaviour:
   obstacle: {fileID: 2806886066264915365}
   x: 0
   y: -3
+  anim: {fileID: 830777836}
   music: []
   hurt:
   - {fileID: 8300000, guid: 48606d2f159650349b9eb41dad3c425b, type: 3}
@@ -6782,6 +6784,7 @@ GameObject:
   - component: {fileID: 1607617749}
   - component: {fileID: 1607617751}
   - component: {fileID: 1607617750}
+  - component: {fileID: 1607617752}
   m_Layer: 5
   m_Name: BobAO
   m_TagString: Untagged
@@ -6845,6 +6848,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607617748}
   m_CullTransparentMesh: 0
+--- !u!95 &1607617752
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607617748}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53db433462781c24a84238c662ef4916, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1642399150
 GameObject:
   m_ObjectHideFlags: 0
