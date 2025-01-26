@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   benefondCreates: {fileID: 1435957915}
-  timer: 0
+  timer: 270
   blip: {fileID: 8300000, guid: 581ec3b5f5a8ada4d8f2dea833ae2f65, type: 3}
   appear: {fileID: 8300000, guid: 42b17099197fc4c41ac2836ed6e85310, type: 3}
   choices: {fileID: 1382049857}
