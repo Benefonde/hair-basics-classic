@@ -1130,13 +1130,6 @@ public class GameControllerScript : MonoBehaviour
             FindObjectOfType<SubtitleManager>().localTimeScale = 0;
             gamePaused = true;
             pauseMenu.SetActive(value: true);
-            if (!ClassicSchoolScene)
-            {
-                for (int i = 0; i < tutorals.Length; i++)
-                {
-                    tutorals[i].Pause();
-                }
-            }
         }
     }
 
@@ -1154,13 +1147,6 @@ public class GameControllerScript : MonoBehaviour
         pauseMenu.SetActive(value: false);
         FindObjectOfType<SubtitleManager>().localTimeScale = 1;
         LockMouse();
-        if (!ClassicSchoolScene)
-        {
-            for (int i = 0; i < tutorals.Length; i++)
-            {
-                tutorals[i].Play();
-            }
-        }
     }
 
     public void FadeToWhite()
@@ -1372,10 +1358,6 @@ public class GameControllerScript : MonoBehaviour
         if (mode != "stealthy")
         {
             notebookCount.text = "0/4 Exits";
-        }
-        foreach (VideoPlayer player in tutorals)
-        {
-            player.clip = panic;
         }
     }
 
@@ -3027,8 +3009,6 @@ public class GameControllerScript : MonoBehaviour
     public GameObject algerItemLayout;
     public GameObject stealthyItemLayout;
     public GameObject zombieItemLayout;
-
-    public VideoPlayer[] tutorals;
 
     public GameObject pharohsWall;
 
