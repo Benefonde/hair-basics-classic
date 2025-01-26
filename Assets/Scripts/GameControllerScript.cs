@@ -887,7 +887,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 if (camScript.character.name == "Alger" || PlayerPrefs.GetInt("duplicatedBalls", 0) == 1)
                 {
-                    Application.Quit();
+                    SceneManager.LoadScene("BenefondCrates");
                     return;
                 }
                 Time.timeScale = 1f;
