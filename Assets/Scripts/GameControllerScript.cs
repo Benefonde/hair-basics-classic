@@ -1644,6 +1644,7 @@ public class GameControllerScript : MonoBehaviour
         else if ((notebooks == maxNoteboos) & (mode == "triple" || mode == "free"))
         {
             StartCoroutine(paninoTv.EventTime(0));
+            print("triple mode thing!!" + Random.Range(1, 2763));
         }
         else if ((notebooks == maxNoteboos) & mode == "classic")
         {

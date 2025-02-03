@@ -159,7 +159,10 @@ public class MathGameScript : MonoBehaviour
 			baldiScript.GetAngry(2);
 			mikoScript.GetAngry(2);
 			algerScript.GetAngry(0.75f);
-			gc.DeactivateLearningGame(gameObject);
+			if (gc.math == 1)
+			{
+				gc.DeactivateLearningGame(gameObject);
+			}
         }
 	}
 
