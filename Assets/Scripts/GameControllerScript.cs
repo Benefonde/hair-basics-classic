@@ -1420,7 +1420,7 @@ public class GameControllerScript : MonoBehaviour
             }
             else if (mode == "pizza")
             {
-                this.timer.timeLeft = 155f;
+                this.timer.timeLeft = 105f;
                 pizzaTimeTimer.gameObject.SetActive(true);
                 pizzaTimeTimer.SetBool("up", true);
                 pss.AddPoints(500, 0);
