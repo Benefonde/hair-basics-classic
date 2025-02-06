@@ -1039,6 +1039,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e93e736cc663654f815fe75b61ecb37, type: 3}
   - {fileID: 8300000, guid: b63cb2eba6eb5e246b5736ff4bdccb29, type: 3}
   - {fileID: 8300000, guid: 014db26ec64733d4db5efc52e978d91c, type: 3}
+  - {fileID: 8300000, guid: d715c334cf277594c932d37d3905b97b, type: 3}
 --- !u!114 &968392193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2396,6 +2397,7 @@ MonoBehaviour:
   devinPipeHit: 0
   pizzafaceTime: 0
   promplyTime: 0
+  hideTime: 0
   babaGotPushed: 0
   usedItem: 0
   onlyWooden: 0
