@@ -1906,8 +1906,8 @@ public class GameControllerScript : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo4) && ((hitInfo4.collider.name == "TapePlayer") & (Vector3.Distance(playerTransform.position, hitInfo4.transform.position) <= 10f)))
             {
-                hitInfo4.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                 ResetItem();
+                hitInfo4.collider.gameObject.GetComponent<TapePlayerScript>().Play();
                 tc.usedItem = true;
             }
         }

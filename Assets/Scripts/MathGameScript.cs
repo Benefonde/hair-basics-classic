@@ -350,6 +350,10 @@ public class MathGameScript : MonoBehaviour
 			playerScript.walkSpeed = 2;
 			playerScript.stamina = 20;
 		}
+		else if (playerAnswer.text == "2763")
+		{
+			StartCoroutine(CheatText("Set your FPS to 2763! That way you'll get something special once you come back here!"));
+		}
 		else if (playerAnswer.text.ToLower().Contains("evil leafy"))
         {
 			gc.SpawnEvilLeafy();

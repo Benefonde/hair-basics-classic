@@ -17,6 +17,11 @@ public class TrophyCollectingScript : MonoBehaviour
             }
         }
 
+        if (SceneManager.GetActiveScene().name == "EsteSecret")
+        {
+            PlayerPrefs.SetInt("piecesFound", 4);
+            GetTrophy(14);
+        }
         if (PlayerPrefs.GetInt("jammerUnlocked") == 1 && !dontCheckAga[5])
         {
             GetTrophy(5);
@@ -25,7 +30,7 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(2);
         }
-        if ((PlayerPrefs.GetInt("piecesFound", 0) == 4 || PlayerPrefs.GetInt("mikoUnlocked") == 1) && SceneManager.GetActiveScene().name == "EsteSecret")
+        if ((PlayerPrefs.GetInt("piecesFound", 0) == 4 || PlayerPrefs.GetInt("mikoUnlocked") == 1))
         {
             GetTrophy(14);
         }
@@ -36,6 +41,10 @@ public class TrophyCollectingScript : MonoBehaviour
         if (windowCleanAmount == 282828)
         {
             GetTrophy(29);
+        }
+        if (windowCleanAmount == 3872643)
+        {
+            GetTrophy(15);
         }
         if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
         {
