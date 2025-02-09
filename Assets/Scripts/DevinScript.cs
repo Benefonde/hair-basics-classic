@@ -191,10 +191,14 @@ public class DevinScript : MonoBehaviour
 		pipeCoolDown = 20;
 		agent.speed = 20;
 		if (pipeDucks == 5)
-        {
+		{
 			pipeDucks = 0;
 			audioDevice.PlayOneShot(outcome[0]);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("Good job, here's a thing I guess.", outcome[0].length, new Color(255, 165, 0), transform);
+			if (gc.mode == "endless")
+            {
+				gc.LoseNotebooks(-5, 1);
+            }
 			if (gc.HasItemInInventory(0))
 			{
 				gc.CollectItem(gc.CollectItemExcluding(3, 8, 13, 14, 15, 16, 21, 24));

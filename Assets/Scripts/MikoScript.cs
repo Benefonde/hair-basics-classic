@@ -27,6 +27,7 @@ public class MikoScript : MonoBehaviour
 		}
 		if (YellowFace && other.transform.name == "Alger")
         {
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("*Wonderful noise*");
 			Destroy(gameObject);
         }
 		if (YellowFace && other.transform.name == "Promply Jumply")

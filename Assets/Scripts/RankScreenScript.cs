@@ -11,37 +11,37 @@ public class RankScreenScript : MonoBehaviour
     {
         letter = PlayerPrefs.GetString("pizzaRankNeww", "D");
         score = PlayerPrefs.GetInt("pizzaScoreNeww", 0);
-        if (score < 2375)
+        if (score < 2000)
         {
             rank.clip = D;
             text.color = new Color32(48, 80, 120, 255);
             text.text = "D";
         }
-        if (score >= 2375 && score < 4750)
+        if (score >= 2000 && score < 4000)
         {
             rank.clip = C;
             text.color = new Color32(96, 208, 72, 255);
             text.text = "C";
         }
-        if (score >= 4750 && score < 9500)
+        if (score >= 4000 && score < 8000)
         {
             rank.clip = C;
             text.color = new Color32(48, 168, 248, 255);
             text.text = "B";
         }
-        if (score >= 9500 && score < 19000)
+        if (score >= 8000 && score < 16000)
         {
             rank.clip = A;
             text.color = new Color32(248, 0, 0, 255);
             text.text = "A";
         }
-        if (score >= 19000 && letter == "S")
+        if (score >= 16000 && letter == "S")
         {
             rank.clip = S;
             text.color = new Color32(244, 144, 0, 255);
             text.text = "S";
         }
-        if (score >= 19000 && letter == "P")
+        if (score >= 16000 && letter == "P")
         {
             rank.clip = P;
             text.color = new Color32(152, 80, 248, 255);

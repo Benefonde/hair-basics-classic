@@ -12,8 +12,18 @@ public class DescriptionScript : MonoBehaviour
 
     public void SetText(string a)
     {
-       txt.text = a;
+        txt.text = a;
+    }
+    public void SetPlayerPref(string a)
+    {
+        playerPref = a;
     }
 
-    private TMP_Text txt;
+    public void SetTextScore(string a)
+    {
+        txt.text = a + $"\nScore: {PlayerPrefs.GetInt(playerPref)}";
+    }
+
+    TMP_Text txt;
+    string playerPref;
 }

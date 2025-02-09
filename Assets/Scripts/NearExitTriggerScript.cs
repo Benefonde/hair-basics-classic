@@ -15,6 +15,10 @@ public class NearExitTriggerScript : MonoBehaviour
 
     private void Update()
     {
+		if (evilPlayer == null)
+        {
+			return;
+        }
 		if (evilPlayer.gameObject.activeSelf)
 		{
 			if ((gc.exitsReached < gc.amountOfExit) && gc.finaleMode && Vector3.Distance(transform.position, evilPlayer.position) <= 10.5f && transform.position.y == 3)
@@ -51,9 +55,12 @@ public class NearExitTriggerScript : MonoBehaviour
 			{
 				gc.algerScript.Hear(base.transform.position, 8f);
 			}
-			if (gc.baldiPlayerScript.isActiveAndEnabled)
+			if (gc.baldiPlayerScript != null)
 			{
-				gc.baldiPlayerScript.Hear(base.transform.position);
+				if (gc.baldiPlayerScript.isActiveAndEnabled)
+				{
+					gc.baldiPlayerScript.Hear(base.transform.position);
+				}
 			}
 		}
 		if (algerExit & (other.tag == "Player"))

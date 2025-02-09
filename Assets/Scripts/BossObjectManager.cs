@@ -44,7 +44,7 @@ public class BossObjectManager : MonoBehaviour
                     GameObject a = Object.Instantiate(throwable, spawnPosition, Quaternion.identity);
                     a.GetComponent<HitObjectBossScript>().camScript = camScript;
                     print("spawned it at " + spawnPosition.ToString());
-                    delay = Random.Range(8, 24);
+                    delay = Random.Range(4, 16);
                 }
             }
         }

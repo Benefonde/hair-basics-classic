@@ -41,8 +41,8 @@ public class CollectableScript : MonoBehaviour
             {
                 if (collect == Type.BigPizzaTime)
                 {
-                    gc.player.stamina += gc.player.maxStamina / 35;
-                    gc.player.health += 0.6f;
+                    gc.player.stamina += gc.player.maxStamina / 45;
+                    gc.player.health += 0.4f;
                     if (gc.laps >= 3)
                     {
                         gc.timer.timeLeft += 1.35f;
@@ -50,7 +50,7 @@ public class CollectableScript : MonoBehaviour
                 }
                 else
                 {
-                    gc.player.stamina += gc.player.maxStamina / 50;
+                    gc.player.stamina += gc.player.maxStamina / 60;
                     gc.player.health += 0.1f;
                     if (gc.laps >= 3)
                     {

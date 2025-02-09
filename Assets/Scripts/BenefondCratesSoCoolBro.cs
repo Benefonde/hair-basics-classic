@@ -28,14 +28,6 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene("BenefondCreates");
-            }
-        }
-
         if (sorryTime)
         {
             return;

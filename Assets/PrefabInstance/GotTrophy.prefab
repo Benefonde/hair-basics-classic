@@ -515,6 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   die: 1
   dieTime: 3.5
+  unscaled: 1
 --- !u!1 &2352408827083160358
 GameObject:
   m_ObjectHideFlags: 0

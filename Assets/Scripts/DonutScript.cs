@@ -11,7 +11,7 @@ public class DonutScript : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(50 * Time.deltaTime * Vector3.forward);
+        transform.Translate(80 * Time.deltaTime * Vector3.forward);
     }
 
     private void OnCollisionEnter(Collision collision)

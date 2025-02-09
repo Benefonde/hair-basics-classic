@@ -17,6 +17,11 @@ public class TrophyCollectingScript : MonoBehaviour
             }
         }
 
+        if (SceneManager.GetActiveScene().name == "EsteSecret")
+        {
+            PlayerPrefs.SetInt("piecesFound", 4);
+            GetTrophy(14);
+        }
         if (PlayerPrefs.GetInt("jammerUnlocked") == 1 && !dontCheckAga[5])
         {
             GetTrophy(5);
@@ -25,7 +30,7 @@ public class TrophyCollectingScript : MonoBehaviour
         {
             GetTrophy(2);
         }
-        if ((PlayerPrefs.GetInt("piecesFound", 0) == 4 || PlayerPrefs.GetInt("mikoUnlocked") == 1) && SceneManager.GetActiveScene().name == "EsteSecret")
+        if ((PlayerPrefs.GetInt("piecesFound", 0) == 4 || PlayerPrefs.GetInt("mikoUnlocked") == 1))
         {
             GetTrophy(14);
         }
@@ -36,6 +41,10 @@ public class TrophyCollectingScript : MonoBehaviour
         if (windowCleanAmount == 282828)
         {
             GetTrophy(29);
+        }
+        if (windowCleanAmount == 3872643)
+        {
+            GetTrophy(15);
         }
         if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
         {
@@ -68,6 +77,10 @@ public class TrophyCollectingScript : MonoBehaviour
             {
                 GetTrophy(13);
             }
+            if (gc.laps >= 40)
+            {
+                GetTrophy(39);
+            }
         }
         if (esteEaten >= 1 && zestyEaten >= 4 && !dontCheckAga[11])
         {
@@ -84,6 +97,14 @@ public class TrophyCollectingScript : MonoBehaviour
         if (pizzafaceTime >= 60)
         {
             GetTrophy(31);
+        }
+        if (promplyTime >= 90)
+        {
+            GetTrophy(32);
+        }
+        if (hideTime >= 120)
+        {
+            GetTrophy(38);
         }
     }
 
@@ -109,6 +130,22 @@ public class TrophyCollectingScript : MonoBehaviour
         }
     }
 
+    public void QuarterCheck()
+    {
+        quarterCount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (gc.item[i] == 5)
+            {
+                quarterCount++;
+            }
+            if (quarterCount == 4)
+            {
+                GetTrophy(33);
+            }
+        }
+    }
+
     public GameControllerScript gc;
 
     public GameObject gotTrophy;
@@ -117,13 +154,15 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[32];
+    private bool[] dontCheckAga = new bool[40];
 
     public int zestyEaten;
     public int esteEaten;
 
     public int devinPipeHit;
     public float pizzafaceTime;
+    public float promplyTime;
+    public float hideTime;
 
     public bool babaGotPushed;
     public bool usedItem;
@@ -132,6 +171,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public int collectedToppings;
     public int collectToppingsNeeded;
+    int quarterCount;
 
     public int windowsCleaned;
     [SerializeField]

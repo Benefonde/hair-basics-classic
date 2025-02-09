@@ -60,13 +60,23 @@ public class Timer : MonoBehaviour
 					if (this.gc.mode == "speedy")
 					{
 						gc.debugMode = false;
-						playerScript.transform.position = baldiScript.transform.position;
+						if (baldiScript.isActiveAndEnabled)
+						{
+							playerScript.transform.position = baldiScript.transform.position;
+						}
+						if (gc.yellowey.isActiveAndEnabled)
+                        {
+							playerScript.transform.position = gc.yellowey.transform.position;
+						}
 					}
 					else
 					{
-						baldiScript.Hear(player.position, 8f);
-						baldiScript.baldiWait = 0.1f;
-						baldiScript.speed = 50f;
+						if (baldiScript.isActiveAndEnabled)
+						{
+							baldiScript.Hear(player.position, 8f);
+							baldiScript.baldiWait = 0.1f;
+							baldiScript.speed = 60f;
+						}
 						playerScript.walkSpeed = 12f;
 						playerScript.runSpeed = 18f;
 						isActivated = false;
