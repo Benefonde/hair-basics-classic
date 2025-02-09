@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitButtonScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ExitButtonScript : MonoBehaviour
     public IEnumerator Valls()
     {
         yield return new WaitForSeconds(1f);
-        Application.Quit();
+        SceneManager.LoadScene("BenefondCrates");
     }
 
     public Animator balls;

@@ -21,6 +21,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
             cam = Camera.main.transform;
             aud = GetComponent<AudioSource>();
             aud.Play();
+            aud.loop = true;
             t = GetComponent<TMP_Text>();
         }
     }
@@ -89,7 +90,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(0.4f);
-        Application.Quit();
+        SceneManager.LoadScene("BenefondCrates");
         print("it dies succ ess fully");
     }
 

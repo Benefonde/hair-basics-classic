@@ -37,10 +37,6 @@ public class BossControllerScript : MonoBehaviour
         bossHud.SetActive(true);
         gc.map.SetActive(false);
         gc.world.SetActive(false);
-        for (int i = 0; i < gc.tutorals.Length; i++)
-        {
-            gc.tutorals[i].gameObject.SetActive(false);
-        }
         for (int i = 0; i < 3; i++)
         {
             gc.item[i] = 0;

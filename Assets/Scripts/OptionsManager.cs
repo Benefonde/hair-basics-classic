@@ -39,14 +39,6 @@ public class OptionsManager : MonoBehaviour
 			{
 				this.easyMath.isOn = true;
 			}
-			if (PlayerPrefs.GetInt("fullscreen", 1) == 0)
-			{
-				this.fullscreen.isOn = false;
-			}
-			else
-			{
-				this.fullscreen.isOn = true;
-			}
 			if (PlayerPrefs.GetInt("shake", 1) == 0)
 			{
 				this.shake.isOn = false;
@@ -168,16 +160,6 @@ public class OptionsManager : MonoBehaviour
 		else
 		{
 			PlayerPrefs.SetInt("captions", 0);
-		}
-		if (this.fullscreen.isOn)
-		{
-			PlayerPrefs.SetInt("fullscreen", 1);
-			Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-		}
-		else
-		{
-			PlayerPrefs.SetInt("fullscreen", 0);
-			Screen.fullScreenMode = FullScreenMode.Windowed;
 		}
 		if (this.shake.isOn)
 		{
