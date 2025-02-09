@@ -195,6 +195,10 @@ public class ExitTriggerScript : MonoBehaviour
 			{
 				SceneManager.LoadScene("ClassicEnding");
 				PlayerPrefs.SetInt("classicBeat", 1);
+				if (gc.evilLeafy.activeSelf)
+                {
+					gc.tc.GetTrophy(35);
+                }
 			}
 			else if (gc.mode == "zombie")
             {

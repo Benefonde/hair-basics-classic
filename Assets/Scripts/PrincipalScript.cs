@@ -167,6 +167,10 @@ public class PrincipalScript : MonoBehaviour
 			agent.speed += (agent.speed * 30) * Time.deltaTime;
 			gameObject.layer = 12;
 		}
+		if (Input.GetKeyDown(KeyCode.F10))
+        {
+			detentions = 10;
+        }
 	}
 
 	private void FixedUpdate()
@@ -308,12 +312,24 @@ public class PrincipalScript : MonoBehaviour
 			string[] saythisshit = { $"{lockTime[detentions]} seconds,", "depression for you!", "" };
 			float[] waitthisshit = { audTimes[detentions].length + 0.2f, audDetention.length + 0.2f, 0.2f };
 			Color[] colorthisshit = { Color.blue, Color.blue, Color.blue };
-			inOffice = true;
 			playerScript.principalBugFixer = 0;
-			agent.Warp(new Vector3(10f, 0f, 170f));
 			agent.isStopped = true;
 			cc.enabled = false;
-			other.transform.position = new Vector3(10f, 4f, 160f);
+			if (detentions >= 10 && prisonDoor != null)
+            {
+				agent.Warp(new Vector3(212.5f, 0f, 95));
+				other.transform.position = new Vector3(212.5f, 4f, 105f);
+				prisonDoor.openable = true;
+				prisonDoor.playerJailed = true;
+				prisonDoor.SetClicks(384);
+				gc.tc.GetTrophy(37);
+			}
+            else
+			{
+				agent.Warp(new Vector3(10f, 0f, 170f));
+				other.transform.position = new Vector3(10f, 4f, 160f);
+				inOffice = true;
+			}
 			other.transform.LookAt(new Vector3(base.transform.position.x, other.transform.position.y, base.transform.position.z));
 			cc.enabled = true;
 			audioQueue.QueueAudio(aud_Delay);
@@ -407,7 +423,16 @@ public class PrincipalScript : MonoBehaviour
 			angry = false;
 			Wander();
         }
+		if (other.transform.name == "Objection(Clone)")
+		{
+			seesRuleBreak = false;
+			timeSeenRuleBreak = 0;
+			angry = false;
+			Wander();
+		}
 	}
 
 	public bool summon;
+
+	public PrisonDoor prisonDoor;
 }

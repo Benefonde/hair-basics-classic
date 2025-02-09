@@ -8,6 +8,7 @@ public class TapePlayerScript : MonoBehaviour
 
 	public BaldiScript baldi;
 	public MikoScript miko;
+	public AlgerScript alger;
 
 	private AudioSource audioDevice;
 
@@ -49,5 +50,9 @@ public class TapePlayerScript : MonoBehaviour
 		{
 			miko.ActivateAntiHearing(20f);
 		}
+		if (alger.isActiveAndEnabled)
+        {
+			alger.ActivateAntiHearing(30f);
+        }
 	}
 }

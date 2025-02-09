@@ -162,8 +162,8 @@ public class PlayerScript : MonoBehaviour
 		}
 		if (inSecret)
 		{
-			Jump();
 			CheckGround();
+			Jump();
 		}
 		if (!pipeGame)
 		{
@@ -363,6 +363,7 @@ public class PlayerScript : MonoBehaviour
 			Vector3 newPosition = transform.position;
 			newPosition.y += verticalVelocity * Time.deltaTime;
 			transform.position = newPosition;
+
 		if (isGrounded)
 		{
 			newPosition.y = 4.0f;
@@ -375,7 +376,7 @@ public class PlayerScript : MonoBehaviour
 	{
 		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4.01f) && gravity <= 0)
+		if (Physics.Raycast(transform.position, Vector3.down, out hit, 4) && gravity <= 0)
 		{
 			if (hit.collider.transform.name == "Floor")
 			{

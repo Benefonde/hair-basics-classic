@@ -57,7 +57,7 @@ public class ModesManager : MonoBehaviour
                 walkThrough.isOn = false;
             }
         }
-        if (PlayerPrefs.GetInt("paninoBeat", 0) == 1)
+        if (PlayerPrefs.GetInt("mikoBeat", 0) == 1)
         {
             blockPath.transform.Find("Lock").gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("blockPath", 0) == 1)
@@ -224,7 +224,7 @@ public class ModesManager : MonoBehaviour
         {
             pizzaStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 && PlayerPrefs.GetInt("paninoBeat") == 1 || TestMode)
+        if (PlayerPrefs.GetInt("stealthyBeat") == 1 && PlayerPrefs.GetInt("classicBeat", 0) == 1  && PlayerPrefs.GetInt("zombieBeat") == 1 && PlayerPrefs.GetInt("tripleBeat") == 1 || TestMode)
         {
             algerSprite.color = Color.white;
             algerMode.interactable = true;
@@ -284,33 +284,13 @@ public class ModesManager : MonoBehaviour
         {
             zombieStar.sprite = notbeat;
         }
-        if (PlayerPrefs.GetInt("zombieBeat") == 1 || TestMode)
-        {
-            paninoSprite.color = Color.white;
-            paninoMode.interactable = true;
-            paninoText.text = "Panino Mode                                                             Uh oh, Panino and Bob are alone in the ball, but luckily you're playing as Panino now! Try to catch Bob before he escapes the ball!";
-        }
-        else
-        {
-            paninoSprite.color = Color.black;
-            paninoMode.interactable = false;
-            paninoText.text = "You need to beat Zombie Mode to unlock this mode!";
-        }
-        if (PlayerPrefs.GetInt("paninoBeat") == 1)
-        {
-            paninoStar.sprite = beat;
-        }
-        else
-        {
-            paninoStar.sprite = notbeat;
-        }
     }
 
     void ModifierCheck()
     {
         int speede = PlayerPrefs.GetInt("speedyBeat", 0);
         int stamin = PlayerPrefs.GetInt("tripleBeat", 0);
-        int krille = PlayerPrefs.GetInt("paninoBeat", 0);
+        int krille = PlayerPrefs.GetInt("mikoBeat", 0);
         int walk =  PlayerPrefs.GetInt("stealthyBeat", 0);
         int block = PlayerPrefs.GetInt("mikoBeat", 0);
         int jam = PlayerPrefs.GetInt("jammerUnlocked", 0);

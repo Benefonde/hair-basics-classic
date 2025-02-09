@@ -48,7 +48,10 @@ public class NpcBaseScript : MonoBehaviour
 		else
 		{
 			db = false;
-			//Wander();  // if npc should have dementia, delete the // next to Wander();
+			if (coolDown <= 0)
+			{
+				Wander();
+			}
 		}
 	}
 

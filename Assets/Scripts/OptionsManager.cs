@@ -502,6 +502,14 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("timeTrophy", 0);
 		PlayerPrefs.SetInt("sorgyTrophy", 0);
 		PlayerPrefs.SetInt("slowTrophy", 0);
+		PlayerPrefs.SetInt("evilTrophy", 0);
+		PlayerPrefs.SetInt("expelledTrophy", 0);
+		PlayerPrefs.SetInt("fieldTrophy", 0);
+		PlayerPrefs.SetInt("findTrophy", 0);
+		PlayerPrefs.SetInt("kikerTrophy", 0);
+		PlayerPrefs.SetInt("lapTrophy", 0);
+		PlayerPrefs.SetInt("richTrophy", 0);
+		PlayerPrefs.SetInt("stupidTrophy", 0);
 		PlayerPrefs.Save();
 		SceneManager.LoadScene("Warning");
 	}

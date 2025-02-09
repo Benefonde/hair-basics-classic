@@ -153,7 +153,7 @@ public class AlgerNullScript : MonoBehaviour
 	public IEnumerator GetHit()
 	{
 		pauseTime += ow.length + 0.25f;
-		string[] thing = { "Ow, ok, if you want REAL null bossfight im gonna null bossfight you then!", "AAAAAAAAAAAAAAAAA" };
+		string[] thing = { "Ow, ok, if you want <i>REAL</i> null bossfight im gonna null bossfight you then!", "AAAAAAAAAAAAAAAAA" };
 		float[] thingie = { 4.9f, 0.949f };
 		Color[] thingest = { Color.blue, Color.blue };
 		canGetHit = true;
@@ -163,33 +163,38 @@ public class AlgerNullScript : MonoBehaviour
 			canGetHit = false;
 		}
 		baldiAudio.Stop();
-		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 10);
-		gc.playerScript.runSpeed += 1.25f;
+		gc.camScript.ShakeNow(new Vector3(1f, 0.9f, 1f), 20);
+		gc.playerScript.runSpeed += 1.5f;
 		gc.playerScript.walkSpeed = gc.playerScript.runSpeed;
 		speed = 0;
 		baldiAudio.PlayOneShot(ow);
 		FindObjectOfType<SubtitleManager>().Add3DSubtitle("owie", ow.length, Color.blue, transform);
+		if (bcs.lastSongOn == 2763)
+        {
+			bcs.lastSongOn = 0;
+        }
+		bcs.musicAud[bcs.lastSongOn].Tempo = 0.001f;
 		health -= 1;
 		while (pauseTime > 0)
         {
 			pauseTime -= Time.deltaTime;
 			yield return null;
 		}
-
 		switch (health)
 		{
 			case 19: StartCoroutine(bcs.ChangeMusic(1)); break;
-			case 16: StartCoroutine(bcs.ChangeMusic(3)); break;
-			case 13: StartCoroutine(bcs.ChangeMusic(4)); break;
-			case 10: StartCoroutine(bcs.ChangeMusic(5)); break;
-			case 7: StartCoroutine(bcs.ChangeMusic(6)); break;
-			case 4: StartCoroutine(bcs.ChangeMusic(7)); break;
-			case 2: StartCoroutine(bcs.ChangeMusic(8)); break;
+			case 10: StartCoroutine(bcs.ChangeMusic(3)); break;
+			case 4: StartCoroutine(bcs.ChangeMusic(4)); break;
 		}
-		speed = (70 - (health * 2.95f));
+		bcs.musicAud[bcs.lastSongOn].Tempo = healthTimesThings[19 - health];
+		if (healthTimesThings[19 - health] == 0.0001f)
+		{
+			bcs.musicAud[5].gameObject.SetActive(true);
+		}
+		speed = (70 - (health * 2.65f));
 		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
 		{
-			speed = speed = (70 - (health * 2.55f));
+			speed = speed = (70 - (health * 2.3f));
 		}
 
 		if (health == 19)
@@ -273,9 +278,6 @@ public class AlgerNullScript : MonoBehaviour
 	public AudioClip[] preBoss;
 	public AudioClip ow;
 
-	public AudioClip[] bossMusic;
-	public AudioSource bossSource;
-
 	public float coolDown;
 
 	private Vector3 previous;
@@ -283,4 +285,28 @@ public class AlgerNullScript : MonoBehaviour
 	public NavMeshAgent agent;
 
 	public bool bossMode;
+
+	float[] healthTimesThings = new float[]
+	{
+		0.6f,
+		0.62f,
+		0.64f,
+		0.66f,
+		0.68f,
+		0.73f,
+		0.78f,
+		0.83f,
+		0.88f,
+		0.91f,
+		0.94f,
+		0.97f,
+		1.02f,
+		1.15f,
+		1.22f,
+		1.29f,
+		1.44f,
+		1.6f,
+		0.0001f,
+		0.0001f
+	};
 }
