@@ -114,6 +114,19 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
+            if (Random.Range(1, 100) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+            {
+                for (int i = 0; i < FindObjectsOfType<A>().Length; i++)
+                {
+                    FindObjectsOfType<A>()[i].gameObject.SetActive(true);
+                }
+                tc.GetTrophy(28);
+            }
+            if (Random.Range(1, 100) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+            {
+                retroCanvas.SetActive(true);
+                tc.GetTrophy(28);
+            }
             if (PlayerPrefs.GetInt("timer") == 1)
             {
                 modeTimer.SetActive(true);
@@ -1087,6 +1100,16 @@ public class GameControllerScript : MonoBehaviour
         {
             tc.GetTrophy(18);
         }
+
+        if (notebooks == 12 && (Random.Range(1, 40) == 20 || (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)))
+        {
+            for (int i = 0; i < 79; i++)
+            {
+                GameObject a = Instantiate(locust);
+                a.SetActive(true);
+            }
+            tc.GetTrophy(28);
+        }
     }
 
     IEnumerator EventRing()
@@ -1557,13 +1580,14 @@ public class GameControllerScript : MonoBehaviour
         string[] escape = { "Congrattation!", "You found all 7 Dwaynes,", "now all you need to do is...", "GET OUT." };
         float[] duration = { 1.8f, 3f, 2.8f, 1.935f };
         Color[] colors = { Color.white, Color.white, Color.white, Color.white };
+        if (Random.Range(1, 50) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+        {
+            ESCAPEmusic.clip = BESTESCAPE;
+            tc.GetTrophy(28);
+        }
         ESCAPEmusic.UnPause();
         cameraNormal.cullingMask = cullingMask;
         learningActive = false; 
-        if (Random.Range(1, 40) == 28 || System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
-        {
-            ESCAPEmusic.clip = BESTESCAPE;
-        }
         if (subject != null)
         {
             Destroy(subject);
@@ -3123,6 +3147,8 @@ public class GameControllerScript : MonoBehaviour
 
     public VideoClip panic;
 
+    public GameObject locust;
+
     public GameObject miko;
     public GameObject alger;
 
@@ -3170,4 +3196,6 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip congratulatation;
 
     public GameObject ubrSpray;
+
+    public GameObject retroCanvas;
 }

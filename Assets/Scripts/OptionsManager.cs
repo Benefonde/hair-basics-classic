@@ -498,7 +498,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("problemTrophy", 0);
 		PlayerPrefs.SetInt("sorryTrophy", 0);
 		PlayerPrefs.SetInt("congratulationsTrophy", 0);
-		PlayerPrefs.SetInt("paninoTrophy", 0);
+		PlayerPrefs.SetInt("aprilTrophy", 0);
 		PlayerPrefs.SetInt("timeTrophy", 0);
 		PlayerPrefs.SetInt("sorgyTrophy", 0);
 		PlayerPrefs.SetInt("slowTrophy", 0);

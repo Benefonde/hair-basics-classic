@@ -93,6 +93,8 @@ public class MusicPlayerScript : MonoBehaviour
     private AudioSource audioDevice;
     public AudioClip[] music;
 
+    public GameObject[] midis;
+
     private bool paused;
 
     public TMP_Text loopText;

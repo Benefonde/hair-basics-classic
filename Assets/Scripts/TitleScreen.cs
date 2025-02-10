@@ -7,6 +7,11 @@ public class TitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
+        {
+            primaaprilis.SetActive(true);
+        }
+
         if (evil && PlayerPrefs.GetInt("duplicatedBalls") == 1)
         {
             ebs.ExitGame();
@@ -25,4 +30,6 @@ public class TitleScreen : MonoBehaviour
     public GameObject EVILtitle;
     public bool evil;
     public ExitButtonScript ebs;
+
+    public GameObject primaaprilis;
 }
