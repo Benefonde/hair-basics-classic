@@ -4,13 +4,31 @@ using UnityEngine;
 
 public class SamePos : MonoBehaviour
 {
+    private void Start()
+    {
+        if (retroCam)
+        {
+            myCam = GetComponent<Camera>();
+            mainCam = Camera.main;
+        }    
+    }
 
-    // Update is called once per frame
     void Update()
+    {
+        if (retroCam)
+        {
+            myCam.fieldOfView = mainCam.fieldOfView;
+        }
+    }
+
+    private void FixedUpdate()
     {
         transform.position = otherObj.position;
         transform.rotation = otherObj.rotation;
     }
 
     public Transform otherObj;
+    Camera mainCam;
+    Camera myCam;
+    public bool retroCam;
 }

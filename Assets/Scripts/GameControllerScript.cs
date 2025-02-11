@@ -116,10 +116,7 @@ public class GameControllerScript : MonoBehaviour
         {
             if (Random.Range(1, 100) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
             {
-                for (int i = 0; i < FindObjectsOfType<A>().Length; i++)
-                {
-                    FindObjectsOfType<A>()[i].gameObject.SetActive(true);
-                }
+                A.SetActive(true);
                 tc.GetTrophy(28);
             }
             if (Random.Range(1, 100) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
@@ -3198,4 +3195,6 @@ public class GameControllerScript : MonoBehaviour
     public GameObject ubrSpray;
 
     public GameObject retroCanvas;
+
+    public GameObject A;
 }
