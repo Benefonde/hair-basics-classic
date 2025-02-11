@@ -116,7 +116,7 @@ public class BullyScript : MonoBehaviour
 		if (gc.item[gc.itemSelected] == 0)
 		{
 			audioDevice.PlayOneShot(aud_Denied);
-			FindObjectOfType<SubtitleManager>().Add3DSubtitle("I don't have patience for sinicism right now.", aud_Denied.length, new Color(0.62f, 0.32f, 0.17f, 1f), transform);
+			FindObjectOfType<SubtitleManager>().Add3DSubtitle("I don't have patience for cynicism right now.", aud_Denied.length, new Color(0.62f, 0.32f, 0.17f, 1f), transform);
 			gc.player.health -= 10;
 			return;
 		}
