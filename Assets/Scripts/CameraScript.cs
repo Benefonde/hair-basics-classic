@@ -53,7 +53,7 @@ public class CameraScript : MonoBehaviour
 		camYoffset = base.transform.position.y - player.transform.position.y;
 		camYdefault = 1;
 		shake = PlayerPrefs.GetInt("shake", 1);
-		if (Random.Range(1, 30)  == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+		if (Random.Range(1, 70)  == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
         {
 			breathing = true;
 			gc.tc.GetTrophy(28);
