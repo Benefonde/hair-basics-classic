@@ -1171,6 +1171,10 @@ public class GameControllerScript : MonoBehaviour
             pauseMenu.SetActive(value: true);
             if (!ClassicSchoolScene)
             {
+                for (int i = 0; i < tutorals.Length; i++)
+                {
+                    tutorals[i].Pause();
+                }
                 for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
                 {
                     FindObjectsOfType<SongPlayer>()[i].Pause();
@@ -1195,6 +1199,10 @@ public class GameControllerScript : MonoBehaviour
         LockMouse();
         if (!ClassicSchoolScene)
         {
+            for (int i = 0; i < tutorals.Length; i++)
+            {
+                tutorals[i].Play();
+            }
             for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
             {
                 FindObjectsOfType<SongPlayer>()[i].Resume();
@@ -1422,6 +1430,10 @@ public class GameControllerScript : MonoBehaviour
         if (mode != "stealthy")
         {
             notebookCount.text = "0/4 Exits";
+        }
+        foreach (VideoPlayer player in tutorals)
+        {
+            player.clip = panic;
         }
     }
 
@@ -3102,6 +3114,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject algerItemLayout;
     public GameObject stealthyItemLayout;
     public GameObject zombieItemLayout;
+
+    public VideoPlayer[] tutorals;
 
     public GameObject pharohsWall;
 
