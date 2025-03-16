@@ -7,7 +7,7 @@ public class TitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
+        //if (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
         {
             primaaprilis.SetActive(true);
         }
