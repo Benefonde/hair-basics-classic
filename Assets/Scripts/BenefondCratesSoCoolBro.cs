@@ -9,7 +9,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Random.Range(1, 21) == 2 || TestMode == 1)
+        //if (Random.Range(1, 21) == 2 || TestMode == 1)
         {
             benefondCreatesAud.clip = benefondCratesEasterEggs[Random.Range(0, benefondCratesEasterEggs.Length - 1)];
         }
