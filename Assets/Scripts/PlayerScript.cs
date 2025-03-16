@@ -470,7 +470,7 @@ public class PlayerScript : MonoBehaviour
 			{
 				stamina -= staminaRate * Time.deltaTime;
 			}
-			if ((stamina < 0f) & (stamina < -0.01f))
+			if (stamina < 0f)
 			{
 				stamina = -0.01f;
 			}

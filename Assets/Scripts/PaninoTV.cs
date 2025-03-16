@@ -34,7 +34,14 @@ public class PaninoTV : MonoBehaviour
             }
             if (timmer <= 0 && eventWillHappne)
             {
-                StartCoroutine(EventTime(2));
+                if (gc.IsAprilFools())
+                {
+                    StartCoroutine(EventTime(4));
+                }
+                else
+                {
+                    StartCoroutine(EventTime(2));
+                }
                 eventWillHappne = false;
             }
         }
@@ -88,10 +95,15 @@ public class PaninoTV : MonoBehaviour
             case 0: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber0, duration0, colore0); break;
             case 1: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber1, duration1, colore1); break;
             case 2: FindObjectOfType<SubtitleManager>().AddChained2DSubtitle(blabber2, duration2, colore0); break;
+            case 3: FindObjectOfType<SubtitleManager>().Add2DSubtitle("How do I get him off", paninoAnnounce[3].length, Color.white); break;
         }
         if (thing == 2)
         {
             prisonDoor.ItemsAreNowGoingToJail();
+        }
+        if (thing == 4)
+        {
+            washeewashee.SetActive(true);
         }
         yield return new WaitForSeconds(paninoAnnounce[thing].length + 0.5f);
         tvStatic.SetActive(true);
@@ -116,6 +128,8 @@ public class PaninoTV : MonoBehaviour
     float timmer;
     [SerializeField]
     bool eventWillHappne;
+
+    public GameObject washeewashee;
 
     public AudioClip[] paninoAnnounce; // 0 - congrattation, 1 - pillar john, 2 - jailed items
 

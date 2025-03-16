@@ -114,12 +114,12 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
-            if (Random.Range(1, 300) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+            if (Random.Range(1, 300) == 28 || IsAprilFools())
             {
                 A.SetActive(true);
                 tc.GetTrophy(28);
             }
-            if (Random.Range(1, 400) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+            if (Random.Range(1, 400) == 28 || IsAprilFools())
             {
                 retroCanvas.SetActive(true);
                 tc.GetTrophy(28);
@@ -1098,7 +1098,7 @@ public class GameControllerScript : MonoBehaviour
             tc.GetTrophy(18);
         }
 
-        if (notebooks == 12 && (Random.Range(1, 60) == 20 || (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)))
+        if (notebooks == 12 && (Random.Range(1, 60) == 20 || IsAprilFools()))
         {
             for (int i = 0; i < 79; i++)
             {
@@ -1118,6 +1118,15 @@ public class GameControllerScript : MonoBehaviour
         eventText.SetActive(true);
         yield return new WaitForSeconds(5);
         eventText.SetActive(false);
+    }
+
+    public bool IsAprilFools()
+    {
+        if (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void SpawnEvilLeafy()
@@ -1577,7 +1586,7 @@ public class GameControllerScript : MonoBehaviour
         string[] escape = { "Congrattation!", "You found all 7 Dwaynes,", "now all you need to do is...", "GET OUT." };
         float[] duration = { 1.8f, 3f, 2.8f, 1.935f };
         Color[] colors = { Color.white, Color.white, Color.white, Color.white };
-        if (Random.Range(1, 40) == 28 || (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1))
+        if (Random.Range(1, 40) == 28 || IsAprilFools())
         {
             ESCAPEmusic.clip = BESTESCAPE;
             tc.GetTrophy(28);
