@@ -36,7 +36,7 @@ public class PaninoTV : MonoBehaviour
             {
                 if (gc.IsAprilFools())
                 {
-                    StartCoroutine(EventTime(4));
+                    StartCoroutine(EventTime(3));
                 }
                 else
                 {
@@ -101,7 +101,7 @@ public class PaninoTV : MonoBehaviour
         {
             prisonDoor.ItemsAreNowGoingToJail();
         }
-        if (thing == 4)
+        if (thing == 3)
         {
             washeewashee.SetActive(true);
         }

@@ -943,7 +943,14 @@ public class GameControllerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            StartCoroutine(paninoTv.EventTime(2));
+            if (IsAprilFools())
+            {
+                StartCoroutine(paninoTv.EventTime(3));
+            }
+            else
+            {
+                StartCoroutine(paninoTv.EventTime(2));
+            }
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
