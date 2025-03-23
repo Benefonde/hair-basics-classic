@@ -81,6 +81,10 @@ public class GameControllerScript : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Luck")
+        {
+            disablePausing = true;
+        }
         tc = GetComponent<TrophyCollectingScript>();
         if (PlayerPrefs.GetInt("heldItemShow", 0) == 0)
         {
@@ -1074,13 +1078,17 @@ public class GameControllerScript : MonoBehaviour
             dm.maxSize = maxNoteboos;
         }*/
         int highScoreBotenook = PlayerPrefs.GetInt("HighBooks");
-        if (mode != "endless")
+        if (mode != "endless" && SceneManager.GetActiveScene().name != "Luck")
         {
             notebookCount.text = $"{notebooks}/{maxNoteboos} Dwaynes";
         }
-        else
+        else if (SceneManager.GetActiveScene().name != "Luck")
         {
             notebookCount.text = $"{notebooks}/{highScoreBotenook} H.S. Dwaynes";
+        }
+        else
+        {
+            notebookCount.text = $"{notebooks} left";
         }
         if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free"))
         {

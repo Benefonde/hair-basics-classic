@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames.unity
     guid: b5850dacca987c946b6d474e052047bb
+  - enabled: 1
+    path: Assets/Scenes/Luck.unity
+    guid: d61d169a9d04cf041b8e2bf7e93d03f4
   m_configObjects: {}

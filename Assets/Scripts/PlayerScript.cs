@@ -610,6 +610,11 @@ public class PlayerScript : MonoBehaviour
 				gc.tc.GetTrophy(27);
             }
 		}
+
+		if (other.transform.name == "LeafingWall")
+        {
+			SceneManager.LoadScene("MainMenu");
+        }
 	}
 
 	public void Die()

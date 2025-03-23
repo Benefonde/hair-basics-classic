@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DonutScript : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class DonutScript : MonoBehaviour
         if (collision.collider.gameObject.name.Contains("Wall"))
         {
             player.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+            if (Random.Range(0, 500) == 28 || (FindObjectOfType<GameControllerScript>().IsAprilFools() && Random.Range(1, 4) == 2))
+            {
+                SceneManager.LoadScene("Luck");
+            }
             Destroy(gameObject);
         }
     }
