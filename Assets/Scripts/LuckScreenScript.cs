@@ -37,7 +37,7 @@ public class LuckScreenScript : MonoBehaviour
         }
         else
         {
-            if (Random.Range(1, 16) == 7)
+            if (Random.Range(1, 28) == 7)
             {
                 StartCoroutine(Roll_ItemSuccess(number));
             }
