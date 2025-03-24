@@ -300,7 +300,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Story Mode
 
-    Collect all 17 Dwaynes and then exit the ball to win!'
+    April fools!
+
+
+
+    You can''t escape'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da04a461c84a1e41bbbe240dbdb94b3, type: 2}
   m_sharedMaterial: {fileID: -7416678383220277927, guid: 0da04a461c84a1e41bbbe240dbdb94b3,
@@ -370,12 +374,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 41}
-    characterCount: 64
+    characterCount: 42
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 13
+    spaceCount: 8
+    wordCount: 7
     linkCount: 0
-    lineCount: 2
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1321,7 +1325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &156
 GameObject:
   m_ObjectHideFlags: 0
@@ -17775,7 +17779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &320922830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56730,7 +56734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1293077890
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59282,7 +59286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1375052495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89235,7 +89239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5955138881078821514
 MonoBehaviour:
   m_ObjectHideFlags: 0
