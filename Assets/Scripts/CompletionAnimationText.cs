@@ -69,6 +69,10 @@ public class CompletionAnimationText : MonoBehaviour
     void StartRankScreen()
     {
         int arrEnGee = Random.Range(1, 21);
+        if (System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
+        {
+            arrEnGee = 2;
+        }
         aud2.Stop();
         aud2.clip = music;
         if (arrEnGee == 2)
