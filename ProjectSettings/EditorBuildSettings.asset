@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/School.unity
     guid: 02778db063e5ee846980944a550e48a8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/thing.unity
     guid: 98397d12a9f0e86419d2022cfc4f9426
   - enabled: 1
@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Results.unity
     guid: 1f7c98e789a56d14f9bc4f21d37cd0a2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Secret.unity
     guid: b131d10ab877d154fa5ac25ce7dc7862
   - enabled: 1
@@ -38,19 +38,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChallengeBeat.unity
     guid: fb9e2022adc6b2e4b9a53bb79bc5e4bb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TripleBeat.unity
     guid: 40355bb2188095c4ba8c7c46b81f4a75
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ranking.unity
     guid: 2244ed1971a97244db1f0487edc295df
   - enabled: 1
     path: Assets/Scenes/2763.unity
     guid: 82c5c141e92c9b84d86c4c2b930050fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AlgerBeat.unity
     guid: 9347e2f42fd8d1a47a122e26c06bc12e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ClassicEnding.unity
     guid: 22fc17543f66c734e980409458b1bd5f
   - enabled: 1
@@ -65,7 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MyTimeMachine.unity
     guid: 4dcdfaba74952174fb1f2c44bea3e26a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Minigames.unity
     guid: b5850dacca987c946b6d474e052047bb
   - enabled: 1
