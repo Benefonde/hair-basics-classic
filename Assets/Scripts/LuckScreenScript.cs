@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LuckScreenScript : MonoBehaviour
 {
@@ -8,12 +9,6 @@ public class LuckScreenScript : MonoBehaviour
     void Start()
     {
         aud = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Roll()
@@ -30,21 +25,44 @@ public class LuckScreenScript : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
         int number = Random.Range(2, 13);
-        rollers[0].sprite = rollResults[number];
-        if (rollers[0].sprite == rollResults[2] || rollers[0].sprite == rollResults[3])
+        switch (TestMode)
         {
-            StartCoroutine(Roll_Fail());
-        }
-        else
-        {
-            if (Random.Range(1, 28) == 7)
-            {
+            default:
+                rollers[0].sprite = rollResults[number];
+                if (rollers[0].sprite == rollResults[2] || rollers[0].sprite == rollResults[3])
+                {
+                    StartCoroutine(Roll_Fail());
+                }
+                else
+                {
+                    if (Random.Range(1, 28) == 7)
+                    {
+                        StartCoroutine(Roll_ItemSuccess(number));
+                    }
+                    else
+                    {
+                        StartCoroutine(Roll_ItemFailure());
+                    }
+                }
+                break;
+            case 1:
+                number = Random.Range(2, 3);
+                rollers[0].sprite = rollResults[number];
+                if (rollers[0].sprite == rollResults[2] || rollers[0].sprite == rollResults[3])
+                {
+                    StartCoroutine(Roll_Fail());
+                }
+                break;
+            case 2:
+                number = Random.Range(4, 13);
+                rollers[0].sprite = rollResults[number];
                 StartCoroutine(Roll_ItemSuccess(number));
-            }
-            else
-            {
+                break;
+            case 3:
+                number = Random.Range(4, 13);
+                rollers[0].sprite = rollResults[number];
                 StartCoroutine(Roll_ItemFailure());
-            }
+                break;
         }
     }
     IEnumerator Roll_Fail()
@@ -88,7 +106,9 @@ public class LuckScreenScript : MonoBehaviour
         yield return new WaitForSeconds(4);
         rollers[2].sprite = rollers[0].sprite;
         yield return new WaitForSeconds(0.5f);
-        //wow mayan u won
+        PlayerPrefs.SetInt($"itemWon{offset}", itemRollResults[ID]);
+        itemSlots[offset].texture = itemRollSlotResults[ID];
+        offset++;
         isRolling = false;
     }
     IEnumerator Roll_ItemFailure()
@@ -121,9 +141,17 @@ public class LuckScreenScript : MonoBehaviour
     public bool isRolling;
 
     public Sprite[] rollResults;
+    public int[] itemRollResults;
     public SpriteRenderer[] rollers;
 
     AudioSource aud;
     public AudioClip tch;
     public AudioClip lose;
+
+    public int offset;
+
+    public RawImage[] itemSlots;
+    public Texture[] itemRollSlotResults;
+
+    public int TestMode;
 }

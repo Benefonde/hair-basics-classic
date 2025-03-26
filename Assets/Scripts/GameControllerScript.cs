@@ -118,6 +118,27 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
+            switch (mode)
+            {
+                default:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "speedy":
+                    for (int i = 0; i < 3; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "zombie":
+                    break;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                PlayerPrefs.SetInt($"itemWon{i}", 0);
+            }
             if (Random.Range(1, 300) == 28 || IsAprilFools())
             {
                 A.SetActive(true);
