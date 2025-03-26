@@ -74,7 +74,7 @@ public class LuckScreenScript : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(Random.Range(0.4f, 1.2f));
         }
         if (rollers[0].sprite == rollResults[2] || rollers[0].sprite == rollResults[3])
         {
