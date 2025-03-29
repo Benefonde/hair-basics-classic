@@ -118,23 +118,6 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
-            switch (mode)
-            {
-                default:
-                    for (int i = 0; i < 4; i++)
-                    {
-                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
-                    }
-                    break;
-                case "speedy":
-                    for (int i = 0; i < 3; i++)
-                    {
-                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
-                    }
-                    break;
-                case "zombie":
-                    break;
-            }
             for (int i = 0; i < 4; i++)
             {
                 PlayerPrefs.SetInt($"itemWon{i}", 0);
@@ -266,6 +249,23 @@ public class GameControllerScript : MonoBehaviour
             {
                 objectItem[i] = new ObjectionItem();
                 objectItem[i].Collect(objecUsesinit);
+            }
+            switch (mode)
+            {
+                default:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "speedy":
+                    for (int i = 0; i < 3; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "zombie":
+                    break;
             }
         }
         if (ClassicSchoolScene)
