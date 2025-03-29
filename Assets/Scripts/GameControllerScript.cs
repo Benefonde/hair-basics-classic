@@ -245,11 +245,6 @@ public class GameControllerScript : MonoBehaviour
             }
             objectItem = new ObjectionItem[item.Length];
 
-            for (int i = 0; i < objectItem.Length; i++)
-            {
-                objectItem[i] = new ObjectionItem();
-                objectItem[i].Collect(objecUsesinit);
-            }
             switch (mode)
             {
                 default:
@@ -266,6 +261,12 @@ public class GameControllerScript : MonoBehaviour
                     break;
                 case "zombie":
                     break;
+            }
+
+            for (int i = 0; i < objectItem.Length; i++)
+            {
+                objectItem[i] = new ObjectionItem();
+                objectItem[i].Collect(objecUsesinit);
             }
         }
         if (ClassicSchoolScene)
