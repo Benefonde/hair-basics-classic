@@ -87,6 +87,11 @@ public class ExitTriggerScript : MonoBehaviour
             {
 				gc.tc.GetTrophy(20);
 			}
+			if (gc.IsAprilFools())
+			{
+				SceneManager.LoadScene("Pranckd!!");
+				return;
+			}
 			if (gc.failedNotebooks >= gc.maxNoteboos && gc.mode == "story")
 			{
 				if (PlayerPrefs.GetInt("speedyUnlocked", 0) == 0)
