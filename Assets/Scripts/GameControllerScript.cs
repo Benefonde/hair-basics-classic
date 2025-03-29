@@ -118,10 +118,6 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                PlayerPrefs.SetInt($"itemWon{i}", 0);
-            }
             if (Random.Range(1, 300) == 28 || IsAprilFools())
             {
                 A.SetActive(true);
@@ -245,6 +241,13 @@ public class GameControllerScript : MonoBehaviour
             }
             objectItem = new ObjectionItem[item.Length];
 
+
+            for (int i = 0; i < objectItem.Length; i++)
+            {
+                objectItem[i] = new ObjectionItem();
+                objectItem[i].Collect(objecUsesinit);
+            }
+
             switch (mode)
             {
                 default:
@@ -262,11 +265,9 @@ public class GameControllerScript : MonoBehaviour
                 case "zombie":
                     break;
             }
-
-            for (int i = 0; i < objectItem.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
-                objectItem[i] = new ObjectionItem();
-                objectItem[i].Collect(objecUsesinit);
+                PlayerPrefs.SetInt($"itemWon{i}", 0);
             }
         }
         if (ClassicSchoolScene)
