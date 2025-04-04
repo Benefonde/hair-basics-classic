@@ -9,7 +9,7 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (Random.Range(1, 21) == 2 || TestMode == 1)
+        if (Random.Range(1, 21) == 2 || TestMode == 1)
         {
             benefondCreatesAud.clip = benefondCratesEasterEggs[Random.Range(0, benefondCratesEasterEggs.Length - 1)];
         }
@@ -18,7 +18,6 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
         if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1 || TestMode == 2)
         {
             benefondCreates.SetActive(false);
-            cam = Camera.main.transform;
             aud = GetComponent<AudioSource>();
             aud.Play();
             t = GetComponent<TMP_Text>();
@@ -110,8 +109,6 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     public int TestMode;
 
     public GameObject balls;
-
-    Transform cam;
 
     public AudioClip cooLSong;
 

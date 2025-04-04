@@ -18662,6 +18662,7 @@ GameObject:
   - component: {fileID: 339673421}
   - component: {fileID: 339673423}
   - component: {fileID: 339673422}
+  - component: {fileID: 339673424}
   m_Layer: 5
   m_Name: version
   m_TagString: Untagged
@@ -18809,6 +18810,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339673420}
   m_CullTransparentMesh: 0
+--- !u!114 &339673424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339673420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199e54fea1c39ed45a3c923b39b1a56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: 'version '
+  suffix: \ncreated by Benefond "Createes"
 --- !u!1 &340191195
 GameObject:
   m_ObjectHideFlags: 0
@@ -29786,6 +29801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199e54fea1c39ed45a3c923b39b1a56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefix: 
+  suffix: 
 --- !u!114 &640083814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71622,6 +71639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199e54fea1c39ed45a3c923b39b1a56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefix: 
+  suffix: 
 --- !u!1 &1738293155
 GameObject:
   m_ObjectHideFlags: 0

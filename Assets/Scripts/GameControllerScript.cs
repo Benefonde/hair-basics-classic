@@ -1160,11 +1160,11 @@ public class GameControllerScript : MonoBehaviour
 
     public bool IsAprilFools()
     {
-        //if (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)
-        //{
+        if (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)
+        {
             return true;
-        //}
-        //return false;
+        }
+        return false;
     }
 
     public void SpawnEvilLeafy()
