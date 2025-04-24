@@ -1532,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &187
 GameObject:
   m_ObjectHideFlags: 0
@@ -18820,6 +18820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefix: 'version '
   suffix: \ncreated by Benefond "Createes"
+  chess: 0
 --- !u!1 &340191195
 GameObject:
   m_ObjectHideFlags: 0
@@ -29799,6 +29800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefix: 
   suffix: 
+  chess: 0
 --- !u!114 &640083814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71637,6 +71639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefix: 
   suffix: 
+  chess: 0
 --- !u!1 &1738293155
 GameObject:
   m_ObjectHideFlags: 0
@@ -75610,7 +75613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1814582163
 MonoBehaviour:
   m_ObjectHideFlags: 0
