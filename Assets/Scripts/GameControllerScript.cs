@@ -904,14 +904,6 @@ public class GameControllerScript : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        if ((player.stamina < 0f) & !warning.activeSelf)
-        {
-            warning.SetActive(value: true);
-        }
-        else if ((player.stamina > 0f) & warning.activeSelf)
-        {
-            warning.SetActive(value: false);
-        }
         if (player.gameOver)
         {
             GameOverStart();

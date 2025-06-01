@@ -183,6 +183,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
 			PipegameMove();
+			StaminaCheck();
 			MouseMove();
 		}
 		if (Time.timeScale != 0)
@@ -406,32 +407,15 @@ public class PlayerScript : MonoBehaviour
 
 	private void PlayerMove()
 	{
-		Vector3 vector = new Vector3(0f, 0f, 0f);
-		Vector3 vector2 = new Vector3(0f, 0f, 0f);
-		vector = base.transform.forward * Input.GetAxis("Forward");
-		vector2 = base.transform.right * Input.GetAxis("Strafe");
-		if (stamina > 0f)
+		Vector3 vector = base.transform.forward * Input.GetAxisRaw("Forward");
+		Vector3 vector2 = base.transform.right * Input.GetAxisRaw("Strafe");
+		if (stamina > 0f && Input.GetButton("Run"))
 		{
-			if (Input.GetButton("Run"))
+			playerSpeed = runSpeed;
+			sensitivity = 1f;
+			if ((cc.velocity.magnitude > 0.05f) & !hugging & !sweeping)
 			{
-				playerSpeed = runSpeed;
-				sensitivity = 1f;
-				if ((cc.velocity.magnitude > 0.05f) & !hugging & !sweeping)
-				{
-					ResetGuilt("running", 0.2f);
-				}
-			}
-			else
-			{
-				playerSpeed = walkSpeed;
-				if (sensitivityActive)
-				{
-					sensitivity = Mathf.Clamp((vector2 + vector).magnitude, 0f, 1f);
-				}
-				else
-				{
-					sensitivity = 1f;
-				}
+				ResetGuilt("running", 0.2f);
 			}
 		}
 		else
