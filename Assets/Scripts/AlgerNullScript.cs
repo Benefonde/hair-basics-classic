@@ -169,27 +169,30 @@ public class AlgerNullScript : MonoBehaviour
 		speed = 0;
 		baldiAudio.PlayOneShot(ow);
 		FindObjectOfType<SubtitleManager>().Add3DSubtitle("owie", ow.length, Color.blue, transform);
-		if (bcs.lastSongOn == 2763)
-        {
-			bcs.lastSongOn = 0;
-        }
-		bcs.musicAud[bcs.lastSongOn].Tempo = 0.001f;
 		health -= 1;
 		while (pauseTime > 0)
-        {
+		{
 			pauseTime -= Time.deltaTime;
 			yield return null;
 		}
+		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
+		{
+			speed = (45 - (health * 2.25f)) / 1.8f;
+		}
+		else
+		{
+			speed = (55 - (health * 2.65f)) / 1.34f;
+		}
+
 		switch (health)
 		{
 			case 19: StartCoroutine(bcs.ChangeMusic(1)); break;
-			case 10: StartCoroutine(bcs.ChangeMusic(3)); break;
-			case 4: StartCoroutine(bcs.ChangeMusic(4)); break;
-		}
-		bcs.musicAud[bcs.lastSongOn].Tempo = healthTimesThings[19 - health];
-		if (healthTimesThings[19 - health] == 0.0001f)
-		{
-			bcs.musicAud[5].gameObject.SetActive(true);
+			case 16: StartCoroutine(bcs.ChangeMusic(3)); break;
+			case 13: StartCoroutine(bcs.ChangeMusic(4)); break;
+			case 10: StartCoroutine(bcs.ChangeMusic(5)); break;
+			case 7: StartCoroutine(bcs.ChangeMusic(6)); break;
+			case 4: StartCoroutine(bcs.ChangeMusic(7)); break;
+			case 2: StartCoroutine(bcs.ChangeMusic(8)); break;
 		}
 		speed = (70 - (health * 2.65f));
 		if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
@@ -198,7 +201,7 @@ public class AlgerNullScript : MonoBehaviour
 		}
 
 		if (health == 19)
-        {
+		{
 			disableWanderOrTarget = true;
 			speed = 0;
 			canGetHit = false;
@@ -222,14 +225,21 @@ public class AlgerNullScript : MonoBehaviour
 			gc.camScript.follow = transform;
 			gc.camScript.FuckingDead = true;
 			yield return new WaitForSeconds(preBoss[1].length - 1);
-			speed = (75 - (health * 3.25f));
+			if (PlayerPrefs.GetInt("slowerKrillers", 0) == 1)
+			{
+				speed = (60 - (health * 2.5f)) / 1.7f;
+			}
+			else
+			{
+				speed = (65 - (health * 2.55f));
+			}
 			canGetHit = true;
 			gc.camScript.FuckingDead = false;
 			gc.debugMode = false;
 			bossMode = true;
 			disableWanderOrTarget = true;
 		}
-    }
+	}
 
     public bool db;
 
@@ -285,28 +295,4 @@ public class AlgerNullScript : MonoBehaviour
 	public NavMeshAgent agent;
 
 	public bool bossMode;
-
-	float[] healthTimesThings = new float[]
-	{
-		0.6f,
-		0.62f,
-		0.64f,
-		0.66f,
-		0.68f,
-		0.73f,
-		0.78f,
-		0.83f,
-		0.88f,
-		0.91f,
-		0.94f,
-		0.97f,
-		1.02f,
-		1.15f,
-		1.22f,
-		1.29f,
-		1.44f,
-		1.6f,
-		0.0001f,
-		0.0001f
-	};
 }

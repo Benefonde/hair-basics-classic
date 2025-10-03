@@ -57,7 +57,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
 
         transform.localPosition = new Vector2(x, y);
 
-        fluidMidi.Tempo = Mathf.Clamp(speed / 20, 0.65f, 2f);
+        //fluidMidi.Tempo = Mathf.Clamp(speed / 20, 0.65f, 2f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -143,7 +143,7 @@ public class AvoidObstaclesPlayer : MonoBehaviour
     public AudioClip[] music;
     public AudioClip[] hurt;
 
-    public SongPlayer fluidMidi;
+    public AudioSource fluidMidi;
 
     TrophyCollectingScript tc;
 }
