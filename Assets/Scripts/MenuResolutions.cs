@@ -21,7 +21,10 @@ public class MenuResolutions : MonoBehaviour
         for (int i = 0; i < filteredRes.Count; i++)
         {
             string resolutionOption = filteredRes[i].width + "x" + filteredRes[i].height;
-            options.Add(resolutionOption);
+            //if (!options.Contains(resolutionOption)) FUCK
+            {
+                options.Add(resolutionOption);
+            }
             if (filteredRes[i].width == Screen.width && filteredRes[i].height == Screen.height)
             {
                 print("Added " + resolutionOption + " to filtered resolutions");

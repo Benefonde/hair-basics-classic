@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062a943f2ba84f94facec6d732132d81, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  text:
+  - "Does it work now? Come on, trell me! S\u0105h\u0105o\u0105w\u0105 me!!! Please?"
+  - 'Yes, it does. '
+  - "Waho\u0105o\u0105\u0105o\u0105\u0105\u0105o\u0105\u0105\u0105\u0105o\u0105\u0105\u0105\u0105\u0105o!
+    Susan strikes again!"
+  sprites:
+  - {fileID: -7950068641536456209, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 21300000, guid: 03e93db456a6e3241b19b627d2f789f3, type: 3}
+  - {fileID: -4832821458178900676, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  blips:
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 581ec3b5f5a8ada4d8f2dea833ae2f65, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}

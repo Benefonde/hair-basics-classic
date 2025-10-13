@@ -20,7 +20,8 @@ public class StartButton : MonoBehaviour
 		Chaos = 11,
 		Classic = 12,
 		Zombie = 13,
-		Panino = 14
+		Panino = 14,
+		Jackenstein = 15
 	}
 
 	public Mode currentMode;

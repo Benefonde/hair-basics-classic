@@ -74,7 +74,7 @@ public class AngelScript : MonoBehaviour
     {
 		if (other.transform.name == "UbrSpray(Clone)")
 		{
-			ignorePlayer = 45;	
+			ignorePlayer = 15;	
 		}
 		if (other.transform.name == "Player" && ignorePlayer <= 0)
         {

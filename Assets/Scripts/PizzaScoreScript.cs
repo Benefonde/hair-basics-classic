@@ -63,8 +63,7 @@ public class PizzaScoreScript : MonoBehaviour
         {
             score = 0;
         }
-        scoreText[0].text = score.ToString();
-        scoreText[1].text = score.ToString();
+        scoreText.text = score.ToString();
 
         if (!ranUpdateScore)
         {
@@ -93,6 +92,14 @@ public class PizzaScoreScript : MonoBehaviour
         {
             canP = false;
         }
+
+        if (pointGainAnimTime > 0)
+        {
+            pointGainAnimTime -= Time.deltaTime;
+            return;
+        }
+        pointGainAnimText = 0;
+        pointAnim.text = string.Empty;
     }
 
     public void UpdateRankSlider()
@@ -174,35 +181,34 @@ public class PizzaScoreScript : MonoBehaviour
 
     public void AddPoints(int points, float textDieTime)
     {
-        StopAllCoroutines();
         score += points;
-        if (points > -1)
+        pointGainAnimTime += textDieTime;
+        if (pointGainAnimTime > 1.5f)
+        {
+            pointGainAnimTime = 1.5f;
+        }
+        pointGainAnimText += points;
+        if (pointGainAnimText > -1)
         {
             pointAnim.color = Color.cyan;
+            pointAnim.text = $"+{pointGainAnimText}";
         }
         else
         {
             pointAnim.color = Color.red;
-            pointAnim.text = points.ToString();
+            pointAnim.text = pointGainAnimText.ToString();
         }
-        StartCoroutine(PointAnimThingy(textDieTime));
         UpdateRankSlider();
-        if (points < -5)
+        if (points < -10)
         {
             lostScore = true;
         }
     }
 
-    IEnumerator PointAnimThingy(float timer)
-    {
-        yield return new WaitForSeconds(timer);
-        pointAnim.text = string.Empty;
-    }
-
     public GameObject[] toppings;
     public int score;
     public TMP_Text pointAnim;
-    public TMP_Text[] scoreText;
+    public TMP_Text scoreText;
 
     public GameControllerScript gc;
 
@@ -225,4 +231,7 @@ public class PizzaScoreScript : MonoBehaviour
     public bool ranUpdateScore;
 
     public string rank;
+
+    float pointGainAnimTime;
+    int pointGainAnimText;
 }

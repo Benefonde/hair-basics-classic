@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1312598449582887788}
   - component: {fileID: -5339843179611007927}
   - component: {fileID: -8417373483273849907}
-  m_Layer: 0
+  - component: {fileID: 3626853316614324835}
+  - component: {fileID: 7839579889923120147}
+  m_Layer: 2
   m_Name: UbrSpray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,10 +57,39 @@ BoxCollider:
   m_GameObject: {fileID: 165438349300871480}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 30}
-  m_Center: {x: 0, y: 0, z: 15}
+  m_Size: {x: 6, y: 10, z: 20}
+  m_Center: {x: 0, y: 0, z: 10}
+--- !u!65 &3626853316614324835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165438349300871480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 5, z: 10}
+  m_Center: {x: 0, y: 0, z: 25}
+--- !u!54 &7839579889923120147
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165438349300871480}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4378193411754269042
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +101,7 @@ GameObject:
   - component: {fileID: 8844012876407015572}
   - component: {fileID: 6559523528727684794}
   - component: {fileID: 581089563558649132}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UbrSprayParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +137,7 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

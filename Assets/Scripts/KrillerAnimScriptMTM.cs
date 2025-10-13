@@ -15,8 +15,7 @@ public class KrillerAnimScriptMTM : MonoBehaviour
         agent.SetDestination(target);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (moveFrames > 0)
         {
@@ -27,6 +26,11 @@ public class KrillerAnimScriptMTM : MonoBehaviour
         {
             agent.speed = 0;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (wait >= 0)
         {
             wait -= Time.deltaTime;

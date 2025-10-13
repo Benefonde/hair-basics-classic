@@ -12,6 +12,7 @@ public class TriviaMinigame : MonoBehaviour
     void Start()
     {
         aud = GetComponent<AudioSource>();
+        aud.enabled = true;
         NewQuestion();
     }
 
@@ -90,13 +91,15 @@ public class TriviaMinigame : MonoBehaviour
         int randomIndex = random.Next(validNumbers.Count);
         if (questionsAsked >= 11 || strike == 4)
         {
+            questionText.color = Color.green;
             questionText.text = "You win!"; 
             if (strike == 4)
             {
                 questionText.color = Color.red;
                 questionText.text = "You lose...";
             }
-            SceneManager.LoadScene("MainMenu");
+            FindObjectOfType<MinigamesStartScript>().Lose();
+            this.enabled = false;
             return 1;
         }
         return validNumbers[randomIndex];
@@ -105,7 +108,7 @@ public class TriviaMinigame : MonoBehaviour
     public TMP_Text questionText;
     public TMP_Text[] answersText;
     int question;
-    int strike;
+    public int strike;
     public Slider timerSlider;
     int questionsAsked;
 

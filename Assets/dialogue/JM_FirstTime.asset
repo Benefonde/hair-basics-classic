@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062a943f2ba84f94facec6d732132d81, type: 3}
+  m_Name: JM_FirstTime
+  m_EditorClassIdentifier: 
+  text:
+  - Alright, so here's how this works.
+  - You need to gain TP from Dwaynes and treasure...
+  - And you've got a strict timer, but increased speed.
+  - I don't actually know what happens when the timer runs out.
+  - So don't. Run out. Of time.
+  - Good luck!
+  sprites:
+  - {fileID: -3318305388929801286, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 6371072896918208782, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 8112220073488889169, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 211116508562961335, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 4690438545538325593, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  - {fileID: 7932419815888227622, guid: 04d2124341b503d4caecc2da988e0b16, type: 3}
+  blips:
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}
+  - {fileID: 8300000, guid: 0ade123cf4ce0054d8b820d621b08c26, type: 3}

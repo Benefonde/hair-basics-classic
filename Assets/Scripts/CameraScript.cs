@@ -44,6 +44,8 @@ public class CameraScript : MonoBehaviour
 
 	private int shake;
 
+	bool breathing;
+
 	private void Start()
 	{
 		offset = base.transform.position - player.transform.position;
@@ -51,6 +53,11 @@ public class CameraScript : MonoBehaviour
 		camYoffset = base.transform.position.y - player.transform.position.y;
 		camYdefault = 1;
 		shake = PlayerPrefs.GetInt("shake", 1);
+		if (Random.Range(1, 70)  == 28 || gc.IsAprilFools())
+        {
+			breathing = true;
+			gc.tc.GetTrophy(28);
+        }
 	}
 
 	private void Update()
@@ -66,13 +73,27 @@ public class CameraScript : MonoBehaviour
 			{
 				lookBehind = 0;
 			}
-			if (Input.GetKey(KeyCode.C))
-			{
-				cam.fieldOfView = 10;
+			if (breathing)
+            {
+				if (Input.GetKey(KeyCode.C))
+				{
+					cam.fieldOfView = Mathf.Sin((float)gc.time * 18) / 2 + 9.7f;
+				}
+				else
+				{
+					cam.fieldOfView = Mathf.Sin((float)gc.time * 2) * 6 + 59.6f;
+				}
 			}
-			else
-			{
-				cam.fieldOfView = 60;
+            else
+            {
+				if (Input.GetKey(KeyCode.C))
+				{
+					cam.fieldOfView = 10;
+				}
+				else
+				{
+					cam.fieldOfView = 60;
+				}
 			}
 			if (gc.finaleMode && !ps.gameOver && shake == 1)
 			{
@@ -214,7 +235,7 @@ public class CameraScript : MonoBehaviour
 				offset = frameOffset;
 				camYoffset = ran2;
 
-				yield return null;
+				yield return new WaitForSeconds(1/60);
 			}
 
 			transform.position += accumulatedOffset;

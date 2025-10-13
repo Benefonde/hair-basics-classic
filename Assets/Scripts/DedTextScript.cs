@@ -18,12 +18,12 @@ public class DedTextScript : MonoBehaviour
         if (yellow)
         {
             int rng = Random.Range(0, deathMessages.Length);
-            text.text = $"{deathMessages[rng]}{person}{dendMessages[rng]}";
+            text.text = $"{deathMessages[rng]} {person}{dendMessages[rng]}";
         }
         else
         {
             int rng = Random.Range(0, deathMessagesNoYellow.Length);
-            text.text = $"{deathMessagesNoYellow[rng]}{person}{dendMessagesNoYellow[rng]}";
+            text.text = $"{deathMessagesNoYellow[rng]} {person}{dendMessagesNoYellow[rng]}";
         }
         Invoke("LmaoFreakingDIE", 3);
     }

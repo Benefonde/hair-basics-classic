@@ -145,7 +145,7 @@ public class ZombieScript : MonoBehaviour
 			aud.PlayOneShot(stabby);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Zombie gets hurt*", stabby.length, Color.green, transform);
 		}
-		health -= attack - Mathf.RoundToInt(defense / 1.5f);
+		health -= attack - Mathf.RoundToInt(defense / 1.75f);
 		invTime = 0.35f;
 		disableTime = 0.36f;
 		if (yellow)
@@ -157,7 +157,7 @@ public class ZombieScript : MonoBehaviour
         {
 			return;
         }
-		ss.durability -= 1 + Mathf.RoundToInt(defense / 2.25f);
+		ss.durability -= 1 + Mathf.RoundToInt(defense / 2.5f);
 	}
 
     private void OnTriggerEnter(Collider other)

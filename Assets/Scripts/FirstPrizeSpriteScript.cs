@@ -16,6 +16,8 @@ public class FirstPrizeSpriteScript : MonoBehaviour
 
 	public Sprite[] sprites = new Sprite[16];
 
+	public bool eight;
+
 	private void Start()
 	{
 		sprite = GetComponent<SpriteRenderer>();
@@ -30,10 +32,21 @@ public class FirstPrizeSpriteScript : MonoBehaviour
 		}
 		debug = body.eulerAngles.y;
 		angleF += body.eulerAngles.y;
-		angle = Mathf.RoundToInt(angleF / 22.5f);
-		while (angle < 0 || angle >= 16)
+		if (eight)
 		{
-			angle += (int)(-16f * Mathf.Sign(angle));
+			angle = Mathf.RoundToInt(angleF / 45);
+			while (angle < 0 || angle >= 8)
+			{
+				angle += (int)(-8f * Mathf.Sign(angle));
+			}
+		}
+        else
+		{
+			angle = Mathf.RoundToInt(angleF / 22.5f);
+			while (angle < 0 || angle >= 16)
+			{
+				angle += (int)(-16f * Mathf.Sign(angle));
+			}
 		}
 		sprite.sprite = sprites[angle];
 	}

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class PlaytimeScript : MonoBehaviour
 {
-	public bool db;
+	/*public bool db;
 
 	public bool playerSeen;
 
@@ -138,5 +138,5 @@ public class PlaytimeScript : MonoBehaviour
 		animator.SetBool("disappointed", value: true);
 		audioDevice.Stop();
 		audioDevice.PlayOneShot(aud_Sad);
-	}
+	}*/
 }

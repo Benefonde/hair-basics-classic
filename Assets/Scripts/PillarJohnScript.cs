@@ -23,7 +23,7 @@ public class PillarJohnScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && gc.playerScript.guiltType == "running" && gc.playerScript.guilt > 0)
+        if ((other.tag == "Player" && gc.playerScript.guiltType == "running" && gc.playerScript.guilt > 0) || other.transform.name == "UbrSpray(Clone)")
         {
             meatophobia.Stop();
             gc.ItsPizzaTime();

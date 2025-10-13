@@ -183,6 +183,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
 			PipegameMove();
+			StaminaCheck();
 			MouseMove();
 		}
 		if (Time.timeScale != 0)
@@ -251,7 +252,7 @@ public class PlayerScript : MonoBehaviour
     {
 		if (pipeGameGravity != 0)
 		{
-			if (Input.GetKey(KeyCode.LeftShift))
+			if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
 			{
 				stamina -= staminaRate * Time.deltaTime;
 				cc.Move(1.8f * runSpeed * Time.deltaTime * transform.forward);
@@ -406,32 +407,15 @@ public class PlayerScript : MonoBehaviour
 
 	private void PlayerMove()
 	{
-		Vector3 vector = new Vector3(0f, 0f, 0f);
-		Vector3 vector2 = new Vector3(0f, 0f, 0f);
-		vector = base.transform.forward * Input.GetAxis("Forward");
-		vector2 = base.transform.right * Input.GetAxis("Strafe");
-		if (stamina > 0f)
+		Vector3 vector = base.transform.forward * Input.GetAxisRaw("Forward");
+		Vector3 vector2 = base.transform.right * Input.GetAxisRaw("Strafe");
+		if (stamina > 0f && Input.GetButton("Run"))
 		{
-			if (Input.GetButton("Run"))
+			playerSpeed = runSpeed;
+			sensitivity = 1f;
+			if ((cc.velocity.magnitude > 0.05f) & !hugging & !sweeping)
 			{
-				playerSpeed = runSpeed;
-				sensitivity = 1f;
-				if ((cc.velocity.magnitude > 0.05f) & !hugging & !sweeping)
-				{
-					ResetGuilt("running", 0.2f);
-				}
-			}
-			else
-			{
-				playerSpeed = walkSpeed;
-				if (sensitivityActive)
-				{
-					sensitivity = Mathf.Clamp((vector2 + vector).magnitude, 0f, 1f);
-				}
-				else
-				{
-					sensitivity = 1f;
-				}
+				ResetGuilt("running", 0.2f);
 			}
 		}
 		else
@@ -466,19 +450,19 @@ public class PlayerScript : MonoBehaviour
 	{
 		if (cc.velocity.magnitude > 0.1f)
 		{
-			if (Input.GetButton("Run") & (stamina > 0f))
+			if (Input.GetButton("Run") & (stamina > 0f) && !pipeGame)
 			{
 				stamina -= staminaRate * Time.deltaTime;
-			}
-			if ((stamina < 0f) & (stamina < -0.01f))
-			{
-				stamina = -0.01f;
 			}
 		}
 		else if (stamina < maxStamina)
 		{
 			stamina += staminaRate * Time.deltaTime;
 		}
+		if (stamina < -0.3f)
+        {
+			stamina = 0;
+        }
 		staminaBar.value = stamina / maxStamina * 100f;
 		percent.text = $"{Mathf.RoundToInt(stamina / maxStamina * 100f)}%";
 		if (infStamina)
@@ -610,6 +594,18 @@ public class PlayerScript : MonoBehaviour
 				gc.tc.GetTrophy(27);
             }
 		}
+		if (other.transform.name == "Angry Bees")
+        {
+			if (cc.velocity.magnitude > 1f)
+            {
+				gonnaBeKriller = other.transform;
+				health -= 5;
+            }
+        }
+		if (other.transform.name == "LeafingWall")
+        {
+			SceneManager.LoadScene("MainMenu");
+        }
 	}
 
 	public void Die()
@@ -668,6 +664,12 @@ public class PlayerScript : MonoBehaviour
 		if (other.transform.name == "Pizzaface" && pissface.pauseTime < 0.1f)
         {
 			health -= 4.5f * (9 * Time.deltaTime);
+			camscript.ShakeNow(new Vector3(0.1f, 0.1f, 0.1f), 1);
+			gonnaBeKriller = other.transform;
+		}
+		if (other.transform.name == "Guywhoappearswhenyouhavetakentoolonginaball")
+		{
+			health -= 4.5f * (28 * Time.deltaTime);
 			camscript.ShakeNow(new Vector3(0.1f, 0.1f, 0.1f), 1);
 			gonnaBeKriller = other.transform;
 		}

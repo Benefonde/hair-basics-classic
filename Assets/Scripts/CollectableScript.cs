@@ -20,7 +20,7 @@ public class CollectableScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            gc.pss.AddPoints(scoreGive, 0.2f);
+            gc.pss.AddPoints(scoreGive, 0.5f + scoreGive / 30);
             gc.audioDevice.PlayOneShot(collectSound);
             if (collect == Type.Topping || collect == Type.BigTopping)
             {

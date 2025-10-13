@@ -16,7 +16,15 @@ public class TrophyCollectingScript : MonoBehaviour
                 dontCheckAga[i] = true;
             }
         }
-
+        if (PlayerPrefs.GetInt("jugglerTrophy") == 1) // fix
+        {
+            PlayerPrefs.DeleteKey("jugglerTrophy");
+            PlayerPrefs.SetInt("timeTrophy", 1);
+        }
+        if (PlayerPrefs.GetInt("noiseTrophy") == 1 || PlayerPrefs.GetString("pizzaRankBest") == "P")
+        {
+            PlayerPrefs.SetInt("gotP", 1);
+        }
         if (SceneManager.GetActiveScene().name == "EsteSecret")
         {
             PlayerPrefs.SetInt("piecesFound", 4);
@@ -44,7 +52,7 @@ public class TrophyCollectingScript : MonoBehaviour
         }
         if (windowCleanAmount == 3872643)
         {
-            GetTrophy(15);
+            GetTrophy(14);
         }
         if (PlayerPrefs.GetInt("algerBeat", 0) == 1)
         {
@@ -77,7 +85,7 @@ public class TrophyCollectingScript : MonoBehaviour
             {
                 GetTrophy(13);
             }
-            if (gc.laps >= 40)
+            if (gc.laps >= 28)
             {
                 GetTrophy(39);
             }
@@ -105,6 +113,10 @@ public class TrophyCollectingScript : MonoBehaviour
         if (hideTime >= 120)
         {
             GetTrophy(38);
+        }
+        if (urkTime >= 90)
+        {
+            GetTrophy(42);
         }
     }
 
@@ -154,7 +166,7 @@ public class TrophyCollectingScript : MonoBehaviour
 
     public string[] trophyName;
 
-    private bool[] dontCheckAga = new bool[40];
+    private bool[] dontCheckAga = new bool[48];
 
     public int zestyEaten;
     public int esteEaten;
@@ -162,12 +174,14 @@ public class TrophyCollectingScript : MonoBehaviour
     public int devinPipeHit;
     public float pizzafaceTime;
     public float promplyTime;
+    public float urkTime;
     public float hideTime;
 
     public bool babaGotPushed;
     public bool usedItem;
     public bool onlyWooden;
     public bool ruleBreak;
+    public bool evilLeafyCheat;
 
     public int collectedToppings;
     public int collectToppingsNeeded;

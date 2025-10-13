@@ -6,15 +6,20 @@ public class SoundScript : MonoBehaviour
 {
     private void Start()
     {
-        disstance = Vector3.Distance(panino.position, transform.position) / 2;
-        transform.localScale = new Vector3(disstance, disstance, disstance);
-        print("instant of the tantiate 2");
+        if (StaySize)
+        {
+            disstance = Vector3.Distance(panino.position, transform.position) * scale;
+            transform.localScale = new Vector3(disstance, disstance, disstance);
+        }
     }
 
     void Update()
     {
-        disstance = Vector3.Distance(panino.position, transform.position) / 2;
-        transform.localScale = new Vector3(disstance, disstance, disstance);
+        if (StaySize)
+        {
+            disstance = Vector3.Distance(panino.position, transform.position) * scale;
+            transform.localScale = new Vector3(disstance, disstance, disstance);
+        }
     }
 
     public void GoHere(Vector3 pos)
@@ -25,4 +30,8 @@ public class SoundScript : MonoBehaviour
     public Transform panino;
 
     float disstance;
+
+    public float scale;
+
+    public bool StaySize;
 }

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8274dca740a1c4f499150cc4ca36b42d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Agatho
+  fontNames:
+  - Agatho
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b5e3c19a7c37c0c41b6a3499ae2897b4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

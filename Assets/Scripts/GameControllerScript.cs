@@ -81,6 +81,10 @@ public class GameControllerScript : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Luck")
+        {
+            disablePausing = true;
+        }
         tc = GetComponent<TrophyCollectingScript>();
         if (PlayerPrefs.GetInt("heldItemShow", 0) == 0)
         {
@@ -114,6 +118,22 @@ public class GameControllerScript : MonoBehaviour
         mode = PlayerPrefs.GetString("CurrentMode");
         if (SchoolScene)
         {
+            jackensteinTimer = 240;
+            jackensteinTimerSlider.maxValue = jackensteinTimer / 2;
+            if (Random.Range(1, 128) == 47)
+            {
+                brother.SetActive(true);
+            }
+            if (Random.Range(1, 300) == 28 || IsAprilFools())
+            {
+                A.SetActive(true);
+                tc.GetTrophy(28);
+            }
+            if (Random.Range(1, 400) == 28 || IsAprilFools())
+            {
+                retroCanvas.SetActive(true);
+                tc.GetTrophy(28);
+            }
             if (PlayerPrefs.GetInt("timer") == 1)
             {
                 modeTimer.SetActive(true);
@@ -134,7 +154,7 @@ public class GameControllerScript : MonoBehaviour
             {
                 objecUsesinit = 8;
             }
-            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino" || mode == "zombie" || mode == "triple" || mode == "speedy")
+            if (mode == "pizza" || mode == "stealthy" || mode == "alger" || mode == "free" || mode == "panino" || mode == "zombie" || mode == "triple" || mode == "speedy" || mode == "jackenstein")
             {
                 math = 0;
             }
@@ -208,6 +228,10 @@ public class GameControllerScript : MonoBehaviour
             {
                 PaninoStart();
             }
+            else if (mode == "jackenstein")
+            {
+                JackensteinStart();
+            }
 
             if (extraStamina == 1)
             {
@@ -227,11 +251,41 @@ public class GameControllerScript : MonoBehaviour
             }
             objectItem = new ObjectionItem[item.Length];
 
+
             for (int i = 0; i < objectItem.Length; i++)
             {
                 objectItem[i] = new ObjectionItem();
                 objectItem[i].Collect(objecUsesinit);
             }
+
+            switch (mode)
+            {
+                default:
+                    for (int i = 0; i < 4; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "speedy":
+                    for (int i = 0; i < 3; i++)
+                    {
+                        CollectItem(PlayerPrefs.GetInt($"itemWon{i}", 0));
+                    }
+                    break;
+                case "zombie":
+                    break;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                PlayerPrefs.SetInt($"itemWon{i}", 0);
+            }
+
+#if UNITY_EDITOR
+            for (int i = 0; i < tutorals.Length; i++)
+            {
+                tutorals[i].gameObject.SetActive(false);
+            }
+#endif
         }
         if (ClassicSchoolScene)
         {
@@ -269,6 +323,7 @@ public class GameControllerScript : MonoBehaviour
         }
         LockMouse();
         UpdateNotebookCount();
+        AddTp(-3);
         /*if (dm != null)
         {
             dm.largeText = $"{mode.ToUpper()} Mode";
@@ -338,7 +393,7 @@ public class GameControllerScript : MonoBehaviour
         {
             baldiScript.baldiSpeedScale = 0.5875f;
         }
-        if (mode == "story" && Random.Range(0, 2) == 1)
+        if (mode == "story" && Random.Range(0, 3) == 1)
         {
             pharohsWall.transform.rotation = Quaternion.Euler(new Vector3(91, 0, 180.5f));
             pharohsWall.GetComponent<MeshCollider>().enabled = false;
@@ -363,6 +418,45 @@ public class GameControllerScript : MonoBehaviour
         mikoItemLayout.SetActive(true);
         int yellow = yellowFaceOn;
         miko.SetActive(true);
+        if (yellow == 1)
+        {
+            windowedWall.material = broken;
+            FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Break!*", brokenWindow.length, Color.white, windowedWall.transform);
+            yellowFace.SetActive(true);
+            MikoScript yellowey = yellowFace.GetComponent<MikoScript>();
+            yellowey.baldiAudio.PlayOneShot(brokenWindow);
+            camScript.ShakeNow(new Vector3(0.2f, 0.2f, 0.2f), 10);
+        }
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.black;
+        RenderSettings.skybox = night;
+        craftersTime = false;
+    }
+
+    public void JackensteinStart()
+    {
+        baldiTutor.SetActive(false);
+        entrance_0.Lower();
+        entrance_1.Lower();
+        entrance_2.Lower();
+        entrance_3.Lower();
+        player.transform.position = new Vector3(5, 4, 5);
+        cameraTransform.position = new Vector3(5, 5, 5);
+        spoopMode = true;
+        locationText.text = "Panino's Ball, Susie's Idea";
+        locationText.color = new Color(0.6f, 0.15f, 0.4f);
+        playerScript.runSpeed += 8;
+        playerScript.walkSpeed += 6;
+        tpSlider.gameObject.SetActive(true);
+        jackensteinTimerSlider.gameObject.SetActive(true);
+        treasureItemLayout.SetActive(true);
+        darkZoneMusic.Play();
+        if (PlayerPrefs.GetInt("jackensteinBeat") == 1)
+        {
+            jmSpawner.dialogue = secondTime;
+        }
+        jmSpawner.Spawn();
+        int yellow = yellowFaceOn;
         if (yellow == 1)
         {
             windowedWall.material = broken;
@@ -662,12 +756,56 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    public void AddTp(float tpGain)
+    {
+        if (mode != "jackenstein")
+        {
+            return;
+        }
+        tp += tpGain;
+        tpSlider.value = tp;
+        tpText.text = $"{(int)tp}%";
+        tpText.color = Color.white;
+        tpSliderBgs[0].color = new Color(0, 0, 0.05f);
+        tpSliderBgs[1].color = new Color(0, 0, 0.7843137f);
+        if (tp >= 100)
+        {
+            tp = 100;
+            tpSlider.value = 100;
+            tpText.text = $"MAX";
+            tpText.color = Color.yellow;
+            tpSliderBgs[1].color = new Color(1, 1, 0);
+        }
+        if (tp <= 0)
+        {
+            tp = 0;
+            tpSlider.value = 0;
+            tpText.text = $"0%";
+        }
+
+        if (tp >= 80 && !remind)
+        {
+            jmSpawner.dialogue = tpRemindAlt;
+            if (PlayerPrefs.GetInt("jackensteinBeat") == 0)
+            {
+                jmSpawner.dialogue = tpRemind;
+            }
+            remind = true;
+            jmSpawner.Spawn();
+        }
+    }
+
     public void NotebookDebt()
     {
+        if (Random.Range(1, 40) == 28 || IsAprilFools())
+        {
+            ESCAPEmusic.clip = BESTESCAPE;
+            tc.GetTrophy(28);
+        }
         ESCAPEmusic.Play();
         dwayneDebt.SetActive(true);
         dwayneDebtTimer = ESCAPEmusic.clip.length;
-        player.stamina += player.maxStamina * 2.50f;
+        player.stamina += player.maxStamina * 2.5f;
         for (int i = 0; i < dwaynes.Length; i++)
         {
             dwaynes[i].transform.position = new Vector3(dwaynes[i].transform.position.x, 4, dwaynes[i].transform.position.z);
@@ -695,6 +833,40 @@ public class GameControllerScript : MonoBehaviour
         baldiScript.baldiTempAnger = 0f;
     }
 
+    public void CleartilIsBetter()
+    {
+        if (mode == "classic")
+        {
+            return;
+        }
+        cleartilMode = true;
+        math = 0;
+        if (spoopMode)
+        {
+            baldi.SetActive(false);
+            principal.SetActive(false);
+            firstPrize.SetActive(false);
+            craftersTime = false;
+            crafters.SetActive(false);
+            gottaSweep.SetActive(false);
+            bully.SetActive(false);
+            bigball.SetActive(false);
+            guardianAngel.SetActive(false);
+            baba.SetActive(false);
+            devin.SetActive(false);
+        }
+        else
+        {
+            ActivateSpoopMode();
+        }
+        starstudentWall.SetActive(false);
+        urk.SetActive(true);
+        fames.SetActive(true);
+        cleartil.SetActive(true);
+        frs.enabled = true;
+        // more later
+    }
+
     private void Update()
     {
         if (Time.timeScale > 0)
@@ -720,9 +892,9 @@ public class GameControllerScript : MonoBehaviour
                 scoreDecayTimer -= 1 * Time.deltaTime;
             }
 
-            if (timer.timeLeft < 57 && pizzaTimeMusic.time < 171)
+            if (timer.timeLeft < 58 && pizzaTimeMusic.time < 170)
             {
-                pizzaTimeMusic.time = 171;
+                pizzaTimeMusic.time = 170f;
             }
         }
         if (pss.score < 1 & finaleMode & pizzaface.isActiveAndEnabled)
@@ -789,6 +961,11 @@ public class GameControllerScript : MonoBehaviour
             exitsReached = 4;
             finaleMode = true;
             entrance_4.Raise();
+        }
+        if (Input.GetKeyDown(KeyCode.Y) && mode == "jackenstein" && tp >= 80 && !finaleMode)
+        {
+            AddTp(-80);
+            ActivateFinaleMode();
         }
         if (curseOfRaActive && !gamePaused)
         {
@@ -867,14 +1044,6 @@ public class GameControllerScript : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        if ((player.stamina < 0f) & !warning.activeSelf)
-        {
-            warning.SetActive(value: true);
-        }
-        else if ((player.stamina > 0f) & warning.activeSelf)
-        {
-            warning.SetActive(value: false);
-        }
         if (player.gameOver)
         {
             GameOverStart();
@@ -882,7 +1051,7 @@ public class GameControllerScript : MonoBehaviour
             Time.timeScale = 0;
             if (mode == "pizza")
             {
-                pss.AddPoints(Mathf.RoundToInt(-50000 * Time.unscaledDeltaTime), 1);
+                pss.AddPoints(Mathf.RoundToInt(-5000 * Time.unscaledDeltaTime), 1);
             }
             if (gameOverDelay < 0)
             {
@@ -908,32 +1077,27 @@ public class GameControllerScript : MonoBehaviour
         {
             lap2Music.time = 21.25f;
         }
-        if (Input.GetKeyDown(KeyCode.F1) && mode == "free")
+        if (mode == "jackenstein")
         {
-            baldiTutor.SetActive(value: false);
-            principal.SetActive(value: false);
-            crafters.SetActive(false);
-            gottaSweep.SetActive(false);
-            bully.SetActive(false);
-            firstPrize.SetActive(false);
-            guardianAngel.SetActive(false);
-            craftersTime = false;
-            crafters.SetActive(false);
-            schoolMusic.gameObject.SetActive(false);
-            evilLeafy.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.F8))
-        {
-            notebooks = maxNoteboos;
-            UpdateNotebookCount();
+            jackensteinTimer -= Time.deltaTime;
+            jackensteinTimerSlider.value = jackensteinTimer / 2;
+            if (jackensteinTimer <= 0 && jackensteinTimerSlider.gameObject.activeSelf)
+            {
+                jackensteinTimerSlider.gameObject.SetActive(false); 
+                jmSpawner.dialogue = ohNo;
+                jmSpawner.special = 3;
+                jmSpawner.Spawn();
+            }
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
             player.walkSpeed *= 1.25f;
+            player.runSpeed *= 1.25f;
         }
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
-            StartCoroutine(paninoTv.EventTime(2));
+            player.walkSpeed /= 1.25f;
+            player.runSpeed /= 1.25f;
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -1056,14 +1220,22 @@ public class GameControllerScript : MonoBehaviour
             dm.size = notebooks;
             dm.maxSize = maxNoteboos;
         }*/
+        if (mode == "jackenstein")
+        {
+            AddTp(2.8f);
+        }
         int highScoreBotenook = PlayerPrefs.GetInt("HighBooks");
-        if (mode != "endless")
+        if (mode != "endless" && SceneManager.GetActiveScene().name != "Luck")
         {
             notebookCount.text = $"{notebooks}/{maxNoteboos} Dwaynes";
         }
-        else
+        else if (SceneManager.GetActiveScene().name != "Luck")
         {
             notebookCount.text = $"{notebooks}/{highScoreBotenook} H.S. Dwaynes";
+        }
+        else
+        {
+            notebookCount.text = $"{notebooks} left";
         }
         if ((notebooks == maxNoteboos) & (mode == "story" || mode == "free"))
         {
@@ -1073,7 +1245,7 @@ public class GameControllerScript : MonoBehaviour
         {
             StartCoroutine(paninoTv.EventTime(1));
         }
-        else if ((notebooks == maxNoteboos))
+        else if ((notebooks == maxNoteboos) && mode != "jackenstein")
         {
             ActivateFinaleMode();
         }
@@ -1100,24 +1272,45 @@ public class GameControllerScript : MonoBehaviour
         eventText.SetActive(false);
     }
 
+    public bool IsAprilFools()
+    {
+        if (System.DateTime.Now.Day == 1 && System.DateTime.Now.Month == 4)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void SpawnEvilLeafy()
     {
         if (evilLeafy.activeSelf)
         {
             evilLeafy.GetComponent<EvilLeafyScript>().baldiWait -= 0.2f;
         }
-        baldiTutor.SetActive(value: false);
-        principal.SetActive(value: false);
-        crafters.SetActive(false);
-        gottaSweep.SetActive(false);
-        bully.SetActive(false);
-        firstPrize.SetActive(false);
-        guardianAngel.SetActive(false);
-        craftersTime = false;
-        crafters.SetActive(false);
-        schoolMusic.gameObject.SetActive(false);
         evilLeafy.SetActive(true);
+        if (spoopMode)
+        {
+            baldi.SetActive(false);
+            principal.SetActive(false);
+            firstPrize.SetActive(false);
+            craftersTime = false;
+            crafters.SetActive(false);
+            gottaSweep.SetActive(false);
+            bully.SetActive(false);
+            bigball.SetActive(false);
+            guardianAngel.SetActive(false);
+            baba.SetActive(false);
+            devin.SetActive(false);
+        }
+        else
+        {
+            ActivateSpoopMode();
+        }
         math = 0;
+        if (notebooks >= 3)
+        {
+            tc.evilLeafyCheat = true;
+        }
     }
 
     public void CollectNotebook()
@@ -1125,7 +1318,7 @@ public class GameControllerScript : MonoBehaviour
         notebooks++;
         if (mode == "zombie")
         {
-            for (int i = 0; i < (notebooks + 1.5f) / 5; i++)
+            for (int i = 0; i < (notebooks + 1f) / 7; i++)
             {
                 GameObject zombo = Instantiate(zombie);
                 zombo.SetActive(true);
@@ -1171,6 +1364,14 @@ public class GameControllerScript : MonoBehaviour
             pauseMenu.SetActive(value: true);
             if (!ClassicSchoolScene)
             {
+                for (int i = 0; i < tutorals.Length; i++)
+                {
+                    tutorals[i].Pause();
+                }
+                if (brother.activeSelf)
+                {
+                    brother.GetComponentInChildren<VideoPlayer>().Pause();
+                }
                 for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
                 {
                     FindObjectsOfType<SongPlayer>()[i].Pause();
@@ -1195,6 +1396,14 @@ public class GameControllerScript : MonoBehaviour
         LockMouse();
         if (!ClassicSchoolScene)
         {
+            for (int i = 0; i < tutorals.Length; i++)
+            {
+                tutorals[i].Play();
+            }
+            if (brother.activeSelf)
+            {
+                brother.GetComponentInChildren<VideoPlayer>().Play();
+            }
             for (int i = 0; i < FindObjectsOfType<SongPlayer>().Length; i++)
             {
                 FindObjectsOfType<SongPlayer>()[i].Resume();
@@ -1262,13 +1471,18 @@ public class GameControllerScript : MonoBehaviour
         {
             pss.AddPoints(50, 2);
         }
-        if (evilLeafy != null)
+        if (mode != "free")
         {
-            if (evilLeafy.activeSelf)
-            {
-                return;
-            }
-        } 
+            tutorBaldi.gameObject.SetActive(false); //ALWAYS disable him when spoopy mode
+        }
+        if (evilLeafy.activeSelf)
+        {
+            return;
+        }
+        if (cleartilMode)
+        {
+            return;
+        }
         if (mode == "story" || mode == "pizza")
         {
             baldiTutor.SetActive(value: false);
@@ -1281,7 +1495,14 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(guardianAngel, 1, 6, 4, true);
             SpawnWithChance(baba, 1, 3, 2, true);
             SpawnWithChance(devin, 1, 4, 2, true);
-
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(urk, 1, 1, 1, true);
+            }
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(fames, 1, 1, 1, true);
+            }
             int rng = yellowFaceOn;
             print(rng);
             if (rng == 1)
@@ -1314,6 +1535,14 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(guardianAngel, 1, 10, 4, true);
             SpawnWithChance(baba, 1, 4, 2, true);
             SpawnWithChance(devin, 1, 3, 2, true);
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(urk, 1, 1, 1, true);
+            }
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(fames, 1, 1, 1, true);
+            }
         }
         else if (mode == "free")
         {
@@ -1334,6 +1563,14 @@ public class GameControllerScript : MonoBehaviour
             SpawnWithChance(guardianAngel, 1, 1, 1, true);
             SpawnWithChance(baba, 1, 1, 1, true);
             SpawnWithChance(devin, 1, 1, 1, true);
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(urk, 1, 1, 1, true);
+            }
+            if (Random.Range(1, 500) == 28 || IsAprilFools())
+            {
+                SpawnWithChance(fames, 1, 1, 1, true);
+            }
         }
         else if (mode != "panino")
         {
@@ -1344,7 +1581,7 @@ public class GameControllerScript : MonoBehaviour
             gottaSweep.SetActive(true);
             bully.SetActive(true);
             firstPrize.SetActive(true);
-            guardianAngel.SetActive(true); 
+            guardianAngel.SetActive(true);
             int rng = yellowFaceOn;
             if (mode == "classic")
             {
@@ -1368,10 +1605,43 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    IEnumerator YourWin(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (ModifierOn())
+        {
+            SceneManager.LoadScene("Anticheat");
+            yield break;
+        }
+        if (cleartilMode && mode == "story")
+        {
+            tc.GetTrophy(40);
+        }
+        SceneManager.LoadScene("ChallengeBeat");
+    }
+
     private void ActivateFinaleMode()
     {
         if (mode == "endless")
         {
+            return;
+        }
+        if (cleartilMode)
+        {
+            cleartilNice.SetActive(true);
+            cleartilNice.transform.SetPositionAndRotation(playerTransform.position, playerTransform.rotation);
+            cleartilNice.transform.Translate(cleartilNice.transform.forward * -10);
+            cleartilNice.GetComponent<NavMeshAgent>().enabled = true;
+            urk.SetActive(false);
+            fames.SetActive(false);
+            cleartil.SetActive(false);
+            PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you \"CLEARTIL IS BETTER\" trophy.");
+            if (mode != "story")
+            {
+                PlayerPrefs.SetString("bonusTextString", "Wow! Panino is IMPRESSED! You're do Great! He gave you nothing.");
+            }
+            FindObjectOfType<SubtitleManager>().Add3DSubtitle("You have completed all assignments for the day. You can go to your room now.", 5.5f, new Color32(85, 63, 63, 255), cleartilNice.transform); 
+            StartCoroutine(YourWin(5.5f));
             return;
         }
         laps++;
@@ -1398,7 +1668,7 @@ public class GameControllerScript : MonoBehaviour
             player.walkSpeed += 4f;
             player.runSpeed += 6f;
         }
-        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic" & mode != "zombie")
+        if (mode != "miko" & mode != "triple" & mode != "alger" & mode != "stealthy" & mode != "classic" & mode != "zombie" & mode != "jackenstein")
         {
             timer.isActivated = true;
             if (this.mode == "speedy")
@@ -1412,7 +1682,7 @@ public class GameControllerScript : MonoBehaviour
             }
             else if (mode == "pizza")
             {
-                this.timer.timeLeft = 105f;
+                this.timer.timeLeft = 115f;
                 pizzaTimeTimer.gameObject.SetActive(true);
                 pizzaTimeTimer.SetBool("up", true);
                 pss.AddPoints(500, 0);
@@ -1422,6 +1692,10 @@ public class GameControllerScript : MonoBehaviour
         if (mode != "stealthy")
         {
             notebookCount.text = "0/4 Exits";
+        }
+        foreach (VideoPlayer player in tutorals)
+        {
+            player.clip = panic;
         }
     }
 
@@ -1474,7 +1748,7 @@ public class GameControllerScript : MonoBehaviour
             lap2Music.Stop();
             wwnMusic.Play();
         }
-        if (laps <= 15)
+        if (laps <= 25)
         {
             player.walkSpeed += 0.75f;
             player.runSpeed += 1.25f;
@@ -1511,14 +1785,18 @@ public class GameControllerScript : MonoBehaviour
         {
             pizzaface.pauseTime = 4.5f;
         }
-        if (laps > 2)
+        if (laps <= 2)
         {
             pss.AddPoints(3000, 1);
         }
         else
         {
-            pss.AddPoints(1750 - (laps * 5), 1);
-
+            int a = 2500 - (laps * 25);
+            if (a <= 750)
+            {
+                a = 750;
+            }
+            pss.AddPoints(a, 1);
         }
         player.stamina += player.maxStamina * 0.75f;
         audioDevice.PlayOneShot(getInPortal);
@@ -1526,7 +1804,7 @@ public class GameControllerScript : MonoBehaviour
         playerCharacter.enabled = false;
         playerCollider.enabled = false;
         timer.timeLeft += 5;
-        if (laps > 30)
+        if (laps > 15)
         {
             timer.timeLeft += 15;
         }
@@ -1548,10 +1826,6 @@ public class GameControllerScript : MonoBehaviour
         ESCAPEmusic.UnPause();
         cameraNormal.cullingMask = cullingMask;
         learningActive = false; 
-        if (Random.Range(1, 40) == 28 || System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1)
-        {
-            ESCAPEmusic.clip = BESTESCAPE;
-        }
         if (subject != null)
         {
             Destroy(subject);
@@ -1590,13 +1864,18 @@ public class GameControllerScript : MonoBehaviour
         {
             quarter.SetActive(false);
         }
-        if ((notebooks == 4 && !evilLeafy.activeSelf && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
+        if ((notebooks == 4 && (!evilLeafy.activeSelf && !cleartilMode) && (mode == "story" || mode == "pizza" || mode == "free")) || (notebooks == 9 && mode == "endless"))
         {
             bigball.SetActive(true);
         }
-        else if ((notebooks == maxNoteboos) & (mode == "story"))
+        else if ((notebooks == maxNoteboos) & (mode == "story") && !cleartilMode)
         {
             StartCoroutine(paninoTv.EventTime(0));
+            if (Random.Range(1, 40) == 28 || IsAprilFools())
+            {
+                ESCAPEmusic.clip = BESTESCAPE;
+                tc.GetTrophy(28);
+            }
             ESCAPEmusic.Play();
             if (baldiScrpt.isActiveAndEnabled)
             {
@@ -1821,9 +2100,8 @@ public class GameControllerScript : MonoBehaviour
                 PrisonDoor component2 = hitInfo2.collider.gameObject.GetComponent<PrisonDoor>();
                 if (component != null)
                 {
-                    if (!component.johnDoor)
+                    if (!component.johnDoor && component.DoorLocked)
                     {
-
                         component.UnlockDoor();
                         audioDevice.PlayOneShot(aud_Unlock);
                         ResetItem();
@@ -2000,6 +2278,10 @@ public class GameControllerScript : MonoBehaviour
                 algerKrilledByPlayer = true;
                 tc.usedItem = true;
                 StartCoroutine(SpawnAlgerAfter(130));
+                if (Random.Range(1, 100) == 28 || IsAprilFools()) // Random.Range(1, 100) == 28 
+                {
+                    StartCoroutine(Weird(1));
+                }
             }
             else if (hitInfo7.collider.name == "Alger (Alger's Basics)")
             {
@@ -2085,7 +2367,7 @@ public class GameControllerScript : MonoBehaviour
             this.CollectItem(16);
             tc.usedItem = true;
         }
-        else if (item[itemSelected] == 16) // 1/3 uses :/
+        else if (item[itemSelected] == 16) // 1/3 uses
         {
             if (principalScript.isActiveAndEnabled)
             {
@@ -2201,7 +2483,7 @@ public class GameControllerScript : MonoBehaviour
         {
             player.infStamina = true;
             ResetItem();
-            player.Invoke(nameof(player.DisableInfStamina), 5);
+            player.Invoke(nameof(player.DisableInfStamina), 15);
             tc.usedItem = true;
         }
         else if (item[itemSelected] == 26)
@@ -2228,6 +2510,7 @@ public class GameControllerScript : MonoBehaviour
             }
             pizzaTimeMusic.Play();
             pizzaTimeMusic.time = Random.Range(20, 180);
+            tutorBaldi.gameObject.SetActive(false);
             baldi.SetActive(true);
             baldiScript.timeToMove = 0;
             baldiScript.baldiWait = 0;
@@ -2240,7 +2523,7 @@ public class GameControllerScript : MonoBehaviour
         }
         else if (item[itemSelected] == 27)
         {
-            GameObject a = Instantiate(ubrSpray, playerTransform.position + Vector3.up, Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y), 0f));
+            GameObject a = Instantiate(ubrSpray, playerTransform.position + (playerTransform.right * 0.5f + Vector3.up * (0.25f)), Quaternion.Euler(0f, (cameraTransform.rotation.eulerAngles.y), 0f));
             a.transform.name = "UbrSpray(Clone)";
             audioDevice.PlayOneShot(aud_Spray);
             if (Random.Range(1, 10) != 2)
@@ -2441,7 +2724,7 @@ public class GameControllerScript : MonoBehaviour
 
     IEnumerator CurseOfRaLogic()
     {
-        yield return new WaitForSeconds(Time.deltaTime);
+        yield return new WaitForSeconds(1/60);
         curseOfRaTime += Time.deltaTime / 2;
         if (Random.Range(1, Mathf.RoundToInt(900 / curseOfRaTime)) <= 2)
         {
@@ -2474,6 +2757,7 @@ public class GameControllerScript : MonoBehaviour
     public void ExitReached()
     {
         player.stamina += player.maxStamina * 0.5f;
+        AddTp(24);
         exitsReached++;
         if (mode == "miko")
         {
@@ -2540,7 +2824,7 @@ public class GameControllerScript : MonoBehaviour
                 {
                     audioDevice.PlayOneShot(BAL_EscapeHair);
                     FindObjectOfType<SubtitleManager>().Add2DSubtitle("Escape from Hair BASICS!", BAL_EscapeHair.length, Color.cyan);
-                    cameraNormal.fieldOfView += 22.5f;
+                    cameraNormal.fieldOfView += 22.5f; // when did i add this???
                     player.walkSpeed += 2f;
                     player.runSpeed += 6f;
                 }
@@ -2739,7 +3023,7 @@ public class GameControllerScript : MonoBehaviour
                 FindObjectOfType<SubtitleManager>().Add3DSubtitle("run", run.length, Color.red, baldiApple.transform);
             }
             paninoAppleTimer -= Time.deltaTime;
-            yield return new WaitForSeconds(0.01667f); // 60fps basically
+            yield return new WaitForSeconds(1 / 60);
         }
         baldi.transform.position = baldiApple.transform.position;
         Destroy(baldiApple);
@@ -2751,6 +3035,12 @@ public class GameControllerScript : MonoBehaviour
     {
         getoutObject.SetActive(true);
         sliderClickOut.maxValue = at.clickery;
+    }
+
+    public IEnumerator Weird(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        audioDevice.PlayOneShot(snd_ominous);
     }
 
     public bool craftersTime;
@@ -2848,6 +3138,7 @@ public class GameControllerScript : MonoBehaviour
 
     public AudioClip cantCome;
     public AudioClip killedMe;
+    public AudioClip snd_ominous;
 
     public Camera cameraNormal;
 
@@ -2922,6 +3213,13 @@ public class GameControllerScript : MonoBehaviour
 
     public GameObject devin;
 
+    public GameObject urk;
+    public GameObject fames;
+    public GameObject cleartil;
+
+    public GameObject cleartilNice;
+    bool cleartilMode;
+
     public FirstPrizeScript firstPrizeScript;
 
     public GameObject quarter;
@@ -2991,6 +3289,13 @@ public class GameControllerScript : MonoBehaviour
 
     public bool gamePaused;
 
+    public TextboxSpawner jmSpawner;
+    public Dialogue secondTime;
+    public Dialogue ohNo;
+    public Dialogue tpRemind;
+    public Dialogue tpRemindAlt;
+    bool remind;
+
     private bool learningActive;
 
     bool curseOfRaActive;
@@ -3025,7 +3330,7 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip aud_Switch;
 
     public AudioSource schoolMusic;
-
+    public AudioSource darkZoneMusic;
     public AudioSource learnMusic;
 
     public AudioSource pizzaTimeMusic;
@@ -3068,7 +3373,7 @@ public class GameControllerScript : MonoBehaviour
 
     public BossControllerScript bsc;
 
-    public Collider playerCollider;
+    public CapsuleCollider playerCollider;
 
     public AILocationSelectorScript AILocationSelector;
 
@@ -3102,12 +3407,20 @@ public class GameControllerScript : MonoBehaviour
     public GameObject algerItemLayout;
     public GameObject stealthyItemLayout;
     public GameObject zombieItemLayout;
+    public GameObject treasureItemLayout;
+
+    public VideoPlayer[] tutorals;
+    public GameObject brother;
 
     public GameObject pharohsWall;
+    public GameObject starstudentWall;
+    public FireRoomScript frs;
 
     public Image sandUI;
 
     public VideoClip panic;
+
+    public GameObject locust;
 
     public GameObject miko;
     public GameObject alger;
@@ -3135,6 +3448,14 @@ public class GameControllerScript : MonoBehaviour
 
     public int laps;
 
+    public float tp;
+    public Slider tpSlider;
+    public Image[] tpSliderBgs;
+    public TMP_Text tpText;
+
+    public float jackensteinTimer;
+    public Slider jackensteinTimerSlider;
+
     public bool gameOverPlayed;
 
     public GameObject toppins;
@@ -3156,4 +3477,8 @@ public class GameControllerScript : MonoBehaviour
     public AudioClip congratulatation;
 
     public GameObject ubrSpray;
+
+    public GameObject retroCanvas;
+
+    public GameObject A;
 }

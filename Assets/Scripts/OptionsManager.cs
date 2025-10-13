@@ -443,6 +443,8 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("stealthyBeat", 0);
 		PlayerPrefs.SetInt("classicBeat", 0);
 		PlayerPrefs.SetInt("zombieBeat", 0);
+		PlayerPrefs.SetInt("jackensteinBeat", 0);
+		PlayerPrefs.SetInt("seenSusie", 0);
 		PlayerPrefs.SetInt("paninoBeat", 0);
 		PlayerPrefs.SetInt("speedBoost", 0);
 		PlayerPrefs.SetInt("extraStamina", 0);
@@ -480,7 +482,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("problemTrophy", 0);
 		PlayerPrefs.SetInt("sorryTrophy", 0);
 		PlayerPrefs.SetInt("congratulationsTrophy", 0);
-		PlayerPrefs.SetInt("paninoTrophy", 0);
+		PlayerPrefs.SetInt("aprilTrophy", 0);
 		PlayerPrefs.SetInt("timeTrophy", 0);
 		PlayerPrefs.SetInt("sorgyTrophy", 0);
 		PlayerPrefs.SetInt("slowTrophy", 0);
@@ -492,8 +494,13 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("lapTrophy", 0);
 		PlayerPrefs.SetInt("richTrophy", 0);
 		PlayerPrefs.SetInt("stupidTrophy", 0);
+		PlayerPrefs.SetInt("cleartilTrophy", 0);
+		PlayerPrefs.SetInt("susieTrophy", 0);
+		PlayerPrefs.SetInt("urkTrophy", 0);
+		PlayerPrefs.SetInt("medalTrophy", 0);
+		PlayerPrefs.SetInt("obstaclesScore", 0);
 		PlayerPrefs.Save();
-		SceneManager.LoadScene("Warning");
+		SceneManager.LoadScene("BenefondCrates");
 	}
 
 	public void ClearAllData()

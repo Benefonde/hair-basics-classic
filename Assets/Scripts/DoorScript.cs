@@ -12,6 +12,8 @@ public class DoorScript : MonoBehaviour
 	public AlgerScript alger;
 	public BaldiPlayerScript baldiPlayer;
 
+	DevinScript devin;
+
 	public MeshCollider barrier;
 	public NavMeshObstacle locked;
 
@@ -46,13 +48,17 @@ public class DoorScript : MonoBehaviour
 
 	private AudioSource myAudio;
 
-	public bool johnDoor;
+	public bool johnDoor, devinDoor;
 
 	public bool DoorLocked => bDoorLocked;
 
 	private void Start()
 	{
 		myAudio = GetComponent<AudioSource>();
+		if (devinDoor)
+        {
+			devin = baldi.gc.devin.GetComponent<DevinScript>();
+        }
 	}
 
 	private void Update()
@@ -97,7 +103,7 @@ public class DoorScript : MonoBehaviour
 		}
 		if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)) && Time.timeScale != 0f && Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f)), out var hitInfo) && ((hitInfo.collider == trigger) & (Vector3.Distance(player.position, base.transform.position) < openingDistance)))
 		{
-			if (!bDoorLocked)
+			if (!bDoorLocked && !devinDoor) // no opening for you yet
 			{
 				OpenDoor();
 				if (baldi.isActiveAndEnabled & (silentOpens <= 0))
@@ -133,7 +139,17 @@ public class DoorScript : MonoBehaviour
 				FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Rattling*", rattle.length, Color.white, transform);
 			}
 		}
-
+		if (devinDoor && devin != null)
+        {
+			if (Vector3.Distance(transform.position, devin.transform.position) <= 10 && DoorLocked && devin.goingToRoom)
+            {
+				UnlockDoor();
+            }
+			else if (Vector3.Distance(transform.position, devin.transform.position) > 10 && !DoorLocked && !devin.goingToRoom)
+            {
+				LockDoor(999999);
+            }
+        }
 		if (baldi.gc == null)
         {
 			return;
@@ -147,13 +163,16 @@ public class DoorScript : MonoBehaviour
 
 	public void OpenDoor()
 	{
-		if (silentOpens <= 0 && !bDoorOpen)
+		if (silentOpens <= 0 && openTime <= 0)
 		{
 			myAudio.PlayOneShot(doorOpen, 1f);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Door opens*", 0.6f, Color.white, transform);
 		}
-		barrier.enabled = false;
-		invisibleBarrier.enabled = false;
+		if (!devinDoor) // lol screw you not yet
+		{
+			barrier.enabled = false;
+			invisibleBarrier.enabled = false;
+		}
 		bDoorOpen = true;
 		inside.material = open;
 		outside.material = open;
@@ -168,15 +187,26 @@ public class DoorScript : MonoBehaviour
 		}
 	}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.name == "UbrSpray(Clone)")
+        {
+			silentOpens++;
+        }
+    }
+
     public void LockDoor(float time)
 	{
 		if (!bDoorLocked)
 		{
-			baldi.gc.audioDevice.PlayOneShot(baldi.gc.aud_Lock);
+			myAudio.PlayOneShot(baldi.gc.aud_Lock);
 			FindObjectOfType<SubtitleManager>().Add3DSubtitle("*Lock!*", baldi.gc.aud_Lock.length, Color.white, transform);
 			lockTime = time;
 			openTime = 0;
-			locked.enabled = true;
+			if (!devinDoor)
+			{
+				locked.enabled = true;
+			}
 			bDoorLocked = true;
 		}
 	}
@@ -185,7 +215,10 @@ public class DoorScript : MonoBehaviour
 	{
 		bDoorLocked = false;
 		lockTime = 0;
-		locked.enabled = false;
+		if (!devinDoor)
+		{
+			locked.enabled = false;
+		}
 		outside.material = closed;
 		inside.material = closed;
 		myAudio.PlayOneShot(baldi.gc.aud_Unlock);

@@ -62,6 +62,11 @@ public class LocustScript : MonoBehaviour
 			Wander();
 			coolDown = 10;
         }
+		if (other.transform.name == "Yellow Face")
+		{
+			gc.SomeoneTied(gameObject);
+			gameObject.SetActive(false);
+		}
 	}
 
 	public bool db;

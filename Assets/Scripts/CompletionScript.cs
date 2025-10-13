@@ -8,15 +8,7 @@ public class CompletionScript : MonoBehaviour
     {
         for (int i = 0; i < requirements.Length; i++)
         {
-            if (requirements[i] == "pizzaRankBest")
-            {
-                if (PlayerPrefs.GetString(requirements[i]) == "P")
-                {
-                    percent += amountToGive;
-                    print($"thje player has that requirement (number {i})! lets give him {amountToGive} on that");
-                }
-            }
-            else if (requirements[i] == "HighBooks" || requirements[i] == "pizzaLapsBest")
+            if (requirements[i] == "HighBooks" || requirements[i] == "pizzaLapsBest")
             {
                 if (PlayerPrefs.GetInt(requirements[i]) >= valueInt[i])
                 {
@@ -33,23 +25,15 @@ public class CompletionScript : MonoBehaviour
                 }
             }
         }
-        print(percent);
         percent = Mathf.CeilToInt(percent - 0.1f);
-        print(percent);
         percentText.text = $"{percent}%";
         PlayerPrefs.SetInt("completion", Mathf.CeilToInt(percent));
+        susieIdea.anchoredPosition += new Vector2(0, Mathf.CeilToInt(percent));
     }
 
     public bool DoesBroHaveIt(int a)
     {
-        if (requirements[a] == "pizzaRankBest")
-        {
-            if (PlayerPrefs.GetString(requirements[a]) == "P")
-            {
-                return true;
-            }
-        }
-        else if (requirements[a] == "HighBooks" || requirements[a] == "pizzaLapsBest")
+        if (requirements[a] == "HighBooks" || requirements[a] == "pizzaLapsBest")
         {
             if (PlayerPrefs.GetInt(requirements[a]) >= valueInt[a])
             {
@@ -81,4 +65,6 @@ public class CompletionScript : MonoBehaviour
 
     public TMP_Text percentText;
     public string[] judgements;
+
+    public RectTransform susieIdea;
 }

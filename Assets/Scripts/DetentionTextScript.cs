@@ -23,4 +23,12 @@ public class DetentionTextScript : MonoBehaviour
 			text.text = string.Empty;
 		}
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.name == "UbrSpray(Clone)")
+        {
+			door.detentionTime = 0;
+        }
+    }
 }

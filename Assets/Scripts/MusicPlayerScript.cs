@@ -31,13 +31,18 @@ public class MusicPlayerScript : MonoBehaviour
     {
         if (-value > audioDevice.time)
         {
-            print("detected going to far so now setting time to 0");
             audioDevice.time = 0;
         }
         else if (audioDevice.time + value > audioDevice.clip.length)
         {
-            print("detected going to far so now setting time to" + audioDevice.clip.length);
-            audioDevice.time = audioDevice.clip.length;
+            if (audioDevice.loop)
+            {
+                audioDevice.time = 0;
+            }
+            else
+            {
+                audioDevice.Stop();
+            }
         }
         else
         {
@@ -92,6 +97,8 @@ public class MusicPlayerScript : MonoBehaviour
 
     private AudioSource audioDevice;
     public AudioClip[] music;
+
+    public GameObject[] midis;
 
     private bool paused;
 

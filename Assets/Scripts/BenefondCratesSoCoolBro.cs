@@ -18,7 +18,6 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
         if (PlayerPrefs.GetInt("duplicatedBalls", 0) == 1 || TestMode == 2)
         {
             benefondCreates.SetActive(false);
-            cam = Camera.main.transform;
             aud = GetComponent<AudioSource>();
             aud.Play();
             aud.loop = true;
@@ -111,8 +110,6 @@ public class BenefondCratesSoCoolBro : MonoBehaviour
     public int TestMode;
 
     public GameObject balls;
-
-    Transform cam;
 
     public AudioClip cooLSong;
 

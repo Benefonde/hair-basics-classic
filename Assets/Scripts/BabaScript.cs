@@ -99,6 +99,14 @@ public class BabaScript : MonoBehaviour
         }
 	}
 
+	public void Check()
+    {
+		if (Vector3.Distance(player.position, transform.position) <= 80)
+        {
+			notaSheep.SetActive(true);
+        }
+    }
+
 	public bool db;
 
 	public Transform player;
@@ -114,4 +122,6 @@ public class BabaScript : MonoBehaviour
 	private NavMeshAgent agent;
 
 	public GameControllerScript gc;
+
+	public GameObject notaSheep;
 }

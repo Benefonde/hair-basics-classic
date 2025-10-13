@@ -154,6 +154,17 @@ public class MathGameScript : MonoBehaviour
 		{
 			baldiFeedTransform.position = new Vector3(-1000f, -1000f, 0f);
 		}
+		if (gc.mode != "classic")
+		{
+			if (gc.cleartil.GetComponent<CleartilScript>().enabled)
+			{
+				gc.cleartil.GetComponent<CleartilScript>().waitTime -= 0.09f;
+				if (gc.slowerKriller == 1)
+				{
+					gc.cleartil.GetComponent<CleartilScript>().waitTime += 0.04f;
+				}
+			}
+		}
 		if (gc.mode == "triple")
         {
 			baldiScript.GetAngry(2);
@@ -358,7 +369,16 @@ public class MathGameScript : MonoBehaviour
         {
 			gc.SpawnEvilLeafy();
 			ExitGame();
-        }
+		}
+		else if (playerAnswer.text.ToLower().Contains("cleartil is better"))
+		{
+			gc.CleartilIsBetter();
+			if (gc.notebooks >= 2 && gc.mode == "classic" && !gc.spoopMode)
+            {
+				gc.ActivateSpoopMode();
+            }
+			problem = 4;
+		}
 		if (problem > 3)
 		{
 			return;

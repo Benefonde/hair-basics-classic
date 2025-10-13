@@ -71,7 +71,7 @@ public class AlgerNullScript : MonoBehaviour
 		coolDown = 1f;
 		currentPriority = 0f;
 		int rng = Mathf.RoundToInt(Random.Range(2, 8));
-		if ((rng == 7 & (baldiAudio.time > 2 | !baldiAudio.isPlaying)))
+		if ((rng == 7 & (baldiAudio.time > 2 | !baldiAudio.isPlaying)) && (speed > 0 || !disableWanderOrTarget))
 		{
 			rng = Mathf.RoundToInt(Random.Range(0, speech.Length));
 			baldiAudio.PlayOneShot(speech[rng]);

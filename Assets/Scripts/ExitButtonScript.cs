@@ -6,6 +6,11 @@ public class ExitButtonScript : MonoBehaviour
 {
 	public void ExitGame()
 	{
+        if (instaQuit)
+        {
+            Application.Quit();
+            return;
+        }
         this.balls.SetTrigger("balls");
         this.audioDevice.PlayOneShot(this.walls);
         this.StartCoroutine(this.Valls());
@@ -22,4 +27,6 @@ public class ExitButtonScript : MonoBehaviour
     public AudioClip walls;
 
     public AudioSource audioDevice;
+
+    public bool instaQuit = false;
 }

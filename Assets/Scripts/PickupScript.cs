@@ -6,7 +6,7 @@ public class PickupScript : MonoBehaviour
     void Start()
     {
         aud = GetComponent<AudioSource>();
-        if (zombie)
+        if (pickupType == Type.Sword)
         {
             GetComponentInChildren<SpriteRenderer>().color = swordType.color;
             durability = swordType.durability;
@@ -23,7 +23,7 @@ public class PickupScript : MonoBehaviour
             {
                 if (raycastHit.transform.gameObject == transform.gameObject & Vector3.Distance(this.player.position, base.transform.position) < 10f & Cursor.lockState == CursorLockMode.Locked)
                 {
-                    if (!zombie)
+                    if (pickupType == Type.Item)
                     {
                         if (this.gc.item[0] == 0 | this.gc.item[1] == 0 | this.gc.item[2] == 0 || this.gc.item[3] == 0)
                         {
@@ -49,7 +49,7 @@ public class PickupScript : MonoBehaviour
                             gc.CollectItem(orgID);
                         }
                     }
-                    else
+                    else if (pickupType == Type.Sword)
                     {
                         if (ss.swordType != ss.none)
                         {
@@ -68,6 +68,24 @@ public class PickupScript : MonoBehaviour
                             ss.ChangeSword(swordType);
                         }
                     }
+                    else if (pickupType == Type.Treasure)
+                    {
+                        gc.AddTp(1.28f);
+                        gc.playerScript.stamina += 28 * (gc.playerScript.maxStamina / 100);
+                        raycastHit.transform.gameObject.SetActive(false);
+                    }
+                    else if (pickupType == Type.Pizza)
+                    {
+                        gc.audioDevice.PlayOneShot(eat);
+                        gc.playerScript.stamina += 47 * (gc.playerScript.maxStamina / 100);
+                        raycastHit.transform.gameObject.SetActive(false);
+                        gc.paninoTv.count -= 1;
+                        gc.paninoTv.pizzaHudText.text = gc.paninoTv.count.ToString();
+                        if (gc.mode == "pizza")
+                        {
+                            gc.pss.AddPoints(150, 0.5f);
+                        }
+                    }
                 }
             }
         }
@@ -80,15 +98,32 @@ public class PickupScript : MonoBehaviour
         FindObjectOfType<SubtitleManager>().Add3DSubtitle("An item respawned!", aud.clip.length, Color.white, transform);
     }
 
+    [Header("Generic variables")]
     public GameControllerScript gc;
-    public SwordScript ss;
 
     AudioSource aud;
 
     public Transform player;
+
+    [Header("Item variable(s)")]
     public int ID;
 
-    public bool zombie;
+    [Header("Sword variables")]
     public Sword swordType;
     public int durability;
+    public SwordScript ss;
+
+    [Header("Pizza variable(s)")]
+    public AudioClip eat;
+
+    public enum Type
+    {
+        Item,
+        Sword,
+        Treasure,
+        Pizza
+    };
+
+    [Header("Type of pickup")]
+    public Type pickupType = Type.Item;
 }

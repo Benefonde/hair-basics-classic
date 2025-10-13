@@ -90,8 +90,8 @@ public class Timer : MonoBehaviour
 					pizzaTimeTimer.maxValue = Mathf.Ceil(timeLeft);
 				}
 				pizzaTimeTimer.value = pizzaTimeTimer.maxValue - timeLeft;
-				var ts = TimeSpan.FromSeconds(timeLeft + 0.5f);
-				text.text = string.Format("{0:0}:{1:00}", ts.Minutes, ts.Seconds);
+				var teeEs = TimeSpan.FromSeconds(Mathf.Ceil(timeLeft));
+				text.text = string.Format("{0:0}:{1:00}", teeEs.Minutes, teeEs.Seconds);
 				if (timeLeft < 0f)
                 {
                     text.text = "0:00";

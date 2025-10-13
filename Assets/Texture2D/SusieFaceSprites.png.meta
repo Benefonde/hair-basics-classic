@@ -1,0 +1,1400 @@
+fileFormatVersion: 2
+guid: 04d2124341b503d4caecc2da988e0b16
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5117796163916371461
+    second: SusieFaceSprites_0
+  - first:
+      213: 9034611671620865919
+    second: SusieFaceSprites_1
+  - first:
+      213: 8871667936721460651
+    second: SusieFaceSprites_2
+  - first:
+      213: 7719341660077024224
+    second: SusieFaceSprites_3
+  - first:
+      213: 2337747812974135058
+    second: SusieFaceSprites_4
+  - first:
+      213: 8775516396465090424
+    second: SusieFaceSprites_5
+  - first:
+      213: -520994873083780163
+    second: SusieFaceSprites_6
+  - first:
+      213: 4690438545538325593
+    second: SusieFaceSprites_7
+  - first:
+      213: 211116508562961335
+    second: SusieFaceSprites_8
+  - first:
+      213: 8867522781274886989
+    second: SusieFaceSprites_9
+  - first:
+      213: -5222752381744310538
+    second: SusieFaceSprites_10
+  - first:
+      213: -5246762275727359205
+    second: SusieFaceSprites_11
+  - first:
+      213: -8756833335472402820
+    second: SusieFaceSprites_12
+  - first:
+      213: 8112220073488889169
+    second: SusieFaceSprites_13
+  - first:
+      213: 6371072896918208782
+    second: SusieFaceSprites_14
+  - first:
+      213: -2439209987459362755
+    second: SusieFaceSprites_15
+  - first:
+      213: -8705850402813338404
+    second: SusieFaceSprites_16
+  - first:
+      213: 8618661826405694977
+    second: SusieFaceSprites_17
+  - first:
+      213: -2167364466864636316
+    second: SusieFaceSprites_18
+  - first:
+      213: -3318305388929801286
+    second: SusieFaceSprites_19
+  - first:
+      213: -1300340512926336755
+    second: SusieFaceSprites_20
+  - first:
+      213: 3518071735133434107
+    second: SusieFaceSprites_21
+  - first:
+      213: -4707740018502002760
+    second: SusieFaceSprites_22
+  - first:
+      213: -6385858381837598065
+    second: SusieFaceSprites_23
+  - first:
+      213: -5972401616263323254
+    second: SusieFaceSprites_24
+  - first:
+      213: 1285946366962215369
+    second: SusieFaceSprites_25
+  - first:
+      213: 8489339702887214798
+    second: SusieFaceSprites_26
+  - first:
+      213: -9064281607443969390
+    second: SusieFaceSprites_27
+  - first:
+      213: -4832821458178900676
+    second: SusieFaceSprites_28
+  - first:
+      213: -3897119588656508747
+    second: SusieFaceSprites_29
+  - first:
+      213: 4092246052511847846
+    second: SusieFaceSprites_30
+  - first:
+      213: 567248898112160852
+    second: SusieFaceSprites_31
+  - first:
+      213: 6217423448648277360
+    second: SusieFaceSprites_32
+  - first:
+      213: -487265687057664738
+    second: SusieFaceSprites_33
+  - first:
+      213: 4864127232489618826
+    second: SusieFaceSprites_34
+  - first:
+      213: 4643429561445289965
+    second: SusieFaceSprites_35
+  - first:
+      213: 6554689203768398247
+    second: SusieFaceSprites_36
+  - first:
+      213: 6027434806368626132
+    second: SusieFaceSprites_37
+  - first:
+      213: -7182668784802963044
+    second: SusieFaceSprites_38
+  - first:
+      213: 6792709143695607596
+    second: SusieFaceSprites_39
+  - first:
+      213: -754043013779366812
+    second: SusieFaceSprites_40
+  - first:
+      213: -8993985819549557905
+    second: SusieFaceSprites_41
+  - first:
+      213: 6847329893300738858
+    second: SusieFaceSprites_42
+  - first:
+      213: -7217786296249910068
+    second: SusieFaceSprites_43
+  - first:
+      213: 5608799094392909235
+    second: SusieFaceSprites_44
+  - first:
+      213: -6478362912332712205
+    second: SusieFaceSprites_45
+  - first:
+      213: 5774762584251373550
+    second: SusieFaceSprites_46
+  - first:
+      213: -7710230307693603629
+    second: SusieFaceSprites_47
+  - first:
+      213: 6887578308313383303
+    second: SusieFaceSprites_48
+  - first:
+      213: 2646870021840487047
+    second: SusieFaceSprites_49
+  - first:
+      213: 9183435555621646257
+    second: SusieFaceSprites_50
+  - first:
+      213: -7950068641536456209
+    second: SusieFaceSprites_51
+  - first:
+      213: -2738139033331150941
+    second: SusieFaceSprites_52
+  - first:
+      213: 7932419815888227622
+    second: SusieFaceSprites_53
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SusieFaceSprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf968e0118fe9f8b0800000000000000
+      internalID: -5117796163916371461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f4f8aa273616d70800000000000000
+      internalID: 9034611671620865919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad518dfbfe7e1b70800000000000000
+      internalID: 8871667936721460651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e3e3cc475c902b60800000000000000
+      internalID: 7719341660077024224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_4
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21705ceff39517020800000000000000
+      internalID: 2337747812974135058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87feaebfaa5e8c970800000000000000
+      internalID: 8775516396465090424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_6
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3aa0c5ced05c8f0800000000000000
+      internalID: -520994873083780163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_7
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c9c939109c71140800000000000000
+      internalID: 4690438545538325593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_8
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3bd1398590ee200800000000000000
+      internalID: 211116508562961335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_9
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43d297ccf4cf0b70800000000000000
+      internalID: 8867522781274886989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_10
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f61e40516e0587b0800000000000000
+      internalID: -5222752381744310538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13c95e3281cf27b0800000000000000
+      internalID: -5246762275727359205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_12
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e4ed12a7a797680800000000000000
+      internalID: -8756833335472402820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_13
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155391c2d25649070800000000000000
+      internalID: 8112220073488889169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_14
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01cdea5b099a6850800000000000000
+      internalID: 6371072896918208782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_15
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3056ec907f262ed0800000000000000
+      internalID: -2439209987459362755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_16
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc9e982f2b9e2780800000000000000
+      internalID: -8705850402813338404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_17
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 102
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e712a7443ab9770800000000000000
+      internalID: 8618661826405694977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ebab52089fbe1e0800000000000000
+      internalID: -2167364466864636316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_19
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3239474d203f1d0800000000000000
+      internalID: -3318305388929801286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_20
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09f9f7613344fde0800000000000000
+      internalID: -1300340512926336755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_21
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf078f28a93b2d030800000000000000
+      internalID: 3518071735133434107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_22
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b71c46556fbaaeb0800000000000000
+      internalID: -4707740018502002760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_23
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f828e9ca2afd067a0800000000000000
+      internalID: -6385858381837598065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_24
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81e7a68f54cd1da0800000000000000
+      internalID: -5972401616263323254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_25
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9acf2586998d110800000000000000
+      internalID: 1285946366962215369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_26
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece66383b7130d570800000000000000
+      internalID: 8489339702887214798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_27
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29a023417e3353280800000000000000
+      internalID: -9064281607443969390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_28
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d7c5a3d7e5eecb0800000000000000
+      internalID: -4832821458178900676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_29
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b099e6c166aae9c0800000000000000
+      internalID: -3897119588656508747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_30
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a596756a149ac830800000000000000
+      internalID: 4092246052511847846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_31
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454053f0ed54fd700800000000000000
+      internalID: 567248898112160852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_32
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d5dda6fa9b84650800000000000000
+      internalID: 6217423448648277360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_33
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15f0b37072ec39f0800000000000000
+      internalID: -487265687057664738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_34
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8df8da52f9d08340800000000000000
+      internalID: 4864127232489618826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_35
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 51
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def8e7d8596c07040800000000000000
+      internalID: 4643429561445289965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a114b34a1fe6fa50800000000000000
+      internalID: 6554689203768398247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_37
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d56d6c8500c5a350800000000000000
+      internalID: 6027434806368626132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_38
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91688eabc8025c90800000000000000
+      internalID: -7182668784802963044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_39
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2746841afc844e50800000000000000
+      internalID: 6792709143695607596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_40
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cd052cfd91985f0800000000000000
+      internalID: -754043013779366812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_41
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b19de9c81fe2380800000000000000
+      internalID: -8993985819549557905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_42
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b9a1e524a960f50800000000000000
+      internalID: 6847329893300738858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_43
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc7753ea9545db90800000000000000
+      internalID: -7217786296249910068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_44
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd62d54f0576dd40800000000000000
+      internalID: 5608799094392909235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_45
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f6f75c414b3816a0800000000000000
+      internalID: -6478362912332712205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_46
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7158079f3142050800000000000000
+      internalID: 5774762584251373550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_47
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d4d87db262cff490800000000000000
+      internalID: -7710230307693603629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_48
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78184bdbaf7959f50800000000000000
+      internalID: 6887578308313383303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_49
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782ce6ad2429bb420800000000000000
+      internalID: 2646870021840487047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_50
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf258e5bfd127f70800000000000000
+      internalID: 9183435555621646257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_51
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe94f3911beaba190800000000000000
+      internalID: -7950068641536456209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_52
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af4aa47e0d200ad0800000000000000
+      internalID: -2738139033331150941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SusieFaceSprites_53
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 0
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d89477bcd951e60800000000000000
+      internalID: 7932419815888227622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

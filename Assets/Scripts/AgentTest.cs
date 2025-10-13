@@ -151,6 +151,7 @@ public class AgentTest : MonoBehaviour
         }
 		if (other.transform.name == "Yellow Face")
 		{
+			FindObjectOfType<SubtitleManager>().RemoveSubtitle("balls");
 			gc.SomeoneTied(gameObject);
 			gameObject.SetActive(false);
 		}

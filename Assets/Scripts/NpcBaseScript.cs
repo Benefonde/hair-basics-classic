@@ -48,7 +48,7 @@ public class NpcBaseScript : MonoBehaviour
 		else
 		{
 			db = false;
-			if (coolDown <= 0)
+			if ((agent.velocity.magnitude <= 1f) & (coolDown <= 0f))
 			{
 				Wander();
 			}

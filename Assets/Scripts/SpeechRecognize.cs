@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Windows.Speech;
+using UnityEngine.Windows.Speech;
 using System.Linq;
 
 public class SpeechRecognize : MonoBehaviour
 {
-    /*KeywordRecognizer keywordRecognizer;
-    DictationRecognizer dictationRecognizer;
+    KeywordRecognizer keywordRecognizer;
+    //DictationRecognizer dictationRecognizer;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
     public GameControllerScript gc;
@@ -20,7 +20,30 @@ public class SpeechRecognize : MonoBehaviour
             print("ay yo i heard you say EVIL LEAFY so here is EVIL LEAFY");
             gc.SpawnEvilLeafy();
         });
-        keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+        keywords.Add("sheep", () =>
+        {
+            print("not a sheep");
+            gc.baba.GetComponent<BabaScript>().Check();
+        });
+        keywords.Add("claritel is better", () =>
+        {
+            print("cleartil");
+            gc.CleartilIsBetter();
+        });
+        keywords.Add("cleartel is better", () =>
+        {
+            print("cleartil");
+            gc.CleartilIsBetter();
+        });
+        keywords.Add("clear till is better", () =>
+        {
+            print("cleartil");
+            gc.CleartilIsBetter();
+        });
+        if (keywordRecognizer == null)
+        {
+            keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+        }
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
         /*
@@ -29,6 +52,7 @@ public class SpeechRecognize : MonoBehaviour
         dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
         dictationRecognizer.DictationError += DictationRecognizer_DictationError;
         dictationRecognizer.Start();
+        */
     }
 
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -40,7 +64,7 @@ public class SpeechRecognize : MonoBehaviour
         }
     }
 
-    private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
+    /*private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
     {
         print("aw yum " + confidence);
     }
@@ -53,6 +77,5 @@ public class SpeechRecognize : MonoBehaviour
     private void DictationRecognizer_DictationError(string error, int hresult)
     {
         print("aw yuck " + error);
-    }
-    */
+    }*/
 }

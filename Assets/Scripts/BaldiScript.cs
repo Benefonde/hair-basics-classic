@@ -201,7 +201,14 @@ public class BaldiScript : MonoBehaviour
 		baldiAudio.PlayOneShot(slap);
 		if (gc.isActiveAndEnabled)
 		{
-			FindObjectOfType<SubtitleManager>().Add3DSubtitle("balls", slap.length, Color.cyan, transform);
+			if (gc.IsAprilFools() || Random.Range(1, 2763) == 28)
+			{
+				FindObjectOfType<SubtitleManager>().Add3DSubtitle("bolts", slap.length, Color.cyan, transform);
+			}
+            else
+			{
+				FindObjectOfType<SubtitleManager>().Add3DSubtitle("balls", slap.length, Color.cyan, transform);
+			}
 		}
 		baldiAnimator.SetTrigger("slap");
 	}
