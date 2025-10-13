@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
+//using UnityEngine.Windows.Speech;
 using System.Linq;
 
 public class SpeechRecognize : MonoBehaviour
 {
-    KeywordRecognizer keywordRecognizer;
+    /*KeywordRecognizer keywordRecognizer;
     //DictationRecognizer dictationRecognizer;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
@@ -53,16 +53,16 @@ public class SpeechRecognize : MonoBehaviour
         dictationRecognizer.DictationError += DictationRecognizer_DictationError;
         dictationRecognizer.Start();
         */
-    }
+   // }
 
-    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    /*private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         System.Action keywordAction;
         if (keywords.TryGetValue(args.text, out keywordAction))
         {
             keywordAction.Invoke();
         }
-    }
+    }*/
 
     /*private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
     {
