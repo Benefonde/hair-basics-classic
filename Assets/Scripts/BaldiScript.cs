@@ -246,14 +246,8 @@ public class BaldiScript : MonoBehaviour
 		{
 			for (int i = 0; i < squee.Count; i++)
 			{
-				if (squee[i] == null)
-                {
-					squee.RemoveAt(i);
-                }
-				if (squee[i].bounds.Contains(soundLocation))
-				{
-					return;
-				}
+				if (squee[i] == null) squee.RemoveAt(i);
+				if (squee[i].bounds.Contains(soundLocation)) break;
 			}
 		}
 		if (!antiHearing && priority >= currentPriority)

@@ -694,7 +694,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			sweeping = true;
 		}
-		else if (other.transform.name == "Marty" && !bootsActive && firstPrize.velocity.magnitude > 5f && gc.firstPrizeScript.crazyTime <= 0)
+		else if (other.transform.name == "Cat-a-combs" && !bootsActive && firstPrize.velocity.magnitude > 5f && gc.firstPrizeScript.crazyTime <= 0)
 		{
 			hugging = true;
 		}
@@ -715,7 +715,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			sweeping = false;
 		}
-		else if (other.transform.name == "Marty")
+		else if (other.transform.name == "Cat-a-combs")
 		{
 			hugging = false;
 		}

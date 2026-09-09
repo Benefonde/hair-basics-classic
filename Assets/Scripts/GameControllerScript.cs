@@ -683,34 +683,13 @@ public class GameControllerScript : MonoBehaviour
 
     public bool ModifierOn()
     {
-        if (speedBoost == 1)
-        {
-            return true;
-        }
-        if (extraStamina == 1)
-        {
-            return true;
-        }
-        if (slowerKriller == 1 && mode != "panino")
-        {
-            return true;
-        }
-        if (walkThrough == 1)
-        {
-            return true;
-        }
-        if (blockPath == 1)
-        {
-            return true;
-        }
-        if (infItem == 1)
-        {
-            return true;
-        }
-        if (jammers == 1)
-        {
-            return true;
-        }
+        if (speedBoost == 1) return true;
+        if (extraStamina == 1) return true;
+        if (slowerKriller == 1 && mode != "panino") return true;
+        if (walkThrough == 1) return true;
+        if (blockPath == 1) return true;
+        if (infItem == 1) return true;
+        if (jammers == 1) return true;
         return false;
     }
 
@@ -798,7 +777,7 @@ public class GameControllerScript : MonoBehaviour
 
     public void NotebookDebt()
     {
-        if (Random.Range(1, 40) == 28 || IsAprilFools())
+        if (Random.Range(1, 90) == 28 || IsAprilFools())
         {
             ESCAPEmusic.clip = BESTESCAPE;
             tc.GetTrophy(28);
@@ -842,6 +821,7 @@ public class GameControllerScript : MonoBehaviour
         }
         cleartilMode = true;
         math = 0;
+        craftersTime = false;
         if (spoopMode)
         {
             baldi.SetActive(false);
@@ -863,7 +843,6 @@ public class GameControllerScript : MonoBehaviour
         {
             cleartil.GetComponent<CleartilScript>().Endless();
         }
-        craftersTime = false;
         crafters.SetActive(false);
         starstudentWall.SetActive(false);
         urk.SetActive(true);
@@ -889,7 +868,7 @@ public class GameControllerScript : MonoBehaviour
         {
             if (scoreDecayTimer <= 0)
             {
-                pss.AddPoints(-5, 0.5f);
+                pss.AddPoints(-5, 0.55f);
                 scoreDecayTimer = 1;
                 player.stamina += player.maxStamina / 18;
             }

@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class UnpauseAudio : MonoBehaviour
 {
-
-    // Update is called once per frame
     void Update()
     {
         AudioListener.pause = false;

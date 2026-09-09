@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeSave : MonoBehaviour
@@ -20,6 +21,7 @@ public class VolumeSave : MonoBehaviour
 	public void LoadValues()
 	{
 		float @float = PlayerPrefs.GetFloat("audio", 0.5f);
+		audy.SetFloat("MyExposedParam", (Mathf.Log10(@float)) * 20); 
 		this.volSlider.value = @float;
 		AudioListener.volume = @float;
 	}
@@ -27,6 +29,6 @@ public class VolumeSave : MonoBehaviour
 	public Slider volSlider;
 
 	public AudioClip hi;
-
+	public AudioMixer audy;
 	public AudioSource globalAudioSource;
 }
