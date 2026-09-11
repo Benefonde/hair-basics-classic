@@ -29,26 +29,6 @@ public class OptionsManager : MonoBehaviour
 
 	private void Start()
 	{
-		if (PlayerPrefs.HasKey("OptionsSet"))
-		{
-			sliderSensetivity.value = PlayerPrefs.GetFloat("MouseSensitivity");
-			easyMath.isOn = PlayerPrefs.GetInt("easyMath", 1) == 1;
-			fullscreen.isOn = PlayerPrefs.GetInt("fullscreen", 1) == 1;
-			shake.isOn = PlayerPrefs.GetInt("shake", 1) == 1;
-			minimap.isOn = PlayerPrefs.GetInt("minimap", 0) == 1;
-			yellow.isOn = PlayerPrefs.GetInt("yellow", 1) == 1;
-			noMath.isOn = PlayerPrefs.GetInt("math", 1) == 0;
-			tdCam.isOn = PlayerPrefs.GetInt("3dCam", 0) == 1;
-			scaleAutomatically.isOn = PlayerPrefs.GetInt("scaleMode", 1) == 1;
-			captions.isOn = PlayerPrefs.GetInt("captions", 0) == 1;
-			itemHeld.isOn = PlayerPrefs.GetInt("heldItemShow", 0) == 1;
-			timer.isOn = PlayerPrefs.GetInt("timer", 0) == 1;
-			fastRestart.isOn = PlayerPrefs.GetInt("fastRestart", 0) == 1;
-			fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
-			scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
-			SetFps();
-		}
-		PlayerPrefs.SetInt("OptionsSet", 1);
 	}
 
 	public void UpdateSettings()
@@ -72,17 +52,19 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount); 
 		fps.enabled = !vsync.isOn;
 		PlayerPrefs.SetInt("fastRestart", fastRestart.isOn ? 1 : 0);
-		SaveOptions();
+		Savey();
 	}
 
 	void Update()
     {
 		if (this.confirmation.activeSelf) this.audioDevice.Pause();
 		else this.audioDevice.UnPause();
+
+		if (Input.GetKeyDown(KeyCode.I)) Load();
 	}
 
     private void OnEnable()
-    {
+	{
 		if (PlayerPrefs.GetInt("mikoBeat") == 1)
 		{
 			this.yellow.interactable = true;
@@ -94,11 +76,54 @@ public class OptionsManager : MonoBehaviour
 			PlayerPrefs.SetInt("yellow", 0);
 			this.yellow.isOn = false;
 		}
+		Invoke(nameof(Load), 0.1f);
 	}
 
-    public void SaveOptions()
+	void Load()
     {
+		//if (PlayerPrefs.HasKey("OptionsSet"))
+		{
+			sliderSensetivity.value = PlayerPrefs.GetFloat("MouseSensitivity");
+			easyMath.isOn = PlayerPrefs.GetInt("easyMath", 1) == 1;
+			print($"easy math {PlayerPrefs.GetInt("easyMath", 1) == 1}");
+			fullscreen.isOn = PlayerPrefs.GetInt("fullscreen", 1) == 1;
+			print($"fullcreen {PlayerPrefs.GetInt("fullscreen", 1) == 1}");
+			shake.isOn = PlayerPrefs.GetInt("shake", 1) == 1;
+			print($"shaky {PlayerPrefs.GetInt("shake", 1) == 1}");
+			minimap.isOn = PlayerPrefs.GetInt("minimap", 0) == 1;
+			print($"minmap {PlayerPrefs.GetInt("minimap", 0) == 1}");
+			yellow.isOn = PlayerPrefs.GetInt("yellow", 0) == 1;
+			print($"yellow {PlayerPrefs.GetInt("yellow", 0) == 1}");
+			noMath.isOn = PlayerPrefs.GetInt("math", 1) == 0;
+			print($"no math {PlayerPrefs.GetInt("math", 1) == 0}");
+			tdCam.isOn = PlayerPrefs.GetInt("3dCam", 0) == 1;
+			print($"teardrop cam {PlayerPrefs.GetInt("3dCam", 0) == 1}");
+			scaleAutomatically.isOn = PlayerPrefs.GetInt("scaleMode", 1) == 1;
+			print($"scale auto {PlayerPrefs.GetInt("scaleMode", 1) == 1}");
+			captions.isOn = PlayerPrefs.GetInt("captions", 0) == 1;
+			print($"captions {PlayerPrefs.GetInt("captions", 0) == 1}");
+			itemHeld.isOn = PlayerPrefs.GetInt("heldItemShow", 0) == 1;
+			print($"itemhels {PlayerPrefs.GetInt("heldItemShow", 0) == 1}");
+			timer.isOn = PlayerPrefs.GetInt("timer", 0) == 1;
+			print($"timer {PlayerPrefs.GetInt("timer", 0) == 1}");
+			fastRestart.isOn = PlayerPrefs.GetInt("fastRestart", 0) == 1;
+			print($"fastten {PlayerPrefs.GetInt("fastRestart", 0) == 1}");
+			fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
+			scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
+			SetFps();
+		}
+		PlayerPrefs.SetInt("OptionsSet", 1);
+	}
+
+    public void Savey()
+	{
+		/*if (wait > 0)
+        {
+			print("woah there buddy...");
+			return;
+        }
 		PlayerPrefs.Save();
+		print("hey im saving trust");*/
     }
 
 	public void SetFps()
@@ -155,7 +180,7 @@ public class OptionsManager : MonoBehaviour
 		PlayerPrefs.DeleteKey("fullscreen");
 		PlayerPrefs.DeleteKey("shake");
 		PlayerPrefs.DeleteKey("3dCam");
-		PlayerPrefs.SetInt("MouseSensetivity", 2);
+		PlayerPrefs.SetInt("MouseSensitivity", 2);
 		PlayerPrefs.DeleteKey("math");
 		PlayerPrefs.DeleteKey("OptionsSet");
 		PlayerPrefs.DeleteKey("vsync");
@@ -176,5 +201,6 @@ public class OptionsManager : MonoBehaviour
 	public GameObject confirmation;
 	public AudioClip boowomp;
 
+	float wait = 0.5f;
 	public List<string> playerPrefInts = new List<string>();
 }

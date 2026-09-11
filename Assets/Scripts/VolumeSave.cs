@@ -10,12 +10,15 @@ public class VolumeSave : MonoBehaviour
 		this.LoadValues();
 	}
 
-	public void SaveVolume()
+	public void SaveVolume(bool noise)
 	{
 		PlayerPrefs.SetFloat("audio", this.volSlider.value);
 		this.LoadValues();
-		this.globalAudioSource.Stop();
-		this.globalAudioSource.PlayOneShot(this.hi);
+		if (noise)
+		{
+			this.globalAudioSource.Stop();
+			this.globalAudioSource.PlayOneShot(this.hi);
+		}
 	}
 
 	public void LoadValues()
