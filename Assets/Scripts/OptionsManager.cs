@@ -29,38 +29,107 @@ public class OptionsManager : MonoBehaviour
 
 	private void Start()
 	{
+		if (PlayerPrefs.HasKey("OptionsSet"))
+		{
+			this.sliderSensetivity.value = PlayerPrefs.GetFloat("MouseSensitivity");
+			if (PlayerPrefs.GetInt("easyMath", 1) == 0) this.easyMath.isOn = false;
+			else this.easyMath.isOn = true;
+			if (PlayerPrefs.GetInt("fullscreen", 1) == 0) this.fullscreen.isOn = false;
+			else this.fullscreen.isOn = true;
+			if (PlayerPrefs.GetInt("shake", 1) == 0) this.shake.isOn = false;
+			else this.shake.isOn = true;
+			if (PlayerPrefs.GetInt("minimap", 0) == 0) this.minimap.isOn = false;
+			else this.minimap.isOn = true;
+			if (PlayerPrefs.GetInt("yellow", 0) == 0) this.yellow.isOn = false;
+			else this.yellow.isOn = true;
+			if (PlayerPrefs.GetInt("math", 0) == 0) this.noMath.isOn = true;
+			else this.noMath.isOn = false;
+			if (PlayerPrefs.GetInt("3dCam", 0) == 1) this.tdCam.isOn = true;
+			else this.tdCam.isOn = false;
+			if (PlayerPrefs.GetInt("scaleMode", 0) == 0) scaleAutomatically.isOn = true;
+			else scaleAutomatically.isOn = false;
+			if (PlayerPrefs.GetInt("captions", 0) == 1) this.captions.isOn = true;
+			else this.captions.isOn = false;
+			if (PlayerPrefs.GetInt("heldItemShow", 0) == 1) this.itemHeld.isOn = true;
+			else this.itemHeld.isOn = false;
+			if (PlayerPrefs.GetInt("timer", 0) == 1) this.timer.isOn = true;
+			else this.timer.isOn = false;
+			if (PlayerPrefs.GetInt("fastRestart", 0) == 1) this.fastRestart.isOn = true;
+			else this.fastRestart.isOn = false;
+			this.fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
+			this.scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
+			//I'm forced to do it like this.
+			this.SetFps();
+		}
+		PlayerPrefs.SetInt("OptionsSet", 1);
 	}
 
 	public void UpdateSettings()
 	{
-		PlayerPrefs.SetInt("easyMath", easyMath.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("3dCam", tdCam.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("minimap", minimap.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("captions", captions.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("fullscreen", fullscreen.isOn ? 1 : 0);
-		Screen.fullScreenMode = fullscreen.isOn ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
-		PlayerPrefs.SetInt("shake", shake.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("yellow", yellow.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("math", noMath.isOn ? 0 : 1);
-		PlayerPrefs.SetInt("scaleMode", scaleAutomatically.isOn ? 1 : 0);
-		PlayerPrefs.SetFloat("audio", this.volume.value);
-		AudioListener.volume = this.volume.value;
-		PlayerPrefs.SetFloat("MouseSensitivity", this.sliderSensetivity.value);
-		PlayerPrefs.SetInt("heldItemShow", itemHeld.isOn ? 1 : 0);
-		PlayerPrefs.SetInt("timer", timer.isOn ? 1 : 0);
-		QualitySettings.vSyncCount = vsync.isOn ? 1 : 0;
-		PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount); 
-		fps.enabled = !vsync.isOn;
-		PlayerPrefs.SetInt("fastRestart", fastRestart.isOn ? 1 : 0);
 		Savey();
 	}
 
-	void Update()
-    {
+	void Update() //I can't move it out of update or else the options break. :(
+	{
+		if (this.easyMath.isOn) PlayerPrefs.SetInt("easyMath", 1);
+		else PlayerPrefs.SetInt("easyMath", 0);
+		if (this.tdCam.isOn) PlayerPrefs.SetInt("3dCam", 1);
+		else PlayerPrefs.SetInt("3dCam", 0);
+		if (this.minimap.isOn) PlayerPrefs.SetInt("minimap", 1);
+		else PlayerPrefs.SetInt("minimap", 0);
+		if (this.captions.isOn) PlayerPrefs.SetInt("captions", 1);
+		else PlayerPrefs.SetInt("captions", 0);
+		if (this.fullscreen.isOn)
+		{
+			PlayerPrefs.SetInt("fullscreen", 1);
+			Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+		}
+		else
+		{
+			PlayerPrefs.SetInt("fullscreen", 0);
+			Screen.fullScreenMode = FullScreenMode.Windowed;
+		}
+		if (this.shake.isOn) PlayerPrefs.SetInt("shake", 1);
+		else PlayerPrefs.SetInt("shake", 0);
 		if (this.confirmation.activeSelf) this.audioDevice.Pause();
 		else this.audioDevice.UnPause();
-
-		if (Input.GetKeyDown(KeyCode.I)) Load();
+		if (this.yellow.isOn) PlayerPrefs.SetInt("yellow", 1);
+		else PlayerPrefs.SetInt("yellow", 0);
+		if (this.noMath.isOn) PlayerPrefs.SetInt("math", 0);
+		else PlayerPrefs.SetInt("math", 1);
+		if (this.scaleAutomatically.isOn) PlayerPrefs.SetInt("scaleMode", 0);
+		else PlayerPrefs.SetInt("scaleMode", 1);
+		PlayerPrefs.SetFloat("audio", this.volume.value);
+		AudioListener.volume = this.volume.value;
+		PlayerPrefs.SetFloat("MouseSensitivity", this.sliderSensetivity.value);
+		if (PlayerPrefs.GetInt("mikoBeat") == 1) this.yellow.interactable = true;
+		else
+		{
+			yellow.gameObject.SetActive(false);
+			this.yellow.interactable = false;
+			PlayerPrefs.SetInt("yellow", 0);
+			this.yellow.isOn = false;
+		}
+		if (this.itemHeld.isOn) PlayerPrefs.SetInt("heldItemShow", 1);
+		else PlayerPrefs.SetInt("heldItemShow", 0);
+		if (this.timer.isOn) PlayerPrefs.SetInt("timer", 1);
+		else PlayerPrefs.SetInt("timer", 0);
+		if (this.vsync.isOn)
+		{
+			QualitySettings.vSyncCount = 1;
+			PlayerPrefs.SetInt("vsync", 1);
+		}
+		else
+		{
+			QualitySettings.vSyncCount = 0;
+			PlayerPrefs.SetInt("vsync", 0);
+		}
+		if (QualitySettings.vSyncCount == 1) fps.enabled = false;
+		else fps.enabled = true;
+		if (fastRestart.isOn) PlayerPrefs.SetInt("fastRestart", 1);
+		else PlayerPrefs.SetInt("fastRestart", 0);
+		if (this.confirmation.activeSelf) this.audioDevice.Pause();
+		else this.audioDevice.UnPause();
 	}
 
     private void OnEnable()
@@ -76,54 +145,12 @@ public class OptionsManager : MonoBehaviour
 			PlayerPrefs.SetInt("yellow", 0);
 			this.yellow.isOn = false;
 		}
-		Invoke(nameof(Load), 0.1f);
-	}
-
-	void Load()
-    {
-		//if (PlayerPrefs.HasKey("OptionsSet"))
-		{
-			sliderSensetivity.value = PlayerPrefs.GetFloat("MouseSensitivity");
-			easyMath.isOn = PlayerPrefs.GetInt("easyMath", 1) == 1;
-			print($"easy math {PlayerPrefs.GetInt("easyMath", 1) == 1}");
-			fullscreen.isOn = PlayerPrefs.GetInt("fullscreen", 1) == 1;
-			print($"fullcreen {PlayerPrefs.GetInt("fullscreen", 1) == 1}");
-			shake.isOn = PlayerPrefs.GetInt("shake", 1) == 1;
-			print($"shaky {PlayerPrefs.GetInt("shake", 1) == 1}");
-			minimap.isOn = PlayerPrefs.GetInt("minimap", 0) == 1;
-			print($"minmap {PlayerPrefs.GetInt("minimap", 0) == 1}");
-			yellow.isOn = PlayerPrefs.GetInt("yellow", 0) == 1;
-			print($"yellow {PlayerPrefs.GetInt("yellow", 0) == 1}");
-			noMath.isOn = PlayerPrefs.GetInt("math", 1) == 0;
-			print($"no math {PlayerPrefs.GetInt("math", 1) == 0}");
-			tdCam.isOn = PlayerPrefs.GetInt("3dCam", 0) == 1;
-			print($"teardrop cam {PlayerPrefs.GetInt("3dCam", 0) == 1}");
-			scaleAutomatically.isOn = PlayerPrefs.GetInt("scaleMode", 1) == 1;
-			print($"scale auto {PlayerPrefs.GetInt("scaleMode", 1) == 1}");
-			captions.isOn = PlayerPrefs.GetInt("captions", 0) == 1;
-			print($"captions {PlayerPrefs.GetInt("captions", 0) == 1}");
-			itemHeld.isOn = PlayerPrefs.GetInt("heldItemShow", 0) == 1;
-			print($"itemhels {PlayerPrefs.GetInt("heldItemShow", 0) == 1}");
-			timer.isOn = PlayerPrefs.GetInt("timer", 0) == 1;
-			print($"timer {PlayerPrefs.GetInt("timer", 0) == 1}");
-			fastRestart.isOn = PlayerPrefs.GetInt("fastRestart", 0) == 1;
-			print($"fastten {PlayerPrefs.GetInt("fastRestart", 0) == 1}");
-			fps.text = PlayerPrefs.GetInt("fps", 60).ToString();
-			scaleFactor.text = PlayerPrefs.GetFloat("scaleFactor", 1.5f).ToString();
-			SetFps();
-		}
-		PlayerPrefs.SetInt("OptionsSet", 1);
 	}
 
     public void Savey()
 	{
-		/*if (wait > 0)
-        {
-			print("woah there buddy...");
-			return;
-        }
 		PlayerPrefs.Save();
-		print("hey im saving trust");*/
+		print("hey im saving trust");
     }
 
 	public void SetFps()
